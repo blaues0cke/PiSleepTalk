@@ -33,3 +33,8 @@ To install the image on your sd card you can follow the description [here](https
   ![Screenshot cd downloads folder](README/cd_downloads.png)
 * Type the following command, but make sure you replace `n` with your disk number, also you have to replace the path to the image: `sudo dd bs=1m if=path_of_your_image.img of=/dev/rdiskn`, so im my case that would be: `sudo dd bs=1m if=2015-09-24-raspbian-jessie.img of=/dev/rdisk5`
 * Grab a coffee (9:04)
+
+
+![Screenshot unmount disk](README/unmount_disk.png) <- TODO: bild fixen
+![Screenshot start dd](README/start_dd.png) <- TODO: bild fixen
+![Screenshot dd done](README/dd_done.png) <- TODO: bild fixen
