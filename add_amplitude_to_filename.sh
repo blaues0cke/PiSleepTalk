@@ -28,6 +28,8 @@ do
 
 	echo "... done"
 	echo ""
+
+	file_counter=$((file_counter + 1))
 done
 
 echo "Done adding amplitude to filename, processed files: ${file_counter}"
