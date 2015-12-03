@@ -6,7 +6,7 @@ todo
 
 abstand messen für leigt im bett erkennung
 
-records_raw        <- alle records
+
 records_timestamp  <- timestamp geadded
 records_amplitude  <- records_amplitude
 
