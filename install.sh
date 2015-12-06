@@ -4,3 +4,4 @@
 
 # copy daemon.sh to /etc/init.d/sleeptalk
 # start the service
+# copy the crontabs

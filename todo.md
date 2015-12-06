@@ -12,6 +12,8 @@ records_amplitude  <- records_amplitude
 
 sox dat erstellen?
 
+- hue
+
 löschen wenn:
 
 - wenn 2 amplitude < threshold
