@@ -18,20 +18,19 @@ fi
 #                    override the defaults in /lib/init/init-d-script.
 ### END INIT INFO
 
-# Author: Foo Bar <foobar@baz.org>
+# Author: Thomas Kekeisen <thomas.kekeisen@toolbox-bodensee.de>
 #
-# Please remove the "Author" lines above and replace them
-# with your own name if you copy and modify this script.
+# This file can be found in /etc/init.d/sleeptalkrec
 
 DESC="Crazy sleep talk recorder"
 DAEMON=/usr/sbin/sleeptalkrec
 
 case "$1" in
     start)
-        sh /usr/sleeptalk/scripts/record-chunks.sh
+        sh /usr/sleeptalk/scripts/start-recording-chunks.sh
         ;;
     stop)
-        # STOP
+        sh /usr/sleeptalk/scripts/stop-recording-chunks.sh
         ;;
     restart)
         # RESTART
