@@ -40,7 +40,7 @@ do
 
 		if [ "NO" = "$mid_amplitude_compare" ] && [ "NO" = "$max_amplitude_compare" ]; then
 
-			if [ -z "$last_audio_file_path" ] && [ -f $last_audio_file_path ]; then
+			if [ -n "${last_audio_file_path}" ] && [ -f $last_audio_file_path ]; then
 				echo "... deleting last file: $last_audio_file_path"
 
 				if [ "$debug" = false ]; then
