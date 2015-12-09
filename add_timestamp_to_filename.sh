@@ -14,7 +14,7 @@ do
 
 	 	audio_file_name=$(basename $audio_file_path)
 
-	 	modify_date=$(stat -c %Y $audio_file_name)
+	 	modify_date=$(stat -c %Y $audio_file_path)
 
 	 	new_audio_file_path="/usr/sleeptalk/records_timestamp/$modify_date.wav"
 

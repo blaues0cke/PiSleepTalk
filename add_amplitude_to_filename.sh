@@ -17,8 +17,8 @@ do
 
 	 	# todo: combine those two sox calls to one since both required amplitudes are retured with each call
 
-	 	maximum_amplitude=$(sox e_laut.wav -n stat 2>&1 | sed -n 's#^Maximum amplitude:[^0-9]*\([0-9.]*\)$#\1#p')
-	    midline_amplitude=$(sox e_laut.wav -n stat 2>&1 | sed -n 's#^Midline amplitude:[^0-9]*\([0-9.]*\)$#\1#p')
+	 	maximum_amplitude=$(sox $audio_file_path -n stat 2>&1 | sed -n 's#^Maximum amplitude:[^0-9]*\([0-9.]*\)$#\1#p')
+	    midline_amplitude=$(sox $audio_file_path -n stat 2>&1 | sed -n 's#^Midline amplitude:[^0-9]*\([0-9.]*\)$#\1#p')
 
 	 	echo "... maximum amplitude: $maximum_amplitude"
 	 	echo "... midline amplitude: $midline_amplitude"
@@ -29,8 +29,6 @@ do
 		 	new_audio_file_path="/usr/sleeptalk/records_amplitude/${audio_timestamp}_max_${maximum_amplitude}_mid_${midline_amplitude}.wav"
 
 		 	echo "... new file path: $new_audio_file_path"
-
-		 	exit
 
 		 	mv $audio_file_path $new_audio_file_path
 
