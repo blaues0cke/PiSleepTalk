@@ -3,7 +3,7 @@ todo
 
 * move all paths and settings to a separate config file
 
-
+# dash in all file names instead of underscore
 abstand messen für leigt im bett erkennung
 
 

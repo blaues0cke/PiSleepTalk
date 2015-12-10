@@ -13,6 +13,8 @@ do
 	 	echo "... processing file: $audio_file_path"
 
 	 	audio_file_name=$(basename $audio_file_path)
+
+	 	# todo move to function
 	 	audio_timestamp=$(echo $audio_file_name | sed "s/\(\.wav\)//")
 
 	 	# todo: combine those two sox calls to one since both required amplitudes are retured with each call
