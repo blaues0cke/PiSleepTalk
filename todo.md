@@ -55,3 +55,5 @@ crontab könnte ein "try to start" haben damit nix doppelt läuft
 "clear" befehl in .sleeptalk-file
 
 #todo: aproval stage
+
+image cache to save re-generation of images?

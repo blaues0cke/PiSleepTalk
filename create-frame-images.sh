@@ -41,6 +41,8 @@ do
 			do
 				echo "... processing line: $line, counter: $line_counter" 
 
+				# Thanks to
+				# * http://unix.stackexchange.com/questions/160180/bash-if-statement-missing-error
 				if [ $line_counter -gt 4 ]; then
 
 					echo "... clearing screen"
@@ -67,13 +69,15 @@ do
 					current_image_path="/usr/sleeptalk/debug/${filename}_${frame_position}.png"
 				fi
 
+				# Thanks to
+				# * https://www.shell-tips.com/2010/06/14/performing-math-calculation-in-bash/
 				top_position=$((80 + (line_counter * 200)))
 
 				# Thanks to
 				# * http://www.imagemagick.org/Usage/fonts/
 				# * http://stackoverflow.com/questions/23236898/add-text-on-image-at-specific-point-using-imagemagick
 				# Todo: Make "white" dynamic
-				convert "$last_image_path" -gravity North -pointsize 100 -fill white -annotate "+0+${top_position}" "$spoken_text" "$current_image_path"
+				convert "$last_image_path" -gravity North -pointsize 100 -fill white -annotate "+0+${top_position}" "$spoken_text" "$current_image_path" >/dev/null 2>&1
 
 				echo "... created image: $current_image_path"
 
