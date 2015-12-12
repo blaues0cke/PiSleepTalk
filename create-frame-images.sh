@@ -5,8 +5,8 @@ AUDIO_FILE_PATHS=/usr/sleeptalk/records_to_render/*.wav
 echo "Rendering subtitled sounds to filename"
 echo ""
 
-set debug=true
-set file_counter=0
+debug=false
+file_counter=0
 
 for audio_file_path in $AUDIO_FILE_PATHS
 do
@@ -22,9 +22,11 @@ do
 
 			last_image_path="/usr/sleeptalk/records_to_render/${filename}_base.png"
 							
-			if [ "$debug" != false ]; then
+			if [ "$debug" = true ]; then
 				last_image_path="/usr/sleeptalk/debug/${filename}_base.png"
 			fi
+
+			base_image_path="$last_image_path"
 
 			line_counter=0
 
@@ -37,9 +39,20 @@ do
 			# * http://forum.linuxcareer.com/threads/84-Use-BASH-script-to-parse-a-line-from-log-file
 			while read line
 			do
-				echo "... processing line: $line" 
+				echo "... processing line: $line, counter: $line_counter" 
 
-				# todo: prüfen ob 5 zeilen voll sind
+				if [ $line_counter -gt 4 ]; then
+
+					echo "... clearing screen"
+
+					line_counter=0
+
+					last_image_path="/usr/sleeptalk/records_to_render/${filename}_base.png"
+									
+					if [ "$debug" = true ]; then
+						last_image_path="/usr/sleeptalk/debug/${filename}_base.png"
+					fi
+				fi
 
 				# Thanks to
 				# * http://stackoverflow.com/questions/428109/extract-substring-in-bash
@@ -62,6 +75,8 @@ do
 				# Todo: Make "white" dynamic
 				convert "$last_image_path" -gravity North -pointsize 100 -fill white -annotate "+0+${top_position}" "$spoken_text" "$current_image_path"
 
+				echo "... created image: $current_image_path"
+
 				last_image_path="$current_image_path"
 
 				echo ""
@@ -69,6 +84,14 @@ do
 				line_counter=$((line_counter + 1))
 
 			done < $sleeptalk_file_path
+
+			echo "... removing $base_image_path"
+
+			rm $base_image_path
+
+			sleeptalk_file_path="/usr/sleeptalk/records_to_render/$filename.images_generated"
+
+			touch $sleeptalk_file_path
 
 			echo "... done"
 

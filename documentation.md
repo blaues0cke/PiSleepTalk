@@ -1,5 +1,12 @@
 # Documentation
 
+The idea behind this project was to provide a "should work out of the box" solution to make a Raspberry Pi record what you are talking while sleeping.
+
+## Installation
+
+
+
+
 ## File system
 
 * /usr/sleeptalk/debug
