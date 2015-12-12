@@ -19,6 +19,7 @@ löschen wenn:
 - wenn 2 amplitude < threshold
 - wenn 50 laut
 
+ggf. amp-history auch speichern?
 
 fertig wenn:
 
@@ -26,6 +27,24 @@ fertig wenn:
 - laut n
 - leise
 
+
+
+
+
+video-generierung mit 15fps
+
+
+
+
+
 concat
 
 feature zum bewerten und dynamischen anpassen der settings?
+
+name im "final" ordner ist noch falsch
+
+alle ordner per samba freigeben
+
+"records_final" umbenennen, falsches wording
+
+crontab könnte ein "try to start" haben damit nix doppelt läuft

@@ -54,4 +54,3 @@ if [ -n "$file_counter" ]; then
 else
 	echo "Done adding amplitude to filename, no files found";
 fi
-
