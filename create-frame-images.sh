@@ -28,6 +28,8 @@ do
 
 			base_image_path="$last_image_path"
 
+			last_frame_position=-1
+
 			line_counter=0
 
 			# Thanks to
@@ -40,6 +42,46 @@ do
 			while read line
 			do
 				echo "... processing line: $line, counter: $line_counter" 
+
+				# Thanks to
+				# * http://stackoverflow.com/questions/428109/extract-substring-in-bash
+				frame_position=$(echo $line | cut -d'|' -f 1)
+				spoken_text=$(echo $line | cut -d'|' -f 2)
+
+				if [ $last_frame_position -gt -1 ]; then
+
+					# Thanks to
+					# * http://stackoverflow.com/questions/11123717/removing-leading-zeros-before-passing-the-variable-to-iptables
+					frame_position_clean=$(echo $frame_position | sed "s/^0*\([1-9]\)/\1/;s/^0*$/0/")
+					last_frame_position_clean=$(echo $last_frame_position | sed "s/^0*\([1-9]\)/\1/;s/^0*$/0/")
+
+					difference=$(($frame_position_clean - $last_frame_position_clean))
+
+					echo "... gap to last image: $difference ($frame_position_clean - $last_frame_position_clean)"
+
+					if [ $difference -gt -1 ]; then
+
+						echo "... copying images to fit the frame requirements"
+
+						# Thanks to
+						# * http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html
+				        i=1
+				        until [ $i -eq $difference ]; do
+
+				        	target_frame_position=$((last_frame_position_clean + i))
+				        	# Thanks to
+				        	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
+				        	target_frame_position_long=$(printf %04d ${target_frame_position})
+				        	new_image_file_path="/usr/sleeptalk/records_to_render/${filename}_${target_frame_position_long}.png"
+
+				        	echo "... copying $last_image_path to $new_image_file_path"
+				            
+				        	cp $last_image_path $new_image_file_path
+
+				            i=$((i + 1))
+				        done
+					fi
+				fi
 
 				# Thanks to
 				# * http://unix.stackexchange.com/questions/160180/bash-if-statement-missing-error
@@ -56,11 +98,6 @@ do
 					fi
 				fi
 
-				# Thanks to
-				# * http://stackoverflow.com/questions/428109/extract-substring-in-bash
-				frame_position=$(echo $line | cut -d'|' -f 1)
-				spoken_text=$(echo $line | cut -d'|' -f 2)
-
 				echo "... found text \"$spoken_text\" at position: $frame_position"
 
 				current_image_path="/usr/sleeptalk/records_to_render/${filename}_${frame_position}.png"
@@ -76,12 +113,14 @@ do
 				# Thanks to
 				# * http://www.imagemagick.org/Usage/fonts/
 				# * http://stackoverflow.com/questions/23236898/add-text-on-image-at-specific-point-using-imagemagick
+				# * http://stackoverflow.com/questions/18062778/how-to-hide-command-output-in-bash
 				# Todo: Make "white" dynamic
 				convert "$last_image_path" -gravity North -pointsize 100 -fill white -annotate "+0+${top_position}" "$spoken_text" "$current_image_path" >/dev/null 2>&1
 
 				echo "... created image: $current_image_path"
 
 				last_image_path="$current_image_path"
+				last_frame_position="$frame_position"
 
 				echo ""
 
@@ -116,9 +155,3 @@ if [ -n "$file_counter" ]; then
 else
 	echo "Done rendering videos, no files found";
 fi
-
-
-
-
-
-
