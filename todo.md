@@ -50,3 +50,7 @@ alle ordner per samba freigeben
 crontab könnte ein "try to start" haben damit nix doppelt läuft
 
 überall .wav im file-filter? ggf. auch clean-up script um anderen kram zu löschen?
+
+"clear" befehl in .sleeptalk-file
+
+#todo: aproval stage
