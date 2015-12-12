@@ -48,3 +48,5 @@ alle ordner per samba freigeben
 "records_final" umbenennen, falsches wording
 
 crontab könnte ein "try to start" haben damit nix doppelt läuft
+
+überall .wav im file-filter? ggf. auch clean-up script um anderen kram zu löschen?
