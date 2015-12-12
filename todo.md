@@ -27,3 +27,5 @@ fertig wenn:
 - leise
 
 concat
+
+feature zum bewerten und dynamischen anpassen der settings?

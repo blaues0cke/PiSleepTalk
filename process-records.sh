@@ -43,6 +43,11 @@ do
 		max_amplitude_compare=$(awk 'BEGIN { print ($max_amplitude >= $max_amplitude_threshold) ? "YES" : "NO" }')
 		mid_amplitude_compare=$(awk 'BEGIN { print ($mid_amplitude >= $mid_amplitude_threshold) ? "YES" : "NO" }')
 
+		# Thanks to
+		# * http://stackoverflow.com/questions/8654051/how-to-compare-two-floating-point-numbers-in-a-bash-script
+		# * http://stackoverflow.com/questions/24896433/assigning-the-result-of-test-to-a-variable
+		# 
+		# Todo: Function?
 		[ ${max_amplitude%.*} -eq ${max_amplitude_threshold%.*} ] && [ ${max_amplitude#*.} \> ${max_amplitude_threshold#*.} ] || [ ${max_amplitude%.*} -gt ${max_amplitude_threshold%.*} ];
 		max_amplitude_compare=$?
 		if [ "$max_amplitude_compare" -eq 0 ]; then max_amplitude_compare=1; else max_amplitude_compare=0; fi
@@ -58,20 +63,26 @@ do
 
 			if [ "$concat_file_queue_count" -gt 0 ]; then
 
-				# todo: zu lange queue erkennen
+				if [ "$concat_file_queue_count" -gt 50 ]; then
 
-				# todo move to function
-	 			concat_end_timestamp=$(echo $audio_file_name | sed "s/\(\.wav\)//")
+					echo "... queue too long, deleting all files"
 
-	 			echo "... saved end timestamp, it is: $concat_end_timestamp"
+				else
+					# todo move to function
+		 			concat_end_timestamp=$(echo $audio_file_name | sed "s/\(\.wav\)//")
 
-	 			final_filename="${concat_start_timestamp}-${concat_end_timestamp}.wav"
-	 			final_filepath="/usr/sleeptalk/records_final/$final_filename"
+		 			echo "... saved end timestamp, it is: $concat_end_timestamp"
 
-	 			echo "... final filename will be: $final_filename, saving file to: $final_filepath"
-			    echo "... files to concat: $concat_file_queue"
+		 			final_filename="${concat_start_timestamp}-${concat_end_timestamp}.wav"
+		 			final_filepath="/usr/sleeptalk/records_final/$final_filename"
 
-	 			sox $concat_file_queue $final_filepath
+		 			echo "... final filename will be: $final_filename, saving file to: $final_filepath"
+				    echo "... files to concat: $concat_file_queue"
+
+				    # Thanks to
+				    # * http://superuser.com/questions/571463/how-do-i-append-a-bunch-of-wav-files-while-retaining-not-zero-padded-numeric
+		 			sox $concat_file_queue $final_filepath
+		 		fi
 
 				concat_file_queue=""
 				concat_file_queue_count=0
