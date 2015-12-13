@@ -59,3 +59,5 @@ crontab könnte ein "try to start" haben damit nix doppelt läuft
 image cache to save re-generation of images?
 
 dont reprocess image processing (check for lockfile existance)
+
+replace tabs by 4 spaces...

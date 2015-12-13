@@ -8,3 +8,8 @@
 # create folders
 
 # sudo apt-get install imagemagick
+
+
+
+# ffmpeg
+# sudo bash  install_ffmpeg.sh 

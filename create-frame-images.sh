@@ -2,7 +2,7 @@
 
 AUDIO_FILE_PATHS=/usr/sleeptalk/records_to_render/*.wav
 
-echo "Rendering subtitled sounds to filename"
+echo "Rendering images"
 echo ""
 
 debug=false
@@ -151,7 +151,7 @@ do
 done
 
 if [ -n "$file_counter" ]; then
-    echo "Done rendering videos, processed files: ${file_counter}"
+    echo "Done rendering images, processed files: ${file_counter}"
 else
-	echo "Done rendering videos, no files found";
+	echo "Done rendering images, no files found";
 fi
