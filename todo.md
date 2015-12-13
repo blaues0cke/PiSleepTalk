@@ -28,11 +28,12 @@ fertig wenn:
 - leise
 
 
-
+extend short videos since we would cut audio?
 
 
 video-generierung mit 15fps
 
+extend images to match audio file length
 
 
 
@@ -61,3 +62,7 @@ image cache to save re-generation of images?
 dont reprocess image processing (check for lockfile existance)
 
 replace tabs by 4 spaces...
+
+logging instead of  >devnull (and auto log truncate)
+
+global log?

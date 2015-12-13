@@ -102,7 +102,7 @@ do
 
 				current_image_path="/usr/sleeptalk/records_to_render/${filename}_${frame_position}.png"
 				
-				if [ "$debug" != false ]; then
+				if [ "$debug" = true ]; then
 					current_image_path="/usr/sleeptalk/debug/${filename}_${frame_position}.png"
 				fi
 
