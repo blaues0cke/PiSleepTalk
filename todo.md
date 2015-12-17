@@ -35,9 +35,11 @@ video-generierung mit 15fps
 
 extend images to match audio file length
 
-
+author header
 
 license
+
+links to amazon
 
 concat
 
@@ -66,3 +68,5 @@ replace tabs by 4 spaces...
 logging instead of  >devnull (and auto log truncate)
 
 global log?
+
+hostname automatisch setzen >>> sudo nano /etc/hostname
