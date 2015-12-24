@@ -66,6 +66,12 @@ crontab könnte ein "try to start" haben damit nix doppelt läuft
 
 "clear" befehl in .sleeptalk-file
 
+"by tk" in den header
+
+bootstrap farben fixen
+
+filter für "lauter" in wave appenden
+
 #todo: aproval stage
 
 image cache to save re-generation of images?

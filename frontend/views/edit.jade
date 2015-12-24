@@ -5,5 +5,33 @@ block content
 	// * http://stackoverflow.com/questions/5081534/put-jade-local-variable-in-tag-attribute
 	// * http://jade-lang.com/reference/comments/
 	div#wave(file-to-process=pageData.fileToProcess)
+		div#wave-info
+		div#wave-content
+
+	nav.navbar.navbar-light.bg-faded
+		div.pull-left
+			// Thanks to
+			// * http://stackoverflow.com/questions/10953326/what-is-a-concise-way-to-create-inline-elements-in-jade
+			a#wave-step-backward.btn.btn-primary #[i.fa.fa-step-backward &nbsp; Step backward]
+			|  
+			a#wave-play.btn.btn-primary #[i.fa.fa-play &nbsp; Play]
+			|  
+			a#wave-stop.btn.btn-primary #[i.fa.fa-stop &nbsp; Stop]
+			|  
+			a#wave-step-forward.btn.btn-primary #[i.fa.fa-step-forward &nbsp; Step forward]
+			|  	
+			a#wave-set-marker.btn.btn-info #[i.fa.fa-thumb-tack &nbsp; Set marker]
+			|  	
+			a#wave-play-from-marker.btn.btn-info #[i.fa.fa-play &nbsp; Play from marker]
+
+		div.pull-right
+			a#wave-save.btn.btn-success #[i.fa.fa-floppy-o &nbsp; Save]
+			|  
+			a#wave-delete.btn.btn-danger #[i.fa.fa-trash &nbsp; Delete]
 
 
+
+
+
+
+		

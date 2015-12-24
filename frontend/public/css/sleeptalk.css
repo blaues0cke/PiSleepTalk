@@ -1,4 +1,22 @@
 #wave
 {
 	height: 400px;
+	position: relative;
+}
+#wave-info
+{
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: #FFF;
+	padding: 5px 10px;
+}
+#wave-content
+{
+	height: 400px;
+	opacity: 0;
+}
+.navbar
+{
+	line-height: 36px;
 }
