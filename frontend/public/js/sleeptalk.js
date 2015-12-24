@@ -179,5 +179,32 @@ var updateInfoArea = function () {
 var initTextManager = function () {
 	var windowHeight = $(window).height();
 
-	$('#text-wrapper').css('maxHeight', windowHeight - 569);
+	$('#text-wrapper').css('maxHeight', windowHeight - 570);
+
+	$('#text-manager')
+		.on('click', '.arrow-up', function() {
+			alert('gsdg1');
+		})
+		.on('click', '.arrow-down', function() {
+			alert('gsdg2');
+		})
+		.on('click', '.delete', function() {
+			alert('gsdg3');
+		})
+	;
+
+	$('#text-add').click(function() {
+
+		var tableBody     = $('#text-manager tbody');
+		var firstTableRow = tableBody.find('tr:first-child');
+		var newTableRow   = firstTableRow.clone();
+		newTableRow.find('input').val('');
+		newTableRow.appendTo(tableBody);
+	})
+
+	$('#text-delete').click(function() {
+
+	})
+
+
 }

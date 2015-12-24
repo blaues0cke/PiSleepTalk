@@ -73,13 +73,13 @@ block content
 								input(type='text').form-control
 
 						td
-							a#text-add.btn.btn-info
+							a.btn.btn-info.arrow-up
 								i.fa.fa-arrow-up
 							|  
-							a#text-add.btn.btn-info
+							a.btn.btn-info.arrow-down
 								i.fa.fa-arrow-down
 							|  
-							a#wave-delete.btn.btn-danger
+							a#wave-delete.btn.btn-danger.delete
 								i.fa.fa-trash
 
 		nav.navbar.navbar-light.bg-faded
@@ -89,9 +89,14 @@ block content
 					span &nbsp;
 					span.text Add text
 				|  
+				a#text-sort.btn.btn-info
+					i.fa.fa-sort-amount-asc
+					span &nbsp;
+					span.text Sort
+				|  
 
 			div.pull-right
-				a#text-add.btn.btn-danger
+				a#text-clear.btn.btn-danger
 					i.fa.fa-trash
 					span &nbsp;
 					span.text Clear
