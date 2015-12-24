@@ -6,11 +6,15 @@ html
 	body
 		div.container
 		nav.navbar.navbar-light.bg-faded
-			a.navbar-brand(href="https://github.com/blaues0cke/PiSleepTalk") PiSleepTalk
+			div.pull-left
+				a.navbar-brand(href="https://github.com/blaues0cke/PiSleepTalk") PiSleepTalk
 
+			div.pull-right
+				div#info-area
 
 
 		block content
 		script(src='js/jquery.min.js')
 		script(src='js/wavesurfer.min.js')
+		script(src='js/wavesurfer.regions.js')
 		script(src='js/sleeptalk.js')

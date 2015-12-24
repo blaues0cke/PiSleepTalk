@@ -1,4 +1,7 @@
-var wavesurfer = Object.create(WaveSurfer);
+var audioDuration = null;
+var audioProcess  = null;
+var markerRegion  = null;
+var wavesurfer    = Object.create(WaveSurfer);
 
 $(document).ready(function() {
 	initWavesurfer();
@@ -21,9 +24,19 @@ var initWavesurfer = function () {
 	console.log('wav url: ', fileurl);
 
 	wavesurfer.on('ready', function () {
+		audioDuration = wavesurfer.getDuration();
+
 		$('#wave-content').animate({ opacity: 1 }, 250, function() {
 	    	wavesurfer.play();
 		})
+	});
+
+	wavesurfer.on('audioprocess', function (process) {
+		audioProcess = process;
+	});
+
+	wavesurfer.on('seek', function (position) {
+		audioProcess = audioDuration * position;
 	});
 
 	wavesurfer.load(fileurl);
@@ -31,27 +44,59 @@ var initWavesurfer = function () {
 
 var initButtons = function() {
 	$('#wave-step-backward').click(function() {
-		alert('Todo');
+		wavesurfer.skipBackward();
 	});
 
 	$('#wave-play').click(function() {
-		alert('Todo');
+		wavesurfer.play();
 	});
 
 	$('#wave-stop').click(function() {
-		alert('Todo');
+		wavesurfer.stop();
 	});
 
 	$('#wave-step-forward').click(function() {
-		alert('Todo');
+		wavesurfer.skipForward();
 	});
 
 	$('#wave-set-marker').click(function() {
-		alert('Todo');
+		if (markerRegion === null) {
+			var end = audioDuration - 1;
+
+			if (end > audioProcess)
+			{
+				$(this).find('.text').text('Remove marker');
+
+				var regionData = {
+					  start: audioProcess
+					, end:   end
+				};
+
+				markerRegion = wavesurfer.addRegion(regionData);
+				
+				console.log('Marker set to:', markerRegion);
+			}
+		}
+		else
+		{
+			markerRegion.remove();
+			markerRegion = null;
+
+			$(this).find('.text').text('Set marker');
+		}		
 	});
 
 	$('#wave-play-from-marker').click(function() {
-		alert('Todo');
+		if (markerRegion)
+		{
+			var seekPosition = markerRegion.start / audioDuration;
+			wavesurfer.seekTo(seekPosition);
+			wavesurfer.play();
+		}
+		else
+		{
+			alert('Please set a marker first!');
+		}
 	});
 
 	$('#wave-save').click(function() {

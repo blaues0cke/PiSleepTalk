@@ -91,3 +91,10 @@ hostname automatisch setzen >>> sudo nano /etc/hostname http://developpeers.com/
 # package json
 
 dateisystem aufräumen
+
+			a#wave-delete.btn.btn-danger
+				i.fa.fa-trash
+				span &nbsp;
+				span.text Delete
+
+				könnte eine funktion sein?
