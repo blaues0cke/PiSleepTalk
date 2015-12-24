@@ -1,6 +1,7 @@
 var audioDuration = null;
 var audioProcess  = null;
 var infoArea      = null;
+var loaded        = false;
 var markerRegion  = null;
 var wavesurfer    = Object.create(WaveSurfer);
 
@@ -37,7 +38,11 @@ var initWavesurfer = function () {
 
 		$('#wave-content').animate({ opacity: 1 }, 250, function() {
 	    	wavesurfer.play();
+
+			loaded = true;
 		})
+
+		$('#wave-loading').fadeOut(250);
 	});
 
 	wavesurfer.on('audioprocess', function (process) {
@@ -53,22 +58,32 @@ var initWavesurfer = function () {
 
 var initButtons = function() {
 	$('#wave-step-backward').click(function() {
+		if (!loaded) return;
+
 		wavesurfer.skipBackward();
 	});
 
 	$('#wave-play').click(function() {
+		if (!loaded) return;
+
 		wavesurfer.play();
 	});
 
 	$('#wave-stop').click(function() {
+		if (!loaded) return;
+		
 		wavesurfer.stop();
 	});
 
 	$('#wave-step-forward').click(function() {
+		if (!loaded) return;
+		
 		wavesurfer.skipForward();
 	});
 
 	$('#wave-set-marker').click(function() {
+		if (!loaded) return;
+		
 		if (markerRegion === null) {
 			var end = audioDuration - 1;
 
@@ -96,6 +111,8 @@ var initButtons = function() {
 	});
 
 	$('#wave-play-from-marker').click(function() {
+		if (!loaded) return;
+		
 		if (markerRegion)
 		{
 			var seekPosition = markerRegion.start / audioDuration;
@@ -109,27 +126,36 @@ var initButtons = function() {
 	});
 
 	$('#wave-save').click(function() {
+		if (!loaded) return;
+		
 		alert('Todo');
 	});
 
 	$('#wave-delete').click(function() {
+		if (!loaded) return;
+		
 		alert('Todo');
 	});
 };
 
 var updateInfoArea = function ()
 {
-	var infoText = [];
-
-	if (audioProcess)
+	if (loaded)
 	{
-		infoText.push(audioProcess.toFixed(2));
-		infoText.push('/');
+		// Thanks to
+		// * http://stackoverflow.com/questions/6134039/format-number-to-always-show-2-decimal-places
+		var infoText = [];
+
+		if (audioProcess)
+		{
+			infoText.push(audioProcess.toFixed(2));
+			infoText.push('/');
+		}
+
+		infoText.push(audioDuration.toFixed(2));
+
+		infoArea.text(infoText.join(' '));
 	}
-
-	infoText.push(audioDuration.toFixed(2));
-
-	infoArea.text(infoText.join(' '));
 };
 
 

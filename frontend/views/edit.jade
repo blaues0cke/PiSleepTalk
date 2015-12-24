@@ -5,13 +5,15 @@ block content
 	// * http://stackoverflow.com/questions/5081534/put-jade-local-variable-in-tag-attribute
 	// * http://jade-lang.com/reference/comments/
 	div#wave(file-to-process=pageData.fileToProcess)
-		div#wave-info
 		div#wave-content
+		div#wave-loading
+			i.fa.fa-spinner.fa-spin
 
 	nav.navbar.navbar-light.bg-faded
 		div.pull-left
 			// Thanks to
 			// * http://stackoverflow.com/questions/10953326/what-is-a-concise-way-to-create-inline-elements-in-jade
+			// * http://stackoverflow.com/questions/20727360/do-i-have-to-use-nbsp-for-space-in-jade
 			a#wave-step-backward.btn.btn-primary
 				i.fa.fa-step-backward
 				span &nbsp;
