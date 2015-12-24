@@ -56,6 +56,28 @@ var initWavesurfer = function () {
 		frameProcess = Math.round(audioProcess * 15);
 	});
 
+	wavesurfer.on('play', function () {
+		$('#wave-play')
+			.find('.text')
+				.text('Pause')
+			.end()
+			.find('.fa')
+				.removeClass('fa-play')
+				.addClass('fa-pause')
+		;
+	});
+
+	wavesurfer.on('pause', function () {
+		$('#wave-play')
+			.find('.text')
+				.text('Play')
+			.end()
+			.find('.fa')
+				.removeClass('fa-pause')
+				.addClass('fa-play')
+		;
+	});
+
 	wavesurfer.load(fileurl);
 };
 
@@ -69,7 +91,7 @@ var initButtons = function() {
 	$('#wave-play').click(function() {
 		if (!loaded) return;
 
-		wavesurfer.play();
+		wavesurfer.playPause();
 	});
 
 	$('#wave-stop').click(function() {
