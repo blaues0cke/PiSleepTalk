@@ -29,8 +29,8 @@ fertig wenn:
 
 
 
-* immer die älteste file ohne übersetzung anzeigen
-* optionen: speichern & wschließen und löschen
+* next step: texte einpflegen und speichern
+* löschen von dateien
 
 
 
@@ -38,9 +38,9 @@ fertig wenn:
 extend short videos since we would cut audio?
 
 
-video-generierung mit 15fps
 
-extend images to match audio file length
+
+
 
 author header
 

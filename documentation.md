@@ -26,8 +26,18 @@ Files are processed in the following folders:
  
 1) `/usr/sleeptalk/records_raw` contains all raw audio chunks recorded by `record_chunks.sh`
 
+## .sleeptalk format
 
+I needed to implement a simple format to transmit the text data from node.js to the bash part of PiSleepTalk.
+For this reason the following format exists. It just contains the frame count and the corresponding text, like this:
 
+	0000|First text at second 0
+	0015|Follows after 1 second
+	0060|Appears after 4 seconds from start
+
+## Videos
+
+Videos are rendered with `15` FPS. So one second is equivalent to 1 second.
 
 ## Samba
 
