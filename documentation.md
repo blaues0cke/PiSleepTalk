@@ -42,6 +42,25 @@ To restart the samba server, type: `sudo /etc/init.d/samba restart`
 
 ## References
 
+### Bootstrap
+
+* http://v4-alpha.getbootstrap.com/
+
+### Colourlovers
+
+* http://www.colourlovers.com/palette/580974/Adrift_in_Dreams
+* From light to dark:
+  * #CFF09E
+  * #A8DBA8
+  * #79BD9A
+  * #3B8686
+  * #0B486B
+
 ### node.js
 
 * https://github.com/isaacs/node-glob
+* https://github.com/remy/nodemon
+
+### Wavesurfer
+
+* http://wavesurfer-js.org/

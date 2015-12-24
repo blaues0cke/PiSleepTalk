@@ -76,6 +76,8 @@ replace tabs by 4 spaces...
 
 logging instead of  >devnull (and auto log truncate)
 
+gulpscript for minify
+
 global log?
 
 hostname automatisch setzen >>> sudo nano /etc/hostname http://developpeers.com/blogs/change-the-hostname-of-your-raspberry-pi

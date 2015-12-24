@@ -43,40 +43,45 @@ app.get('/', function (req, res) {
 	// Thanks to
 	// * http://stackoverflow.com/questions/11282880/nodejs-module-to-find-files
 	// * https://github.com/isaacs/node-glob
-	glob("/usr/sleeptalk/records_to_render/*.wav", function (er, files) {
+	var files = glob.sync("/usr/sleeptalk/records_to_render/*.wav");
 		
-		if (files && files.length > 0) {
-			for (var key in files) {
-				var filepath = files[key];
+	if (files && files.length > 0) {
+		for (var key in files) {
+			var filepath = files[key];
 
-				// Thanks to
-				// * http://stackoverflow.com/questions/4250364/how-to-trim-a-file-extension-from-a-string-in-javascript
-				var filename = path.basename(filepath, path.extname(filepath));
-				var textFilePath = '/usr/sleeptalk/records_to_render/' + filename + '.sleeptalk';
+			// Thanks to
+			// * http://stackoverflow.com/questions/4250364/how-to-trim-a-file-extension-from-a-string-in-javascript
+			var filename = path.basename(filepath, path.extname(filepath));
+			var textFilePath = '/usr/sleeptalk/records_to_render/' + filename + '.sleeptalk';
 
-				// Thanks to
-				// * http://stackoverflow.com/questions/4482686/check-synchronously-if-file-directory-exists-in-node-js
-				if (!fs.existsSync(textFilePath)) {
-					fileToProcess = filename;
-				}
+			// Thanks to
+			// * http://stackoverflow.com/questions/4482686/check-synchronously-if-file-directory-exists-in-node-js
+			if (!fs.existsSync(textFilePath)) {
+				fileToProcess = filename;
 
-				if (fileToProcess) {
-					break;
-				}
-
+				console.log('Found file to process:', filename);
 			}
+
+			if (fileToProcess) {
+				break;
+			}
+
 		}
-	});
+	}
 
+	console.log('File to process is: ', fileToProcess);
 
-
-
-
-
-
-	res.render('index');
-
-
+	if (fileToProcess !== null)
+	{
+		// Thanks to
+		// * http://stackoverflow.com/questions/30737069/pass-variables-to-jade-template
+		// * http://stackoverflow.com/questions/9931531/jade-template-with-variables-nodejs-server-side
+		res.render('edit', { pageData: { fileToProcess: fileToProcess } });
+	}
+	else
+	{
+		res.render('nothing-to-do');
+	}
 });
 
 /*
