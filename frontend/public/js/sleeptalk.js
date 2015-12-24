@@ -1,5 +1,6 @@
 var audioDuration = null;
 var audioProcess  = null;
+var frameProcess  = null;
 var infoArea      = null;
 var loaded        = false;
 var markerRegion  = null;
@@ -47,10 +48,12 @@ var initWavesurfer = function () {
 
 	wavesurfer.on('audioprocess', function (process) {
 		audioProcess = process;
+		frameProcess = Math.round(audioProcess * 15);
 	});
 
 	wavesurfer.on('seek', function (position) {
 		audioProcess = audioDuration * position;
+		frameProcess = Math.round(audioProcess * 15);
 	});
 
 	wavesurfer.load(fileurl);
@@ -149,11 +152,11 @@ var updateInfoArea = function ()
 		if (audioProcess)
 		{
 			infoText.push(audioProcess.toFixed(2));
+			infoText.push('(' + frameProcess + ')');
 			infoText.push('/');
 		}
 
 		infoText.push(audioDuration.toFixed(2));
-
 		infoArea.text(infoText.join(' '));
 	}
 };
