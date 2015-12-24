@@ -1,12 +1,21 @@
 var audioDuration = null;
 var audioProcess  = null;
+var infoArea      = null;
 var markerRegion  = null;
 var wavesurfer    = Object.create(WaveSurfer);
 
 $(document).ready(function() {
 	initWavesurfer();
 	initButtons();
+	initInfoArea();
 });
+
+var initInfoArea = function ()
+{
+	infoArea = $('#info-area');
+
+	window.setInterval(updateInfoArea, 50);
+};
 
 var initWavesurfer = function () {
 	wavesurfer.init({
@@ -108,5 +117,19 @@ var initButtons = function() {
 	});
 };
 
+var updateInfoArea = function ()
+{
+	var infoText = [];
+
+	if (audioProcess)
+	{
+		infoText.push(audioProcess.toFixed(2));
+		infoText.push('/');
+	}
+
+	infoText.push(audioDuration.toFixed(2));
+
+	infoArea.text(infoText.join(' '));
+};
 
 
