@@ -10,10 +10,10 @@ $(document).ready(function() {
 	initWavesurfer();
 	initButtons();
 	initInfoArea();
+	initTextManager();
 });
 
-var initInfoArea = function ()
-{
+var initInfoArea = function () {
 	infoArea = $('#info-area');
 
 	window.setInterval(updateInfoArea, 50);
@@ -112,8 +112,7 @@ var initButtons = function() {
 		if (markerRegion === null) {
 			var end = audioDuration - 1;
 
-			if (end > audioProcess)
-			{
+			if (end > audioProcess) {
 				$(this).find('.text').text('Remove marker');
 
 				var regionData = {
@@ -126,8 +125,7 @@ var initButtons = function() {
 				console.log('Marker set to:', markerRegion);
 			}
 		}
-		else
-		{
+		else {
 			markerRegion.remove();
 			markerRegion = null;
 
@@ -138,14 +136,12 @@ var initButtons = function() {
 	$('#wave-play-from-marker').click(function() {
 		if (!loaded) return;
 		
-		if (markerRegion)
-		{
+		if (markerRegion) {
 			var seekPosition = markerRegion.start / audioDuration;
 			wavesurfer.seekTo(seekPosition);
 			wavesurfer.play();
 		}
-		else
-		{
+		else {
 			alert('Please set a marker first!');
 		}
 	});
@@ -163,16 +159,13 @@ var initButtons = function() {
 	});
 };
 
-var updateInfoArea = function ()
-{
-	if (loaded)
-	{
+var updateInfoArea = function () {
+	if (loaded) {
 		// Thanks to
 		// * http://stackoverflow.com/questions/6134039/format-number-to-always-show-2-decimal-places
 		var infoText = [];
 
-		if (audioProcess)
-		{
+		if (audioProcess) {
 			infoText.push(audioProcess.toFixed(2));
 			infoText.push('(' + frameProcess + ')');
 			infoText.push('/');
@@ -183,4 +176,8 @@ var updateInfoArea = function ()
 	}
 };
 
+var initTextManager = function () {
+	var windowHeight = $(window).height();
 
+	$('#text-wrapper').css('maxHeight', windowHeight - 569);
+}

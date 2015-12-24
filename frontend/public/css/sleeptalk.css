@@ -25,4 +25,29 @@
 .navbar
 {
 	line-height: 36px;
+	border-radius: 0;
+}
+.table
+{
+	margin: 0;
+}
+.table th.frame
+{
+	width: 10%;
+}
+.table th.text
+{
+	width: 75%;
+}
+.table th.actions
+{
+	width: 15%;
+}
+.table td div
+{
+	width: 100%;
+}
+.table td div input
+{
+	width: 100%;
 }

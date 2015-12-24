@@ -55,6 +55,50 @@ block content
 				span &nbsp;
 				span.text Delete
 
+	div#text-manager
+		div#text-wrapper
+			table.table.table-bordered
+				thead
+					tr
+						th.frame Frame
+						th.text Text
+						th.actions Actions
+				tbody
+					tr
+						td
+							div.input-group
+								input(type='number').form-control
+						td
+							div.input-group
+								input(type='text').form-control
+
+						td
+							a#text-add.btn.btn-info
+								i.fa.fa-arrow-up
+							|  
+							a#text-add.btn.btn-info
+								i.fa.fa-arrow-down
+							|  
+							a#wave-delete.btn.btn-danger
+								i.fa.fa-trash
+
+		nav.navbar.navbar-light.bg-faded
+			div.pull-left
+				a#text-add.btn.btn-success
+					i.fa.fa-plus
+					span &nbsp;
+					span.text Add text
+				|  
+
+			div.pull-right
+				a#text-add.btn.btn-danger
+					i.fa.fa-trash
+					span &nbsp;
+					span.text Clear
+				|  
+
+
+
 
 
 
