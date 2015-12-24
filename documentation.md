@@ -42,7 +42,6 @@ To restart the samba server, type: `sudo /etc/init.d/samba restart`
 
 ## References
 
-### Node.js
+### node.js
 
 * https://github.com/isaacs/node-glob
-* https://github.com/remy/nodemon
