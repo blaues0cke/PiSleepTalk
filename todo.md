@@ -28,6 +28,13 @@ fertig wenn:
 - leise
 
 
+
+* immer die älteste file ohne übersetzung anzeigen
+* optionen: speichern & wschließen und löschen
+
+
+
+
 extend short videos since we would cut audio?
 
 
@@ -38,6 +45,8 @@ extend images to match audio file length
 author header
 
 license
+
+status-seite
 
 links to amazon
 
@@ -69,4 +78,8 @@ logging instead of  >devnull (and auto log truncate)
 
 global log?
 
-hostname automatisch setzen >>> sudo nano /etc/hostname
+hostname automatisch setzen >>> sudo nano /etc/hostname http://developpeers.com/blogs/change-the-hostname-of-your-raspberry-pi
+
+# package json
+
+dateisystem aufräumen

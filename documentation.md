@@ -35,3 +35,14 @@ The configuration for the samba server is stored here: `/etc/samba/smb.conf`. Ty
 By default all folders documented in the "File system" area are a separate share. You may not touch them, but they are there for debug reasons.
 
 To restart the samba server, type: `sudo /etc/init.d/samba restart`
+
+## Thanks to
+
+* Michael Malura (https://github.com/maluramichael) for the node.js support
+
+## References
+
+### Node.js
+
+* https://github.com/isaacs/node-glob
+* https://github.com/remy/nodemon
