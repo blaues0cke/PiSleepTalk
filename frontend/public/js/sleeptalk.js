@@ -189,7 +189,19 @@ var initTextManager = function () {
 			alert('gsdg2');
 		})
 		.on('click', '.delete', function() {
-			alert('gsdg3');
+			var button    = $(this);
+			var tr        = button.parents('tr');
+			var tableBody = tr.parents('tbody');
+			var trs    	  = tableBody.find('tr');
+
+			if (trs.length > 1)
+			{
+				tr.remove();
+			}
+			else
+			{
+				tr.find('input').val('');
+			}
 		})
 	;
 
