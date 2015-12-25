@@ -183,10 +183,24 @@ var initTextManager = function () {
 
 	$('#text-manager')
 		.on('click', '.arrow-up', function() {
-			alert('gsdg1');
+			var button     = $(this);
+			var tr         = button.parents('tr');
+			var previousTr = tr.prev();
+
+			if (previousTr.length > 0)
+			{
+				tr.insertBefore(previousTr);
+			}
 		})
 		.on('click', '.arrow-down', function() {
-			alert('gsdg2');
+			var button = $(this);
+			var tr     = button.parents('tr');
+			var nextTr = tr.next();
+
+			if (nextTr.length > 0)
+			{
+				tr.insertAfter(nextTr);
+			}
 		})
 		.on('click', '.delete', function() {
 			var button    = $(this);
