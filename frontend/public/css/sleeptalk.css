@@ -37,11 +37,11 @@
 }
 .table th.frame
 {
-	width: 10%;
+	width: 16%;
 }
 .table th.text
 {
-	width: 75%;
+	width: 69%;
 }
 .table th.actions
 {
@@ -54,4 +54,9 @@
 .table td div input
 {
 	width: 100%;
+}
+.table td.frame div input
+{
+	width: 68%;
+	margin: 0 12px 0 0;
 }

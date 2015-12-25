@@ -202,6 +202,13 @@ var initTextManager = function () {
 				tr.insertAfter(nextTr);
 			}
 		})
+		.on('click', '.arrow-left', function() {
+			var button     = $(this);
+			var tr         = button.parents('tr');
+			var frameInput = tr.find('input');
+
+			frameInput.val(pad(frameProcess, 4));
+		})
 		.on('click', '.delete', function() {
 			var button    = $(this);
 			var tr        = button.parents('tr');
@@ -258,4 +265,12 @@ var initTextManager = function () {
 	});
 
 
+}
+
+// Thanks to
+// * http://stackoverflow.com/questions/2998784/how-to-output-integers-with-leading-zeros-in-javascript
+var pad = function (num, size) {
+    var s = num+"";
+    while (s.length < size) s = '0' + s;
+    return s;
 }
