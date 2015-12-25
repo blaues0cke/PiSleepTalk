@@ -149,8 +149,33 @@ var initButtons = function() {
 
 	$('#wave-save').click(function() {
 		if (!loaded) return;
-		
-		alert('Todo');
+
+		$('#text-sort').click();
+
+		var finalContent = [];
+
+		$('#text-manager tbody tr').each (function () {
+			var tr    = $(this);
+			var frame = tr.find('input.frame').val();
+			var text  = tr.find('input.text').val();
+
+			if (frame && frame.length > 0 && text && text.length > 0)
+			{
+				var newLine = frame + '|' + text;
+
+				finalContent.push(newLine);
+			}
+		});
+
+		var contentString = finalContent.join('\n');
+
+		$.post(
+			fileUrl,
+			{ content: contentString },
+			function() {
+		        reloadPage();
+			}
+		);
 	});
 
 	$('#wave-delete').click(function() {

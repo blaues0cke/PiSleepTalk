@@ -46,6 +46,8 @@ author header
 
 license
 
+text check for "|"
+
 status-seite
 
 links to amazon
