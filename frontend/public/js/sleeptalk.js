@@ -226,6 +226,7 @@ var initTextManager = function () {
 		var newTableRow   = firstTableRow.clone();
 		newTableRow.find('input').val('');
 		newTableRow.appendTo(tableBody);
+		newTableRow.find('input').last().focus();
 	})
 
 	$('#text-clear').click(function() {
