@@ -1,7 +1,17 @@
 extends layout
 
 block content
-
+	div.modal.fade#delete-file
+		div.modal-dialog
+			div.modal-content
+				div.modal-header
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+					h4.modal-title Remove recording
+				div.modal-body
+					p Are you sure to delete the whole recording? You can't undo this.
+				div.modal-footer
+					button.btn.btn-primary(type='button', data-dismiss='modal') Cancel
+					button.btn.btn-danger#delete-file-confirm(type='button', data-dismiss='modal') Delete recording
 
 	div.modal.fade#clear-texts
 		div.modal-dialog

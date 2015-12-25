@@ -50,7 +50,11 @@ status-seite
 
 links to amazon
 
+tooltips im frontend
+
 concat
+
+node as service (root)
 
 feature zum bewerten und dynamischen anpassen der settings?
 

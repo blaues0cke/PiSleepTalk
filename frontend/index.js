@@ -10,29 +10,45 @@ var app = express();
 app.set('view engine', 'jade');
 app.use(express.static('public'));
 
-
-app.get('/:name.wav', function(req, res) {
-	if (req.params.name && framework.alphanumeric(req.params.name))
-	{
+var checkFile = function (req, res) {
+	if (req.params.name && framework.alphanumeric(req.params.name)) {
 		// Thanks to
 		// * http://stackoverflow.com/questions/8181879/nodejs-setting-up-wildcard-routes-or-url-rewrite
 		var filepath = '/usr/sleeptalk/records_to_render/' + req.params.name + '.wav';
 
 		if (fs.existsSync(filepath)) {
-			// Thanks to
-			// * http://stackoverflow.com/questions/9321027/how-to-send-files-with-node-js
-			res.sendFile(filepath);
+			return filepath;
 		}
-		else
-		{
+		else {
 			// Thanks to
 			// * http://stackoverflow.com/questions/8393275/how-to-programmatically-send-a-404-response-with-express-node
 			res.status(404).send('Sorry, file not found. "' + filepath + '" does not exist on server.');
 		}
 	}
-	else
-	{
+	else {
 		res.status(500).send('Malformed filename. Stop tryin to hack this server.');
+	}
+		
+	return false;
+};
+
+app.get('/:name.wav', function(req, res) {
+	var filepath = checkFile(req, res);
+
+	if (filepath) {
+		// Thanks to
+		// * http://stackoverflow.com/questions/9321027/how-to-send-files-with-node-js
+		res.sendFile(filepath);
+	}
+});
+
+app.delete('/:name.wav', function(req, res) {
+	var filepath = checkFile(req, res);
+
+	if (filepath) {
+		fs.unlinkSync(filepath);
+
+		res.status(200).send('OK');
 	}
 });
 

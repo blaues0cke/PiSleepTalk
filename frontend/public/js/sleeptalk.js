@@ -1,5 +1,6 @@
 var audioDuration = null;
 var audioProcess  = null;
+var fileUrl       = null;
 var frameProcess  = null;
 var infoArea      = null;
 var loaded        = false;
@@ -30,9 +31,9 @@ var initWavesurfer = function () {
 
 	var wave     = $('#wave');
 	var filename = wave.attr('file-to-process');
-	var fileurl  = '/' + filename + '.wav';
+	fileUrl      = '/' + filename + '.wav';
 
-	console.log('wav url: ', fileurl);
+	console.log('wav url: ', fileUrl);
 
 	wavesurfer.on('ready', function () {
 		audioDuration = wavesurfer.getDuration();
@@ -78,7 +79,7 @@ var initWavesurfer = function () {
 		;
 	});
 
-	wavesurfer.load(fileurl);
+	wavesurfer.load(fileUrl);
 };
 
 var initButtons = function() {
@@ -155,7 +156,19 @@ var initButtons = function() {
 	$('#wave-delete').click(function() {
 		if (!loaded) return;
 		
-		alert('Todo');
+		$('#delete-file').modal('show');
+	});
+
+	$('#delete-file-confirm').click(function() {
+		// Thanks to
+		// * http://stackoverflow.com/questions/2153917/how-to-send-a-put-delete-request-in-jquery
+		$.ajax({
+		    url: fileUrl,
+		    type: 'DELETE',
+		    success: function(result) {
+		        reloadPage();
+		    }
+		});
 	});
 };
 
@@ -284,4 +297,14 @@ var pad = function (num, size) {
     var s = num+"";
     while (s.length < size) s = '0' + s;
     return s;
+}
+
+var reloadPage = function () {
+	console.log('Page reload scheduled');
+
+	window.setTimeout(function() {
+		console.log('Reloading page');
+
+		location.reload();
+	}, 1000);
 }
