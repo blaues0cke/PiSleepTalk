@@ -1,6 +1,30 @@
 extends layout
 
 block content
+
+
+	div.modal.fade#clear-texts
+		div.modal-dialog
+			div.modal-content
+				div.modal-header
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+					h4.modal-title Clear text data
+				div.modal-body
+					p Are you sure to delete all the text data?
+				div.modal-footer
+					button.btn.btn-primary(type='button', data-dismiss='modal') Cancel
+					button.btn.btn-danger#text-clear-confirm(type='button', data-dismiss='modal') Clear
+
+
+
+
+
+
+
+
+
+
+
 	// Thanks to
 	// * http://stackoverflow.com/questions/5081534/put-jade-local-variable-in-tag-attribute
 	// * http://jade-lang.com/reference/comments/

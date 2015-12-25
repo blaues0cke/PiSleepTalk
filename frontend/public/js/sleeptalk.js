@@ -214,9 +214,21 @@ var initTextManager = function () {
 		newTableRow.appendTo(tableBody);
 	})
 
-	$('#text-delete').click(function() {
+	$('#text-clear').click(function() {
+		$('#clear-texts').modal('show');
+	});
 
-	})
+	$('#text-clear-confirm').click(function() {
+		$('#text-manager tbody tr')
+			.find('input')
+				.val('')
+			.end()
+			.not(':first-child')
+				.remove()
+		;
+
+		$('#clear-texts').modal('hide');
+	});
 
 
 }
