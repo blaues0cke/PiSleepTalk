@@ -224,6 +224,10 @@ var initTextManager = function () {
 				tr.find('input').val('');
 			}
 		})
+		.on('blur', '.frame', function() {
+			var input = $(this);
+			input.val(pad(Math.abs(parseInt(input.val())), 4));
+		})
 	;
 
 	$('#text-add').click(function() {
