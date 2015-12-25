@@ -205,7 +205,7 @@ var initTextManager = function () {
 		.on('click', '.arrow-left', function() {
 			var button     = $(this);
 			var tr         = button.parents('tr');
-			var frameInput = tr.find('input');
+			var frameInput = tr.find('input.frame');
 
 			frameInput.val(pad(frameProcess, 4));
 		})
@@ -224,7 +224,7 @@ var initTextManager = function () {
 				tr.find('input').val('');
 			}
 		})
-		.on('blur', '.frame', function() {
+		.on('blur', 'input.frame', function() {
 			var input = $(this);
 			input.val(pad(Math.abs(parseInt(input.val())), 4));
 		})
