@@ -237,7 +237,14 @@ var initTextManager = function () {
 		var newTableRow   = firstTableRow.clone();
 		newTableRow.find('input').val('');
 		newTableRow.appendTo(tableBody);
-		newTableRow.find('input').last().focus();
+		newTableRow
+			.find('input')
+				.last()
+					.focus()
+				.end()
+				.first()
+					.val(pad(frameProcess, 4))
+		;
 	})
 
 	$('#text-clear').click(function() {
