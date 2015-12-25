@@ -232,6 +232,18 @@ var initTextManager = function () {
 		$('#clear-texts').modal('show');
 	});
 
+	$('#text-sort').click(function() {
+		$('#text-manager tbody tr').sort(function(a, b) {
+			var jA 		= $(a);
+			var jB 		= $(b);
+			var numberA = jA.find('.frame');
+			var numberB = jB.find('.frame');
+
+			return parseInt(numberA.val()) > parseInt(numberB.val()) ? 1 : -1;
+
+		}).appendTo('#text-manager tbody');
+	});
+
 	$('#text-clear-confirm').click(function() {
 		$('#text-manager tbody tr')
 			.find('input')
