@@ -1,7 +1,7 @@
 # Documentation
 
 The idea behind this project was to provide a "should work out of the box" solution to make a Raspberry Pi record what you are talking while sleeping.
-Beware, this project is *work in progress*, see [our issue tracker](https://github.com/blaues0cke/PiSleepTalk/issues) to see whats going on.
+Beware, this project is **work in progress**, see [our issue tracker](https://github.com/blaues0cke/PiSleepTalk/issues) to see whats going on.
 
 
 ## Installation
@@ -10,27 +10,27 @@ TODO
 
 ## File system
 
-* /usr/sleeptalk/debug A folder that contains debug output, not required for production mode
-* /usr/sleeptalk/frontend Contains the whole node.js frontend
-* /usr/sleeptalk/scripts Contains all bash scripts
-* /usr/sleeptalk/records_amplitude
-* /usr/sleeptalk/records_final
-* /usr/sleeptalk/records_raw
-* /usr/sleeptalk/records_rendered
-* /usr/sleeptalk/records_timestamp
-* /usr/sleeptalk/records_to_render
-* /usr/sleeptalk/test-data Just contains test data I need to implemenet the whole stuff
+* `/usr/sleeptalk/debug` A folder that contains debug output, not required for production mode
+* `/usr/sleeptalk/frontend` Contains the whole node.js frontend
+* `/usr/sleeptalk/scripts` Contains all bash scripts
+* `/usr/sleeptalk/records_amplitude`
+* `/usr/sleeptalk/records_final`
+* `/usr/sleeptalk/records_raw`
+* `/usr/sleeptalk/records_rendered`
+* `/usr/sleeptalk/records_timestamp`
+* `/usr/sleeptalk/records_to_render`
+* `/usr/sleeptalk/test-data` Just contains test data I need to implemenet the whole stuff
 
 ## Workflow
 
 Files are processed in the following folders:
  
-1) `/usr/sleeptalk/records_raw` contains all raw audio chunks recorded by `record_chunks.sh`
-2) `/usr/sleeptalk/records_timestamp` contains all audio chunks added with a timestamp by `add_timestamp_to_filename.sh`
-3) `/usr/sleeptalk/records_amplitude` contains all audio chunks added with its amplitude data by `add_amplitude_to_filename.sh`
-4) `/usr/sleeptalk/records_to_render` contains all data that is required to render a video
-5) `/usr/sleeptalk/records_rendered` contains finally rendered videos including their subtitles
-6) `/usr/sleeptalk/records_final` contains upload ready videos build by concating multiple rendered records
+1. `/usr/sleeptalk/records_raw` contains all raw audio chunks recorded by `record_chunks.sh`
+2. `/usr/sleeptalk/records_timestamp` contains all audio chunks added with a timestamp by `add_timestamp_to_filename.sh`
+3. `/usr/sleeptalk/records_amplitude` contains all audio chunks added with its amplitude data by `add_amplitude_to_filename.sh`
+4. `/usr/sleeptalk/records_to_render` contains all data that is required to render a video
+5. `/usr/sleeptalk/records_rendered` contains finally rendered videos including their subtitles
+6. `/usr/sleeptalk/records_final` contains upload ready videos build by concating multiple rendered records
 
 ## Audio detection and rating logic
 
@@ -51,7 +51,7 @@ For this reason the following format exists. It just contains the frame count an
 
 ## Videos
 
-Videos are rendered with `15` FPS. So one second is equivalent to 1 second.
+Videos are rendered with `15` FPS. So one second is equivalent to 15 frames.
 
 ## Samba
 
@@ -62,17 +62,17 @@ To restart the samba server, type: `sudo /etc/init.d/samba restart`
 
 ## Thanks to
 
-* Michael Malura (https://github.com/maluramichael) for the node.js support
+* Michael Malura ([https://github.com/maluramichael](https://github.com/maluramichael)) for the node.js support
 
 ## References
 
 ### Bootstrap
 
-* http://v4-alpha.getbootstrap.com/
+* [http://v4-alpha.getbootstrap.com/](http://v4-alpha.getbootstrap.com/)
 
 ### Colourlovers
 
-* http://www.colourlovers.com/palette/580974/Adrift_in_Dreams
+* [http://www.colourlovers.com/palette/580974/Adrift_in_Dreams](http://www.colourlovers.com/palette/580974/Adrift_in_Dreams)
 * From light to dark:
   * #CFF09E
   * #A8DBA8
@@ -82,9 +82,9 @@ To restart the samba server, type: `sudo /etc/init.d/samba restart`
 
 ### node.js
 
-* https://github.com/isaacs/node-glob
-* https://github.com/remy/nodemon
+* [https://github.com/isaacs/node-glob](https://github.com/isaacs/node-glob)
+* [https://github.com/remy/nodemon](https://github.com/remy/nodemon)
 
 ### Wavesurfer
 
-* http://wavesurfer-js.org/
+* [http://wavesurfer-js.org/](http://wavesurfer-js.org/)
