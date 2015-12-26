@@ -8,6 +8,11 @@ var markerRegion  = null;
 var wavesurfer    = Object.create(WaveSurfer);
 
 $(document).ready(function() {
+	$('.btn-reload').click(function()
+	{
+		location.reload();
+	});
+	
 	initWavesurfer();
 	initButtons();
 	initInfoArea();
@@ -217,7 +222,7 @@ var updateInfoArea = function () {
 var initTextManager = function () {
 	var windowHeight = $(window).height();
 
-	$('#text-wrapper').css('maxHeight', windowHeight - 570);
+	$('#text-wrapper').css('maxHeight', windowHeight - 572);
 
 	$('#text-manager')
 		.on('click', '.arrow-up', function() {

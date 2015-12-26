@@ -1,4 +1,10 @@
 extends layout
 
 block content
-	h1 Hello world nothing to do
+	div.jumbotron
+		h1.display-3 No new recordings
+		p.lead Sorry, we got no unprocessed recordings for you right now. Please sleep on it on come back to this page later.
+		hr.m-y-2
+		p You may check the status page to make sure everything is working correctly.
+		p.lead
+			a.btn.btn-primary.btn-lg.btn-reload(role='button') Reload page
