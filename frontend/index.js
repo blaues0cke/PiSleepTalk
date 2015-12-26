@@ -1,13 +1,17 @@
-var   express   = require('express')
-    , framework = require('./framework.js')
-	, fs        = require('fs')
-	, glob      = require("glob")
-	, path      = require('path')
+var   bodyParser = require('body-parser')
+    , express    = require('express')
+    , framework  = require('./framework.js')
+	, fs         = require('fs')
+	, glob       = require("glob")
+	, path       = require('path')
 ;
 
 var app = express();
 
 app.set('view engine', 'jade');
+// Thanks to
+// * http://stackoverflow.com/questions/25550819/error-most-middleware-like-bodyparser-is-no-longer-bundled-with-express
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 var checkFile = function (req, res) {
@@ -47,6 +51,19 @@ app.delete('/:name.wav', function(req, res) {
 
 	if (filepath) {
 		fs.unlinkSync(filepath);
+
+		res.status(200).send('OK');
+	}
+});
+
+app.post('/:name.wav', function(req, res) {
+	var filepath = checkFile(req, res);
+
+	if (filepath) {
+		var content 		= req.body.content;
+		var contentFilePath = '/usr/sleeptalk/records_to_render/' + req.params.name + '.sleeptalk';
+
+		fs.writeFileSync(contentFilePath, content); 
 
 		res.status(200).send('OK');
 	}
