@@ -12,6 +12,14 @@ for audio_file_path in $AUDIO_FILE_PATHS
 do
 	if [ -f $audio_file_path ]; then
 
+		length_in_seconds=$(sox $audio_file_path -n stat 2>&1 | sed -n 's#^Length (seconds):[^0-9]*\([0-9.]*\)$#\1#p')
+		# Thanks to
+		# * http://www.unix.com/shell-programming-and-scripting/160300-ceiling-floor-functions.html
+		length_in_seconds_rounded=$(( `echo ${length_in_seconds}|cut -f1 -d"."` + 1 ))
+		total_frames=$(($length_in_seconds_rounded * 15))
+
+		echo "... audio length: ${length_in_seconds} (${length_in_seconds_rounded}, frames: ${total_frames})"
+
 		audio_file_name=$(basename $audio_file_path)
 
 	 	# todo move to function
@@ -127,6 +135,41 @@ do
 				line_counter=$((line_counter + 1))
 
 			done < $sleeptalk_file_path
+
+			if [ $last_frame_position -gt -1 ]; then
+
+				# Thanks to
+				# * http://stackoverflow.com/questions/11123717/removing-leading-zeros-before-passing-the-variable-to-iptables
+				frame_position_clean=$(echo $frame_position | sed "s/^0*\([1-9]\)/\1/;s/^0*$/0/")
+				last_frame_position_clean=$(echo $last_frame_position | sed "s/^0*\([1-9]\)/\1/;s/^0*$/0/")
+
+				difference=$(($total_frames - $last_frame_position_clean))
+
+				echo "... gap to last image: $difference ($total_frames - $last_frame_position_clean)"
+
+				if [ $difference -gt -1 ]; then
+
+					echo "... copying images to fit the frame requirements"
+
+					# Thanks to
+					# * http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html
+			        i=1
+			        until [ $i -gt $difference ]; do
+
+			        	target_frame_position=$((last_frame_position_clean + i))
+			        	# Thanks to
+			        	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
+			        	target_frame_position_long=$(printf %04d ${target_frame_position})
+			        	new_image_file_path="/usr/sleeptalk/records_to_render/${filename}_${target_frame_position_long}.png"
+
+			        	echo "... copying $last_image_path to $new_image_file_path"
+			            
+			        	cp $last_image_path $new_image_file_path
+
+			            i=$((i + 1))
+			        done
+				fi
+			fi
 
 			echo "... removing $base_image_path"
 
