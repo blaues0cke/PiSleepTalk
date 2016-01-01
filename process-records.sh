@@ -5,20 +5,20 @@ AUDIO_FILE_PATHS=/usr/sleeptalk/records_amplitude/*
 echo "Processing records"
 echo ""
 
-set concat_file_queue=""
-set concat_file_queue_count=0
-set concat_end_timestamp=""
-set concat_start_timestamp=""
+concat_file_queue=""
+concat_file_queue_count=0
+concat_end_timestamp=""
+concat_start_timestamp=""
 
 # When true, no files are touched
-set debug=true
+debug=true
 
-set file_counter_base=0
-set file_counter_concated=0
-set file_counter_deleted=0
-set file_counter_final=0 # todo
+file_counter_base=0
+file_counter_concated=0
+file_counter_deleted=0
+file_counter_final=0 # todo
 
-set last_audio_file_path="" # add "should be deleted flag"
+last_audio_file_path="" # add "should be deleted flag"
 
 # Known "problem": We are not able to detect complete audio files on the end of this loop
 #                  but this is not neccssary since we will get it in the next iteration
@@ -144,10 +144,9 @@ done
 if [ -n "$file_counter_base" ]; then
     echo "Done processing records, processed files:"
     echo "... processed files: ${file_counter_base}"
-    echo "... chunks merged: $(file_counter_concated)"
-    echo "... files deleted: $(file_counter_deleted)"
-    echo "... files generated: $(file_counter_final)"
-
+	echo "... chunks merged: ${file_counter_concated}"
+   	echo "... files deleted: ${file_counter_deleted}"
+   	echo "... files generated: ${file_counter_final}"
 else
 	echo "Done processing records, no files found";
 fi
