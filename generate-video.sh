@@ -49,7 +49,7 @@ do
 			time_difference=$(echo "$end_time - $start_time" | bc)
 			echo "... done rendering images to video (${time_difference}s)"
 
-			final_video_file_path="/usr/sleeptalk/records_to_render/${filename}.mp4"
+			final_video_file_path="/usr/sleeptalk/records_final/${filename}.mp4"
 
 			echo "... concating audio and video ($mp3_file_path + $video_file_path to $final_video_file_path)"
 			start_time=$(date +%s.%N)
