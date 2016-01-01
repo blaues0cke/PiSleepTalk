@@ -64,6 +64,15 @@ To restart the samba server, type: `sudo /etc/init.d/samba restart`
 
 * Michael Malura ([https://github.com/maluramichael](https://github.com/maluramichael)) for the node.js support
 
+## License
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit [http://creativecommons.org/licenses/by-nc-sa/4.0/](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+
+![](http://creativecommons.org/wp-content/themes/creativecommons.org/images/chooser_cc.png)
+![](http://creativecommons.org/wp-content/themes/creativecommons.org/images/chooser_by.png)
+![](http://creativecommons.org/wp-content/themes/creativecommons.org/images/chooser_nc.png)
+![](http://creativecommons.org/wp-content/themes/creativecommons.org/images/chooser_sa.png)
+
 ## References
 
 ### Bootstrap
