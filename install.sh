@@ -28,5 +28,6 @@
 # sudo apt-get install npm --fix-missing
 
 # sudo chmod 777 -R frontend
+# npm install diskusage
 
 # 

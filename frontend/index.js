@@ -8,6 +8,7 @@
 //
 
 var   bodyParser = require('body-parser')
+	, diskusage  = require('diskusage')
     , express    = require('express')
     , framework  = require('./framework.js')
 	, fs         = require('fs')
@@ -126,9 +127,39 @@ app.get('/', function (req, res) {
 	}
 });
 
-/*
+app.get('/status', function (req, res) {
+	var pageData = {
+		generationDate: new Date()
+	};
 
-*/
+	diskusage.check('/', function(err, info) {
+	
+		pageData.diskUsage = {
+			available: (info.available / 1014 / 1024 / 1024).toFixed(2),
+			free: 	   (info.free      / 1014 / 1024 / 1024).toFixed(2),
+			total: 	   (info.total     / 1014 / 1024 / 1024).toFixed(2)
+		};
+
+		pageData.files = [];
+
+		var files = glob.sync("/usr/sleeptalk/records_*/*");
+			
+		if (files && files.length > 0) {
+			for (var key in files) {
+				pageData.files.push(files[key]);
+			}
+		}
+
+		console.log(pageData);
+
+		res.render('status', { pageData: pageData });
+	});	
+});
+
+
+ 
+
+
 
 
 app.listen(9888);

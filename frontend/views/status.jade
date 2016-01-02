@@ -1,0 +1,10 @@
+extends layout
+
+block content
+	div.jumbotron
+		h1.display-3 Status
+		p.lead Review the status of your PiSleepTalk instance. Page generated: #{pageData.generationDate}
+		hr.m-y-2
+		p Disk space: #{pageData.diskUsage.free}/#{pageData.diskUsage.total} GB
+		p.lead
+			a.btn.btn-primary.btn-lg.btn-reload(role='button') Reload page
