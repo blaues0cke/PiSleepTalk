@@ -133,7 +133,9 @@ app.get('/status', function (req, res) {
 	};
 
 	diskusage.check('/', function(err, info) {
-	
+		
+		// Thanks to
+		// * http://stackoverflow.com/questions/21008385/is-it-possible-to-round-in-jade
 		pageData.diskUsage = {
 			available: (info.available / 1014 / 1024 / 1024).toFixed(2),
 			free: 	   (info.free      / 1014 / 1024 / 1024).toFixed(2),
@@ -146,7 +148,16 @@ app.get('/status', function (req, res) {
 			
 		if (files && files.length > 0) {
 			for (var key in files) {
-				pageData.files.push(files[key]);
+
+				var stats 		    = fs.statSync(files[key])
+				var fileSizeInBytes = stats["size"]
+
+				var fileInfo = {
+					path: files[key],
+					size: (fileSizeInBytes / 1014).toFixed(2)
+				}
+
+				pageData.files.push(fileInfo);
 			}
 		}
 

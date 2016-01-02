@@ -73,3 +73,7 @@
 	width: 68%;
 	margin: 0 12px 0 0;
 }
+.no-margin
+{
+	margin: 0;
+}
