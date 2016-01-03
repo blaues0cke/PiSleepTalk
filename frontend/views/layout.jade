@@ -6,8 +6,14 @@ html
 	body
 		div.container
 		nav.navbar.navbar-light.bg-faded#main-navbar
-			div.pull-left
+			div
 				a.navbar-brand(href='https://github.com/blaues0cke/PiSleepTalk', target='_blank') PiSleepTalk
+
+				ul.nav.navbar-nav
+					li.nav-item
+						a(href='/').nav-link Home
+					li.nav-item
+						a(href='/status').nav-link Status
 
 			div.pull-right
 				div#info-area
