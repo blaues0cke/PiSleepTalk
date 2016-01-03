@@ -280,6 +280,11 @@ var initTextManager = function () {
 			var input = $(this);
 			input.val(pad(Math.abs(parseInt(input.val())), 4));
 		})
+		.on('blur keydown keyup keypress', 'input.text', function() {
+			var input = $(this);
+			input.val(input.val().replace(/\|/g, ''));
+		})
+
 	;
 
 	$('#text-add').click(function() {
