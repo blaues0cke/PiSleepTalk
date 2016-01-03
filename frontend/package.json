@@ -5,7 +5,11 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.13.3",
-    "jade": "^1.11.0"
+    "jade": "^1.11.0",
+    "body-parser": "^1.14.2",
+    "diskusage": "^0.1.4",
+    "findit": "^2.0.0",
+    "glob": "^6.0.2"
   },
   "devDependencies": {},
   "scripts": {
