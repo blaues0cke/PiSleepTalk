@@ -12,3 +12,5 @@
 rm -rf /usr/sleeptalk/records_raw/*
 rm -rf /usr/sleeptalk/records_timestamp/*
 rm -rf /usr/sleeptalk/records_amplitude/*
+rm -rf /usr/sleeptalk/records_rendered/*
+rm -rf /usr/sleeptalk/records_final/*
