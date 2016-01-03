@@ -33,11 +33,13 @@ do
 
 	 	# todo move to function
 		filename=$(echo $audio_file_name | sed "s/\(\.wav\)//")
-		sleeptalk_file_path="/usr/sleeptalk/records_to_render/$filename.sleeptalk"
-		lock_image_file_path="/usr/sleeptalk/records_to_render/$filename.images_generated"
+		sleeptalk_file_path="/usr/sleeptalk/records_to_render/${filename}.sleeptalk"
+		lock_image_file_path="/usr/sleeptalk/records_to_render/${filename}.images_generated"
 
 		if [ ! -f $lock_image_file_path ]; then
 			if [ -f $sleeptalk_file_path ]; then
+
+				echo "... starting to create images, sleeptalk file path: ${sleeptalk_file_path}"
 
 				last_image_path="/usr/sleeptalk/records_to_render/${filename}_base.png"
 								
@@ -45,7 +47,7 @@ do
 					last_image_path="/usr/sleeptalk/debug/${filename}_base.png"
 				fi
 
-				base_image_path="$last_image_path"
+				base_image_path="${last_image_path}"
 
 				last_frame_position=-1
 
@@ -55,6 +57,8 @@ do
 				# * http://www.imagemagick.org/discourse-server/viewtopic.php?t=13527
 				# Todo: Make "xc:black" dynamic
 				convert -size 1920x1080 xc:black $last_image_path
+
+				echo "... creating image: ${last_image_path}"
 
 				# Thanks to
 				# * http://forum.linuxcareer.com/threads/84-Use-BASH-script-to-parse-a-line-from-log-file

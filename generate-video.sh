@@ -72,27 +72,20 @@ do
 			time_difference=$(echo "$end_time - $start_time" | bc)
 			echo "... done concating audio and video (${time_difference}s)"
 
-			echo "... deleting mp3 file and no-sound video ($mp3_file_path + $video_file_path)"
+			echo "... deleting mp3 file and no-sound video (${mp3_file_path} + ${video_file_path})"
 
-			rm $video_file_path
-			rm $mp3_file_path
+			if [ -f $video_file_path ]; then
+				rm $video_file_path
+			fi
 
+			if [ -f $mp3_file_path ]; then
+				rm $mp3_file_path
+			fi
 
-
-
-			
-
-
-
-
-
-# todo: time counter
-
-
-			
-
-
-
+			# Thanks to
+			# * http://stackoverflow.com/questions/4325216/rm-all-files-except-some
+			find /usr/sleeptalk/records_to_render/${filename}.* | xargs rm
+			find /usr/sleeptalk/records_to_render/${filename}_*.* | xargs rm
 
 			echo "... done"
 
