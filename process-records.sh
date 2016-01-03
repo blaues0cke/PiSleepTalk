@@ -83,7 +83,7 @@ do
 		 			echo "... saved end timestamp, it is: $concat_end_timestamp"
 
 		 			final_filename="${concat_start_timestamp}-${concat_end_timestamp}.wav"
-		 			final_filepath="/usr/sleeptalk/records_final/$final_filename"
+		 			final_filepath="/usr/sleeptalk/records_to_render/$final_filename"
 
 		 			echo "... final filename will be: $final_filename, saving file to: $final_filepath"
 				    echo "... files to concat: $concat_file_queue"
