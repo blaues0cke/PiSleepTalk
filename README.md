@@ -21,6 +21,8 @@ TODO
 * `/usr/sleeptalk/records_to_render`
 * `/usr/sleeptalk/test-data` Just contains test data I need to implemenet the whole stuff
 
+All folders that contain record data have to start with `record_` since the status page only watches folders starting with this prefix.
+
 ## Workflow
 
 Files are processed in the following folders:
