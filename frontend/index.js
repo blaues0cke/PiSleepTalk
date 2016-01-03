@@ -70,7 +70,7 @@ app.post('/:name.wav', function(req, res) {
 	var filepath = checkFile(req, res);
 
 	if (filepath) {
-		var content 		= req.body.content;
+		var content 		= req.body.content + "\n\n";
 		var contentFilePath = '/usr/sleeptalk/records_to_render/' + req.params.name + '.sleeptalk';
 
 		fs.writeFileSync(contentFilePath, content); 
