@@ -1,0 +1,26 @@
+extends layout
+
+block content
+	div#videos
+			table.table.table-bordered
+				thead
+					tr
+						th.path Path
+						th.size Size
+						th.length Lenght
+						th.actions
+				tbody
+					each video in pageData.videos
+						tr
+							td.path #{video.path}
+							td.size #{video.size} KB
+							td.length #{video.length}s
+							td.actions
+								a.btn.btn-success.play
+									i.fa.fa-play
+								|  
+								a.btn.btn-info.download
+									i.fa.fa-download
+								|  
+								a.btn.btn-danger.delete
+									i.fa.fa-trash

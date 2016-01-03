@@ -167,6 +167,37 @@ app.get('/status', function (req, res) {
 	});	
 });
 
+app.get('/videos', function (req, res) {
+	var pageData = { };
+
+	pageData.videos = [];
+
+	var files = glob.sync("/usr/sleeptalk/records_final/*");
+		
+	if (files && files.length > 0) {
+		for (var key in files) {
+
+			var path 		    = files[key];
+			var pathExploded    = path.replace('/usr/sleeptalk/records_final/', '').split('_');
+			var stats 		    = fs.statSync(files[key])
+			var fileSizeInBytes = stats["size"]
+
+			var fileInfo = {
+				path:   path.replace('/usr/sleeptalk/records_final/', ''),
+				size:   (fileSizeInBytes / 1014).toFixed(2),
+				length: pathExploded[0]
+			}
+
+			pageData.videos.push(fileInfo);
+		}
+	}
+
+	console.log(pageData);
+
+	res.render('videos', { pageData: pageData });
+
+});
+
 
  
 

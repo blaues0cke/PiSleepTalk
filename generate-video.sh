@@ -23,9 +23,15 @@ do
 
 		audio_file_name=$(basename $audio_file_path)
 
+		length_in_seconds=$(sox $audio_file_path -n stat 2>&1 | sed -n 's#^Length (seconds):[^0-9]*\([0-9.]*\)$#\1#p')
+		# Thanks to
+		# * http://www.unix.com/shell-programming-and-scripting/160300-ceiling-floor-functions.html
+		length_in_seconds_rounded=$(( `echo ${length_in_seconds}|cut -f1 -d"."` + 1 ))
+		total_frames=$(($length_in_seconds_rounded * 15))
+
 	 	# todo move to function
 		filename=$(echo $audio_file_name | sed "s/\(\.wav\)//")
-		sleeptalk_file_path="/usr/sleeptalk/records_to_render/$filename.images_generated"
+		sleeptalk_file_path="/usr/sleeptalk/records_to_render/${filename}.images_generated"
 
 		if [ -f $sleeptalk_file_path ]; then
 
@@ -58,7 +64,7 @@ do
 			time_difference=$(echo "$end_time - $start_time" | bc)
 			echo "... done rendering images to video (${time_difference}s)"
 
-			final_video_file_path="/usr/sleeptalk/records_final/${filename}.mp4"
+			final_video_file_path="/usr/sleeptalk/records_final/$(length_in_seconds_rounded)_${filename}.mp4"
 
 			echo "... concating audio and video ($mp3_file_path + $video_file_path to $final_video_file_path)"
 			start_time=$(date +%s.%N)
