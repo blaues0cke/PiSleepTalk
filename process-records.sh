@@ -20,7 +20,7 @@ concat_end_timestamp=""
 concat_start_timestamp=""
 
 # When true, no files are touched
-debug=true
+debug=false
 
 file_counter_base=0
 file_counter_concated=0
@@ -93,16 +93,18 @@ do
 		 			sox $concat_file_queue $final_filepath
 		 		fi
 
+				if [ "$debug" = false ]; then
+					echo "... deleting ${concat_file_queue}"
+
+					$(rm $concat_file_queue)
+				fi
+
 				concat_file_queue=""
 				concat_file_queue_count=0
 				concat_end_timestamp=""
 				concat_start_timestamp=""
 
 	 			file_counter_concated=$((file_counter_concated + 1))
-
-				if [ "$debug" = false ]; then
-					rm $concat_file_queue
-				fi
 			fi
 
 			if [ -n "${last_audio_file_path}" ] && [ -f $last_audio_file_path ]; then
@@ -111,7 +113,9 @@ do
 				file_counter_deleted=$((file_counter_deleted + 1))
 
 				if [ "$debug" = false ]; then
-					rm $last_audio_file_path
+					echo "... deleting ${last_audio_file_path}"
+
+					$(rm $last_audio_file_path)
 				fi
 			fi
 
