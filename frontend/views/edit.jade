@@ -25,6 +25,17 @@ block content
 					button.btn.btn-primary(type='button', data-dismiss='modal') Cancel
 					button.btn.btn-danger#text-clear-confirm(type='button', data-dismiss='modal') Clear
 
+	div.modal.fade#set-marker-first-error
+		div.modal-dialog
+			div.modal-content
+				div.modal-header
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+					h4.modal-title An error occurred
+				div.modal-body
+					p Please set a marker first before you try to jump to it.
+				div.modal-footer
+					button.btn.btn-primary(type='button', data-dismiss='modal') Whoops, sorry!
+
 	// Thanks to
 	// * http://stackoverflow.com/questions/5081534/put-jade-local-variable-in-tag-attribute
 	// * http://jade-lang.com/reference/comments/

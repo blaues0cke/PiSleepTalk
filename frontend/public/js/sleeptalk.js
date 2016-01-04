@@ -165,7 +165,7 @@ var initButtons = function() {
 			wavesurfer.play();
 		}
 		else {
-			alert('Please set a marker first!');
+			$('#set-marker-first-error').modal('show');
 		}
 	});
 
