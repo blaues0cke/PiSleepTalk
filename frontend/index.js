@@ -56,6 +56,16 @@ app.get('/:name.wav', function(req, res) {
 	}
 });
 
+app.get('/:name.mp4', function(req, res) {
+	var filepath = checkFile(req, res, 'mp4', 'records_final');
+
+	if (filepath) {
+		// Thanks to
+		// * http://stackoverflow.com/questions/9321027/how-to-send-files-with-node-js
+		res.sendFile(filepath);
+	}
+});
+
 app.get('/download/:name.mp4', function(req, res) {
 	var filepath = checkFile(req, res, 'mp4', 'records_final');
 

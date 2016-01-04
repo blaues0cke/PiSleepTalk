@@ -340,19 +340,70 @@ var initTextManager = function () {
 	});
 }
 
+var getVideoPathForClickedButton = function(button)
+{
+	var tr     = button.parents('tr');
+	var pathTd = tr.find('.path');
+	var path   = pathTd.text();
+
+	return path;
+};
+
 var initVideoList = function () {
 	$('#video-list')
 		.on('click', '.download', function() {
 			console.log('Download button pressed');
 
 			var button = $(this);
-			var tr     = button.parents('tr');
-			var pathTd = tr.find('.path');
-			var path   = pathTd.text();
+			var path   = getVideoPathForClickedButton(button);
 
 			location.href = '/download/' + path;
 		})
+		.on('click', '.play', function() {
+			console.log('Play button pressed');
+
+			var button 	    = $(this);
+			var path   	    = getVideoPathForClickedButton(button);
+			var videoTarget = $('#video-target');
+
+			videoTarget.find('video').remove();
+
+			var video = $('<video></video>')
+							.addClass('embed-responsive-item')
+							.attr('controls', 'controls')
+							.attr('autoplay', 'autoplay')	
+			;
+
+			var source = $('<source></source>')
+						     .attr('type', 'video/mp4')
+						     .attr('src',   path)
+		    ;
+
+		    source.appendTo(video);
+		    video.appendTo(videoTarget);
+
+			$('#play-video').modal('show');
+		})
+		.on('click', '.delete', function() {
+			
+		})
 	;
+
+	$('#play-video').on('click', 'button', function() {
+		console.log('Footer button pressed');
+
+		var videos = $('#video-target video');
+
+		console.log('Videos: ', videos);
+
+		if (videos && videos.length > 0)
+		{
+			if (!videos[0].paused)
+			{
+				videos[0].pause();
+			}
+		}
+	});
 }
 
 // Thanks to
