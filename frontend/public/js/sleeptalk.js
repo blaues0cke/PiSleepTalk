@@ -35,65 +35,71 @@ var initInfoArea = function () {
 };
 
 var initWavesurfer = function () {
-	wavesurfer.init({
-	      container:     '#wave-content'
-	    , height:        400 
-	    , progressColor: '#0B486B'
-	    , normalize:     true
-	    , waveColor:     '#3B8686'
-	});
 
-	var wave     = $('#wave');
-	var filename = wave.attr('file-to-process');
-	fileUrl      = '/' + filename + '.wav';
+	var wave  = $('#wave');
 
-	console.log('wav url: ', fileUrl);
+	if (wave && wave.length > 0) {
+		wavesurfer.init({
+		      container:     '#wave-content'
+		    , height:        400 
+		    , progressColor: '#0B486B'
+		    , normalize:     true
+		    , waveColor:     '#3B8686'
+		});
 
-	wavesurfer.on('ready', function () {
-		audioDuration = wavesurfer.getDuration();
+		var filename = wave.attr('file-to-process');
+		fileUrl      = '/' + filename + '.wav';
 
-		$('#wave-content').animate({ opacity: 1 }, 250, function() {
-	    	wavesurfer.play();
+		console.log('wav url: ', fileUrl);
 
-			loaded = true;
-		})
+		if (fileUrl && fileUrl.length > 0) {
+			wavesurfer.on('ready', function () {
+				audioDuration = wavesurfer.getDuration();
 
-		$('#wave-loading').fadeOut(250);
-	});
+				$('#wave-content').animate({ opacity: 1 }, 250, function() {
+			    	wavesurfer.play();
 
-	wavesurfer.on('audioprocess', function (process) {
-		audioProcess = process;
-		frameProcess = Math.round(audioProcess * 15);
-	});
+					loaded = true;
+				})
 
-	wavesurfer.on('seek', function (position) {
-		audioProcess = audioDuration * position;
-		frameProcess = Math.round(audioProcess * 15);
-	});
+				$('#wave-loading').fadeOut(250);
+			});
 
-	wavesurfer.on('play', function () {
-		$('#wave-play')
-			.find('.text')
-				.text('Pause')
-			.end()
-			.find('.fa')
-				.removeClass('fa-play')
-				.addClass('fa-pause')
-		;
-	});
+			wavesurfer.on('audioprocess', function (process) {
+				audioProcess = process;
+				frameProcess = Math.round(audioProcess * 15);
+			});
 
-	wavesurfer.on('pause', function () {
-		$('#wave-play')
-			.find('.text')
-				.text('Play')
-			.end()
-			.find('.fa')
-				.removeClass('fa-pause')
-				.addClass('fa-play')
-		;
-	});
+			wavesurfer.on('seek', function (position) {
+				audioProcess = audioDuration * position;
+				frameProcess = Math.round(audioProcess * 15);
+			});
 
-	wavesurfer.load(fileUrl);
+			wavesurfer.on('play', function () {
+				$('#wave-play')
+					.find('.text')
+						.text('Pause')
+					.end()
+					.find('.fa')
+						.removeClass('fa-play')
+						.addClass('fa-pause')
+				;
+			});
+
+			wavesurfer.on('pause', function () {
+				$('#wave-play')
+					.find('.text')
+						.text('Play')
+					.end()
+					.find('.fa')
+						.removeClass('fa-pause')
+						.addClass('fa-play')
+				;
+			});
+
+			wavesurfer.load(fileUrl);
+		}
+	}
 };
 
 var initButtons = function() {
