@@ -26,6 +26,7 @@ $(document).ready(function() {
 	initButtons();
 	initInfoArea();
 	initTextManager();
+	initVideoList();
 });
 
 var initInfoArea = function () {
@@ -337,8 +338,21 @@ var initTextManager = function () {
 
 		$('#clear-texts').modal('hide');
 	});
+}
 
+var initVideoList = function () {
+	$('#video-list')
+		.on('click', '.download', function() {
+			console.log('Download button pressed');
 
+			var button = $(this);
+			var tr     = button.parents('tr');
+			var pathTd = tr.find('.path');
+			var path   = pathTd.text();
+
+			location.href = '/download/' + path;
+		})
+	;
 }
 
 // Thanks to

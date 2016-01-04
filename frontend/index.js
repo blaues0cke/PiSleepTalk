@@ -56,6 +56,21 @@ app.get('/:name.wav', function(req, res) {
 	}
 });
 
+app.get('/download/:name.mp4', function(req, res) {
+	var filepath = checkFile(req, res, 'mp4', 'records_final');
+
+	if (filepath) {
+		// Thanks to
+		// * http://stackoverflow.com/questions/7288814/download-a-file-from-nodejs-server-using-express
+		res.setHeader('Content-disposition', 'attachment; filename=' + req.params.name + '.mp4');
+		res.setHeader('Content-type', 'video/mp4');
+
+		// Thanks to
+		// * http://stackoverflow.com/questions/9321027/how-to-send-files-with-node-js
+		res.sendFile(filepath);
+	}
+});
+
 app.delete('/:name.wav', function(req, res) {
 	var filepath = checkFile(req, res, 'wav', 'records_to_render');
 
