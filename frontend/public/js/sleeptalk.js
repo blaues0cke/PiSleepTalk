@@ -14,6 +14,7 @@ var frameProcess  = null;
 var infoArea      = null;
 var loaded        = false;
 var markerRegion  = null;
+var videoUrl 	  = null;
 var wavesurfer    = Object.create(WaveSurfer);
 
 $(document).ready(function() {
@@ -291,7 +292,6 @@ var initTextManager = function () {
 			var input = $(this);
 			input.val(input.val().replace(/\|/g, ''));
 		})
-
 	;
 
 	$('#text-add').click(function() {
@@ -386,8 +386,27 @@ var initVideoList = function () {
 		})
 		.on('click', '.delete', function() {
 			
+			var button = $(this);
+			var path   = getVideoPathForClickedButton(button);
+			videoUrl   = path;
+
+			$('#delete-video').modal('show');
 		})
 	;
+
+	$('#delete-video-confirm').click(function() {
+		console.log('Delete button pressed: ', videoUrl);
+
+		// Thanks to
+		// * http://stackoverflow.com/questions/2153917/how-to-send-a-put-delete-request-in-jquery
+		$.ajax({
+		    url: videoUrl,
+		    type: 'DELETE',
+		    success: function(result) {
+		        reloadPage();
+		    }
+		});
+	});
 
 	$('#play-video').on('click', 'button', function() {
 		console.log('Footer button pressed');

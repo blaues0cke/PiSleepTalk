@@ -81,6 +81,16 @@ app.get('/download/:name.mp4', function(req, res) {
 	}
 });
 
+app.delete('/:name.mp4', function(req, res) {
+	var filepath = checkFile(req, res, 'mp4', 'records_final');
+
+	if (filepath) {
+		fs.unlinkSync(filepath);
+
+		res.status(200).send('OK');
+	}
+});
+
 app.delete('/:name.wav', function(req, res) {
 	var filepath = checkFile(req, res, 'wav', 'records_to_render');
 
