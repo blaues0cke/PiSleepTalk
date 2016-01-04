@@ -24,11 +24,11 @@ app.set('view engine', 'jade');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-var checkFile = function (req, res, ending) {
+var checkFile = function (req, res, ending, path) {
 	if (req.params.name && framework.alphanumeric(req.params.name)) {
 		// Thanks to
 		// * http://stackoverflow.com/questions/8181879/nodejs-setting-up-wildcard-routes-or-url-rewrite
-		var filepath = '/usr/sleeptalk/records_to_render/' + req.params.name + '.' + ending;
+		var filepath = '/usr/sleeptalk/' + path + '/' + req.params.name + '.' + ending;
 
 		if (fs.existsSync(filepath)) {
 			return filepath;
@@ -47,7 +47,7 @@ var checkFile = function (req, res, ending) {
 };
 
 app.get('/:name.wav', function(req, res) {
-	var filepath = checkFile(req, res, 'wav');
+	var filepath = checkFile(req, res, 'wav', 'records_to_render');
 
 	if (filepath) {
 		// Thanks to
@@ -57,7 +57,7 @@ app.get('/:name.wav', function(req, res) {
 });
 
 app.delete('/:name.wav', function(req, res) {
-	var filepath = checkFile(req, res, 'wav');
+	var filepath = checkFile(req, res, 'wav', 'records_to_render');
 
 	if (filepath) {
 		fs.unlinkSync(filepath);
@@ -67,7 +67,7 @@ app.delete('/:name.wav', function(req, res) {
 });
 
 app.post('/:name.wav', function(req, res) {
-	var filepath = checkFile(req, res, 'wav');
+	var filepath = checkFile(req, res, 'wav', 'records_to_render');
 
 	if (filepath) {
 		var content 		= req.body.content + "\n\n";
