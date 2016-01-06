@@ -7,15 +7,17 @@
 //          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 //
 
-var audioDuration = null;
-var audioProcess  = null;
-var fileUrl       = null;
-var frameProcess  = null;
-var infoArea      = null;
-var loaded        = false;
-var markerRegion  = null;
-var videoUrl 	  = null;
-var wavesurfer    = Object.create(WaveSurfer);
+var audioDuration      = null;
+var audioFileExtension = '.wav';
+var audioProcess       = null;
+var fileUrl            = null;
+var frameProcess       = null;
+var infoArea           = null;
+var loaded             = false;
+var markerRegion       = null;
+var videoFileExtension = '.mp4';
+var videoUrl 	       = null;
+var wavesurfer         = Object.create(WaveSurfer);
 
 $(document).ready(function() {
 	$('.btn-reload').click(function()
@@ -50,7 +52,7 @@ var initWavesurfer = function () {
 		});
 
 		var filename = wave.attr('file-to-process');
-		fileUrl      = '/' + filename + '.wav';
+		fileUrl      = '/' + filename + audioFileExtension;
 
 		console.log('wav url: ', fileUrl);
 
@@ -404,7 +406,7 @@ var initVideoList = function () {
 			;
 
 			var source = $('<source></source>')
-						     .attr('type', 'video/mp4')
+						     .attr('type', 'video/' + videoFileExtension.replace('.', ''))
 						     .attr('src',   path)
 		    ;
 
