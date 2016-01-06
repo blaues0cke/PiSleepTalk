@@ -43,11 +43,6 @@ block content
 							td.size #{video.size} KB
 							td.length #{video.length}s
 							td.actions
-								a.btn.btn-success.play
-									i.fa.fa-play
-								|  
-								a.btn.btn-info.download
-									i.fa.fa-download
-								|  
-								a.btn.btn-danger.delete
-									i.fa.fa-trash
+								+button('', 'play',     '',  'success', 'play')
+								+button('', 'download', '',  'info',    'download')
+								+button('', 'trash',    '',  'danger',  'delete')

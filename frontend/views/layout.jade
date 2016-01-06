@@ -1,3 +1,11 @@
+mixin button(id, icon, text, color, baseClass)
+	a.btn(class=(color ? 'btn-' + color : 'btn-primary') + ' ' + baseClass, id=(id ? id : ''))
+		i.fa(class='fa-' + icon)
+		if text
+			span &nbsp;
+			span.text= text
+	| 
+
 html
 	head
 		link(rel='stylesheet' href='css/bootstrap.min.css')

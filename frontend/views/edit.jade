@@ -76,57 +76,17 @@ block content
 			// Thanks to
 			// * http://stackoverflow.com/questions/10953326/what-is-a-concise-way-to-create-inline-elements-in-jade
 			// * http://stackoverflow.com/questions/20727360/do-i-have-to-use-nbsp-for-space-in-jade
-			a#wave-step-backward.btn.btn-primary
-				i.fa.fa-step-backward
-				span &nbsp;
-				span.text Step backward
-			|  
-			a#wave-play.btn.btn-primary
-				i.fa.fa-play
-				span &nbsp;
-				span.text Play
-			|  
-			a#wave-stop.btn.btn-primary
-				i.fa.fa-stop
-				span &nbsp;
-				span.text Stop
-			|  
-			a#wave-step-forward.btn.btn-primary
-				i.fa.fa-step-forward
-				span &nbsp;
-				span.text Step forward
-			|  	
-			a#wave-set-marker.btn.btn-info
-				i.fa.fa-thumb-tack
-				span &nbsp;
-				span.text Set marker
-			|  	
-			a#wave-play-from-marker.btn.btn-info
-				i.fa.fa-play
-				span &nbsp;
-				span.text Play from marker
-			|  
-			a#wave-decrease-volume.btn.btn-warning
-				i.fa.fa-volume-down
-				span &nbsp;
-				span.text Decrease volume
-			|  
-			a#wave-increase-volume.btn.btn-warning
-				i.fa.fa-volume-up
-				span &nbsp;
-				span.text Increase volume	
-
+			+button('wave-step-backward',    'step-backward', 'Step backward',    'primary')
+			+button('wave-play', 		     'play', 		   'Play',            'primary')
+			+button('wave-stop', 		     'stop', 		   'Stop',            'primary')
+			+button('wave-step-forward',     'step-forward',  'Step forward',     'primary')
+			+button('wave-set-marker',       'thumb-tack',    'Set marker',       'info')
+			+button('wave-play-from-marker', 'play',    	  'Play from marker', 'info')
+			+button('wave-decrease-volume',  'volume-down',   'Decrease volume',  'warning')
+			+button('wave-increase-volume',  'volume-up',     'Increase volume',  'warning')
 		div.pull-right
-			a#wave-save.btn.btn-success
-				i.fa.fa-floppy-o
-				span &nbsp;
-				span.text Save
-			|  
-			a#wave-delete.btn.btn-danger
-				i.fa.fa-trash
-				span &nbsp;
-				span.text Delete
-
+			+button('wave-save',  		 	 'floppy-o',      'Save',  			  'success')
+			+button('wave-delete',  		 'trash',         'Delete',  		  'danger')
 	div#text-manager
 		div#text-wrapper
 			table.table.table-bordered
@@ -140,38 +100,20 @@ block content
 						td.frame
 							div.input-group
 								input(type='number', min='0').form-control.frame
-								a.btn.btn-info.arrow-left
-									i.fa.fa-arrow-left
+								+button('', 'arrow-left', '',  'info', 'arrow-left')
 						td
 							div.input-group
 								input(type='text').form-control.text
 
 						td
-							a.btn.btn-info.arrow-up
-								i.fa.fa-arrow-up
-							|  
-							a.btn.btn-info.arrow-down
-								i.fa.fa-arrow-down
-							|  
-							a#wave-delete.btn.btn-danger.delete
-								i.fa.fa-trash
+							+button('', 'arrow-up',   '',  'info',   'arrow-up')
+							+button('', 'arrow-down', '',  'info',   'arrow-down') 
+							+button('', 'trash',      '',  'danger', 'delete') 
 
 		nav.navbar.navbar-light.bg-faded
 			div.pull-left
-				a#text-add.btn.btn-success
-					i.fa.fa-plus
-					span &nbsp;
-					span.text Add text
-				|  
-				a#text-sort.btn.btn-info
-					i.fa.fa-sort-amount-asc
-					span &nbsp;
-					span.text Sort
-				|  
+				+button('text-add',  'plus',            'Add text', 'success')
+				+button('text-sort', 'sort-amount-asc', 'Sort',     'info')
 
 			div.pull-right
-				a#text-clear.btn.btn-danger
-					i.fa.fa-trash
-					span &nbsp;
-					span.text Clear
-				|  
+				+button('text-clear', 'trash', 'Clear', 'danger')
