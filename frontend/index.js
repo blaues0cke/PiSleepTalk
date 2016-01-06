@@ -114,6 +114,30 @@ app.post('/:name.wav', function(req, res) {
 	}
 });
 
+app.post('/decrease-volume/:name.wav', function(req, res) {
+	var filepath = checkFile(req, res, 'wav', 'records_to_render');
+
+	if (filepath) {
+		// Thanks to
+		// * http://stackoverflow.com/questions/8579055/how-i-move-files-on-node-js
+		fs.rename(filepath, '/usr/sleeptalk/records_decrease_volume/' + req.params.name+ '.wav');
+
+		res.status(200).send('OK');
+	}
+});
+
+app.post('/increase-volume/:name.wav', function(req, res) {
+	var filepath = checkFile(req, res, 'wav', 'records_to_render');
+
+	if (filepath) {
+		// Thanks to
+		// * http://stackoverflow.com/questions/8579055/how-i-move-files-on-node-js
+		fs.rename(filepath, '/usr/sleeptalk/records_increase_volume/' + req.params.name + '.wav');
+
+		res.status(200).send('OK');
+	}
+});
+
 app.get('/', function (req, res) {
 
 	var fileToProcess = null;
