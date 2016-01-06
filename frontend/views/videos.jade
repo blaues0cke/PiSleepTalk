@@ -32,8 +32,11 @@ block content
 						th.path Path
 						th.size Size
 						th.length Lenght
-						th.actions
+						th.actions Actions
 				tbody
+					if !pageData.videos || pageData.videos.length == 0
+						tr
+							td(colspan=4) No rendered videos are available at the moment.
 					each video in pageData.videos
 						tr
 							td.path #{video.path}
