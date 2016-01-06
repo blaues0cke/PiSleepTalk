@@ -178,7 +178,7 @@ app.get('/', function (req, res) {
 		// Thanks to
 		// * http://stackoverflow.com/questions/30737069/pass-variables-to-jade-template
 		// * http://stackoverflow.com/questions/9931531/jade-template-with-variables-nodejs-server-side
-		res.render('edit', { pageData: { fileToProcess: fileToProcess } });
+		res.render('edit', { pageData: { fileToProcess: fileToProcess, fileCount: files.length } });
 	}
 	else
 	{

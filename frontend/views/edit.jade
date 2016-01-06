@@ -1,6 +1,9 @@
 extends layout
 
 block content
+	script.
+		fileCount=#{pageData.fileCount};
+
 	div.modal.fade#delete-file
 		div.modal-dialog
 			div.modal-content

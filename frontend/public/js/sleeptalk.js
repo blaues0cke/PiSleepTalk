@@ -260,6 +260,7 @@ var updateInfoArea = function () {
 		}
 
 		infoText.push(audioDuration.toFixed(2));
+		infoText.push('- Pending files: ' + fileCount);
 		infoArea.text(infoText.join(' '));
 	}
 };
