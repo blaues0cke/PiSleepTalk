@@ -1,29 +1,9 @@
 extends layout
 
 block content
-	div.modal.fade#delete-video
-		div.modal-dialog
-			div.modal-content
-				div.modal-header
-					button.close(type='button', data-dismiss='modal', aria-label='Close')
-					h4.modal-title Remove video
-				div.modal-body
-					p Are you sure to delete the whole video? You can't undo this.
-				div.modal-footer
-					button.btn.btn-primary(type='button', data-dismiss='modal') Cancel
-					button.btn.btn-danger#delete-video-confirm(type='button', data-dismiss='modal') Delete video
-
-	div.modal.fade#play-video
-		div.modal-dialog
-			div.modal-content
-				div.modal-header
-					button.close(type='button', data-dismiss='modal', aria-label='Close')
-					h4.modal-title Video preview
-				div.modal-body
-					div.embed-responsive.embed-responsive-16by9#video-target
-
-				div.modal-footer
-					button.btn.btn-primary(type='button', data-dismiss='modal') Ok
+	+modal('delete-video', 'Remove video', 'Are you sure to delete the whole video? You can\'t undo this.', 'Cancel', 'Delete video', 'delete-video-confirm')
+	+modal('play-video', 'Video preview', '', 'Ok')
+		div.embed-responsive.embed-responsive-16by9#video-target
 
 	div#video-list
 			table.table.table-bordered

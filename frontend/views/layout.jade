@@ -4,7 +4,24 @@ mixin button(id, icon, text, color, baseClass)
 		if text
 			span &nbsp;
 			span.text= text
-	| 
+	|  
+
+mixin modal(id, title, text, cancelButton, deleteButton, deleteButtonId)
+	div.modal.fade(id=id)
+		div.modal-dialog
+			div.modal-content
+				div.modal-header
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+					h4.modal-title= title
+				div.modal-body
+					if text
+						p= text
+					if block
+						block
+				div.modal-footer
+					button.btn.btn-primary(type='button', data-dismiss='modal')= cancelButton
+					if deleteButton
+						button.btn.btn-danger(type='button', data-dismiss='modal', id=deleteButtonId)= deleteButton
 
 html
 	head

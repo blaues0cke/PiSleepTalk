@@ -4,64 +4,11 @@ block content
 	script.
 		fileCount=#{pageData.fileCount};
 
-	div.modal.fade#delete-file
-		div.modal-dialog
-			div.modal-content
-				div.modal-header
-					button.close(type='button', data-dismiss='modal', aria-label='Close')
-					h4.modal-title Remove recording
-				div.modal-body
-					p Are you sure to delete the whole recording? You can't undo this.
-				div.modal-footer
-					button.btn.btn-primary(type='button', data-dismiss='modal') Cancel
-					button.btn.btn-danger#delete-file-confirm(type='button', data-dismiss='modal') Delete recording
-
-	div.modal.fade#clear-texts
-		div.modal-dialog
-			div.modal-content
-				div.modal-header
-					button.close(type='button', data-dismiss='modal', aria-label='Close')
-					h4.modal-title Clear text data
-				div.modal-body
-					p Are you sure to delete all the text data?
-				div.modal-footer
-					button.btn.btn-primary(type='button', data-dismiss='modal') Cancel
-					button.btn.btn-danger#text-clear-confirm(type='button', data-dismiss='modal') Clear
-
-	div.modal.fade#set-marker-first-error
-		div.modal-dialog
-			div.modal-content
-				div.modal-header
-					button.close(type='button', data-dismiss='modal', aria-label='Close')
-					h4.modal-title An error occurred
-				div.modal-body
-					p Please set a marker first before you try to jump to it.
-				div.modal-footer
-					button.btn.btn-primary(type='button', data-dismiss='modal') Whoops, sorry!
-
-	div.modal.fade#decrease-volume-modal
-		div.modal-dialog
-			div.modal-content
-				div.modal-header
-					button.close(type='button', data-dismiss='modal', aria-label='Close')
-					h4.modal-title Decrease volume
-				div.modal-body
-					p Are you sure to decrease the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is decreased. The audio file will automatically re-appear on the home page. 
-				div.modal-footer
-					button.btn.btn-primary(type='button', data-dismiss='modal') Cancel
-					button.btn.btn-success#decrease-volume-confirm(type='button', data-dismiss='modal') Decrease volume
-
-	div.modal.fade#increase-volume-modal
-		div.modal-dialog
-			div.modal-content
-				div.modal-header
-					button.close(type='button', data-dismiss='modal', aria-label='Close')
-					h4.modal-title Increase volume
-				div.modal-body
-					p Are you sure to increase the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is increased. The audio file will automatically re-appear on the home page. 
-				div.modal-footer
-					button.btn.btn-primary(type='button', data-dismiss='modal') Cancel
-					button.btn.btn-success#increase-volume-confirm(type='button', data-dismiss='modal') Increase volume
+	+modal('delete-file', 'Remove recording', 'Are you sure to delete the whole recording? You can\'t undo this.', 'Cancel', 'Delete recording', 'delete-file-confirm')
+	+modal('clear-texts', 'Clear text data', 'Are you sure to delete all the text data?', 'Cancel', 'Clear', 'text-clear-confirm')
+	+modal('set-marker-first-error', 'An error occurred', 'Please set a marker first before you try to jump to it.', 'Whoops, sorry!')
+	+modal('decrease-volume-modal', 'Decrease volume', 'Are you sure to decrease the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is decreased. The audio file will automatically re-appear on the home page.', 'Cancel', 'Decrease volume', 'decrease-volume-confirm')
+	+modal('increase-volume-modal', 'Increase volume', 'Are you sure to increase the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is increased. The audio file will automatically re-appear on the home page.', 'Cancel', 'Increase volume', 'increase-volume-confirm')
 
 	// Thanks to
 	// * http://stackoverflow.com/questions/5081534/put-jade-local-variable-in-tag-attribute
