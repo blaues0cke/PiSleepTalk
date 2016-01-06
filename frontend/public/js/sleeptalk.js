@@ -217,6 +217,34 @@ var initButtons = function() {
 		    }
 		});
 	});
+
+	$('#wave-decrease-volume').click(function() {
+		$('#decrease-volume-modal').modal('show');
+	});
+
+	$('#decrease-volume-confirm').click(function() {
+		$.post(
+			'decrease-volume' + fileUrl,
+			null,
+			function() {
+		        reloadPage();
+			}
+		);
+	});
+
+	$('#wave-increase-volume').click(function() {
+		$('#increase-volume-modal').modal('show');
+	});
+
+	$('#increase-volume-confirm').click(function() {
+		$.post(
+			'increase-volume' + fileUrl,
+			null,
+			function() {
+		        reloadPage();
+			}
+		);
+	});
 };
 
 var updateInfoArea = function () {

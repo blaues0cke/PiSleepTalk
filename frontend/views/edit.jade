@@ -36,6 +36,30 @@ block content
 				div.modal-footer
 					button.btn.btn-primary(type='button', data-dismiss='modal') Whoops, sorry!
 
+	div.modal.fade#decrease-volume-modal
+		div.modal-dialog
+			div.modal-content
+				div.modal-header
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+					h4.modal-title Decrease volume
+				div.modal-body
+					p Are you sure to decrease the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is decreased. The audio file will automatically re-appear on the home page. 
+				div.modal-footer
+					button.btn.btn-primary(type='button', data-dismiss='modal') Cancel
+					button.btn.btn-success#decrease-volume-confirm(type='button', data-dismiss='modal') Decrease volume
+
+	div.modal.fade#increase-volume-modal
+		div.modal-dialog
+			div.modal-content
+				div.modal-header
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+					h4.modal-title Increase volume
+				div.modal-body
+					p Are you sure to increase the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is increased. The audio file will automatically re-appear on the home page. 
+				div.modal-footer
+					button.btn.btn-primary(type='button', data-dismiss='modal') Cancel
+					button.btn.btn-success#increase-volume-confirm(type='button', data-dismiss='modal') Increase volume
+
 	// Thanks to
 	// * http://stackoverflow.com/questions/5081534/put-jade-local-variable-in-tag-attribute
 	// * http://jade-lang.com/reference/comments/
@@ -78,6 +102,16 @@ block content
 				i.fa.fa-play
 				span &nbsp;
 				span.text Play from marker
+			|  
+			a#wave-decrease-volume.btn.btn-warning
+				i.fa.fa-volume-down
+				span &nbsp;
+				span.text Decrease volume
+			|  
+			a#wave-increase-volume.btn.btn-warning
+				i.fa.fa-volume-up
+				span &nbsp;
+				span.text Increase volume	
 
 		div.pull-right
 			a#wave-save.btn.btn-success
