@@ -10,16 +10,17 @@ html
 				a.navbar-brand(href='https://github.com/blaues0cke/PiSleepTalk', target='_blank') PiSleepTalk
 
 				ul.nav.navbar-nav
-					li.nav-item
+					// Thanks to
+					// * http://stackoverflow.com/questions/14144274/jade-conditional-if-else-to-add-class-to-div-inline
+					li.nav-item(class=!pageData || !pageData.context || pageData.context == 'home' ? 'active' : '')
 						a(href='/').nav-link Home
-					li.nav-item
+					li.nav-item(class=pageData && pageData.context && pageData.context == 'videos'  ? 'active' : '')
 						a(href='/videos').nav-link Videos
-					li.nav-item
+					li.nav-item(class=pageData && pageData.context && pageData.context == 'status'  ? 'active' : '')
 						a(href='/status').nav-link Status
 
 			div.pull-right
 				div#info-area
-
 
 		block content
 		script(src='js/jquery-2.1.4.min.js')
