@@ -11,7 +11,9 @@
 
 echo "Starting demo run..."
 
-sh /usr/sleeptalk/bash/add_timestamp_to_filename.sh
-sh /usr/sleeptalk/bash/add_amplitude_to_filename.sh
-sh /usr/sleeptalk/bash/process_volume.sh
+sh /usr/sleeptalk/bash/add-timestamp-to-filename.sh
+sh /usr/sleeptalk/bash/add-amplitude-to-filename.sh
+sh /usr/sleeptalk/bash/process-volume.sh
 sh /usr/sleeptalk/bash/process-records.sh
+sh /usr/sleeptalk/bash/create-frame-images.sh
+sh /usr/sleeptalk/bash/generate-video.sh

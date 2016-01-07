@@ -9,7 +9,7 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
-AUDIO_FILE_PATHS=/usr/sleeptalk/records_timestamp/*
+AUDIO_FILE_PATHS=/usr/sleeptalk/records-timestamp/*
 
 echo "Adding amplitude to filename"
 echo ""
@@ -34,10 +34,9 @@ do
 	 	echo "... maximum amplitude: $maximum_amplitude"
 	 	echo "... midline amplitude: $midline_amplitude"
 
-
 		if [ -n "$maximum_amplitude" ] && [ -n "$midline_amplitude" ]; then
 
-		 	new_audio_file_path="/usr/sleeptalk/records_amplitude/${audio_timestamp}_max_${maximum_amplitude}_mid_${midline_amplitude}.wav"
+		 	new_audio_file_path="/usr/sleeptalk/records-amplitude/${audio_timestamp}-max-${maximum_amplitude}-mid-${midline_amplitude}.wav"
 
 		 	echo "... new file path: $new_audio_file_path"
 

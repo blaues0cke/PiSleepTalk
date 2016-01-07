@@ -9,7 +9,7 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
-AUDIO_FILE_PATHS=/usr/sleeptalk/records_to_render/*.wav
+AUDIO_FILE_PATHS=/usr/sleeptalk/records-to-render/*.wav
 
 echo "Rendering images"
 echo ""
@@ -33,20 +33,15 @@ do
 
 	 	# todo move to function
 		filename=$(echo $audio_file_name | sed "s/\(\.wav\)//")
-		sleeptalk_file_path="/usr/sleeptalk/records_to_render/${filename}.sleeptalk"
-		lock_image_file_path="/usr/sleeptalk/records_to_render/${filename}.images_generated"
+		sleeptalk_file_path="/usr/sleeptalk/records-to-render/${filename}.sleeptalk"
+		lock_image_file_path="/usr/sleeptalk/records-to-render/${filename}.images-generated"
 
 		if [ ! -f $lock_image_file_path ]; then
 			if [ -f $sleeptalk_file_path ]; then
 
 				echo "... starting to create images, sleeptalk file path: ${sleeptalk_file_path}"
 
-				last_image_path="/usr/sleeptalk/records_to_render/${filename}_base.png"
-								
-				if [ "$debug" = true ]; then
-					last_image_path="/usr/sleeptalk/debug/${filename}_base.png"
-				fi
-
+				last_image_path="/usr/sleeptalk/records-to-render/${filename}-base.png"
 				base_image_path="${last_image_path}"
 
 				last_frame_position=-1
@@ -64,90 +59,116 @@ do
 				# * http://forum.linuxcareer.com/threads/84-Use-BASH-script-to-parse-a-line-from-log-file
 				while read line
 				do
-					echo "... processing line: $line, counter: $line_counter" 
+					echo "... processing line: ${line}, counter: ${line_counter}" 
 
 					# Thanks to
 					# * http://stackoverflow.com/questions/428109/extract-substring-in-bash
 					frame_position=$(echo $line | cut -d'|' -f 1)
 					spoken_text=$(echo $line | cut -d'|' -f 2)
 
-					if [ $last_frame_position -gt -1 ]; then
+					# Thanks to
+					# * http://stackoverflow.com/questions/11123717/removing-leading-zeros-before-passing-the-variable-to-iptables
+					frame_position_clean=$(echo $frame_position | sed "s/^0*\([1-9]\)/\1/;s/^0*$/0/")
+					last_frame_position_clean=$(echo $last_frame_position | sed "s/^0*\([1-9]\)/\1/;s/^0*$/0/")
 
-						# Thanks to
-						# * http://stackoverflow.com/questions/11123717/removing-leading-zeros-before-passing-the-variable-to-iptables
-						frame_position_clean=$(echo $frame_position | sed "s/^0*\([1-9]\)/\1/;s/^0*$/0/")
-						last_frame_position_clean=$(echo $last_frame_position | sed "s/^0*\([1-9]\)/\1/;s/^0*$/0/")
+					if [ -n "${line}" ] && [ -n "${spoken_text}" ]; then
 
-						difference=$(($frame_position_clean - $last_frame_position_clean))
+						echo "... frame position clean: ${frame_position_clean}"
+						echo "... last frame position clean: ${last_frame_position_clean}"
+						echo "... line counter: ${line_counter}"
 
-						echo "... gap to last image: $difference ($frame_position_clean - $last_frame_position_clean)"
+						if [ "${line_counter}" -eq 0 ] && [ "${frame_position_clean}" -gt 0 ]; then
 
-						if [ $difference -gt -1 ]; then
-
-							echo "... copying images to fit the frame requirements"
+							echo "... not starting from frame 0000 with text, filling up with blank images"
 
 							# Thanks to
 							# * http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html
-					        i=1
-					        until [ $i -eq $difference ]; do
-
-					        	target_frame_position=$((last_frame_position_clean + i))
+					        i=0
+					        until [ $i -eq $frame_position_clean ]; do
 					        	# Thanks to
 					        	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
-					        	target_frame_position_long=$(printf %04d ${target_frame_position})
-					        	new_image_file_path="/usr/sleeptalk/records_to_render/${filename}_${target_frame_position_long}.png"
+					        	target_frame_position_long=$(printf %04d ${i})
+					        	new_image_file_path="/usr/sleeptalk/records-to-render/${filename}-${target_frame_position_long}.png"
 
-					        	echo "... copying $last_image_path to $new_image_file_path"
+					        	echo "... copying ${last_image_path} to ${new_image_file_path}"
 					            
 					        	cp $last_image_path $new_image_file_path
 
 					            i=$((i + 1))
 					        done
 						fi
-					fi
+						
+						if [ $last_frame_position -gt -1 ]; then
 
-					# Thanks to
-					# * http://unix.stackexchange.com/questions/160180/bash-if-statement-missing-error
-					if [ $line_counter -gt 4 ]; then
+							difference=$(($frame_position_clean - $last_frame_position_clean))
 
-						echo "... clearing screen"
+							echo "... gap to last image: $difference (${frame_position_clean} - ${last_frame_position_clean})"
 
-						line_counter=0
+							if [ $difference -gt -1 ]; then
 
-						last_image_path="/usr/sleeptalk/records_to_render/${filename}_base.png"
-										
-						if [ "$debug" = true ]; then
-							last_image_path="/usr/sleeptalk/debug/${filename}_base.png"
+								echo "... copying images to fit the frame requirements"
+
+								# Thanks to
+								# * http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html
+						        i=1
+						        until [ $i -eq $difference ]; do
+
+						        	target_frame_position=$((last_frame_position_clean + i))
+						        	# Thanks to
+						        	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
+						        	target_frame_position_long=$(printf %04d ${target_frame_position})
+						        	new_image_file_path="/usr/sleeptalk/records-to-render/${filename}-${target_frame_position_long}.png"
+
+						        	echo "... copying ${last_image_path} to ${new_image_file_path}"
+						            
+						        	cp $last_image_path $new_image_file_path
+
+						            i=$((i + 1))
+						        done
+							fi
 						fi
+
+						# Thanks to
+						# * http://unix.stackexchange.com/questions/160180/bash-if-statement-missing-error
+						if [ $line_counter -gt 4 ]; then
+
+							echo "... clearing screen"
+
+							line_counter=0
+
+							last_image_path="/usr/sleeptalk/records-to-render/${filename}-base.png"
+											
+							if [ "$debug" = true ]; then
+								last_image_path="/usr/sleeptalk/debug/${filename}-base.png"
+							fi
+						fi
+
+						echo "... found text \"$spoken_text\" at position: $frame_position"
+
+						current_image_path="/usr/sleeptalk/records-to-render/${filename}-${frame_position}.png"
+						
+						# Thanks to
+						# * https://www.shell-tips.com/2010/06/14/performing-math-calculation-in-bash/
+						top_position=$((80 + (line_counter * 200)))
+
+						# Thanks to
+						# * http://www.imagemagick.org/Usage/fonts/
+						# * http://stackoverflow.com/questions/23236898/add-text-on-image-at-specific-point-using-imagemagick
+						# * http://stackoverflow.com/questions/18062778/how-to-hide-command-output-in-bash
+						# Todo: Make "white" dynamic
+						convert "$last_image_path" -gravity North -pointsize 100 -fill white -annotate "+0+${top_position}" "$spoken_text" "$current_image_path" >/usr/sleeptalk/error.log 2>&1
+
+						echo "... created image: $current_image_path"
+
+						last_image_path="$current_image_path"
+						last_frame_position="$frame_position"
+
+						line_counter=$((line_counter + 1))
+					else
+						echo "... skipping empty line"
 					fi
-
-					echo "... found text \"$spoken_text\" at position: $frame_position"
-
-					current_image_path="/usr/sleeptalk/records_to_render/${filename}_${frame_position}.png"
-					
-					if [ "$debug" = true ]; then
-						current_image_path="/usr/sleeptalk/debug/${filename}_${frame_position}.png"
-					fi
-
-					# Thanks to
-					# * https://www.shell-tips.com/2010/06/14/performing-math-calculation-in-bash/
-					top_position=$((80 + (line_counter * 200)))
-
-					# Thanks to
-					# * http://www.imagemagick.org/Usage/fonts/
-					# * http://stackoverflow.com/questions/23236898/add-text-on-image-at-specific-point-using-imagemagick
-					# * http://stackoverflow.com/questions/18062778/how-to-hide-command-output-in-bash
-					# Todo: Make "white" dynamic
-					convert "$last_image_path" -gravity North -pointsize 100 -fill white -annotate "+0+${top_position}" "$spoken_text" "$current_image_path" >/dev/null 2>&1
-
-					echo "... created image: $current_image_path"
-
-					last_image_path="$current_image_path"
-					last_frame_position="$frame_position"
 
 					echo ""
-
-					line_counter=$((line_counter + 1))
 
 				done < $sleeptalk_file_path
 
@@ -175,9 +196,9 @@ do
 				        	# Thanks to
 				        	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
 				        	target_frame_position_long=$(printf %04d ${target_frame_position})
-				        	new_image_file_path="/usr/sleeptalk/records_to_render/${filename}_${target_frame_position_long}.png"
+				        	new_image_file_path="/usr/sleeptalk/records-to-render/${filename}-${target_frame_position_long}.png"
 
-				        	echo "... copying $last_image_path to $new_image_file_path"
+				        	echo "... copying ${last_image_path} to ${new_image_file_path}"
 				            
 				        	cp $last_image_path $new_image_file_path
 
@@ -186,7 +207,7 @@ do
 					fi
 				fi
 
-				echo "... removing $base_image_path"
+				echo "... removing ${base_image_path}"
 
 				rm $base_image_path
 
@@ -198,7 +219,7 @@ do
 				echo "... no \".sleeptalk\" file found for \"$filename\""
 			fi
 		else
-			echo "... skipping \".images_generated\" file found for \"$filename\""
+			echo "... skipping \".images-generated\" file found for \"$filename\""
 		fi
 
 		echo ""

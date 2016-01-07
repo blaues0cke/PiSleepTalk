@@ -22,9 +22,9 @@ set file_counter=0
 
 for demo_file_path in $DEMO_FILE_PATHS
 do
-	cp "$demo_file_path" /usr/sleeptalk/records_raw
+	cp "$demo_file_path" /usr/sleeptalk/records-raw
 
-	echo "... copied $demo_file_path"
+	echo "... copied ${demo_file_path}"
 
 	# todo: fake the creation time to save time while creating the test data
 	sleep 1s

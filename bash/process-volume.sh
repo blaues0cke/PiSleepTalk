@@ -9,8 +9,8 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
-AUDIO_FILE_PATHS_DECREASE=/usr/sleeptalk/records_decrease_volume/*
-AUDIO_FILE_PATHS_INCREASE=/usr/sleeptalk/records_increase_volume/*
+AUDIO_FILE_PATHS_DECREASE=/usr/sleeptalk/records-decrease-volume/*
+AUDIO_FILE_PATHS_INCREASE=/usr/sleeptalk/records-increase-volume/*
 
 echo "Processing record volumes"
 echo ""
@@ -25,7 +25,7 @@ do
 	 	echo "... decreasing volume of file: $audio_file_path"
 
 	 	audio_file_name=$(basename $audio_file_path)
-	 	final_audio_path="/usr/sleeptalk/records_to_render/VD_${audio_file_name}"
+	 	final_audio_path="/usr/sleeptalk/records-to-render/VD-${audio_file_name}"
 
 	 	sox -v 0.5 $audio_file_path $final_audio_path
 	 	rm $audio_file_path
@@ -43,7 +43,7 @@ do
 	 	echo "... increasing volume of file: $audio_file_path"
 
 	 	audio_file_name=$(basename $audio_file_path)
-	 	final_audio_path="/usr/sleeptalk/records_to_render/VI_${audio_file_name}"
+	 	final_audio_path="/usr/sleeptalk/records-to-render/VI-${audio_file_name}"
 
 	 	sox -v 1.5 $audio_file_path $final_audio_path
 	 	rm $audio_file_path

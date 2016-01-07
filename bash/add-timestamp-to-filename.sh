@@ -9,7 +9,7 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
-AUDIO_FILE_PATHS=/usr/sleeptalk/records_raw/*
+AUDIO_FILE_PATHS=/usr/sleeptalk/records-raw/*
 
 echo "Adding timestamp to filename"
 
@@ -25,9 +25,9 @@ do
 
 	 	modify_date=$(stat -c %Y $audio_file_path)
 
-	 	new_audio_file_path="/usr/sleeptalk/records_timestamp/$modify_date.wav"
+	 	new_audio_file_path="/usr/sleeptalk/records-timestamp/${modify_date}.wav"
 
-	 	echo "... new file path: $new_audio_file_path"
+	 	echo "... new file path: ${new_audio_file_path}"
 
 	 	mv $audio_file_path $new_audio_file_path
 

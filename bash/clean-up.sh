@@ -9,10 +9,11 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
-rm -rf /usr/sleeptalk/records_raw/*
-rm -rf /usr/sleeptalk/records_timestamp/*
-rm -rf /usr/sleeptalk/records_amplitude/*
-rm -rf /usr/sleeptalk/records_rendered/*
-rm -rf /usr/sleeptalk/records_decrease_volume/*
-rm -rf /usr/sleeptalk/records_increase_volume/*
-rm -rf /usr/sleeptalk/records_final/*
+rm -rf /usr/sleeptalk/records-raw/*
+rm -rf /usr/sleeptalk/records-timestamp/*
+rm -rf /usr/sleeptalk/records-amplitude/*
+rm -rf /usr/sleeptalk/records-rendered/*
+rm -rf /usr/sleeptalk/records-to-render/*
+rm -rf /usr/sleeptalk/records-decrease-volume/*
+rm -rf /usr/sleeptalk/records-increase-volume/*
+rm -rf /usr/sleeptalk/records-final/*

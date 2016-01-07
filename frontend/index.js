@@ -50,7 +50,7 @@ var checkFile = function (req, res, ending, path) {
 };
 
 app.get('/:name' + audioFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, audioFileExtension, 'records_to_render');
+	var filepath = checkFile(req, res, audioFileExtension, 'records-to-render');
 
 	if (filepath) {
 		// Thanks to
@@ -60,7 +60,7 @@ app.get('/:name' + audioFileExtension, function(req, res) {
 });
 
 app.get('/:name' + movieFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, movieFileExtension, 'records_final');
+	var filepath = checkFile(req, res, movieFileExtension, 'records-final');
 
 	if (filepath) {
 		// Thanks to
@@ -70,7 +70,7 @@ app.get('/:name' + movieFileExtension, function(req, res) {
 });
 
 app.get('/download/:name' + movieFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, movieFileExtension, 'records_final');
+	var filepath = checkFile(req, res, movieFileExtension, 'records-final');
 
 	if (filepath) {
 		// Thanks to
@@ -85,7 +85,7 @@ app.get('/download/:name' + movieFileExtension, function(req, res) {
 });
 
 app.delete('/:name' + movieFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, movieFileExtension, 'records_final');
+	var filepath = checkFile(req, res, movieFileExtension, 'records-final');
 
 	if (filepath) {
 		fs.unlinkSync(filepath);
@@ -95,7 +95,7 @@ app.delete('/:name' + movieFileExtension, function(req, res) {
 });
 
 app.delete('/:name' + audioFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, audioFileExtension, 'records_to_render');
+	var filepath = checkFile(req, res, audioFileExtension, 'records-to-render');
 
 	if (filepath) {
 		fs.unlinkSync(filepath);
@@ -105,11 +105,11 @@ app.delete('/:name' + audioFileExtension, function(req, res) {
 });
 
 app.post('/:name' + audioFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, audioFileExtension, 'records_to_render');
+	var filepath = checkFile(req, res, audioFileExtension, 'records-to-render');
 
 	if (filepath) {
 		var content 		= req.body.content + "\n\n";
-		var contentFilePath = '/usr/sleeptalk/records_to_render/' + req.params.name + '.sleeptalk';
+		var contentFilePath = '/usr/sleeptalk/records-to-render/' + req.params.name + '.sleeptalk';
 
 		fs.writeFileSync(contentFilePath, content); 
 
@@ -118,24 +118,24 @@ app.post('/:name' + audioFileExtension, function(req, res) {
 });
 
 app.post('/decrease-volume/:name' + audioFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, audioFileExtension, 'records_to_render');
+	var filepath = checkFile(req, res, audioFileExtension, 'records-to-render');
 
 	if (filepath) {
 		// Thanks to
 		// * http://stackoverflow.com/questions/8579055/how-i-move-files-on-node-js
-		fs.rename(filepath, '/usr/sleeptalk/records_decrease_volume/' + req.params.name + audioFileExtension);
+		fs.rename(filepath, '/usr/sleeptalk/records-decrease-volume/' + req.params.name + audioFileExtension);
 
 		res.status(200).send('OK');
 	}
 });
 
 app.post('/increase-volume/:name' + audioFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, audioFileExtension, 'records_to_render');
+	var filepath = checkFile(req, res, audioFileExtension, 'records-to-render');
 
 	if (filepath) {
 		// Thanks to
 		// * http://stackoverflow.com/questions/8579055/how-i-move-files-on-node-js
-		fs.rename(filepath, '/usr/sleeptalk/records_increase_volume/' + req.params.name + audioFileExtension);
+		fs.rename(filepath, '/usr/sleeptalk/records-increase-volume/' + req.params.name + audioFileExtension);
 
 		res.status(200).send('OK');
 	}
@@ -148,7 +148,7 @@ app.get('/', function (req, res) {
 	// Thanks to
 	// * http://stackoverflow.com/questions/11282880/nodejs-module-to-find-files
 	// * https://github.com/isaacs/node-glob
-	var files = glob.sync('/usr/sleeptalk/records_to_render/*' + audioFileExtension);
+	var files = glob.sync('/usr/sleeptalk/records-to-render/*' + audioFileExtension);
 		
 	if (files && files.length > 0) {
 		for (var key in files) {
@@ -157,7 +157,7 @@ app.get('/', function (req, res) {
 			// Thanks to
 			// * http://stackoverflow.com/questions/4250364/how-to-trim-a-file-extension-from-a-string-in-javascript
 			var filename = path.basename(filepath, path.extname(filepath));
-			var textFilePath = '/usr/sleeptalk/records_to_render/' + filename + '.sleeptalk';
+			var textFilePath = '/usr/sleeptalk/records-to-render/' + filename + '.sleeptalk';
 
 			// Thanks to
 			// * http://stackoverflow.com/questions/4482686/check-synchronously-if-file-directory-exists-in-node-js
@@ -207,13 +207,13 @@ app.get('/status', function (req, res) {
 
 		pageData.files = [];
 
-		var files = glob.sync("/usr/sleeptalk/records_*/*");
+		var files = glob.sync('/usr/sleeptalk/records-*/*');
 			
 		if (files && files.length > 0) {
 			for (var key in files) {
 
 				var stats 		    = fs.statSync(files[key])
-				var fileSizeInBytes = stats["size"]
+				var fileSizeInBytes = stats['size']
 
 				var fileInfo = {
 					path: files[key],
@@ -237,18 +237,18 @@ app.get('/videos', function (req, res) {
 
 	pageData.videos = [];
 
-	var files = glob.sync("/usr/sleeptalk/records_final/*");
+	var files = glob.sync('/usr/sleeptalk/records-final/*');
 		
 	if (files && files.length > 0) {
 		for (var key in files) {
 
 			var path 		    = files[key];
-			var pathExploded    = path.replace('/usr/sleeptalk/records_final/', '').split('_');
+			var pathExploded    = path.replace('/usr/sleeptalk/records-final/', '').split('-');
 			var stats 		    = fs.statSync(files[key])
-			var fileSizeInBytes = stats["size"]
+			var fileSizeInBytes = stats['size']
 
 			var fileInfo = {
-				path:   path.replace('/usr/sleeptalk/records_final/', ''),
+				path:   path.replace('/usr/sleeptalk/records-final/', ''),
 				size:   (fileSizeInBytes / 1014).toFixed(2),
 				length: pathExploded[0]
 			}

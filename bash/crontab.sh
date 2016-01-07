@@ -15,26 +15,26 @@
 #
 # Will add the timestamp to the filename every 15 seconds
 #
-*   * * * * root            sh /usr/sleeptalk/bash/add_timestamp_to_filename.sh
-*   * * * * root sleep 15;  sh /usr/sleeptalk/bash/add_timestamp_to_filename.sh
-*   * * * * root sleep 30;  sh /usr/sleeptalk/bash/add_timestamp_to_filename.sh
-*   * * * * root sleep 45;  sh /usr/sleeptalk/bash/add_timestamp_to_filename.sh
+*   * * * * root            sh /usr/sleeptalk/bash/add-timestamp-to-filename.sh
+*   * * * * root sleep 15;  sh /usr/sleeptalk/bash/add-timestamp-to-filename.sh
+*   * * * * root sleep 30;  sh /usr/sleeptalk/bash/add-timestamp-to-filename.sh
+*   * * * * root sleep 45;  sh /usr/sleeptalk/bash/add-timestamp-to-filename.sh
 
 #
 # Will add the amplitude to the filename every 15 seconds
 #
-*   * * * * root sleep 10;  sh /usr/sleeptalk/bash/add_timestamp_to_filename.sh
-*   * * * * root sleep 25;  sh /usr/sleeptalk/bash/add_timestamp_to_filename.sh
-*   * * * * root sleep 40;  sh /usr/sleeptalk/bash/add_timestamp_to_filename.sh
-*   * * * * root sleep 55;  sh /usr/sleeptalk/bash/add_timestamp_to_filename.sh
+*   * * * * root sleep 10;  sh /usr/sleeptalk/bash/add-amplitude-to-filename.sh
+*   * * * * root sleep 25;  sh /usr/sleeptalk/bash/add-amplitude-to-filename.sh
+*   * * * * root sleep 40;  sh /usr/sleeptalk/bash/add-amplitude-to-filename.sh
+*   * * * * root sleep 55;  sh /usr/sleeptalk/bash/add-amplitude-to-filename.sh
 
 #
 # Will decrease and increase the volumne of audio files every 15 seconds
 #
-*   * * * * root sleep 12;  sh /usr/sleeptalk/bash/process_volumne.sh
-*   * * * * root sleep 27;  sh /usr/sleeptalk/bash/process_volumne.sh
-*   * * * * root sleep 42;  sh /usr/sleeptalk/bash/process_volumne.sh
-*   * * * * root sleep 57;  sh /usr/sleeptalk/bash/process_volumne.sh
+*   * * * * root sleep 12;  sh /usr/sleeptalk/bash/process-volumne.sh
+*   * * * * root sleep 27;  sh /usr/sleeptalk/bash/process-volumne.sh
+*   * * * * root sleep 42;  sh /usr/sleeptalk/bash/process-volumne.sh
+*   * * * * root sleep 57;  sh /usr/sleeptalk/bash/process-volumne.sh
 
 #
 # Will process the records every minute

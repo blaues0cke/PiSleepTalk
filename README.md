@@ -13,30 +13,30 @@ TODO
 * `/usr/sleeptalk/debug` A folder that contains debug output, not required for production mode
 * `/usr/sleeptalk/frontend` Contains the whole node.js frontend
 * `/usr/sleeptalk/scripts` Contains all bash scripts
-* `/usr/sleeptalk/records_amplitude`
-* `/usr/sleeptalk/records_decrease_volume`
-* `/usr/sleeptalk/records_increase_volume`
-* `/usr/sleeptalk/records_final`
-* `/usr/sleeptalk/records_raw`
-* `/usr/sleeptalk/records_rendered`
-* `/usr/sleeptalk/records_timestamp`
-* `/usr/sleeptalk/records_to_render`
+* `/usr/sleeptalk/records-amplitude`
+* `/usr/sleeptalk/records-decrease_volume`
+* `/usr/sleeptalk/records-increase_volume`
+* `/usr/sleeptalk/records-final`
+* `/usr/sleeptalk/records-raw`
+* `/usr/sleeptalk/records-rendered`
+* `/usr/sleeptalk/records-timestamp`
+* `/usr/sleeptalk/records-to-render`
 * `/usr/sleeptalk/test-data` Just contains test data I need to implemenet the whole stuff
 
-All folders that contain record data have to start with `record_` since the status page only watches folders starting with this prefix.
+All folders that contain record data have to start with `record-` since the status page only watches folders starting with this prefix.
 
 ## Workflow
 
 Files are processed in the following folders:
  
-1. `/usr/sleeptalk/records_raw` contains all raw audio chunks recorded by `record_chunks.sh`.
-2. `/usr/sleeptalk/records_timestamp` contains all audio chunks added with a timestamp by `add_timestamp_to_filename.sh`.
-3. `/usr/sleeptalk/records_amplitude` contains all audio chunks added with its amplitude data by `add_amplitude_to_filename.sh`.
-4. `/usr/sleeptalk/records_to_render`. contains all data that is required to render a video.
-5. `/usr/sleeptalk/records_decrease_volume` the volume of all files in this folder is decreased by 50% by `process_volume.sh`. All processed files are moved back to `/usr/sleeptalk/records_to_render`.
-6. `/usr/sleeptalk/records_increase_volume` the volume of all files in this folder is increased by 50% by `process_volume.sh`. All processed files are moved back to `/usr/sleeptalk/records_to_render`.
-7. `/usr/sleeptalk/records_rendered` contains finally rendered videos including their subtitles.
-8. `/usr/sleeptalk/records_final` contains upload ready videos build by concating multiple rendered records.
+1. `/usr/sleeptalk/records-raw` contains all raw audio chunks recorded by `record-chunks.sh`.
+2. `/usr/sleeptalk/records-timestamp` contains all audio chunks added with a timestamp by `add-timestamp-to-filename.sh`.
+3. `/usr/sleeptalk/records-amplitude` contains all audio chunks added with its amplitude data by `add-amplitude-to-filename.sh`.
+4. `/usr/sleeptalk/records-to-render`. contains all data that is required to render a video.
+5. `/usr/sleeptalk/records-decrease-volume` the volume of all files in this folder is decreased by 50% by `process-volume.sh`. All processed files are moved back to `/usr/sleeptalk/records-to-render`.
+6. `/usr/sleeptalk/records-increase-volume` the volume of all files in this folder is increased by 50% by `process-volume.sh`. All processed files are moved back to `/usr/sleeptalk/records-to-render`.
+7. `/usr/sleeptalk/records-rendered` contains finally rendered videos including their subtitles.
+8. `/usr/sleeptalk/records-final` contains upload ready videos build by concating multiple rendered records.
 
 ## Audio detection and rating logic
 

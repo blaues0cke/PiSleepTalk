@@ -9,7 +9,7 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
-AUDIO_FILE_PATHS=/usr/sleeptalk/records_to_render/*.wav
+AUDIO_FILE_PATHS=/usr/sleeptalk/records-to-render/*.wav
 
 echo "Rendering video"
 echo ""
@@ -29,20 +29,26 @@ do
 		length_in_seconds_rounded=$(( `echo ${length_in_seconds}|cut -f1 -d"."` + 1 ))
 		total_frames=$(($length_in_seconds_rounded * 15))
 
+		echo "... length in seconds: ${length_in_seconds}"
+		echo "... length in seconds rounded: ${length_in_seconds_rounded}"
+		echo "... total frames: ${total_frames}"
+
 	 	# todo move to function
 		filename=$(echo $audio_file_name | sed "s/\(\.wav\)//")
-		sleeptalk_file_path="/usr/sleeptalk/records_to_render/${filename}.images_generated"
+		sleeptalk_file_path="/usr/sleeptalk/records-to-render/${filename}.images-generated"
+
+		echo ".... filename: ${filename}"
 
 		if [ -f $sleeptalk_file_path ]; then
 
-			mp3_file_path="/usr/sleeptalk/records_to_render/$filename.mp3"
+			mp3_file_path="/usr/sleeptalk/records-to-render/${filename}.mp3"
 
-			echo "... transcoding wav to mp3 ($audio_file_path to $mp3_file_path)"
+			echo "... transcoding wav to mp3 (${audio_file_path} to ${mp3_file_path})"
 			start_time=$(date +%s.%N)
 
 			# Thanks to
 			# * http://spielwiese.la-evento.com/hokuspokus/seite2.html
-			ffmpeg -y -i "$audio_file_path" "$mp3_file_path" >/dev/null 2>&1
+			ffmpeg -y -i "$audio_file_path" "$mp3_file_path" >/usr/sleeptalk/error.log 2>&1
 
 			# Thanks to
 			# * http://unix.stackexchange.com/questions/12068/how-to-measure-time-of-program-execution-and-store-that-inside-a-variable
@@ -50,29 +56,33 @@ do
 			time_difference=$(echo "$end_time - $start_time" | bc)
 			echo "... done transcoding wav to mp3 (${time_difference}s)"
 
-			images_file_path="/usr/sleeptalk/records_to_render/${filename}_%04d.png"
-			video_file_path="/usr/sleeptalk/records_to_render/${filename}_no_sound.mp4"
+			images_file_path="/usr/sleeptalk/records-to-render/${filename}-%04d.png"
 
+			echo "... images file path: ${images_file_path}"
+
+			video_file_path="/usr/sleeptalk/records-to-render/${filename}-no-sound.mp4"
+
+			echo "... video file path: ${video_file_path}"
 			echo "... rendering images to video (${images_file_path} to ${video_file_path})"
 			start_time=$(date +%s.%N)
 
 			# Thanks to
 			# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
-			ffmpeg -y -framerate 15 -i "$images_file_path" -c:v libx264 -r 30 -pix_fmt yuv420p "$video_file_path" >/dev/null 2>&1
+			ffmpeg -y -framerate 15 -i "$images_file_path" -c:v libx264 -r 30 -pix_fmt yuv420p "$video_file_path" >/usr/sleeptalk/error.log 2>&1
 
 			end_time=$(date +%s.%N)
 			time_difference=$(echo "$end_time - $start_time" | bc)
 			echo "... done rendering images to video (${time_difference}s)"
 
-			final_video_file_path="/usr/sleeptalk/records_final/$(length_in_seconds_rounded)_${filename}.mp4"
+			final_video_file_path="/usr/sleeptalk/records-final/${length_in_seconds_rounded}-${filename}.mp4"
 
-			echo "... concating audio and video ($mp3_file_path + $video_file_path to $final_video_file_path)"
+			echo "... concating audio and video (${mp3_file_path} + ${video_file_path} to ${final_video_file_path})"
 			start_time=$(date +%s.%N)
 
 			# Thanks to
 			# * http://stackoverflow.com/questions/9049970/how-to-combine-a-mp4-video-with-a-wav-audio-with-an-offset-in-ffmpeg-from-comm
 			# * http://stackoverflow.com/questions/11779490/ffmpeg-how-to-add-new-audio-not-mixing-in-video
-			ffmpeg -y -i "$video_file_path" -i "$mp3_file_path" -map 0:v -map 1:a -vcodec copy -acodec copy -shortest "$final_video_file_path" >/dev/null 2>&1
+			ffmpeg -y -i "$video_file_path" -i "$mp3_file_path" -map 0:v -map 1:a -vcodec copy -acodec copy -shortest "$final_video_file_path" >/usr/sleeptalk/error.log 2>&1
 
 			end_time=$(date +%s.%N)
 			time_difference=$(echo "$end_time - $start_time" | bc)
@@ -80,24 +90,26 @@ do
 
 			echo "... deleting mp3 file and no-sound video (${mp3_file_path} + ${video_file_path})"
 
-			if [ -f $video_file_path ]; then
-				rm $video_file_path
-			fi
+			if [ "$debug" = false ]; then
+				if [ -f $video_file_path ]; then
+					rm $video_file_path
+				fi
 
-			if [ -f $mp3_file_path ]; then
-				rm $mp3_file_path
+				if [ -f $mp3_file_path ]; then
+					rm $mp3_file_path
+				fi
+		
+				# Thanks to
+				# * http://stackoverflow.com/questions/4325216/rm-all-files-except-some
+				find /usr/sleeptalk/records-to-render/${filename}.* | xargs rm
+				find /usr/sleeptalk/records-to-render/${filename}-*.* | xargs rm
 			fi
-
-			# Thanks to
-			# * http://stackoverflow.com/questions/4325216/rm-all-files-except-some
-			find /usr/sleeptalk/records_to_render/${filename}.* | xargs rm
-			find /usr/sleeptalk/records_to_render/${filename}_*.* | xargs rm
 
 			echo "... done"
 
 		else
 
-			echo "... no \".images_generated\" file found for \"$filename\""
+			echo "... no \".images-generated\" file found for \"${filename}\""
 
 		fi
 
