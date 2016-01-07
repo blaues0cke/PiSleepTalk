@@ -18,7 +18,7 @@ echo "... used space in percent: $usedSpaceInPercent%"
 if [ $usedSpaceInPercent -gt 90 ]; then
 	echo "... too much space is in use, stopping recording audio"
 
-    sh /usr/sleeptalk/scripts/stop.sh
+    sh /usr/sleeptalk/bash/stop.sh
 else
 
 	echo "... enough free disk space available, validating recording service"
@@ -30,7 +30,7 @@ else
 	if [ ${runningProcesses} -lt 2 ]; then
 		echo "... starting new recording service"
 
-	    sh /usr/sleeptalk/scripts/start.sh
+	    sh /usr/sleeptalk/bash/start.sh
 	fi
 fi
 

@@ -37,10 +37,10 @@ DAEMON=/usr/sbin/sleeptalkrec
 
 case "$1" in
     start)
-        sh /usr/sleeptalk/scripts/start-recording-chunks.sh
+        sh /usr/sleeptalk/bash/start-recording-chunks.sh
         ;;
     stop)
-        sh /usr/sleeptalk/scripts/stop-recording-chunks.sh
+        sh /usr/sleeptalk/bash/stop-recording-chunks.sh
         ;;
     restart)
         # RESTART

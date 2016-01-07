@@ -14,7 +14,7 @@
 echo "Installing test data"
 echo "... we will wait 1s for each file to get a realistic file time"
 
-sh /usr/sleeptalk/scripts/clean-up.sh
+sh /usr/sleeptalk/bash/clean-up.sh
 
 DEMO_FILE_PATHS=/usr/sleeptalk/test-data/*
 
