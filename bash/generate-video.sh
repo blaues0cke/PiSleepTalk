@@ -37,7 +37,7 @@ do
 		filename=$(echo $audio_file_name | sed "s/\(\.wav\)//")
 		sleeptalk_file_path="/usr/sleeptalk/records-to-render/${filename}.images-generated"
 
-		echo ".... filename: ${filename}"
+		echo "... filename: ${filename}"
 
 		if [ -f $sleeptalk_file_path ]; then
 
