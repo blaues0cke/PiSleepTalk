@@ -55,6 +55,17 @@ For this reason the following format exists. It just contains the frame count an
 	0015|Follows after 1 second
 	0060|Appears after 4 seconds from start
 
+## Hardware
+
+I am using the following hardware, but I think the most Raspberry Pi models, WiFi sticks, usb-microphones should work. Feel free to click on [this link](https://einkaufen.gooding.de/toolbox-bodensee-e-v-33513) before you buy the stuff, so our non-profit hackspace [Toolbox Bodensee e.V.](http://toolbox-bodensee.de) will get a commission.
+
+* [Raspberry Pi 2](http://www.amazon.de/gp/product/B00T2U7R7I)
+* [Power supply (2000mA)](http://www.amazon.de/gp/product/B00FA2V318)
+* [WiFi stick](http://www.amazon.de/gp/product/B003MTTJOY)
+* [USB microphone](http://www.amazon.de/gp/product/B00N1YMO9W)
+* [MicroSD card (16GB)](http://www.amazon.de/gp/product/B007XZL7PC)
+
+
 ## Videos
 
 Videos are rendered with `15` FPS. So one second is equivalent to 15 frames.
