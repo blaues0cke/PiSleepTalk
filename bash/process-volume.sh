@@ -9,8 +9,8 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
-AUDIO_FILE_PATHS_DECREASE=/usr/sleeptalk/records-decrease-volume/*
-AUDIO_FILE_PATHS_INCREASE=/usr/sleeptalk/records-increase-volume/*
+AUDIO_FILE_PATHS_DECREASE=/usr/sleeptalk/records-decrease-volume/*.wav
+AUDIO_FILE_PATHS_INCREASE=/usr/sleeptalk/records-increase-volume/*.wav
 
 echo "Processing record volumes"
 echo ""

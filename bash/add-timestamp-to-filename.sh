@@ -9,7 +9,7 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
-AUDIO_FILE_PATHS=/usr/sleeptalk/records-raw/*
+AUDIO_FILE_PATHS=/usr/sleeptalk/records-raw/*.wav
 
 echo "Adding timestamp to filename"
 

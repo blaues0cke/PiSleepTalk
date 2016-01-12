@@ -16,7 +16,7 @@ echo "... we will wait 1s for each file to get a realistic file time"
 
 sh /usr/sleeptalk/bash/clean-up.sh
 
-DEMO_FILE_PATHS=/usr/sleeptalk/test-data/*
+DEMO_FILE_PATHS=/usr/sleeptalk/test-data/*.wav
 
 set file_counter=0
 
