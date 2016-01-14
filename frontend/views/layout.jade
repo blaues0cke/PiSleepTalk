@@ -25,9 +25,7 @@ mixin modal(id, title, text, cancelButton, deleteButton, deleteButtonId)
 
 html
 	head
-		link(rel='stylesheet' href='css/bootstrap.min.css')
-		link(rel='stylesheet' href='css/font-awesome.min.css')
-		link(rel='stylesheet' href='css/sleeptalk.css')
+		link(rel='stylesheet' href='css.min.css')
 	body
 		div.container
 		nav.navbar.navbar-light.bg-faded#main-navbar
@@ -48,8 +46,4 @@ html
 				div#info-area
 
 		block content
-		script(src='js/jquery-2.1.4.min.js')
-		script(src='js/bootstrap.min.js')
-		script(src='js/wavesurfer.min.js')
-		script(src='js/wavesurfer.regions.js')
-		script(src='js/sleeptalk.js')
+		script(src='js.min.js')
