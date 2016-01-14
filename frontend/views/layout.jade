@@ -1,7 +1,13 @@
-mixin button(id, icon, text, color, baseClass)
-	a.btn(class=(color ? 'btn-' + color : 'btn-primary') + ' ' + baseClass, id=(id ? id : ''))
+mixin button(id, icon, text, color, baseClass, tooltip, tooltipPlacement, dontHideText)
+	a.btn(
+			class=(color ? 'btn-' + color : 'btn-primary') + ' ' + (baseClass ? baseClass : ''),
+			id=(id ? id : ''),
+			data-toggle='tooltip',
+			data-placement=(tooltipPlacement ? tooltipPlacement : 'top'),
+			title=(tooltip ? tooltip : '')
+		)
 		i.fa(class='fa-' + icon)
-		if text
+		if text && (!tooltip || dontHideText)
 			span &nbsp;
 			span.text= text
 	|  

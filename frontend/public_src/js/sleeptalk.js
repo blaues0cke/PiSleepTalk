@@ -30,6 +30,7 @@ $(document).ready(function() {
 	initInfoArea();
 	initTextManager();
 	initVideoList();
+	initTooltips();
 });
 
 var initInfoArea = function () {
@@ -81,6 +82,8 @@ var initWavesurfer = function () {
 
 			wavesurfer.on('play', function () {
 				$('#wave-play')
+					.attr('title', 'Pause')
+					.attr('data-original-title', 'Pause')
 					.find('.text')
 						.text('Pause')
 					.end()
@@ -92,6 +95,8 @@ var initWavesurfer = function () {
 
 			wavesurfer.on('pause', function () {
 				$('#wave-play')
+					.attr('title', 'Play')
+					.attr('data-original-title', 'Play')
 					.find('.text')
 						.text('Play')
 					.end()
@@ -266,6 +271,13 @@ var updateInfoArea = function () {
 		infoArea.text(infoText.join(' '));
 	}
 };
+
+var initTooltips = function ()
+{
+	$(function () {
+  		$('[data-toggle="tooltip"]').tooltip();
+	});
+}
 
 var initTextManager = function () {
 	var windowHeight = $(window).height();
