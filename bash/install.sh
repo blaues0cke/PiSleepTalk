@@ -15,6 +15,7 @@
 # create folders
 
 # sudo apt-get install imagemagick
+# install-samba-config.sh
 
 # Thanks to
 # * https://www.raspberrypi.org/forums/viewtopic.php?f=8&t=5988
