@@ -15,6 +15,7 @@ TODO
 * `/usr/sleeptalk/scripts` Contains all bash scripts
 * `/usr/sleeptalk/records-amplitude`
 * `/usr/sleeptalk/records-decrease_volume`
+* `/usr/sleeptalk/records-import`
 * `/usr/sleeptalk/records-increase_volume`
 * `/usr/sleeptalk/records-final`
 * `/usr/sleeptalk/records-raw`
@@ -29,14 +30,15 @@ All folders that contain record data have to start with `record-` since the stat
 
 Files are processed in the following folders:
  
-1. `/usr/sleeptalk/records-raw` contains all raw audio chunks recorded by `record-chunks.sh`.
-2. `/usr/sleeptalk/records-timestamp` contains all audio chunks added with a timestamp by `add-timestamp-to-filename.sh`.
-3. `/usr/sleeptalk/records-amplitude` contains all audio chunks added with its amplitude data by `add-amplitude-to-filename.sh`.
-4. `/usr/sleeptalk/records-to-render`. contains all data that is required to render a video.
-5. `/usr/sleeptalk/records-decrease-volume` the volume of all files in this folder is decreased by 50% by `process-volume.sh`. All processed files are moved back to `/usr/sleeptalk/records-to-render`.
-6. `/usr/sleeptalk/records-increase-volume` the volume of all files in this folder is increased by 50% by `process-volume.sh`. All processed files are moved back to `/usr/sleeptalk/records-to-render`.
-7. `/usr/sleeptalk/records-rendered` contains finally rendered videos including their subtitles.
-8. `/usr/sleeptalk/records-final` contains upload ready videos build by concating multiple rendered records.
+1. `/usr/sleeptalk/records-import` put audio files to want to import in the system in this folde using samba. It will processed like it is a recording made from your Raspberry Pi.s
+2. `/usr/sleeptalk/records-raw` contains all raw audio chunks recorded by `record-chunks.sh`.
+3. `/usr/sleeptalk/records-timestamp` contains all audio chunks added with a timestamp by `add-timestamp-to-filename.sh`.
+4. `/usr/sleeptalk/records-amplitude` contains all audio chunks added with its amplitude data by `add-amplitude-to-filename.sh`.
+5. `/usr/sleeptalk/records-to-render`. contains all data that is required to render a video.
+6. `/usr/sleeptalk/records-decrease-volume` the volume of all files in this folder is decreased by 50% by `process-volume.sh`. All processed files are moved back to `/usr/sleeptalk/records-to-render`.
+7. `/usr/sleeptalk/records-increase-volume` the volume of all files in this folder is increased by 50% by `process-volume.sh`. All processed files are moved back to `/usr/sleeptalk/records-to-render`.
+8. `/usr/sleeptalk/records-rendered` contains finally rendered videos including their subtitles.
+9. `/usr/sleeptalk/records-final` contains upload ready videos build by concating multiple rendered records.
 
 ## Audio detection and rating logic
 
@@ -65,6 +67,11 @@ I am using the following hardware, but I think the most Raspberry Pi models, WiF
 * [USB microphone](http://www.amazon.de/gp/product/B00N1YMO9W)
 * [MicroSD card (16GB)](http://www.amazon.de/gp/product/B007XZL7PC)
 
+## Importing audio
+
+You may want to import audio you recored with third party deviced like an iPhone. To do so, just put your files in the `/usr/sleeptalk/records-import` folder and make sure, you file name contains something like a number to make sure the first file (if you have multiple chunks) is processed first. The importer script (`import-audio.sh`) will also add a seed at the end of the file name to make definitely sure you won't overwrite any existing file.
+
+The importer will try to convert any audio file format to `wav`. If it fails, your file will be just deleted. After the import, the file is treated like a file that was recorded by the Raspberry Pi itself. Read the "Workflow" section to get an idea what is done with your file.
 
 ## Videos
 
