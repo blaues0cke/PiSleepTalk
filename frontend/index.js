@@ -12,12 +12,31 @@ var   bodyParser = require('body-parser')
     , express    = require('express')
     , framework  = require('./framework.js')
 	, fs         = require('fs')
-	, glob       = require("glob")
+	, glob       = require('glob')
 	, path       = require('path')
+	, util 		 = require('util');
 ;
 
 var audioFileExtension = '.wav';
 var movieFileExtension = '.mp4';
+var logStdout		   = process.stdout;
+var originalLog		   = console.log;
+
+// Thanks to
+// * http://stackoverflow.com/questions/8393636/node-log-in-a-file-instead-of-the-console
+console.log = function () {
+	var dataToLog = util.format.apply(null, arguments) + '\n';
+
+	// Thanks to
+	// * http://stackoverflow.com/questions/3459476/how-to-append-to-a-file-in-node
+	fs.appendFile('/usr/sleeptalk/error.log', dataToLog, function (err) {
+		originalLog(err);
+	});
+
+	logStdout.write(util.format.apply(null, arguments) + '\n');
+}
+
+console.error = console.log;
 
 var app = express();
 
@@ -253,6 +272,8 @@ app.delete('/logs', function (req, res) {
 	// * http://stackoverflow.com/questions/17371224/node-js-delete-content-in-file
 	fs.truncateSync('/usr/sleeptalk/error.log', 0);
 
+	// Thanks to
+	// * http://stackoverflow.com/questions/13397691/sending-a-succes-state-to-form-nodejs-express
 	res.sendStatus(200);
 });
 
