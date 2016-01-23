@@ -14,9 +14,9 @@ TODO
 * `/usr/sleeptalk/frontend` Contains the whole node.js frontend
 * `/usr/sleeptalk/scripts` Contains all bash scripts
 * `/usr/sleeptalk/records-amplitude`
-* `/usr/sleeptalk/records-decrease_volume`
+* `/usr/sleeptalk/records-decrease-volume`
 * `/usr/sleeptalk/records-import`
-* `/usr/sleeptalk/records-increase_volume`
+* `/usr/sleeptalk/records-increase-volume`
 * `/usr/sleeptalk/records-final`
 * `/usr/sleeptalk/records-raw`
 * `/usr/sleeptalk/records-rendered`
