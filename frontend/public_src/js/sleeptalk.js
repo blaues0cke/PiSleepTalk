@@ -31,6 +31,7 @@ $(document).ready(function() {
 	initTextManager();
 	initVideoList();
 	initTooltips();
+	initLogsPage();
 });
 
 var initInfoArea = function () {
@@ -276,6 +277,25 @@ var initTooltips = function ()
 {
 	$(function () {
   		$('[data-toggle="tooltip"]').tooltip();
+	});
+}
+
+var initLogsPage = function ()
+{
+	$('#clear-logs').click(function() {
+		$('#clear-logs-modal').modal('show');
+
+		return false;
+	});
+
+	$('#clear-logs-confirm').click(function() {
+		$.ajax({
+		    url: '/logs',
+		    type: 'DELETE',
+		    success: function(result) {
+		        reloadPage();
+		    }
+		});
 	});
 }
 

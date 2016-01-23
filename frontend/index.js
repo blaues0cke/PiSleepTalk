@@ -230,6 +230,32 @@ app.get('/status', function (req, res) {
 	});	
 });
 
+app.get('/logs', function (req, res) {
+	var pageData = {
+		context: 'status',
+		logData: null
+	};
+
+	var contents = fs.readFileSync('/usr/sleeptalk/error.log').toString();
+
+	if (contents && contents.length > 0) {
+		pageData.logData = contents;
+	}
+
+	res.render('logs', { pageData: pageData });
+});
+
+app.delete('/logs', function (req, res) {
+
+	console.log('Clearing logs...');
+
+	// Thanks to
+	// * http://stackoverflow.com/questions/17371224/node-js-delete-content-in-file
+	fs.truncateSync('/usr/sleeptalk/error.log', 0);
+
+	res.sendStatus(200);
+});
+
 app.get('/videos', function (req, res) {
 	var pageData = {
 		context: 'videos'

@@ -8,7 +8,8 @@ block content
 		p Disk space: #{pageData.diskUsage.free}/#{pageData.diskUsage.total} GB
 		p.lead
 			a.btn.btn-primary.btn-lg.btn-reload(role='button') Reload page
-
+			|  
+			a.btn.btn-primary.btn-lg.btn-reload(role='button', href='/logs') View logs
 	div#file-system
 			table.table.table-bordered
 				thead
