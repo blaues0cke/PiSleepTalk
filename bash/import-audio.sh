@@ -41,7 +41,7 @@ do
 
 			# Thanks to
 			# * http://spielwiese.la-evento.com/hokuspokus/seite2.html
-			ffmpeg -y -i "$audio_file_path" "$final_file_path" >/usr/sleeptalk/error.log 2>&1
+			ffmpeg -y -i "$audio_file_path" "$final_file_path" >>/usr/sleeptalk/error.log 2>&1
 
 			rm $audio_file_path
 	 	else

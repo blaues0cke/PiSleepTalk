@@ -48,7 +48,7 @@ do
 
 			# Thanks to
 			# * http://spielwiese.la-evento.com/hokuspokus/seite2.html
-			ffmpeg -y -i "$audio_file_path" "$mp3_file_path" >/usr/sleeptalk/error.log 2>&1
+			ffmpeg -y -i "$audio_file_path" "$mp3_file_path" >>/usr/sleeptalk/error.log 2>&1
 
 			# Thanks to
 			# * http://unix.stackexchange.com/questions/12068/how-to-measure-time-of-program-execution-and-store-that-inside-a-variable
@@ -68,7 +68,7 @@ do
 
 			# Thanks to
 			# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
-			ffmpeg -y -framerate 15 -i "$images_file_path" -c:v libx264 -r 30 -pix_fmt yuv420p "$video_file_path" >/usr/sleeptalk/error.log 2>&1
+			ffmpeg -y -framerate 15 -i "$images_file_path" -c:v libx264 -r 30 -pix_fmt yuv420p "$video_file_path" >>/usr/sleeptalk/error.log 2>&1
 
 			end_time=$(date +%s.%N)
 			time_difference=$(echo "$end_time - $start_time" | bc)
@@ -82,7 +82,7 @@ do
 			# Thanks to
 			# * http://stackoverflow.com/questions/9049970/how-to-combine-a-mp4-video-with-a-wav-audio-with-an-offset-in-ffmpeg-from-comm
 			# * http://stackoverflow.com/questions/11779490/ffmpeg-how-to-add-new-audio-not-mixing-in-video
-			ffmpeg -y -i "$video_file_path" -i "$mp3_file_path" -map 0:v -map 1:a -vcodec copy -acodec copy -shortest "$final_video_file_path" >/usr/sleeptalk/error.log 2>&1
+			ffmpeg -y -i "$video_file_path" -i "$mp3_file_path" -map 0:v -map 1:a -vcodec copy -acodec copy -shortest "$final_video_file_path" >>/usr/sleeptalk/error.log 2>&1
 
 			end_time=$(date +%s.%N)
 			time_difference=$(echo "$end_time - $start_time" | bc)

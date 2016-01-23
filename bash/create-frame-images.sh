@@ -156,7 +156,7 @@ do
 						# * http://stackoverflow.com/questions/23236898/add-text-on-image-at-specific-point-using-imagemagick
 						# * http://stackoverflow.com/questions/18062778/how-to-hide-command-output-in-bash
 						# Todo: Make "white" dynamic
-						convert "$last_image_path" -gravity North -pointsize 100 -fill white -annotate "+0+${top_position}" "$spoken_text" "$current_image_path" >/usr/sleeptalk/error.log 2>&1
+						convert "$last_image_path" -gravity North -pointsize 100 -fill white -annotate "+0+${top_position}" "$spoken_text" "$current_image_path" >>/usr/sleeptalk/error.log 2>&1
 
 						echo "... created image: $current_image_path"
 
