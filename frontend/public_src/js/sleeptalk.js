@@ -13,6 +13,7 @@ var audioProcess       = null;
 var fileUrl            = null;
 var frameProcess       = null;
 var infoArea           = null;
+var lastInfoText	   = null;
 var loaded             = false;
 var markerRegion       = null;
 var videoFileExtension = '.mp4';
@@ -337,7 +338,13 @@ var updateInfoArea = function () {
 
 		infoText.push(audioDuration.toFixed(2));
 		infoText.push('- Pending files: ' + fileCount);
-		infoArea.text(infoText.join(' '));
+
+		var newInfoText = infoText.join(' ');
+
+		if (lastInfoText == null || lastInfoText != newInfoText) {
+			lastInfoText = newInfoText;
+			infoArea.text(newInfoText);
+		}
 	}
 };
 
