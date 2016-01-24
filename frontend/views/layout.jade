@@ -33,6 +33,40 @@ html
 	head
 		link(rel='stylesheet' href='css.min.css')
 	body
+		+modal('shortcut-help-modal', 'Shortcuts', '', 'OK')
+			p You can use some shortcuts to save time. The following keys are supported right now:
+			ul
+				li
+					kbd Space
+					|  
+					span Play/Pause
+				li
+					kbd 1-9
+					|  
+					span Seek to part N of the audio file
+				li
+					kbd
+						i.fa.fa-arrow-left
+					|  
+					span Skip back 5 seconds
+				li
+					kbd
+						i.fa.fa-arrow-up
+					|  
+					span Skip back 10 seconds
+				li
+					kbd
+						i.fa.fa-arrow-right
+					|  
+					span Skip forward 5 seconds
+				li
+					kbd
+						i.fa.fa-arrow-down
+					|  
+					span Skip forward 10 seconds
+
+
+
 		div.container
 		nav.navbar.navbar-light.bg-faded#main-navbar
 			div
@@ -50,6 +84,7 @@ html
 
 			div.pull-right
 				div#info-area
+				+button('shortcut-help', 'question', 'Help', 'primary', '', 'Help', 'left')
 
 		block content
 		script(src='js.min.js')

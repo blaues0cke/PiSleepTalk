@@ -36,6 +36,11 @@ $(document).ready(function() {
 });
 
 var initShotcuts = function () {
+
+	$('#shortcut-help').click(function() {
+		$('#shortcut-help-modal').modal('show');
+	});
+
 	// Thanks to
 	// * http://stackoverflow.com/questions/19347269/jquery-keypress-arrow-keys
 	// * http://stackoverflow.com/questions/11807944/jquery-trigger-keypress-function-on-entire-document-but-not-inside-inputs-and-t
@@ -45,8 +50,7 @@ var initShotcuts = function () {
 
 	    	console.log('Keydown', e, e.which);
 
-	    	switch (e.which)
-	    	{
+	    	switch (e.which) {
 	    		// Keyboard
 	    		case 32:
 	    			wavesurfer.playPause();

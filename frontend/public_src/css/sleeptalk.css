@@ -40,6 +40,41 @@
 	line-height: 36px;
 	border-radius: 0;
 }
+#info-area
+{
+	display: inline-block;
+}
+#shortcut-help
+{
+	margin-left: 8px;
+}
+#shortcut-help-modal kbd
+{
+	display: inline-block;
+	width: 60px;
+	text-align: center;
+	overflow: hidden;
+	height: 26px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#shortcut-help-modal kbd .fa
+{
+	margin: 2px 0 0 0;
+}
+#shortcut-help-modal ul
+{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#shortcut-help-modal ul li
+{
+	margin-bottom: 6px;
+	padding-left: 70px;
+	position: relative;
+}
 #text-wrapper
 {
 	overflow: auto;
