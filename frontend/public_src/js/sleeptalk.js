@@ -32,7 +32,71 @@ $(document).ready(function() {
 	initVideoList();
 	initTooltips();
 	initLogsPage();
+	initShotcuts();
 });
+
+var initShotcuts = function () {
+	// Thanks to
+	// * http://stackoverflow.com/questions/19347269/jquery-keypress-arrow-keys
+	// * http://stackoverflow.com/questions/11807944/jquery-trigger-keypress-function-on-entire-document-but-not-inside-inputs-and-t
+	$(document).keydown(function(e) {
+	    var tag = e.target.tagName.toLowerCase();
+	    if (loaded && tag != 'input' && tag != 'textarea') {
+
+	    	console.log('Keydown', e, e.which);
+
+	    	switch (e.which)
+	    	{
+	    		// Keyboard
+	    		case 32:
+	    			wavesurfer.playPause();
+
+	    			break;
+
+	    		// Left
+	    		case 37:
+	    			wavesurfer.skip(-5);
+
+	    			break;
+
+	    		// Up
+	    		case 38:
+	    			wavesurfer.skip(-10);
+
+	    			break;
+
+	    		// Right
+	    		case 39:
+	    			wavesurfer.skip(5);
+
+	    			break;
+
+	    		// Down
+	    		case 40:
+	    			wavesurfer.skip(10);
+
+	    			break;
+
+	    		// 1-9
+	    		case 49:
+	    		case 50:
+	    		case 51:
+	    		case 52:
+	    		case 53:
+	    		case 54:
+	    		case 55:
+	    		case 56:
+	    		case 57:
+	    			var percent = (e.which - 48) / 100;
+	    			var seekTo  = audioDuration * percent;
+
+	    			wavesurfer.seekTo(seekTo);
+
+	    			break;
+	    	};
+	    }
+	});
+};
 
 var initInfoArea = function () {
 	infoArea = $('#info-area');
