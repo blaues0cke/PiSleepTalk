@@ -15,7 +15,8 @@ echo "Importing audio files"
 
 set file_counter=0
 
-for audio_file_path in "${audio_file_import}/*"
+dir_list=$(ls ${audio_file_import}/*)
+for audio_file_path in $dir_list
 do
 	if [ -f $audio_file_path ]; then
 

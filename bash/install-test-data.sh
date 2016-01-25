@@ -20,7 +20,8 @@ sh /usr/sleeptalk/bash/clean-up.sh
 
 set file_counter=0
 
-for demo_file_path in "${test_file_path}/*.${default_audio_format}"
+dir_list=$(ls ${test_file_path}/*.${default_audio_format} 2>/dev/null)
+for demo_file_path in $dir_list
 do
 	cp "${demo_file_path}" "${audio_file_path_raw}"
 

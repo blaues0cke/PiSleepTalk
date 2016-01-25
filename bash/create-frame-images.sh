@@ -17,7 +17,8 @@ echo ""
 debug=false
 file_counter=0
 
-for audio_file_path in "${audio_file_path_to_render}/*.${default_audio_format}"
+dir_list=$(ls ${audio_file_path_to_render}/*.${default_audio_format} 2>/dev/null)
+for audio_file_path in $dir_list
 do
 	if [ -f $audio_file_path ]; then
 

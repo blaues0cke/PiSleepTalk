@@ -18,7 +18,8 @@ file_count=0
 file_decrease_count=0
 file_increase_count=0
 
-for audio_file_path in "${audio_file_path_decrease_volume}/*${default_audio_format}"
+dir_list=$(ls ${audio_file_path_decrease_volume}/*.${default_audio_format} 2>/dev/null)
+for audio_file_path in $dir_list
 do
 	if [ -f $audio_file_path ]; then
 	 	echo "... decreasing volume of file: ${audio_file_path}"
@@ -36,7 +37,8 @@ do
 	fi
 done
 
-for audio_file_path in "${audio_file_path_increase_volume}/*${default_audio_format}"
+dir_list=$(ls ${audio_file_path_increase_volume}/*.${default_audio_format} 2>/dev/null)
+for audio_file_path in $dir_list
 do
 	if [ -f $audio_file_path ]; then
 	 	echo "... increasing volume of file: ${audio_file_path}"

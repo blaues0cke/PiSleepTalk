@@ -31,16 +31,17 @@ last_audio_file_path="" # add "should be deleted flag"
 
 # Known "problem": We are not able to detect complete audio files on the end of this loop
 #                  but this is not neccssary since we will get it in the next iteration
-for audio_file_path in "${audio_file_path_amplitude}/*.${default_audio_format}"
+dir_list=$(ls ${audio_file_path_amplitude}/*.${default_audio_format} 2>/dev/null)
+for audio_file_path in $dir_list
 do
 	if [ -f $audio_file_path ]; then
 	 	echo "... processing file: ${audio_file_path}"
 
 	 	audio_file_name=$(basename $audio_file_path)
 
-	 	timestamp=$(echo $audio_file_name | sed -r -n 's#^([0-9]+)-max-([0-9.]+)-mid-([0-9.]+)\.${default_audio_format}$#\1#p')
-	 	max_amplitude=$(echo $audio_file_name | sed -r -n 's#^([0-9]+)-max-([0-9.]+)-mid-([0-9.]+)\.${default_audio_format}$#\2#p')
-	 	mid_amplitude=$(echo $audio_file_name | sed -r -n 's#^([0-9]+)-max-([0-9.]+)-mid-([0-9.]+)\.${default_audio_format}$#\3#p')
+	 	timestamp=$(echo $audio_file_name | sed -r -n 's#^([0-9]+)-max-([0-9.]+)-mid-([0-9.]+)\.'"${default_audio_format}"'$#\1#p')
+	 	max_amplitude=$(echo $audio_file_name | sed -r -n 's#^([0-9]+)-max-([0-9.]+)-mid-([0-9.]+)\.'"${default_audio_format}"'$#\2#p')
+	 	mid_amplitude=$(echo $audio_file_name | sed -r -n 's#^([0-9]+)-max-([0-9.]+)-mid-([0-9.]+)\.'"${default_audio_format}"'$#\3#p')
 
 		echo "... timestamp: ${timestamp}"
 		echo "... maximum amplitude: ${max_amplitude}"
@@ -56,7 +57,7 @@ do
 		# Todo: Function?
 		[ ${max_amplitude%.*} -eq ${max_amplitude_threshold%.*} ] && [ ${max_amplitude#*.} \> ${max_amplitude_threshold#*.} ] || [ ${max_amplitude%.*} -gt ${max_amplitude_threshold%.*} ];
 		max_amplitude_compare=$?
-		if [ "${max_amplitude_compare}" -eq 0 ]; then max_amplitude_compare=1; else max_amplitude_compare=0; fi
+		if [ "$max_amplitude_compare" -eq 0 ]; then max_amplitude_compare=1; else max_amplitude_compare=0; fi
 
 		[ ${mid_amplitude%.*} -eq ${mid_amplitude_threshold%.*} ] && [ ${mid_amplitude#*.} \> ${mid_amplitude_threshold#*.} ] || [ ${mid_amplitude%.*} -gt ${mid_amplitude_threshold%.*} ];
 		mid_amplitude_compare=$?

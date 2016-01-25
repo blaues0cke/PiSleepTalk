@@ -17,7 +17,8 @@ echo ""
 debug=false
 file_counter=0
 
-for audio_file_path in "${audio_file_path_to_render}/*.${default_audio_format}"
+dir_list=$(ls ${audio_file_path_to_render}/*.${default_audio_format} 2>/dev/null)
+for audio_file_path in $dir_list
 do
 	if [ -f $audio_file_path ]; then
 
@@ -35,7 +36,7 @@ do
 
 	 	# todo move to function
 		filename=$(echo $audio_file_name | sed "s/\(\.${default_audio_format}\)//")
-		sleeptalk_file_path="${audio_file_path_rendered}/${filename}.${default_image_lock_file_format}"
+		sleeptalk_file_path="${audio_file_path_to_render}/${filename}.${default_image_lock_file_format}"
 
 		echo "... filename: ${filename}"
 
@@ -109,7 +110,7 @@ do
 
 		else
 
-			echo "... no \".${default_image_lock_file_format}\" file found for \"${filename}\""
+			echo "... no \".${default_image_lock_file_format}\" file found for \"${filename}\" (${sleeptalk_file_path})"
 
 		fi
 

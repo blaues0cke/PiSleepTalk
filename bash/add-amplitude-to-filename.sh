@@ -16,7 +16,8 @@ echo ""
 
 set file_counter=0
 
-for audio_file_path in "${audio_file_path_timestamp}/*.${default_audio_format}"
+dir_list=$(ls ${audio_file_path_timestamp}/*.${default_audio_format} 2>/dev/null)
+for audio_file_path in $dir_list
 do
 	if [ -f $audio_file_path ]; then
 	 	echo "... processing file: $audio_file_path"
