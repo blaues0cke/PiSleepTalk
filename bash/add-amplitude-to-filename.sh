@@ -9,14 +9,14 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
-AUDIO_FILE_PATHS=/usr/sleeptalk/records-timestamp/*.wav
+. /usr/sleeptalk/config/config.cfg
 
 echo "Adding amplitude to filename"
 echo ""
 
 set file_counter=0
 
-for audio_file_path in $AUDIO_FILE_PATHS
+for audio_file_path in "${audio_file_path_timestamp}/*.${default_audio_format}"
 do
 	if [ -f $audio_file_path ]; then
 	 	echo "... processing file: $audio_file_path"
@@ -24,7 +24,7 @@ do
 	 	audio_file_name=$(basename $audio_file_path)
 
 	 	# todo move to function
-	 	audio_timestamp=$(echo $audio_file_name | sed "s/\(\.wav\)//")
+	 	audio_timestamp=$(echo $audio_file_name | sed "s/\(\.${default_audio_format}\)//")
 
 	 	# todo: combine those two sox calls to one since both required amplitudes are retured with each call
 
@@ -36,16 +36,16 @@ do
 
 		if [ -n "$maximum_amplitude" ] && [ -n "$midline_amplitude" ]; then
 
-		 	new_audio_file_path="/usr/sleeptalk/records-amplitude/${audio_timestamp}-max-${maximum_amplitude}-mid-${midline_amplitude}.wav"
+		 	new_audio_file_path="${audio_file_path_amplitude}/${audio_timestamp}-max-${maximum_amplitude}-mid-${midline_amplitude}.${default_audio_format}"
 
-		 	echo "... new file path: $new_audio_file_path"
+		 	echo "... new file path: ${new_audio_file_path}"
 
 		 	mv $audio_file_path $new_audio_file_path
 
 		else
 
 			echo "... not able to get maximum and midline amplitude from file, file may be no audio file"
-			echo "... deleting $audio_file_path"
+			echo "... deleting ${audio_file_path}"
 
 			rm $audio_file_path
 		fi

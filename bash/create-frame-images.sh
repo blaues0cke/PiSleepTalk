@@ -9,7 +9,7 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
-AUDIO_FILE_PATHS=/usr/sleeptalk/records-to-render/*.wav
+. /usr/sleeptalk/config/config.cfg
 
 echo "Rendering images"
 echo ""
@@ -17,7 +17,7 @@ echo ""
 debug=false
 file_counter=0
 
-for audio_file_path in $AUDIO_FILE_PATHS
+for audio_file_path in "${audio_file_path_to_render}/*.${default_audio_format}"
 do
 	if [ -f $audio_file_path ]; then
 
@@ -25,23 +25,23 @@ do
 		# Thanks to
 		# * http://www.unix.com/shell-programming-and-scripting/160300-ceiling-floor-functions.html
 		length_in_seconds_rounded=$(( `echo ${length_in_seconds}|cut -f1 -d"."` + 1 ))
-		total_frames=$(($length_in_seconds_rounded * 15))
+		total_frames=$(($length_in_seconds_rounded * $frames_per_second))
 
 		echo "... audio length: ${length_in_seconds} (${length_in_seconds_rounded}, frames: ${total_frames})"
 
 		audio_file_name=$(basename $audio_file_path)
 
 	 	# todo move to function
-		filename=$(echo $audio_file_name | sed "s/\(\.wav\)//")
-		sleeptalk_file_path="/usr/sleeptalk/records-to-render/${filename}.sleeptalk"
-		lock_image_file_path="/usr/sleeptalk/records-to-render/${filename}.images-generated"
+		filename=$(echo $audio_file_name | sed "s/\(\.${default_audio_format}\)//")
+		sleeptalk_file_path="${audio_file_path_to_render}/${filename}.${default_sleeptalk_format}"
+		lock_image_file_path="${audio_file_path_to_render}/${filename}.${default_image_lock_file_format}"
 
 		if [ ! -f $lock_image_file_path ]; then
 			if [ -f $sleeptalk_file_path ]; then
 
 				echo "... starting to create images, sleeptalk file path: ${sleeptalk_file_path}"
 
-				last_image_path="/usr/sleeptalk/records-to-render/${filename}-base.png"
+				last_image_path="${audio_file_path_to_render}/${filename}-base.${default_image_format}"
 				base_image_path="${last_image_path}"
 
 				last_frame_position=-1
@@ -88,7 +88,7 @@ do
 					        	# Thanks to
 					        	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
 					        	target_frame_position_long=$(printf %04d ${i})
-					        	new_image_file_path="/usr/sleeptalk/records-to-render/${filename}-${target_frame_position_long}.png"
+					        	new_image_file_path="${audio_file_path_to_render}/${filename}-${target_frame_position_long}.${default_image_format}"
 
 					        	echo "... copying ${last_image_path} to ${new_image_file_path}"
 					            
@@ -102,7 +102,7 @@ do
 
 							difference=$(($frame_position_clean - $last_frame_position_clean))
 
-							echo "... gap to last image: $difference (${frame_position_clean} - ${last_frame_position_clean})"
+							echo "... gap to last image: ${difference} (${frame_position_clean} - ${last_frame_position_clean})"
 
 							if [ $difference -gt -1 ]; then
 
@@ -117,7 +117,7 @@ do
 						        	# Thanks to
 						        	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
 						        	target_frame_position_long=$(printf %04d ${target_frame_position})
-						        	new_image_file_path="/usr/sleeptalk/records-to-render/${filename}-${target_frame_position_long}.png"
+						        	new_image_file_path="${audio_file_path_to_render}/${filename}-${target_frame_position_long}.${default_image_format}"
 
 						        	echo "... copying ${last_image_path} to ${new_image_file_path}"
 						            
@@ -136,16 +136,16 @@ do
 
 							line_counter=0
 
-							last_image_path="/usr/sleeptalk/records-to-render/${filename}-base.png"
+							last_image_path="${audio_file_path_to_render}/${filename}-base.${default_image_format}"
 											
 							if [ "$debug" = true ]; then
-								last_image_path="/usr/sleeptalk/debug/${filename}-base.png"
+								last_image_path="${audio_file_path_debug}/${filename}-base.${default_image_format}"
 							fi
 						fi
 
-						echo "... found text \"$spoken_text\" at position: $frame_position"
+						echo "... found text \"${spoken_text}\" at position: ${frame_position}"
 
-						current_image_path="/usr/sleeptalk/records-to-render/${filename}-${frame_position}.png"
+						current_image_path="${audio_file_path_to_render}/${filename}-${frame_position}.${default_image_format}"
 						
 						# Thanks to
 						# * https://www.shell-tips.com/2010/06/14/performing-math-calculation-in-bash/
@@ -156,12 +156,12 @@ do
 						# * http://stackoverflow.com/questions/23236898/add-text-on-image-at-specific-point-using-imagemagick
 						# * http://stackoverflow.com/questions/18062778/how-to-hide-command-output-in-bash
 						# Todo: Make "white" dynamic
-						convert "$last_image_path" -gravity North -pointsize 100 -fill white -annotate "+0+${top_position}" "$spoken_text" "$current_image_path" >>/usr/sleeptalk/error.log 2>&1
+						convert "${last_image_path}" -gravity North -pointsize 100 -fill white -annotate "+0+${top_position}" "${spoken_text}" "${current_image_path}" >>/usr/sleeptalk/error.log 2>&1
 
-						echo "... created image: $current_image_path"
+						echo "... created image: ${current_image_path}"
 
-						last_image_path="$current_image_path"
-						last_frame_position="$frame_position"
+						last_image_path="${current_image_path}"
+						last_frame_position="${frame_position}"
 
 						line_counter=$((line_counter + 1))
 					else
@@ -176,12 +176,12 @@ do
 
 					# Thanks to
 					# * http://stackoverflow.com/questions/11123717/removing-leading-zeros-before-passing-the-variable-to-iptables
-					frame_position_clean=$(echo $frame_position | sed "s/^0*\([1-9]\)/\1/;s/^0*$/0/")
-					last_frame_position_clean=$(echo $last_frame_position | sed "s/^0*\([1-9]\)/\1/;s/^0*$/0/")
+					frame_position_clean=$(echo ${frame_position} | sed "s/^0*\([1-9]\)/\1/;s/^0*$/0/")
+					last_frame_position_clean=$(echo ${last_frame_position} | sed "s/^0*\([1-9]\)/\1/;s/^0*$/0/")
 
 					difference=$(($total_frames - $last_frame_position_clean))
 
-					echo "... gap to last image: $difference ($total_frames - $last_frame_position_clean)"
+					echo "... gap to last image: ${difference} (${total_frames} - ${last_frame_position_clean})"
 
 					if [ $difference -gt -1 ]; then
 
@@ -196,7 +196,7 @@ do
 				        	# Thanks to
 				        	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
 				        	target_frame_position_long=$(printf %04d ${target_frame_position})
-				        	new_image_file_path="/usr/sleeptalk/records-to-render/${filename}-${target_frame_position_long}.png"
+				        	new_image_file_path="${audio_file_path_to_render}/${filename}-${target_frame_position_long}.${default_image_format}"
 
 				        	echo "... copying ${last_image_path} to ${new_image_file_path}"
 				            
@@ -216,10 +216,10 @@ do
 				echo "... done"
 
 			else
-				echo "... no \".sleeptalk\" file found for \"$filename\""
+				echo "... no \".${default_sleeptalk_format}\" file found for \"${filename}\""
 			fi
 		else
-			echo "... skipping \".images-generated\" file found for \"$filename\""
+			echo "... skipping \".${default_image_lock_file_format}\" file found for \"${filename}\""
 		fi
 
 		echo ""
@@ -228,7 +228,7 @@ do
 	fi
 done
 
-if [ -n "$file_counter" ]; then
+if [ -n "${file_counter}" ]; then
     echo "Done rendering images, processed files: ${file_counter}"
 else
 	echo "Done rendering images, no files found";

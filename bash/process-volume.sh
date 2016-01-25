@@ -9,8 +9,7 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
-AUDIO_FILE_PATHS_DECREASE=/usr/sleeptalk/records-decrease-volume/*.wav
-AUDIO_FILE_PATHS_INCREASE=/usr/sleeptalk/records-increase-volume/*.wav
+. /usr/sleeptalk/config/config.cfg
 
 echo "Processing record volumes"
 echo ""
@@ -19,13 +18,13 @@ file_count=0
 file_decrease_count=0
 file_increase_count=0
 
-for audio_file_path in $AUDIO_FILE_PATHS_DECREASE
+for audio_file_path in "${audio_file_path_decrease_volume}/*${default_audio_format}"
 do
 	if [ -f $audio_file_path ]; then
-	 	echo "... decreasing volume of file: $audio_file_path"
+	 	echo "... decreasing volume of file: ${audio_file_path}"
 
 	 	audio_file_name=$(basename $audio_file_path)
-	 	final_audio_path="/usr/sleeptalk/records-to-render/VD-${audio_file_name}"
+	 	final_audio_path="${audio_file_path_to_render}/VD-${audio_file_name}"
 
 	 	sox -v 0.5 $audio_file_path $final_audio_path
 	 	rm $audio_file_path
@@ -37,13 +36,13 @@ do
 	fi
 done
 
-for audio_file_path in $AUDIO_FILE_PATHS_INCREASE
+for audio_file_path in "${audio_file_path_increase_volume}/*${default_audio_format}"
 do
 	if [ -f $audio_file_path ]; then
-	 	echo "... increasing volume of file: $audio_file_path"
+	 	echo "... increasing volume of file: ${audio_file_path}"
 
 	 	audio_file_name=$(basename $audio_file_path)
-	 	final_audio_path="/usr/sleeptalk/records-to-render/VI-${audio_file_name}"
+	 	final_audio_path="${audio_file_path_to_render}/VI-${audio_file_name}"
 
 	 	sox -v 1.5 $audio_file_path $final_audio_path
 	 	rm $audio_file_path

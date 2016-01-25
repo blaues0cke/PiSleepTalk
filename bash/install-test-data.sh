@@ -11,18 +11,18 @@
 
 # todo: sercurity question/explicit user confirmation
 
+. /usr/sleeptalk/config/config.cfg
+
 echo "Installing test data"
 echo "... we will wait 1s for each file to get a realistic file time"
 
 sh /usr/sleeptalk/bash/clean-up.sh
 
-DEMO_FILE_PATHS=/usr/sleeptalk/test-data/*.wav
-
 set file_counter=0
 
-for demo_file_path in $DEMO_FILE_PATHS
+for demo_file_path in "${test_file_path}/*.${default_audio_format}"
 do
-	cp "$demo_file_path" /usr/sleeptalk/records-raw
+	cp "${demo_file_path}" "${audio_file_path_raw}"
 
 	echo "... copied ${demo_file_path}"
 

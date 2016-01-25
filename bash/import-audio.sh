@@ -9,13 +9,13 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
-AUDIO_FILE_PATHS=/usr/sleeptalk/records-import/*
+. /usr/sleeptalk/config/config.cfg
 
 echo "Importing audio files"
 
 set file_counter=0
 
-for audio_file_path in $AUDIO_FILE_PATHS
+for audio_file_path in "${audio_file_import}/*"
 do
 	if [ -f $audio_file_path ]; then
 
@@ -31,21 +31,21 @@ do
 	 	echo "... processing file: ${audio_file_path}, extension: ${extension}, filename: ${file_name}"
 
 	 	random_string=$(cat /dev/urandom | tr -cd 'a-f0-9' | head -c 32)
-	 	final_file_name="${file_name}_${random_string}.wav"
-	 	final_file_path="/usr/sleeptalk/records-raw/${final_file_name}"
+	 	final_file_name="${file_name}_${random_string}.${default_audio_format}"
+	 	final_file_path="${audio_file_path_raw}/${final_file_name}"
 
 	 	echo "... final file name will be: ${final_file_name}"
 
-	 	if [ "$extension" != "wav" ]; then
-	 		echo "... transcoding file (${extension}) to wav"
+	 	if [ "$extension" != "${default_audio_format}" ]; then
+	 		echo "... transcoding file (${extension}) to ${default_audio_format}"
 
 			# Thanks to
 			# * http://spielwiese.la-evento.com/hokuspokus/seite2.html
-			ffmpeg -y -i "$audio_file_path" "$final_file_path" >>/usr/sleeptalk/error.log 2>&1
+			ffmpeg -y -i "${audio_file_path}" "${final_file_path}" >>/usr/sleeptalk/error.log 2>&1
 
 			rm $audio_file_path
 	 	else
-	 		echo "... file is already in wav format, we don't have to transcode"
+	 		echo "... file is already in ${default_audio_format} format, we don't have to transcode"
 
 	 		mv $audio_file_path $final_file_path
 	 	fi  

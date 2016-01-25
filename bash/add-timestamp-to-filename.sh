@@ -9,23 +9,23 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
-AUDIO_FILE_PATHS=/usr/sleeptalk/records-raw/*.wav
+. /usr/sleeptalk/config/config.cfg
 
 echo "Adding timestamp to filename"
 
 set file_counter=0
 
-for audio_file_path in $AUDIO_FILE_PATHS
+for audio_file_path in "${audio_file_path_raw}/*.${default_audio_format}"
 do
 	if [ -f $audio_file_path ]; then
 
-	 	echo "... processing file: $audio_file_path"
+	 	echo "... processing file: ${audio_file_path}"
 
 	 	audio_file_name=$(basename $audio_file_path)
 
 	 	modify_date=$(stat -c %Y $audio_file_path)
 
-	 	new_audio_file_path="/usr/sleeptalk/records-timestamp/${modify_date}.wav"
+	 	new_audio_file_path="${audio_file_path_timestamp}/${modify_date}.${default_audio_format}"
 
 	 	echo "... new file path: ${new_audio_file_path}"
 
@@ -39,7 +39,7 @@ do
 	fi
 done
 
-if [ -n "$file_counter" ]; then
+if [ -n "${file_counter}" ]; then
     echo "Done adding timestamp to filename, processed files: ${file_counter}"
 else
 	echo "Done adding timestamp to filename, no files found";
