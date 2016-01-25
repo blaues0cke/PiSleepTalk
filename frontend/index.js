@@ -7,11 +7,13 @@
 //          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 //
 
-var   bodyParser = require('body-parser')
+var   auth       = require('basic-auth')
+	, bodyParser = require('body-parser')
 	, diskusage  = require('diskusage')
     , express    = require('express')
     , framework  = require('./framework.js')
 	, fs         = require('fs')
+	, iniparser  = require('iniparser')
 	, glob       = require('glob')
 	, path       = require('path')
 	, util 		 = require('util');
@@ -21,6 +23,9 @@ var audioFileExtension = '.wav';
 var movieFileExtension = '.mp4';
 var logStdout		   = process.stdout;
 var originalLog		   = console.log;
+var config 			   = iniparser.parseSync('/usr/sleeptalk/config/config.cfg');
+
+console.log(config);
 
 // Thanks to
 // * http://stackoverflow.com/questions/8393636/node-log-in-a-file-instead-of-the-console
@@ -45,6 +50,18 @@ app.set('view engine', 'jade');
 // * http://stackoverflow.com/questions/25550819/error-most-middleware-like-bodyparser-is-no-longer-bundled-with-express
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
+
+// Thanks to
+// * http://stackoverflow.com/questions/23616371/basic-http-authentication-with-node-and-express-4
+app.use(function(req, res, next) {
+	var user = auth(req);
+	if (!user || !user.name || !user.pass | user.name != config.web_user || user.pass != config.web_password) {
+		res.set('WWW-Authenticate', 'Basic realm="example"');
+		return res.status(401).send();
+	}
+
+	return next();
+});
 
 var checkFile = function (req, res, ending, path) {
 	if (req.params.name && framework.alphanumeric(req.params.name)) {
