@@ -78,23 +78,6 @@ app.use(function(req, res, next) {
 
 
 
-
-
-
-
-app.post('/:name' + defines.audioFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, defines.audioFileExtension, 'records-to-render');
-
-	if (filepath) {
-		var content 		= req.body.content + "\n\n";
-		var contentFilePath = '/usr/sleeptalk/records-to-render/' + req.params.name + '.sleeptalk';
-
-		fs.writeFileSync(contentFilePath, content); 
-
-		res.status(200).send('OK');
-	}
-});
-
 app.post('/decrease-volume/:name' + defines.audioFileExtension, function(req, res) {
 	var filepath = checkFile(req, res, defines.audioFileExtension, 'records-to-render');
 
