@@ -7,9 +7,9 @@
 //          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 //
 
-var   defines   = require('../defines.js')
+var   defines   = require('../core/defines.js')
 	, diskusage = require('diskusage')
-	, framework = require('../framework.js')
+	, framework = require('../core/framework.js')
 	, fs        = require('fs')
 	, glob      = require('glob')
 ;

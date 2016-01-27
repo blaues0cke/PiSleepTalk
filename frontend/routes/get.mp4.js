@@ -7,8 +7,8 @@
 //          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 //
 
-var   defines   = require('../defines.js')
-	, framework = require('../framework.js')
+var   defines   = require('../core/defines.js')
+	, framework = require('../core/framework.js')
 ;
 
 module.exports = function(app) {

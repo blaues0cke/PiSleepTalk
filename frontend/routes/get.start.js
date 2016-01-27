@@ -8,7 +8,7 @@
 //
 
 var   fs      = require('fs')
-	, defines = require('../defines.js')
+	, defines = require('../core/defines.js')
 	, glob    = require('glob')
 	, path    = require('path')
 ;

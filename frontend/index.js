@@ -13,7 +13,7 @@ var   bodyParser = require('body-parser')
     , path       = require('path')
 ;
 
-require('./log.js');
+require('./core/log.js');
 
 var app = express();
 
@@ -23,7 +23,7 @@ app.set('view engine', 'jade');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-var auth = require('./auth.js');
+var auth = require('./core/auth.js');
 
 app.use(auth);
 
