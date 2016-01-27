@@ -7,6 +7,12 @@
 //          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 //
 
+var   fs      = require('fs')
+	, defines = require('../defines.js')
+	, glob    = require('glob')
+	, path    = require('path')
+;
+
 module.exports = function(app) {
 	app.get('/', function (req, res) {
 
@@ -15,7 +21,7 @@ module.exports = function(app) {
 		// Thanks to
 		// * http://stackoverflow.com/questions/11282880/nodejs-module-to-find-files
 		// * https://github.com/isaacs/node-glob
-		var files = glob.sync('/usr/sleeptalk/records-to-render/*' + audioFileExtension);
+		var files = glob.sync('/usr/sleeptalk/records-to-render/*' + defines.audioFileExtension);
 			
 		if (files && files.length > 0) {
 			for (var key in files) {

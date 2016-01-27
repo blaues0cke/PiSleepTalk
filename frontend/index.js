@@ -19,8 +19,6 @@ var   auth       = require('basic-auth')
 	, util 		 = require('util');
 ;
 
-var audioFileExtension = '.wav';
-var movieFileExtension = '.mp4';
 var logStdout		   = process.stdout;
 var originalLog		   = console.log;
 var config 			   = iniparser.parseSync('/usr/sleeptalk/config/config.cfg');
