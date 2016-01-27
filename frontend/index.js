@@ -78,15 +78,7 @@ app.use(function(req, res, next) {
 
 
 
-app.delete('/:name' + defines.movieFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, defines.movieFileExtension, 'records-final');
 
-	if (filepath) {
-		fs.unlinkSync(filepath);
-
-		res.status(200).send('OK');
-	}
-});
 
 app.delete('/:name' + defines.audioFileExtension, function(req, res) {
 	var filepath = checkFile(req, res, defines.audioFileExtension, 'records-to-render');
