@@ -7,40 +7,13 @@
 //          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 //
 
-var   auth       = require('basic-auth')
-	, bodyParser = require('body-parser')
-	, defines    = require('./defines.js')
-	, diskusage  = require('diskusage')
-    , express    = require('express')
-    , framework  = require('./framework.js')
-	, fs         = require('fs')
-	, iniparser  = require('iniparser')
-	, glob       = require('glob')
-	, path       = require('path')
-	, util 		 = require('util');
+var   bodyParser = require('body-parser')
+	, express    = require('express')
+    , fs         = require('fs')
+    , path       = require('path')
 ;
 
-var logStdout		   = process.stdout;
-var originalLog		   = console.log;
-var config 			   = iniparser.parseSync('/usr/sleeptalk/config/config.cfg');
-
-console.log(config);
-
-// Thanks to
-// * http://stackoverflow.com/questions/8393636/node-log-in-a-file-instead-of-the-console
-console.log = function () {
-	var dataToLog = util.format.apply(null, arguments) + '\n';
-
-	// Thanks to
-	// * http://stackoverflow.com/questions/3459476/how-to-append-to-a-file-in-node
-	fs.appendFile('/usr/sleeptalk/error.log', dataToLog, function (err) {
-		originalLog(err);
-	});
-
-	logStdout.write(util.format.apply(null, arguments) + '\n');
-}
-
-console.error = console.log;
+require('./log.js');
 
 var app = express();
 
@@ -50,29 +23,14 @@ app.set('view engine', 'jade');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// Thanks to
-// * http://stackoverflow.com/questions/23616371/basic-http-authentication-with-node-and-express-4
-app.use(function(req, res, next) {
-	var user = auth(req);
-	if (!user || !user.name || !user.pass | user.name != config.web_user || user.pass != config.web_password) {
-		res.set('WWW-Authenticate', 'Basic realm="example"');
-		return res.status(401).send();
-	}
+var auth = require('./auth.js');
 
-	return next();
-});
-
-
+app.use(auth);
 
 // Thanks to
 // * Michael Malura (https://github.com/blaues0cke/PiSleepTalk/issues/48)
-
-    fs.readdirSync('./routes').forEach(function(file) {
-        require(path.join(__dirname, 'routes', file))(app);
-    });
-
-
-
-
+fs.readdirSync('./routes').forEach(function(file) {
+    require(path.join(__dirname, 'routes', file))(app);
+});
 
 app.listen(9888);
