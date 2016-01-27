@@ -9,6 +9,7 @@
 
 var   auth       = require('basic-auth')
 	, bodyParser = require('body-parser')
+	, defines    = require('./defines.js')
 	, diskusage  = require('diskusage')
     , express    = require('express')
     , framework  = require('./framework.js')
@@ -61,27 +62,7 @@ app.use(function(req, res, next) {
 	return next();
 });
 
-var checkFile = function (req, res, ending, path) {
-	if (req.params.name && framework.alphanumeric(req.params.name)) {
-		// Thanks to
-		// * http://stackoverflow.com/questions/8181879/nodejs-setting-up-wildcard-routes-or-url-rewrite
-		var filepath = '/usr/sleeptalk/' + path + '/' + req.params.name + ending;
 
-		if (fs.existsSync(filepath)) {
-			return filepath;
-		}
-		else {
-			// Thanks to
-			// * http://stackoverflow.com/questions/8393275/how-to-programmatically-send-a-404-response-with-express-node
-			res.status(404).send('Sorry, file not found. "' + filepath + '" does not exist on server.');
-		}
-	}
-	else {
-		res.status(500).send('Malformed filename. Stop tryin to hack this server.');
-	}
-		
-	return false;
-};
 
 // Thanks to
 // * Michael Malura (https://github.com/blaues0cke/PiSleepTalk/issues/48)
@@ -91,8 +72,10 @@ var checkFile = function (req, res, ending, path) {
     });
 
 
-app.get('/:name' + audioFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, audioFileExtension, 'records-to-render');
+
+
+app.get('/:name' + defines.movieFileExtension, function(req, res) {
+	var filepath = checkFile(req, res, defines.movieFileExtension, 'records-final');
 
 	if (filepath) {
 		// Thanks to
@@ -101,24 +84,14 @@ app.get('/:name' + audioFileExtension, function(req, res) {
 	}
 });
 
-app.get('/:name' + movieFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, movieFileExtension, 'records-final');
-
-	if (filepath) {
-		// Thanks to
-		// * http://stackoverflow.com/questions/9321027/how-to-send-files-with-node-js
-		res.sendFile(filepath);
-	}
-});
-
-app.get('/download/:name' + movieFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, movieFileExtension, 'records-final');
+app.get('/download/:name' + defines.movieFileExtension, function(req, res) {
+	var filepath = checkFile(req, res, defines.movieFileExtension, 'records-final');
 
 	if (filepath) {
 		// Thanks to
 		// * http://stackoverflow.com/questions/7288814/download-a-file-from-nodejs-server-using-express
-		res.setHeader('Content-disposition', 'attachment; filename=' + req.params.name + movieFileExtension);
-		res.setHeader('Content-type', 'video/' + movieFileExtension.replace('.', ''));
+		res.setHeader('Content-disposition', 'attachment; filename=' + req.params.name + defines.movieFileExtension);
+		res.setHeader('Content-type', 'video/' + defines.movieFileExtension.replace('.', ''));
 
 		// Thanks to
 		// * http://stackoverflow.com/questions/9321027/how-to-send-files-with-node-js
@@ -126,8 +99,8 @@ app.get('/download/:name' + movieFileExtension, function(req, res) {
 	}
 });
 
-app.delete('/:name' + movieFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, movieFileExtension, 'records-final');
+app.delete('/:name' + defines.movieFileExtension, function(req, res) {
+	var filepath = checkFile(req, res, defines.movieFileExtension, 'records-final');
 
 	if (filepath) {
 		fs.unlinkSync(filepath);
@@ -136,8 +109,8 @@ app.delete('/:name' + movieFileExtension, function(req, res) {
 	}
 });
 
-app.delete('/:name' + audioFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, audioFileExtension, 'records-to-render');
+app.delete('/:name' + defines.audioFileExtension, function(req, res) {
+	var filepath = checkFile(req, res, defines.audioFileExtension, 'records-to-render');
 
 	if (filepath) {
 		fs.unlinkSync(filepath);
@@ -146,8 +119,8 @@ app.delete('/:name' + audioFileExtension, function(req, res) {
 	}
 });
 
-app.post('/:name' + audioFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, audioFileExtension, 'records-to-render');
+app.post('/:name' + defines.audioFileExtension, function(req, res) {
+	var filepath = checkFile(req, res, defines.audioFileExtension, 'records-to-render');
 
 	if (filepath) {
 		var content 		= req.body.content + "\n\n";
@@ -159,25 +132,25 @@ app.post('/:name' + audioFileExtension, function(req, res) {
 	}
 });
 
-app.post('/decrease-volume/:name' + audioFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, audioFileExtension, 'records-to-render');
+app.post('/decrease-volume/:name' + defines.audioFileExtension, function(req, res) {
+	var filepath = checkFile(req, res, defines.audioFileExtension, 'records-to-render');
 
 	if (filepath) {
 		// Thanks to
 		// * http://stackoverflow.com/questions/8579055/how-i-move-files-on-node-js
-		fs.rename(filepath, '/usr/sleeptalk/records-decrease-volume/' + req.params.name + audioFileExtension);
+		fs.rename(filepath, '/usr/sleeptalk/records-decrease-volume/' + req.params.name + defines.audioFileExtension);
 
 		res.status(200).send('OK');
 	}
 });
 
-app.post('/increase-volume/:name' + audioFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, audioFileExtension, 'records-to-render');
+app.post('/increase-volume/:name' + defines.audioFileExtension, function(req, res) {
+	var filepath = checkFile(req, res, defines.audioFileExtension, 'records-to-render');
 
 	if (filepath) {
 		// Thanks to
 		// * http://stackoverflow.com/questions/8579055/how-i-move-files-on-node-js
-		fs.rename(filepath, '/usr/sleeptalk/records-increase-volume/' + req.params.name + audioFileExtension);
+		fs.rename(filepath, '/usr/sleeptalk/records-increase-volume/' + req.params.name + defines.audioFileExtension);
 
 		res.status(200).send('OK');
 	}
