@@ -86,20 +86,7 @@ app.use(function(req, res, next) {
 
 
 
-app.get('/logs', function (req, res) {
-	var pageData = {
-		context: 'status',
-		logData: null
-	};
 
-	var contents = fs.readFileSync('/usr/sleeptalk/error.log').toString();
-
-	if (contents && contents.length > 0) {
-		pageData.logData = contents;
-	}
-
-	res.render('logs', { pageData: pageData });
-});
 
 app.delete('/logs', function (req, res) {
 
