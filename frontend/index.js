@@ -80,15 +80,7 @@ app.use(function(req, res, next) {
 
 
 
-app.delete('/:name' + defines.audioFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, defines.audioFileExtension, 'records-to-render');
 
-	if (filepath) {
-		fs.unlinkSync(filepath);
-
-		res.status(200).send('OK');
-	}
-});
 
 app.post('/:name' + defines.audioFileExtension, function(req, res) {
 	var filepath = checkFile(req, res, defines.audioFileExtension, 'records-to-render');
