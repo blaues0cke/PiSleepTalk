@@ -74,15 +74,7 @@ app.use(function(req, res, next) {
 
 
 
-app.get('/:name' + defines.movieFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, defines.movieFileExtension, 'records-final');
 
-	if (filepath) {
-		// Thanks to
-		// * http://stackoverflow.com/questions/9321027/how-to-send-files-with-node-js
-		res.sendFile(filepath);
-	}
-});
 
 app.get('/download/:name' + defines.movieFileExtension, function(req, res) {
 	var filepath = checkFile(req, res, defines.movieFileExtension, 'records-final');
