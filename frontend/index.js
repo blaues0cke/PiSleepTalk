@@ -80,17 +80,7 @@ app.use(function(req, res, next) {
 
 
 
-app.post('/increase-volume/:name' + defines.audioFileExtension, function(req, res) {
-	var filepath = checkFile(req, res, defines.audioFileExtension, 'records-to-render');
 
-	if (filepath) {
-		// Thanks to
-		// * http://stackoverflow.com/questions/8579055/how-i-move-files-on-node-js
-		fs.rename(filepath, '/usr/sleeptalk/records-increase-volume/' + req.params.name + defines.audioFileExtension);
-
-		res.status(200).send('OK');
-	}
-});
 
 
 
