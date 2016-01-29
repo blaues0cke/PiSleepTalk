@@ -14,33 +14,29 @@ if [ true != "$INIT_D_SCRIPT_SOURCED" ] ; then
     set "$0" "$@"; INIT_D_SCRIPT_SOURCED=true . /lib/init/init-d-script
 fi
 ### BEGIN INIT INFO
-# Provides:          skeleton
+# Provides:          pi-sleeptalk-nodejs
 # Required-Start:    $remote_fs $syslog
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
 # Default-Stop:      0 1 6
-# Short-Description: Example initscript
-# Description:       This file should be used to construct scripts to be
-#                    placed in /etc/init.d.  This example start a
-#                    single forking daemon capable of writing a pid
-#                    file.  To get other behavoirs, implemend
-#                    do_start(), do_stop() or other functions to
-#                    override the defaults in /lib/init/init-d-script.
+# Short-Description: The nodejs server behind PiSleepTalk
+# Description:       The nodejs server behind PiSleepTalk.
+#                    Starts the server using nodemon.
 ### END INIT INFO
 
 # Author: Thomas Kekeisen <thomas.kekeisen@toolbox-bodensee.de>
 #
-# This file can be found in /etc/init.d/sleeptalkrec
+# This file can be found in /etc/init.d/pi-sleeptalk-nodejs
 
-DESC="Crazy sleep talk recorder"
-DAEMON=/usr/sbin/sleeptalkrec
+DESC="PiSleepTalk nodejs service"
+DAEMON=/usr/sbin/pi-sleeptalk-nodejs
 
 case "$1" in
     start)
-        sh /usr/sleeptalk/bash/start-recording-chunks.sh
+        su - root -c "sh /usr/sleeptalk/bash/start-server.sh"
         ;;
     stop)
-        sh /usr/sleeptalk/bash/stop-recording-chunks.sh
+        su - root -c "sh /usr/sleeptalk/bash/stop-server.sh"
         ;;
     restart)
         # RESTART
