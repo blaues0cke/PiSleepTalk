@@ -13,6 +13,18 @@
 # start the service
 # copy the crontabs
 # create folders
+#
+#
+# install/install-crontabs.sh
+# install/install-ffmpeg.sh
+# install/install-samba-config.sh
+# install/install-services.sh
+# install/install-test-data.sh
+#
+#
+#
+#
+#
 
 # sudo apt-get install imagemagick
 # install-samba-config.sh
