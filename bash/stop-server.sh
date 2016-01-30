@@ -11,4 +11,4 @@
 # Don't call this script directly, its managed by the "sleeptalkrec" service
 #
 
-sudo pkill nodemon
+sudo pkill node
