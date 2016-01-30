@@ -17,7 +17,7 @@ import_allowed=true
 
 # Thanks to
 # * http://stackoverflow.com/questions/14032188/how-to-find-file-accessed-created-just-few-minutes-ago
-changed_files=$(find ${audio_file_import} -cmin -${import_dealay_seconds} | wc -l)
+changed_files=$(find ${audio_file_path_import} -cmin -${import_dealay_seconds} | wc -l)
 
 if [ ${changed_files} -gt 0 ]; then
 	echo "... got files that are new than $import_dealay_seconds seconds, disabling importing"
@@ -25,7 +25,7 @@ if [ ${changed_files} -gt 0 ]; then
 	import_allowed=false
 fi
 
-force_file_path="${audio_file_import}/.${default_force_import_format}"
+force_file_path="${audio_file_path_import}/.${default_force_import_format}"
 
 echo "... checking for existing of ${force_file_path}"
 
@@ -45,7 +45,7 @@ fi
 
 file_counter=0
 
-dir_list=$(ls ${audio_file_import}/*)
+dir_list=$(ls ${audio_file_path_import}/*)
 for audio_file_path in $dir_list
 do
 	if [ -f $audio_file_path ]; then
