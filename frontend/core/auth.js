@@ -11,11 +11,15 @@ var   auth   = require('basic-auth')
     , config = require('./config.js')
 ;
 
+console.log(config);
+
 // Thanks to
 // * http://stackoverflow.com/questions/23616371/basic-http-authentication-with-node-and-express-4
 module.exports = function(req, res, next) {
 	var user = auth(req);
-	if (!user || !user.name || !user.pass | user.name != config.web_user || user.pass != config.web_password) {
+	if (config.web_auth_enabled == 'true' &&
+		(!user || !user.name || !user.pass | user.name != config.web_user || user.pass != config.web_password)
+	) {
 		res.set('WWW-Authenticate', 'Basic realm="example"');
 		return res.status(401).send();
 	}
