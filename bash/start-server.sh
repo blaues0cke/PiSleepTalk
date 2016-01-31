@@ -18,4 +18,4 @@ nvm use stable
 
 cd /usr/sleeptalk/frontend
 
-nodemon index.js
+node index.js
