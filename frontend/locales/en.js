@@ -1,8 +1,10 @@
 {
 	"actions": {
 		"add_text": 			 "Add text",
+		"back":  				 "Back",
 		"clear":                 "Clear",
 		"clear_all_texts":       "Clear all texts",
+		"clear_logs": 			 "Clear logs",
 		"decrease_volume":       "Decrease volume",
 		"delete": 				 "Delete",
 		"delete_text": 		     "Delete text",
@@ -25,6 +27,11 @@
     "app": {
     	"name": 			     "PiSleepTalk"
     },
+    "logs": {
+    	"description": 			 "Raw log files of node.js and some used programs like ffmpeg or sox.",
+    	"empty_text": 			 "No log data is available right now.",
+    	"title": 				 "Logs"
+    },
     "menu": {
     	"help":                  "Help",
     	"home": 				 "Home",
@@ -35,6 +42,11 @@
     "modal": {
     	"an_error_occurred":     "An error occurred",
     	"cancel":                "Cancel",
+    	"clear_logs": {
+    		"clear_logs":  		 "Clear logs",
+    		"description":       "Are you sure to clear all the log files? This can't be undone.",
+    		"title":             "Clear logs"
+    	},
     	"clear_texts": {
     		"clear":  			 "Clear",
     		"description":       "Are you sure to delete all the text data?",

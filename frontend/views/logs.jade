@@ -1,18 +1,25 @@
 extends layout
 
 block content
-	+modal('clear-logs-modal', 'Clear logs', 'Are you sure to clear all the log files? This can\'t be undone.', 'Cancel', 'Clear logs', 'clear-logs-confirm')
+	+modal(
+		'clear-logs-modal',
+		__('modal.clear_logs.title'),
+		__('modal.clear_logs.description'),
+		__('modal.cancel'),
+		__('modal.clear_logs.clear_logs'),
+		'clear-logs-confirm'
+	)
 
 	div.jumbotron.no-margin
-		h1.display-3 Logs
-		p.lead Raw log files of node.js and some used programs like ffmpeg or sox.
+		h1.display-3= __('logs.title')
+		p.lead= __('logs.description')
 		hr.m-y-2
 		p.lead
-			a.btn.btn-primary.btn-lg(role='button', href='/status') Back
+			a.btn.btn-primary.btn-lg(role='button', href='/status')= __('actions.back')
 			|  
-			a.btn.btn-danger.btn-lg#clear-logs(role='button') Clear logs
+			a.btn.btn-danger.btn-lg#clear-logs(role='button')= __('actions.clear_logs')
 		hr.m-y-2
 		if !pageData.logData || pageData.logData == null
-			p No log data is available right now.
+			p= __('logs.empty_text')
 		else
 			pre #{pageData.logData}
