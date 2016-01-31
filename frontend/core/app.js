@@ -45,4 +45,4 @@ fs.readdirSync('./routes').forEach(function(file) {
     require(path.join(__dirname, '../routes', file))(app);
 });
 
-app.listen(9888);
+app.listen(config.web_port);
