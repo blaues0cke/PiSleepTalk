@@ -1,27 +1,35 @@
 extends layout
 
 block content
-	+modal('delete-file', 'Delete file', 'Are you sure to delete this file? You can\'t undo this.', 'Cancel', 'Delete file', 'delete-status-file-confirm')
+	+modal(
+		'delete-file',
+		__('modal.delete_file.title'),
+		__('modal.delete_file.description'),
+		__('modal.cancel'),
+		__('modal.delete_file.delete_file'),
+		'delete-status-file-confirm'
+	)
+
 	div.jumbotron.no-margin
-		h1.display-3 Status
-		p.lead Review the status of your PiSleepTalk instance. Page generated: #{pageData.generationDate}
+		h1.display-3= __('status.title')
+		p.lead= __('status.description', pageData.generationDate)
 		hr.m-y-2
-		p Disk space: #{pageData.diskUsage.free}/#{pageData.diskUsage.total} GB
+		p= __('status.disk_space', pageData.diskUsage.free, pageData.diskUsage.total)
 		p.lead
-			a.btn.btn-primary.btn-lg.btn-reload(role='button') Reload page
+			a.btn.btn-primary.btn-lg.btn-reload(role='button')= __('actions.reload_page')
 			|  
-			a.btn.btn-primary.btn-lg.btn-reload(role='button', href='/logs') View logs
+			a.btn.btn-primary.btn-lg.btn-reload(role='button', href='/logs')= __('actions.view_logs')
 	div#file-system
 			table.table.table-bordered
 				thead
 					tr
-						th.path Path
-						th.size Size
-						th.actions Actions
+						th.path= __('table.path')
+						th.size= __('table.size')
+						th.actions= __('table.actions')
 				tbody
 					each file in pageData.files
 						tr
 							td.path #{file.path}
-							td.size #{file.size} KB
+							td.size #{file.size} #{__('table.size_kb')}
 							td.actions
-								+button('', 'trash',    '',  'danger',  'delete',   'Delete file')
+								+button('', 'trash',    '',  'danger',  'delete', __('actions.delete_file'))

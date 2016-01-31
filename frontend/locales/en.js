@@ -7,6 +7,7 @@
 		"clear_logs": 			 "Clear logs",
 		"decrease_volume":       "Decrease volume",
 		"delete": 				 "Delete",
+		"delete_file": 		 	 "Delete file",
 		"delete_text": 		     "Delete text",
 		"delete_recording": 	 "Delete recording",
 		"increase_volume":       "Increase volume",
@@ -23,7 +24,8 @@
 		"sort_ascending":        "Sort ascending",
 		"step_backward":         "Step backward",
 		"step_forward":          "Step forward",
-		"stop":                  "Stop"
+		"stop":                  "Stop",
+		"view_logs": 			 "View logs"
 	},
     "app": {
     	"name": 			     "PiSleepTalk"
@@ -58,6 +60,11 @@
     		"decrease_volume":   "Decrease volume",
     		"description":       "Are you sure to decrease the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is decreased. The audio file will automatically re-appear on the home page.",
     		"title":             "Decrease volume"
+    	},
+    	"delete_file": {
+    		"delete_file":   	 "Delete file",
+    		"description":       "Are you sure to delete this file? You can't undo this.",
+    		"title":             "Delete file"
     	},
        	"increase_volume": {
     		"description":       "Are you sure to increase the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is increased. The audio file will automatically re-appear on the home page.",
@@ -94,9 +101,17 @@
     	"ok":            	 	 "OK",
     	"shortcuts":     	 	 "Shortcuts"
     },
+    "status": {
+    	"description": 		     "Review the status of your PiSleepTalk instance. Page generated: %s",
+    	"disk_space": 			 "Disk space free %s of %s GB",
+    	"title":  				 "Status"
+    },
     "table": {
     	"actions": 			 	 "Actions",
     	"frame": 				 "Frame",
+    	"path": 				 "Path",
+    	"size": 				 "Size",
+    	"size_kb": 			     "KB",
     	"text":       			 "Text"
     }
 }
