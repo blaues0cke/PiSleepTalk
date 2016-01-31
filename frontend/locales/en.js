@@ -8,14 +8,17 @@
 		"decrease_volume":       "Decrease volume",
 		"delete": 				 "Delete",
 		"delete_file": 		 	 "Delete file",
-		"delete_text": 		     "Delete text",
 		"delete_recording": 	 "Delete recording",
+		"delete_text": 		     "Delete text",
+		"delete_video": 	     "Delete video",
+		"download_video": 		 "Download video",
 		"increase_volume":       "Increase volume",
 		"insert_current_frame":  "Insert current frame position",
 		"move_down": 			 "Move down",
 		"move_up": 				 "Move up",
 		"play":                  "Play",
 		"play_from_marker":      "Play from marker",
+		"play_video": 			 "Play video in browser",
 		"reload_page": 			 "Reload page",
 		"save":                  "Save",
 		"save_text": 			 "Save text",
@@ -71,10 +74,19 @@
     		"increase_volume":   "Increase volume",
     		"title":             "Increase volume"
     	},
+    	"ok": 			  	     "OK",
+       	"preview_video": {
+    		"title":             "Video preview"
+    	},
     	"remove_recording": {
     		"delete_recording":  "Delete recording",
     		"description":       "Are you sure to delete the whole recording? You can't undo this.",
     		"title":             "Remove recording"
+    	},
+    	"remove_video": {
+    		"delete_video":  	 "Delete video",
+    		"description":       "Are you sure to delete the whole video? You can't undo this.",
+    		"title":             "Remove video"
     	},
     	"set_marker": {
     		"description":       "Please set a marker first before you try to jump to it.",
@@ -109,9 +121,14 @@
     "table": {
     	"actions": 			 	 "Actions",
     	"frame": 				 "Frame",
+    	"length": 				 "Length",
+    	"length_seconds_short":  "s",
     	"path": 				 "Path",
     	"size": 				 "Size",
     	"size_kb": 			     "KB",
     	"text":       			 "Text"
+    },
+    "videos": {
+    	"empty_text": 			 "No rendered videos are available at the moment."
     }
 }

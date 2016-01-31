@@ -1,28 +1,41 @@
 extends layout
 
 block content
-	+modal('delete-video', 'Remove video', 'Are you sure to delete the whole video? You can\'t undo this.', 'Cancel', 'Delete video', 'delete-video-confirm')
-	+modal('play-video', 'Video preview', '', 'Ok')
+	+modal(
+		'delete-video',
+		__('modal.remove_video.title'),
+		__('modal.remove_video.description'),
+		__('modal.cancel'),
+		__('modal.remove_video.delete_video'),
+		'delete-video-confirm'
+	)
+
+	+modal(
+		'play-video',
+		__('modal.preview_video.title'), 
+		'',
+		__('modal.ok')
+	)
 		div.embed-responsive.embed-responsive-16by9#video-target
 
 	div#video-list
 			table.table.table-bordered
 				thead
 					tr
-						th.path Path
-						th.size Size
-						th.length Lenght
-						th.actions Actions
+						th.path= __('table.path')
+						th.size= __('table.path')
+						th.length= __('table.length')
+						th.actions= __('table.actions')
 				tbody
 					if !pageData.videos || pageData.videos.length == 0
 						tr
-							td(colspan=4) No rendered videos are available at the moment.
+							td(colspan=4)= __('videos.empty_text')
 					each video in pageData.videos
 						tr
 							td.path #{video.path}
-							td.size #{video.size} KB
-							td.length #{video.length}s
+							td.size #{video.size} #{__('table.size_kb')}
+							td.length #{video.length}#{__('table.length_seconds_short')}
 							td.actions
-								+button('', 'play',     '',  'success', 'play',     'Play video in browser')
-								+button('', 'download', '',  'info',    'download', 'Download video')
-								+button('', 'trash',    '',  'danger',  'delete',   'Delete video')
+								+button('', 'play',     '',  'success', 'play',     __('actions.play_video'))
+								+button('', 'download', '',  'info',    'download', __('actions.download_video'))
+								+button('', 'trash',    '',  'danger',  'delete',   __('actions.delete_video'))
