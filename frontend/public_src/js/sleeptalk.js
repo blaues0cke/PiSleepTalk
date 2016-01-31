@@ -34,7 +34,60 @@ $(document).ready(function() {
 	initTooltips();
 	initLogsPage();
 	initShotcuts();
+	initStatusPage();
 });
+
+var initStatusPage = function ()
+{
+	$('#file-system')
+		.on('click', '.delete', function() {
+			
+			var button = $(this);
+			var path   = getVideoPathForClickedButton(button);
+			fileUrl    = path;
+
+			$('#delete-file').modal('show');
+		})
+	;
+
+	$('#delete-status-file-confirm').click(function() {
+		console.log('Delete button pressed: ', fileUrl);
+
+		var strippedFileUrl = fileUrl.replace('/usr/sleeptalk/', '');
+		var splittedFileUrl = strippedFileUrl.split('/');
+
+		console.log('Urls', strippedFileUrl, splittedFileUrl);
+
+		if (splittedFileUrl.length >= 2)
+		{
+			// Thanks to
+			// * http://stackoverflow.com/questions/2153917/how-to-send-a-put-delete-request-in-jquery
+			$.ajax({
+			    url: '/file/' + splittedFileUrl[0] + '/' + splittedFileUrl[1],
+			    type: 'DELETE',
+			    success: function(result) {
+			        reloadPage();
+			    }
+			});
+		}
+	});
+
+	$('#play-video').on('click', 'button', function() {
+		console.log('Footer button pressed');
+
+		var videos = $('#video-target video');
+
+		console.log('Videos: ', videos);
+
+		if (videos && videos.length > 0)
+		{
+			if (!videos[0].paused)
+			{
+				videos[0].pause();
+			}
+		}
+	});
+};
 
 var initShotcuts = function () {
 
@@ -561,7 +614,7 @@ var initVideoList = function () {
 			}
 		}
 	});
-}
+};
 
 // Thanks to
 // * http://stackoverflow.com/questions/2998784/how-to-output-integers-with-leading-zeros-in-javascript
@@ -569,7 +622,7 @@ var pad = function (num, size) {
     var s = num+"";
     while (s.length < size) s = '0' + s;
     return s;
-}
+};
 
 var reloadPage = function () {
 	console.log('Page reload scheduled');
@@ -579,4 +632,4 @@ var reloadPage = function () {
 
 		location.reload();
 	}, 1000);
-}
+};

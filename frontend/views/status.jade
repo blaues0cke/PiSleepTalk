@@ -1,6 +1,7 @@
 extends layout
 
 block content
+	+modal('delete-file', 'Delete file', 'Are you sure to delete this file? You can\'t undo this.', 'Cancel', 'Delete file', 'delete-status-file-confirm')
 	div.jumbotron.no-margin
 		h1.display-3 Status
 		p.lead Review the status of your PiSleepTalk instance. Page generated: #{pageData.generationDate}
@@ -16,8 +17,11 @@ block content
 					tr
 						th.path Path
 						th.size Size
+						th.actions Actions
 				tbody
 					each file in pageData.files
 						tr
 							td.path #{file.path}
 							td.size #{file.size} KB
+							td.actions
+								+button('', 'trash',    '',  'danger',  'delete',   'Delete file')
