@@ -8,13 +8,12 @@
 //
 
 var   config    = require('../core/config.js')
-    , defines   = require('../core/defines.js')
 	, framework = require('../core/framework.js')
 ;
 
 module.exports = function(app) {
-	app.get('/:name' + defines.audioFileExtension, function(req, res) {
-		var filepath = framework.checkFile(req, res, defines.audioFileExtension, config.audio_file_path_to_render);
+	app.get('/:name.' + config.default_audio_format, function(req, res) {
+		var filepath = framework.checkFile(req, res, config.default_audio_format, config.audio_file_path_to_render);
 
 		if (filepath) {
 			// Thanks to

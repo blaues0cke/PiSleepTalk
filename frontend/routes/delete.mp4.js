@@ -8,14 +8,13 @@
 //
 
 var   config    = require('../core/config.js')
-    , defines   = require('../core/defines.js')
 	, framework = require('../core/framework.js')
 	, fs        = require('fs')
 ;
 
 module.exports = function(app) {
-	app.delete('/:name' + defines.movieFileExtension, function(req, res) {
-		var filepath = framework.checkFile(req, res, defines.movieFileExtension, config.audio_file_path_final);
+	app.delete('/:name.' + config.default_video_format, function(req, res) {
+		var filepath = framework.checkFile(req, res, config.default_video_format, config.audio_file_path_final);
 
 		if (filepath) {
 			fs.unlinkSync(filepath);

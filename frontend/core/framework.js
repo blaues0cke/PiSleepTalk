@@ -20,10 +20,12 @@ var alphanumeric = function (input) {
 this.alphanumeric = alphanumeric;
 
 this.checkFile = function (req, res, ending, path) {
+	console.log('Chekcing file name', req.params);
+
 	if (req.params.name && alphanumeric(req.params.name)) {
 		// Thanks to
 		// * http://stackoverflow.com/questions/8181879/nodejs-setting-up-wildcard-routes-or-url-rewrite
-		var filepath = path + '/' + req.params.name + ending;
+		var filepath = path + '/' + req.params.name + '.' + ending;
 
 		if (fs.existsSync(filepath)) {
 			return filepath;

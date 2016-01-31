@@ -9,7 +9,6 @@
 
 var   config  = require('../core/config.js')
     , fs      = require('fs')
-	, defines = require('../core/defines.js')
 	, glob    = require('glob')
 	, path    = require('path')
 ;
@@ -22,7 +21,7 @@ module.exports = function(app) {
 		// Thanks to
 		// * http://stackoverflow.com/questions/11282880/nodejs-module-to-find-files
 		// * https://github.com/isaacs/node-glob
-		var files = glob.sync(config.audio_file_path_to_render + '/*' + defines.audioFileExtension);
+		var files = glob.sync(config.audio_file_path_to_render + '/*.' + config.default_audio_format);
 			
 		if (files && files.length > 0) {
 			for (var key in files) {

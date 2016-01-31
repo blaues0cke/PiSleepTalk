@@ -8,7 +8,6 @@
 //
 
 var   config    = require('../core/config.js')
-    , defines   = require('../core/defines.js')
 	, diskusage = require('diskusage')
 	, framework = require('../core/framework.js')
 	, fs        = require('fs')
