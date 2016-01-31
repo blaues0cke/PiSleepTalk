@@ -4,11 +4,48 @@ block content
 	script.
 		fileCount=#{pageData.fileCount};
 
-	+modal('delete-file', 'Remove recording', 'Are you sure to delete the whole recording? You can\'t undo this.', 'Cancel', 'Delete recording', 'delete-file-confirm')
-	+modal('clear-texts', 'Clear text data', 'Are you sure to delete all the text data?', 'Cancel', 'Clear', 'text-clear-confirm')
-	+modal('set-marker-first-error', 'An error occurred', 'Please set a marker first before you try to jump to it.', 'Whoops, sorry!')
-	+modal('decrease-volume-modal', 'Decrease volume', 'Are you sure to decrease the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is decreased. The audio file will automatically re-appear on the home page.', 'Cancel', 'Decrease volume', 'decrease-volume-confirm')
-	+modal('increase-volume-modal', 'Increase volume', 'Are you sure to increase the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is increased. The audio file will automatically re-appear on the home page.', 'Cancel', 'Increase volume', 'increase-volume-confirm')
+	+modal(
+		'delete-file',
+		__('modal.remove_recording.title'),
+		__('modal.remove_recording.description'),
+		__('modal.cancel'),
+		__('modal.remove_recording.delete_recording'),
+		'delete-file-confirm'
+	)
+
+	+modal(
+		'clear-texts',
+		__('modal.clear_texts.title'),
+		__('modal.clear_texts.description'),
+		__('modal.cancel'),
+		__('modal.clear_texts.clear'),
+		'text-clear-confirm'
+	)
+
+	+modal(
+		'set-marker-first-error',
+		__('modal.an_error_occurred'),
+		__('modal.set_marker.description'),
+		__('modal.set_marker.whoops')
+	)
+
+	+modal(
+		'decrease-volume-modal',
+		__('modal.decrease_volume.title'),
+		__('modal.decrease_volume.description'),
+		__('modal.cancel'),
+		__('modal.decrease_volume.decrease_volume'),
+		'decrease-volume-confirm'
+	)
+
+	+modal(
+		'increase-volume-modal',
+		__('modal.increase_volume.title'),
+		__('modal.increase_volume.description'),
+		__('modal.cancel'),
+		__('modal.increase_volume.decrease_volume'),
+		'increase-volume-confirm'
+	)
 
 	// Thanks to
 	// * http://stackoverflow.com/questions/5081534/put-jade-local-variable-in-tag-attribute
@@ -23,44 +60,44 @@ block content
 			// Thanks to
 			// * http://stackoverflow.com/questions/10953326/what-is-a-concise-way-to-create-inline-elements-in-jade
 			// * http://stackoverflow.com/questions/20727360/do-i-have-to-use-nbsp-for-space-in-jade
-			+button('wave-step-backward',    'step-backward', 'Step backward',    'primary', '', 'Step backward', 'right')
-			+button('wave-play', 		     'play', 		  'Play',             'primary', '', 'Play')
-			+button('wave-stop', 		     'stop', 		  'Stop',             'primary', '', 'Stop')
-			+button('wave-step-forward',     'step-forward',  'Step forward',     'primary', '', 'Step forward')
-			+button('wave-set-marker',       'thumb-tack',    'Set marker',       'info', 	 '', 'Set marker')
-			+button('wave-play-from-marker', 'play',    	  'Play from marker', 'info',    '', 'Play from marker')
-			+button('wave-decrease-volume',  'volume-down',   'Decrease volume',  'warning', '', 'Decrease volume')
-			+button('wave-increase-volume',  'volume-up',     'Increase volume',  'warning', '', 'Increase volume')
+			+button('wave-step-backward',    'step-backward', __('actions.step_backward'),    'primary', '', __('actions.step_backward'), 'right')
+			+button('wave-play', 		     'play', 		  __('actions.play'),             'primary', '', __('actions.play'))
+			+button('wave-stop', 		     'stop', 		  __('actions.stop'),             'primary', '', __('actions.stop'))
+			+button('wave-step-forward',     'step-forward',  __('actions.step_forward'),     'primary', '', __('actions.step_forward'))
+			+button('wave-set-marker',       'thumb-tack',    __('actions.set_marker'),       'info', 	 '', __('actions.set_marker'))
+			+button('wave-play-from-marker', 'play',    	  __('actions.play_from_marker'), 'info',    '', __('actions.play_from_marker'))
+			+button('wave-decrease-volume',  'volume-down',   __('actions.decrease_volume'),  'warning', '', __('actions.decrease_volume'))
+			+button('wave-increase-volume',  'volume-up',     __('actions.increase_volume'),  'warning', '', __('actions.increase_volume'))
 		div.pull-right
-			+button('wave-save',  		 	 'floppy-o',      'Save',  			  'success', '', 'Save text')
-			+button('wave-delete',  		 'trash',         'Delete',  		  'danger',  '', 'Delete recording', 'left')
+			+button('wave-save',  		 	 'floppy-o',      __('actions.save'),  			  'success', '', __('actions.save_text'))
+			+button('wave-delete',  		 'trash',         __('actions.delete'),  		  'danger',  '', __('actions.delete_recording'), 'left')
 	div#text-manager
 		div#text-wrapper
 			table.table.table-bordered
 				thead
 					tr
-						th.frame Frame
-						th.text Text
-						th.actions Actions
+						th.frame= __('table.frame')
+						th.text= __('table.text')
+						th.actions= __('table.actions')
 				tbody
 					tr
 						td.frame
 							div.input-group
 								input(type='number', min='0').form-control.frame
-								+button('', 'arrow-left', '',  'info', 'arrow-left', 'Insert current frame position')
+								+button('', 'arrow-left', '',  'info', 'arrow-left', __('actions.insert_current_frame'))
 						td
 							div.input-group
 								input(type='text').form-control.text
 
 						td
-							+button('', 'arrow-up',   '',  'info',   'arrow-up',   'Move up')
-							+button('', 'arrow-down', '',  'info',   'arrow-down', 'Move down') 
-							+button('', 'trash',      '',  'danger', 'delete',     'Delete text') 
+							+button('', 'arrow-up',   '',  'info',   'arrow-up',   __('actions.move_up'))
+							+button('', 'arrow-down', '',  'info',   'arrow-down', __('actions.move_down')) 
+							+button('', 'trash',      '',  'danger', 'delete',     __('actions.delete_text')) 
 
 		nav.navbar.navbar-light.bg-faded
 			div.pull-left
-				+button('text-add',  'plus',            'Add text', 'success', '', 'Add text', 'right')
-				+button('text-sort', 'sort-amount-asc', 'Sort',     'info',    '', 'Sort ascending')
+				+button('text-add',  'plus',            __('actions.add_text'), 'success', '', __('actions.add_text'), 'right')
+				+button('text-sort', 'sort-amount-asc', __('actions.sort'),     'info',    '', __('actions.sort_ascending'))
 
 			div.pull-right
-				+button('text-clear', 'trash', 'Clear', 'danger', '', 'Clear all texts', 'left')
+				+button('text-clear', 'trash', __('actions.clear'), 'danger', '', __('actions.clear_all_texts'), 'left')
