@@ -15,6 +15,7 @@
 		"move_up": 				 "Move up",
 		"play":                  "Play",
 		"play_from_marker":      "Play from marker",
+		"reload_page": 			 "Reload page",
 		"save":                  "Save",
 		"save_text": 			 "Save text",
 		"set_marker":            "Set marker",
@@ -72,6 +73,11 @@
     		"description":       "Please set a marker first before you try to jump to it.",
     		"whoops":            "Whoops, sorry!"
     	}
+    },
+    "no_recordings": {
+    	"description": 			 "Sorry, we got no unprocessed recordings for you right now. Please sleep on it on come back to this page later.",
+    	"sub_description":       "You may check the status page to make sure everything is working correctly.",
+    	"title": 				 "No new recordings"
     },
     "shortcuts": {
     	"description":   	 	 "You can use some shortcuts to save time. The following keys are supported right now:",
