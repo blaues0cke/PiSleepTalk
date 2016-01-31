@@ -17,7 +17,7 @@ mixin modal(id, title, text, cancelButton, deleteButton, deleteButtonId)
 		div.modal-dialog
 			div.modal-content
 				div.modal-header
-					button.close(type='button', data-dismiss='modal', aria-label='Close')
+					button.close(type='button', data-dismiss='modal', aria-label=__('modal.close'))
 					h4.modal-title= title
 				div.modal-body
 					if text
@@ -33,58 +33,56 @@ html
 	head
 		link(rel='stylesheet' href='css.min.css')
 	body
-		+modal('shortcut-help-modal', 'Shortcuts', '', 'OK')
-			p You can use some shortcuts to save time. The following keys are supported right now:
+		+modal('shortcut-help-modal', __('shortcuts.shortcuts'), '', __('shortcuts.ok'))
+			p= __('shortcuts.description')
 			ul
 				li
-					kbd Space
+					kbd= __('shortcuts.keys.space')
 					|  
-					span Play/Pause
+					span= __('shortcuts.keys.space_description')
 				li
-					kbd 1-9
+					kbd= __('shortcuts.keys.1_9')
 					|  
-					span Seek to part N of the audio file
+					span= __('shortcuts.keys.1_9_description')
 				li
 					kbd
 						i.fa.fa-arrow-left
 					|  
-					span Skip back 5 seconds
+					span= __('shortcuts.keys.left_description')
 				li
 					kbd
 						i.fa.fa-arrow-up
 					|  
-					span Skip back 10 seconds
+					span= __('shortcuts.keys.up_description')
 				li
 					kbd
 						i.fa.fa-arrow-right
 					|  
-					span Skip forward 5 seconds
+					span= __('shortcuts.keys.right_description') 
 				li
 					kbd
 						i.fa.fa-arrow-down
 					|  
-					span Skip forward 10 seconds
-
-
+					span= __('shortcuts.keys.down_description')
 
 		div.container
 		nav.navbar.navbar-light.bg-faded#main-navbar
 			div
-				a.navbar-brand(href='https://github.com/blaues0cke/PiSleepTalk', target='_blank') PiSleepTalk
+				a.navbar-brand(href='https://github.com/blaues0cke/PiSleepTalk', target='_blank')= __('app.name') 
 
 				ul.nav.navbar-nav
 					// Thanks to
 					// * http://stackoverflow.com/questions/14144274/jade-conditional-if-else-to-add-class-to-div-inline
 					li.nav-item(class=!pageData || !pageData.context || pageData.context == 'home' ? 'active' : '')
-						a(href='/').nav-link Home
+						a(href='/').nav-link= __('menu.home')
 					li.nav-item(class=pageData && pageData.context && pageData.context == 'videos'  ? 'active' : '')
-						a(href='/videos').nav-link Videos
+						a(href='/videos').nav-link= __('menu.videos')
 					li.nav-item(class=pageData && pageData.context && pageData.context == 'status'  ? 'active' : '')
-						a(href='/status').nav-link Status
+						a(href='/status').nav-link= __('menu.status')
 
 			div.pull-right
 				div#info-area
-				+button('shortcut-help', 'question', 'Help', 'primary', '', 'Help', 'left')
+				+button('shortcut-help', 'question', __('menu.help'), 'primary', '', __('menu.help'), 'left')
 
 		block content
 		script(src='js.min.js')

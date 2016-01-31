@@ -8,12 +8,26 @@
 //
 
 var   bodyParser = require('body-parser')
+    , config     = require('./config.js')
 	, express    = require('express')
     , fs         = require('fs')
+    , i18n       = require('i18n-2')
     , path       = require('path')
 ;
 
 var app = express();
+
+i18n.expressBind(app, {
+    // setup some locales - other locales default to en silently
+    locales: ['en', 'de'],
+    // change the cookie name from 'lang' to 'locale'
+    cookieName: 'locale'
+});
+
+app.use(function(req, res, next) {
+    req.i18n.setLocale(config.default_locale);
+    next();
+});
 
 app.set('view engine', 'jade');
 // Thanks to
