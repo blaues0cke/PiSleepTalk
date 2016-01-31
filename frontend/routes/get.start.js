@@ -7,7 +7,8 @@
 //          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 //
 
-var   fs      = require('fs')
+var   config  = require('../core/config.js')
+    , fs      = require('fs')
 	, defines = require('../core/defines.js')
 	, glob    = require('glob')
 	, path    = require('path')
@@ -21,7 +22,7 @@ module.exports = function(app) {
 		// Thanks to
 		// * http://stackoverflow.com/questions/11282880/nodejs-module-to-find-files
 		// * https://github.com/isaacs/node-glob
-		var files = glob.sync('/usr/sleeptalk/records-to-render/*' + defines.audioFileExtension);
+		var files = glob.sync(config.audio_file_path_to_render + '/*' + defines.audioFileExtension);
 			
 		if (files && files.length > 0) {
 			for (var key in files) {
@@ -30,7 +31,7 @@ module.exports = function(app) {
 				// Thanks to
 				// * http://stackoverflow.com/questions/4250364/how-to-trim-a-file-extension-from-a-string-in-javascript
 				var filename = path.basename(filepath, path.extname(filepath));
-				var textFilePath = '/usr/sleeptalk/records-to-render/' + filename + '.sleeptalk';
+				var textFilePath = config.audio_file_path_to_render + '/' + filename + '.' + config.default_sleeptalk_format;
 
 				// Thanks to
 				// * http://stackoverflow.com/questions/4482686/check-synchronously-if-file-directory-exists-in-node-js

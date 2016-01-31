@@ -7,13 +7,14 @@
 //          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 //
 
-var   defines   = require('../core/defines.js')
+var   config    = require('../core/config.js')
+    , defines   = require('../core/defines.js')
 	, framework = require('../core/framework.js')
 ;
 
 module.exports = function(app) {
 	app.get('/:name' + defines.movieFileExtension, function(req, res) {
-		var filepath = framework.checkFile(req, res, defines.movieFileExtension, 'records-final');
+		var filepath = framework.checkFile(req, res, defines.movieFileExtension, config.audio_file_path_final);
 
 		if (filepath) {
 			// Thanks to

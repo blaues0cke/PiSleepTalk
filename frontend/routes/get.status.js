@@ -7,7 +7,8 @@
 //          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 //
 
-var   defines   = require('../core/defines.js')
+var   config    = require('../core/config.js')
+    , defines   = require('../core/defines.js')
 	, diskusage = require('diskusage')
 	, framework = require('../core/framework.js')
 	, fs        = require('fs')
@@ -33,7 +34,7 @@ module.exports = function(app) {
 
 			pageData.files = [];
 
-			var files = glob.sync('/usr/sleeptalk/records-*/*');
+			var files = glob.sync(config.audio_file_path_glob + '/*');
 				
 			if (files && files.length > 0) {
 				for (var key in files) {

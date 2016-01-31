@@ -7,18 +7,19 @@
 //          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 //
 
-var   defines   = require('../core/defines.js')
+var   config    = require('../core/config.js')
+    , defines   = require('../core/defines.js')
 	, framework = require('../core/framework.js')
 	, fs        = require('fs')
 ;
 
 module.exports = function(app) {
 	app.post('/:name' + defines.audioFileExtension, function(req, res) {
-		var filepath = framework.checkFile(req, res, defines.audioFileExtension, 'records-to-render');
+		var filepath = framework.checkFile(req, res, defines.audioFileExtension, config.audio_file_path_to_render);
 
 		if (filepath) {
 			var content 		= req.body.content + "\n\n";
-			var contentFilePath = '/usr/sleeptalk/records-to-render/' + req.params.name + '.sleeptalk';
+			var contentFilePath = config.audio_file_path_to_render + '/' + req.params.name + '.' + config.default_sleeptalk_format;
 
 			fs.writeFileSync(contentFilePath, content); 
 

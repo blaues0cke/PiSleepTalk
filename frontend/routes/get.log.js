@@ -7,7 +7,9 @@
 //          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 //
 
-var fs = require('fs');
+var   config = require('../core/config.js')
+    , fs     = require('fs')
+;
 
 module.exports = function(app) {
 	app.get('/logs', function (req, res) {
@@ -16,7 +18,7 @@ module.exports = function(app) {
 			logData: null
 		};
 
-		var contents = fs.readFileSync('/usr/sleeptalk/error.log').toString();
+		var contents = fs.readFileSync(config.error_log_path).toString();
 
 		if (contents && contents.length > 0) {
 			pageData.logData = contents;

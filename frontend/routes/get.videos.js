@@ -7,9 +7,10 @@
 //          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 //
 
-var   fs   = require('fs')
-    , glob = require('glob')
-    , path = require('path')
+var   config = require('../core/config.js')
+    , fs     = require('fs')
+    , glob   = require('glob')
+    , path   = require('path')
 ;
 
 module.exports = function(app) {
@@ -20,18 +21,18 @@ module.exports = function(app) {
 
 		pageData.videos = [];
 
-		var files = glob.sync('/usr/sleeptalk/records-final/*');
+		var files = glob.sync(config.audio_file_path_final + '/*');
 			
 		if (files && files.length > 0) {
 			for (var key in files) {
 
 				var path 		    = files[key];
-				var pathExploded    = path.replace('/usr/sleeptalk/records-final/', '').split('-');
+				var pathExploded    = path.replace(config.audio_file_path_final + '/', '').split('-');
 				var stats 		    = fs.statSync(files[key])
 				var fileSizeInBytes = stats['size']
 
 				var fileInfo = {
-					path:   path.replace('/usr/sleeptalk/records-final/', ''),
+					path:   path.replace(config.audio_file_path_final + '/', ''),
 					size:   (fileSizeInBytes / 1014).toFixed(2),
 					length: pathExploded[0]
 				}

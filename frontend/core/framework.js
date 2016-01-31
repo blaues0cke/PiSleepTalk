@@ -23,7 +23,7 @@ this.checkFile = function (req, res, ending, path) {
 	if (req.params.name && alphanumeric(req.params.name)) {
 		// Thanks to
 		// * http://stackoverflow.com/questions/8181879/nodejs-setting-up-wildcard-routes-or-url-rewrite
-		var filepath = '/usr/sleeptalk/' + path + '/' + req.params.name + ending;
+		var filepath = path + '/' + req.params.name + ending;
 
 		if (fs.existsSync(filepath)) {
 			return filepath;

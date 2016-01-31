@@ -7,19 +7,20 @@
 //          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 //
 
-var   defines   = require('../core/defines.js')
+var   config    = require('../core/config.js')
+    , defines   = require('../core/defines.js')
 	, framework = require('../core/framework.js')
 ;
 
 module.exports = function(app) {
 	app.get('/download/:name' + defines.movieFileExtension, function(req, res) {
-		var filepath = framework.checkFile(req, res, defines.movieFileExtension, 'records-final');
+		var filepath = framework.checkFile(req, res, defines.movieFileExtension, config.audio_file_path_final);
 
 		if (filepath) {
 			// Thanks to
 			// * http://stackoverflow.com/questions/7288814/download-a-file-from-nodejs-server-using-express
 			res.setHeader('Content-disposition', 'attachment; filename=' + req.params.name + defines.movieFileExtension);
-			res.setHeader('Content-type', 'video/' + defines.movieFileExtension.replace('.', ''));
+			res.setHeader('Content-type',        'video/' + defines.movieFileExtension.replace('.', ''));
 
 			// Thanks to
 			// * http://stackoverflow.com/questions/9321027/how-to-send-files-with-node-js

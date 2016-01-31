@@ -7,7 +7,8 @@
 //          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 //
 
-var   fs          = require('fs')
+var   config      = require('./config.js')
+    , fs          = require('fs')
     , logStdout   = process.stdout
     , originalLog = console.log
     , util        = require('util')
@@ -20,7 +21,7 @@ console.log = function () {
 
 	// Thanks to
 	// * http://stackoverflow.com/questions/3459476/how-to-append-to-a-file-in-node
-	fs.appendFile('/usr/sleeptalk/error.log', dataToLog, function (err) {
+	fs.appendFile(config.error_log_path, dataToLog, function (err) {
 		originalLog(err);
 	});
 

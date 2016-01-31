@@ -7,7 +7,9 @@
 //          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 //
 
-var fs = require('fs');
+var config = require('../core/config.js')
+    fs     = require('fs')
+;
 
 module.exports = function(app) {
 	app.delete('/logs', function (req, res) {
@@ -16,7 +18,7 @@ module.exports = function(app) {
 
 		// Thanks to
 		// * http://stackoverflow.com/questions/17371224/node-js-delete-content-in-file
-		fs.truncateSync('/usr/sleeptalk/error.log', 0);
+		fs.truncateSync(config.error_log_path, 0);
 
 		// Thanks to
 		// * http://stackoverflow.com/questions/13397691/sending-a-succes-state-to-form-nodejs-express
