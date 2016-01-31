@@ -20,6 +20,7 @@
 # install/install-samba-config.sh
 # install/install-services.sh
 # install/install-test-data.sh
+# install/install-hostname.sh
 #
 #
 #
