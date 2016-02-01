@@ -9,4 +9,4 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
-/etc/init.d/sleeptalkrec stop
+/etc/init.d/pi-sleeptalk-recording stop
