@@ -67,11 +67,51 @@ I am using the following hardware, but I think the most Raspberry Pi models, WiF
 * [USB microphone](http://www.amazon.de/gp/product/B00N1YMO9W)
 * [MicroSD card (16GB)](http://www.amazon.de/gp/product/B007XZL7PC)
 
+## Hardware switch
+
+PiSleeptalk also supports a hardware switch to enable and disable the recording feature. Make sure you enabled this feature by chaning the {{button_enabled}} setting in {{config.cfg}}. Wire the buttons cables to the following wiring (Between pin 6 and pin 11):
+
+				|▔▔▔▔||▔▔▔▔|
+				| 01 || 02 |
+				|▁▁▁▁||▁▁▁▁|
+				|▔▔▔▔||▔▔▔▔|
+				| 03 || 04 |
+				|▁▁▁▁||▁▁▁▁|
+				|▔▔▔▔||▔▔▔▔|
+				| 05 || 06 | <= Ground
+				|▁▁▁▁||▁▁▁▁|
+				|▔▔▔▔||▔▔▔▔|
+				| 07 || 08 |
+				|▁▁▁▁||▁▁▁▁|
+				|▔▔▔▔||▔▔▔▔|
+				| 09 || 10 |
+				|▁▁▁▁||▁▁▁▁|
+				|▔▔▔▔||▔▔▔▔|
+	  GPIO_17 > | 11 || 12 |
+				|▁▁▁▁||▁▁▁▁|
+				|▔▔▔▔||▔▔▔▔|
+				| 13 || 14 |
+				|▁▁▁▁||▁▁▁▁|
+				|▔▔▔▔||▔▔▔▔|
+				| 15 || 16 |
+				|▁▁▁▁||▁▁▁▁|
+				|▔▔▔▔||▔▔▔▔|
+				| 17 || 18 |
+				|▁▁▁▁||▁▁▁▁|
+				|▔▔▔▔||▔▔▔▔|
+				| 19 || 20 |
+				|▁▁▁▁||▁▁▁▁|
+
+
+So at the end, your switch should sit between pin 6 and pin 11.
+
 ## Importing audio
 
 You may want to import audio you recored with third party deviced like an iPhone. To do so, just put your files in the `/usr/sleeptalk/records-import` folder and make sure, you file name contains something like a number to make sure the first file (if you have multiple chunks) is processed first. The importer script (`import-audio.sh`) will also add a seed at the end of the file name to make definitely sure you won't overwrite any existing file.
 
 The importer will try to convert any audio file format to `wav`. If it fails, your file will be just deleted. After the import, the file is treated like a file that was recorded by the Raspberry Pi itself. Read the "Workflow" section to get an idea what is done with your file.
+
+Beware: The system will wait a configured amount of time (default: {{500 seconds}}) until the import folder is checked after it was changed. You can force the import using the "Force import" button in the frontend.
 
 ## Videos
 
