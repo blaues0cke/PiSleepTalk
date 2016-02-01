@@ -9,6 +9,10 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
+. /usr/sleeptalk/config/config.cfg
+
+start_allowed=true
+
 echo "Running health check"
 
 usedSpaceInPercent=$(df -k | head -2 | tail -1 | awk '{print $5}' | sed "s/\(\%\)//")
@@ -16,13 +20,32 @@ usedSpaceInPercent=$(df -k | head -2 | tail -1 | awk '{print $5}' | sed "s/\(\%\
 echo "... used space in percent: ${usedSpaceInPercent}%"
 
 if [ $usedSpaceInPercent -gt 90 ]; then
-	echo "... too much space is in use, stopping recording audio"
+	echo "... too much space is in use, stopping recording audio" 
 
-    sh /usr/sleeptalk/bash/stop.sh
+	start_allowed=false   
 else
-
 	echo "... enough free disk space available, validating recording service"
+fi
 
+if [ "$button_enabled" = true ]; then
+	echo "... gpio button support enabled, checking button"
+
+	button_state=$(gpio read 0)
+
+	echo "... button state: ${button_state}"
+
+	if [ "${button_state}" -eq "1" ]; then
+		echo "... button on, start still allowed"
+	else
+		echo "... button off, start forbidden"
+
+		start_allowed=false
+	fi
+else
+	echo "... gpio button support disabled, skipping check"
+fi
+
+if [ "$start_allowed" = true ]; then
 	runningProcesses=`ps aux | grep "arecord -D" | wc -l`
 
 	echo "... found services matching our request: ${runningProcesses}"
@@ -32,6 +55,8 @@ else
 
 	    sh /usr/sleeptalk/bash/start.sh
 	fi
+else
+	sh /usr/sleeptalk/bash/stop.sh
 fi
 
 echo "Done"
