@@ -12,6 +12,7 @@
 		"delete_text": 		     "Text löschen",
 		"delete_video": 	     "Video löschen",
 		"download_video": 		 "Video herunterladen",
+        "force_import":          "Import sofort erzwingen",
 		"increase_volume":       "Lautstärke erhöhen",
 		"insert_current_frame":  "Aktuelle Frame-Position einfügen",
 		"move_down": 			 "Nach unten schieben",
@@ -28,10 +29,17 @@
 		"step_backward":         "Schritt zurück",
 		"step_forward":          "Schritt vorwärts",
 		"stop":                  "Stop",
+        "upload_file":           "Datei hochladen",
 		"view_logs": 			 "Logs betrachten"
 	},
     "app": {
     	"name": 			     "PiSleepTalk"
+    },
+    "import": {
+        "description":           "Die Import-Funktion erlaubt es, beliebige Audio-Dateien zu importieren. Nahezu jedes Audio-Format wird unterstützt. Nicht-unterstützte Dateien werden automatisch übersprungen und gelöscht. Zip-Dateien werden ebenfalls automatisch extrahiert.",
+        "empty":                 "Der Import-Ordner ist zur Zeit leer.",
+        "force_text":            "Der Import startet automatisch %s Sekunden nachdem die letzte Datei in den Import-Ordner geladen wurde.",
+        "title":                 "Importieren"
     },
     "logs": {
     	"description": 			 "Nicht-aufbereitete Log-Dateien von node.js und anderen verwendeten Programmen wie ffmpeg oder sox.",
@@ -41,7 +49,8 @@
     "menu": {
     	"help":                  "Hilfe",
     	"home": 				 "Start",
-    	"status": 				 "Status",
+        "import":                "Importieren",
+        "status":                "Status",
     	"videos": 				 "Videos"
 
     },

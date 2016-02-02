@@ -79,6 +79,8 @@ html
 						a(href='/videos').nav-link= __('menu.videos')
 					li.nav-item(class=pageData && pageData.context && pageData.context == 'status'  ? 'active' : '')
 						a(href='/status').nav-link= __('menu.status')
+					li.nav-item(class=pageData && pageData.context && pageData.context == 'import'  ? 'active' : '')
+						a(href='/import').nav-link= __('menu.import')
 
 			div.pull-right
 				div#info-area

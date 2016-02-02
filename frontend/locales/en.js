@@ -12,6 +12,7 @@
 		"delete_text": 		     "Delete text",
 		"delete_video": 	     "Delete video",
 		"download_video": 		 "Download video",
+        "force_import":          "Force import now",
 		"increase_volume":       "Increase volume",
 		"insert_current_frame":  "Insert current frame position",
 		"move_down": 			 "Move down",
@@ -28,10 +29,17 @@
 		"step_backward":         "Step backward",
 		"step_forward":          "Step forward",
 		"stop":                  "Stop",
+        "upload_file":           "Upload file",
 		"view_logs": 			 "View logs"
 	},
     "app": {
     	"name": 			     "PiSleepTalk"
+    },
+    "import": {
+        "description":           "Using the import feature allows you to import any audio file you want. You can use any audio format you want. Unsupported files are skipped and deleted automatically. Zip files are extracted automatically, too.",
+        "empty":                 "Your import folder is empty at the moment.",
+        "force_text":            "The import will start automatically after %s seconds the last file was uploaded to the import folder.",
+        "title":                 "Import"
     },
     "logs": {
     	"description": 			 "Raw log files of node.js and some used programs like ffmpeg or sox.",
@@ -41,6 +49,7 @@
     "menu": {
     	"help":                  "Help",
     	"home": 				 "Home",
+        "import":                "Import",
     	"status": 				 "Status",
     	"videos": 				 "Videos"
 

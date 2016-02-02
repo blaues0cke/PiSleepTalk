@@ -1,0 +1,30 @@
+extends layout
+
+block content
+	div.jumbotron.no-margin
+		h1.display-3= __('import.title')
+		p.lead= __('import.description')
+		hr.m-y-2
+		p= __('import.force_text')
+		p.lead
+			a.btn.btn-primary.btn-lg(role='button')= __('actions.upload_file')
+			|  
+			a.btn.btn-primary.btn-lg(role='button')= __('actions.force_import')
+	div#file-system
+			table.table.table-bordered
+				thead
+					tr
+						th.path= __('table.path')
+						th.size= __('table.size')
+						th.actions= __('table.actions')
+				tbody
+					if !pageData.files || pageData.files.length == 0
+						tr
+							td(colspan=3)= __('import.empty')
+					else
+						each file in pageData.files
+							tr
+								td.path #{file.path}
+								td.size #{file.size} #{__('table.size_kb')}
+								td.actions
+									+button('', 'trash',    '',  'danger',  'delete', __('actions.delete_file'))
