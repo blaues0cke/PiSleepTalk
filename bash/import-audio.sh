@@ -40,10 +40,30 @@ fi
 if [ "$import_allowed" = false ]; then
 	echo "... disallowed to import, aborting"
 
-	exit;
+	#exit;
 fi
 
 file_counter=0
+
+dir_list_zip=$(ls ${audio_file_path_import}/*.zip)
+for zip_file_path in $dir_list_zip
+do
+	echo "... found zip file, extracting ${zip_file_path}"
+
+	# Thanks to
+	# * http://stackoverflow.com/questions/4301786/unzip-zip-file-and-extract-unknown-folder-names-content
+	unzip -o -d "${audio_file_path_import}" "${zip_file_path}"
+
+	rm ${zip_file_path}
+done
+
+# Thanks to
+# * http://stackoverflow.com/questions/27621/unix-shell-file-copy-flattening-folder-structure
+find ${audio_file_path_import}/*/* -exec mv \{\} "${audio_file_path_import}" \;
+
+# Thanks to
+# * https://unix.stackexchange.com/questions/68846/how-do-i-remove-all-sub-directories-from-within-a-directory/68847#68847
+rm -R -- ${audio_file_path_import}/*/
 
 dir_list=$(ls ${audio_file_path_import}/*)
 for audio_file_path in $dir_list
