@@ -109,7 +109,12 @@
     	"set_marker": {
     		"description":       "Please set a marker first before you try to jump to it.",
     		"whoops":            "Whoops, sorry!"
-    	}
+    	},
+        "upload_file": {
+            "description":       "Upload a audio or zip file, that contains audio files, to the import folder.",
+            "title":             "Upload file",
+            "upload_file":       "Upload file"
+        }
     },
     "no_recordings": {
     	"description": 			 "Sorry, we got no unprocessed recordings for you right now. Please sleep on it on come back to this page later.",

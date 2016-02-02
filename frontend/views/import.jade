@@ -26,13 +26,25 @@ block content
 		__('modal.ok')
 	)
 
+	+modal(
+		'upload-file-modal',
+		__('modal.upload_file.title'),
+		'',
+		__('modal.cancel'),
+		__('modal.upload_file.upload_file'),
+		'upload-file-submit'
+	)
+		p= __('modal.upload_file.description')
+		form#upload-form(action='/import', method='post', enctype='multipart/form-data')
+			input(type='file', name='file')
+
 	div.jumbotron.no-margin
 		h1.display-3= __('import.title')
 		p.lead= __('import.description')
 		hr.m-y-2
 		p= __('import.force_text', pageData.import_timeout)
 		p.lead
-			a.btn.btn-primary.btn-lg(role='button')= __('actions.upload_file')
+			a.btn.btn-primary.btn-lg#upload-file(role='button')= __('actions.upload_file')
 			|  
 			a.btn.btn-primary.btn-lg#force-import(role='button')= __('actions.force_import')
 	div#file-system

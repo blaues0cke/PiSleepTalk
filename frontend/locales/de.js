@@ -109,7 +109,12 @@
     	"set_marker": {
     		"description":       "Bitte setzte zu erst eine Markierung, bevor du zur selbigen springst.",
     		"whoops":            "Hoppala, entschuldigung!"
-    	}
+    	},
+        "upload_file": {
+            "description":       "Lade eine Audio- oder Zip-Datei, die Audio-Dateien enthält, zum Importieren hoch.",
+            "title":             "Datei hochladen",
+            "upload_file":       "Datei hochladen"
+        }
     },
     "no_recordings": {
     	"description": 			 "Entschuldigung, es liegen keine unbearbeiteten Aufnahmen vor. Bitte schlafe eine Nacht darüber und kehre dann zur dieser Seite zurück.",

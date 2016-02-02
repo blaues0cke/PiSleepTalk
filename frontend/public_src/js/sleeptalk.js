@@ -53,6 +53,17 @@ var initImportPage = function ()
 		    }
 		});
 	});
+
+	$('#upload-file').click(function() {
+		$('#upload-file-modal').modal('show');
+	});
+
+	$('#upload-file-submit').click(function()
+	{
+		$('#upload-form').submit();
+
+		return false;
+	});
 };
 
 var initStatusPage = function ()
