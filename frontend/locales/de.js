@@ -73,11 +73,20 @@
     		"description":       "Bist du sicher, dass du die Lautstärke dieser Datei um 50% verringern möchtest? Die Datei wird verschoben und unsichtbar, bis die Lautstärke verringert wurde. Danach taucht die Datei wieder automatisch auf der Startseite auf.",
     		"title":             "Lautstärke verringern"
     	},
-    	"delete_file": {
-    		"delete_file":   	 "Datei löschen",
-    		"description":       "Bist du sicher, dass du diese Datei löschen möchtest? Diese Aktion kann nicht rückgängig gemacht werden.",
-    		"title":             "Datei löschen"
-    	},
+        "delete_file": {
+            "delete_file":       "Datei löschen",
+            "description":       "Bist du sicher, dass du diese Datei löschen möchtest? Diese Aktion kann nicht rückgängig gemacht werden.",
+            "title":             "Datei löschen"
+        },
+        "force_import": {
+            "description":       "Bist du sicher, dass du den sofortigen Import erzwingen möchtest?",
+            "force_import":      "Import erzwingen",
+            "title":             "Import sofort erzwingen"
+        },
+        "forced_import": {
+            "description":       "Der Datei-Import wurde erfolgreich erzwungen, bitte warten Sie, bis der Import-Ordner leer ist.",
+            "title":             "Import erzwungen"
+        },
        	"increase_volume": {
     		"description":       "Bist du sicher, dass du die Lautstärke dieser Datei um 50% erhöhen möchtest? Die Datei wird verschoben und unsichtbar, bis die Lautstärke erhöht wurde. Danach taucht die Datei wieder automatisch auf der Startseite auf.",
     		"increase_volume":   "Lautstärke erhöhen",

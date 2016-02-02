@@ -35,7 +35,25 @@ $(document).ready(function() {
 	initLogsPage();
 	initShotcuts();
 	initStatusPage();
+	initImportPage();
 });
+
+var initImportPage = function ()
+{
+	$('#force-import').click(function() {
+		$('#force-import-modal').modal('show');
+	});
+
+	$('#force-import-confirm').click(function() {
+		$.ajax({
+		    url: '/force-import',
+		    type: 'POST',
+		    success: function(result) {
+		        $('#force-import-done').modal('show');
+		    }
+		});
+	});
+};
 
 var initStatusPage = function ()
 {
@@ -69,22 +87,6 @@ var initStatusPage = function ()
 			        reloadPage();
 			    }
 			});
-		}
-	});
-
-	$('#play-video').on('click', 'button', function() {
-		console.log('Footer button pressed');
-
-		var videos = $('#video-target video');
-
-		console.log('Videos: ', videos);
-
-		if (videos && videos.length > 0)
-		{
-			if (!videos[0].paused)
-			{
-				videos[0].pause();
-			}
 		}
 	});
 };

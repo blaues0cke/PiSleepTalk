@@ -78,6 +78,15 @@
     		"description":       "Are you sure to delete this file? You can't undo this.",
     		"title":             "Delete file"
     	},
+        "force_import": {
+            "description":       "Are you sure, to force the import right now?",
+            "force_import":      "Force import",
+            "title":             "Force import"
+        },
+        "forced_import": {
+            "description":       "The importer was started successfully, please wait until the import folder is empty.",
+            "title":             "Import forced"
+        },
        	"increase_volume": {
     		"description":       "Are you sure to increase the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is increased. The audio file will automatically re-appear on the home page.",
     		"increase_volume":   "Increase volume",

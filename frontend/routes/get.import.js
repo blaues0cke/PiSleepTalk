@@ -14,7 +14,8 @@ var   config = require('../core/config.js')
 module.exports = function(app) {
 	app.get('/import', function (req, res) {
 		var pageData = {
-			context: 'import'
+			context: 'import',
+			import_timeout: config.import_dealay_seconds
 		};
 
 		pageData.files = [];
@@ -35,6 +36,8 @@ module.exports = function(app) {
 				pageData.files.push(fileInfo);
 			}
 		}
+
+		console.log('page data', pageData);
 
 		res.render('import', { pageData: pageData });
 	});

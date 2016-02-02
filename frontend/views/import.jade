@@ -1,15 +1,40 @@
 extends layout
 
 block content
+	+modal(
+		'delete-file',
+		__('modal.delete_file.title'),
+		__('modal.delete_file.description'),
+		__('modal.cancel'),
+		__('modal.delete_file.delete_file'),
+		'delete-status-file-confirm'
+	)
+
+	+modal(
+		'force-import-modal',
+		__('modal.force_import.title'),
+		__('modal.force_import.description'),
+		__('modal.cancel'),
+		__('modal.force_import.force_import'),
+		'force-import-confirm'
+	)
+
+	+modal(
+		'force-import-done',
+		__('modal.forced_import.title'),
+		__('modal.forced_import.description'),
+		__('modal.ok')
+	)
+
 	div.jumbotron.no-margin
 		h1.display-3= __('import.title')
 		p.lead= __('import.description')
 		hr.m-y-2
-		p= __('import.force_text')
+		p= __('import.force_text', pageData.import_timeout)
 		p.lead
 			a.btn.btn-primary.btn-lg(role='button')= __('actions.upload_file')
 			|  
-			a.btn.btn-primary.btn-lg(role='button')= __('actions.force_import')
+			a.btn.btn-primary.btn-lg#force-import(role='button')= __('actions.force_import')
 	div#file-system
 			table.table.table-bordered
 				thead
