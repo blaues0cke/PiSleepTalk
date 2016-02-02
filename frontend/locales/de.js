@@ -36,7 +36,7 @@
     	"name": 			     "PiSleepTalk"
     },
     "import": {
-        "description":           "Die Import-Funktion erlaubt es, beliebige Audio-Dateien zu importieren. Nahezu jedes Audio-Format wird unterstützt. Nicht-unterstützte Dateien werden automatisch übersprungen und gelöscht. Zip-Dateien werden ebenfalls automatisch extrahiert.",
+        "description":           "Die Import-Funktion erlaubt es, beliebige Audio-Dateien zu importieren. Nahezu jedes Audio-Format wird unterstützt. Nicht-unterstützte Dateien werden automatisch übersprungen und gelöscht. Zip-Dateien werden ebenfalls automatisch extrahiert. Heißen Dateien in Zip-Dateien gleich, wie bestehende Dateien im Import-Ordner, so werden diese ohne nachzufragen überschrieben.",
         "empty":                 "Der Import-Ordner ist zur Zeit leer.",
         "force_text":            "Der Import startet automatisch %s Sekunden nachdem die letzte Datei in den Import-Ordner geladen wurde.",
         "title":                 "Importieren"
