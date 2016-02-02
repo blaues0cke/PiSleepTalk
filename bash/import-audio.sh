@@ -40,7 +40,7 @@ fi
 if [ "$import_allowed" = false ]; then
 	echo "... disallowed to import, aborting"
 
-	#exit;
+	exit;
 fi
 
 file_counter=0
