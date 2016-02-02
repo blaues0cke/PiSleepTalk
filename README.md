@@ -126,6 +126,7 @@ To restart the samba server, type: `sudo /etc/init.d/samba restart`
 
 ## Thanks to
 
+* Jonas Otto ([https://github.com/ottojo](https://github.com/ottojo)) for the hardware support
 * Michael Malura ([https://github.com/maluramichael](https://github.com/maluramichael)) for the node.js support
 
 ## License
