@@ -46,6 +46,12 @@ else
 fi
 
 if [ "$start_allowed" = true ]; then
+	if [ "$led_enabled" = true ]; then
+		gpio write 2 1
+	else
+		gpio write 2 0
+	fi
+
 	runningProcesses=`ps aux | grep "arecord -D" | wc -l`
 
 	echo "... found services matching our request: ${runningProcesses}"
@@ -57,6 +63,8 @@ if [ "$start_allowed" = true ]; then
 	fi
 else
 	sh /usr/sleeptalk/bash/stop.sh
+
+	gpio write 2 0
 fi
 
 echo "Done"
