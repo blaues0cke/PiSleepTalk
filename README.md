@@ -67,9 +67,9 @@ I am using the following hardware, but I think the most Raspberry Pi models, WiF
 * [USB microphone](http://www.amazon.de/gp/product/B00N1YMO9W)
 * [MicroSD card (16GB)](http://www.amazon.de/gp/product/B007XZL7PC)
 
-## Hardware switch
+## Hardware switch and led
 
-PiSleeptalk also supports a hardware switch to enable and disable the recording feature. Make sure you enabled this feature by chaning the {{button_enabled}} setting in {{config.cfg}}. Wire the buttons cables to the following wiring (Between pin 6 and pin 11):
+PiSleeptalk also supports a hardware switch to enable and disable the recording feature. Make sure you enabled this feature by chaning the `button_enabled` setting in `config.cfg`. Wire the buttons cables to the following wiring (Between pin 6 and pin 11):
 
 				|▔▔▔▔||▔▔▔▔|
 				| 01 || 02 |
@@ -78,7 +78,7 @@ PiSleeptalk also supports a hardware switch to enable and disable the recording 
 				| 03 || 04 |
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
-				| 05 || 06 | <= Ground
+				| 05 || 06 | <= Switch ground
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
 				| 07 || 08 |
@@ -87,10 +87,10 @@ PiSleeptalk also supports a hardware switch to enable and disable the recording 
 				| 09 || 10 |
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
-	  GPIO_17 > | 11 || 12 |
+	 GPIO_17 => | 11 || 12 |
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
-				| 13 || 14 |
+		led+ =>	| 13 || 14 | <= Led ground
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
 				| 15 || 16 |
@@ -103,7 +103,7 @@ PiSleeptalk also supports a hardware switch to enable and disable the recording 
 				|▁▁▁▁||▁▁▁▁|
 
 
-So at the end, your switch should sit between pin 6 and pin 11.
+So at the end, your switch should sit between pin `6` and pin `11`. To enable the led, just place it between pin `13` and `14`. Don't forget to enable the `led_enabled` settings.
 
 ## Importing audio
 
