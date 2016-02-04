@@ -1,8 +1,17 @@
-# Documentation
+# PiSlepTalk
 
 The idea behind this project was to provide a "should work out of the box" solution to make a Raspberry Pi record what you are talking while sleeping.
 Beware, this project is **work in progress**, see [our issue tracker](https://github.com/blaues0cke/PiSleepTalk/issues) to see whats going on.
 
+## Feature list
+
+* Automatically record audio while you sleep
+* Rating of audio and automated deletion of non-sleeptalk-recordings
+* Web interface to add subtitles to recordings and download the videos
+* Automatic video generation
+* Possibility to import audio recorded from third party devices
+* Multiple recording triggers like a hardware switch, the time, last.fm or Philips Hue
+* Automated YouTube upload
 
 ## Installation
 
