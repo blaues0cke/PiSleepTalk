@@ -8,6 +8,11 @@
 #
 
 #
+# Init the gpio interface
+#
+@reboot     root           sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/init-gpio.sh
+
+#
 # Will check the free disk space and the service persistance every 60s
 #
 *   * * * * root            sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/health-check.sh
