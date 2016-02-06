@@ -13,7 +13,6 @@
 
 echo "Starting led test, press ctl+c to quit"
 
-
 while true
 do
 	echo "... turning led on"
