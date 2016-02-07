@@ -63,46 +63,56 @@ do
 
 	echo "... done generating video list"
 
-	blank_frame_path="${movie_directory_path}/title.${default_image_format}"
-
-	# Thanks to
-	# * http://www.imagemagick.org/discourse-server/viewtopic.php?t=13527
-	# Todo: Make "xc:black" dynamic
-	convert -size 1920x1080 xc:black $blank_frame_path
+	blank_frame_path="${movie_directory_path}/blank.${default_image_format}"
 
 	gap_frame_count=$(($frames_per_second * $video_gap_length_in_seconds))
 
-	echo "... creating ${gap_frame_count} frame images"
+	blank_movie_cache_path="${cache_path}/blank_${gap_frame_count}.${default_video_format}"
 
-	# Thanks to
-	# * http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html
-    i=0
-    until [ $i -eq $gap_frame_count ]; do
-    	# Thanks to
-    	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
-    	target_frame_position_long=$(printf %04d ${i})
-    	new_image_file_path="${movie_directory_path}/blank-${target_frame_position_long}.${default_image_format}"
+	if [ -f "${blank_movie_cache_path}" ]; then
+		echo "... copying cached black frame from ${blank_movie_cache_path} to ${blank_movie_path}"
 
-    	echo "... copying ${blank_frame_path} to ${new_image_file_path}"
-        
-    	cp $blank_frame_path $new_image_file_path
+		cp "${blank_movie_cache_path}" "${blank_movie_path}"
+	else
+		# Thanks to
+		# * http://www.imagemagick.org/discourse-server/viewtopic.php?t=13527
+		# Todo: Make "xc:black" dynamic
+		convert -size 1920x1080 xc:black $blank_frame_path
 
-        i=$((i + 1))
-    done
+		echo "... creating ${gap_frame_count} frame images"
 
-    rm $blank_frame_path
+		# Thanks to
+		# * http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html
+	    i=0
+	    until [ $i -eq $gap_frame_count ]; do
+	    	# Thanks to
+	    	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
+	    	target_frame_position_long=$(printf %04d ${i})
+	    	new_image_file_path="${movie_directory_path}/blank-${target_frame_position_long}.${default_image_format}"
 
-    images_file_path="${movie_directory_path}/blank-%04d.${default_image_format}"
+	    	echo "... copying ${blank_frame_path} to ${new_image_file_path}"
+	        
+	    	cp $blank_frame_path $new_image_file_path
 
-	# Thanks to
-	# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
-	ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${blank_movie_path}" >>"${error_log_path}" 2>&1
+	        i=$((i + 1))
+	    done
 
-	echo "... done rendering movie: ${blank_movie_path}"
+	    rm $blank_frame_path
 
-	rm ${movie_directory_path}/blank-*.${default_image_format}
+	    images_file_path="${movie_directory_path}/blank-%04d.${default_image_format}"
 
-	echo "... deleted blank images"
+		# Thanks to
+		# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
+		ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${blank_movie_path}" >>"${error_log_path}" 2>&1
+
+		echo "... done rendering movie: ${blank_movie_path}"
+
+		rm ${movie_directory_path}/blank-*.${default_image_format}
+
+		echo "... deleted blank images"
+
+		cp "${blank_movie_path}" "${blank_movie_cache_path}"
+	fi
 
 	title_file_path="${movie_directory_path}/movie.${default_sleeptalk_movie_format}"
 

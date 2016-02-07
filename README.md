@@ -19,6 +19,7 @@ TODO (See [#24](https://github.com/blaues0cke/PiSleepTalk/issues/24))
 
 ## File system
 
+* `/usr/sleeptalk/cache` Some generated data is stored in here, clear it if you want, the content will be re-generated
 * `/usr/sleeptalk/debug` A folder that contains debug output, not required for production mode
 * `/usr/sleeptalk/frontend` Contains the whole node.js frontend
 * `/usr/sleeptalk/scripts` Contains all bash scripts
