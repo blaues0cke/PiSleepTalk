@@ -316,7 +316,7 @@ var initButtons = function() {
 
 		$('#text-sort').click();
 
-		var finalContent = [];
+		var buffer = [];
 
 		$('#text-manager tbody tr').each (function () {
 			var tr    = $(this);
@@ -327,11 +327,32 @@ var initButtons = function() {
 			{
 				var newLine = frame + '|' + text;
 
-				finalContent.push(newLine);
+				buffer.push({
+					content: newLine,
+					frame:   frame
+				});
 			}
 		});
 
+		buffer.sort(function(a, b)
+		{
+			if      (a.frame < b.frame) return -1;
+			else if (a.frame > b.frame) return 1;
+			else                        return 0;
+		});
+
+		var finalContent = [];
+
+		for (var key in buffer)
+		{
+			var currentItem = buffer[key];
+
+			finalContent.push(currentItem.content);
+		}
+
 		var contentString = finalContent.join('\n');
+
+		console.log('Final content', finalContent);
 
 		$.post(
 			fileUrl,
