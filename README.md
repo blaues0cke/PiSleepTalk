@@ -22,15 +22,15 @@ TODO
 * `/usr/sleeptalk/debug` A folder that contains debug output, not required for production mode
 * `/usr/sleeptalk/frontend` Contains the whole node.js frontend
 * `/usr/sleeptalk/scripts` Contains all bash scripts
-* `/usr/sleeptalk/records-amplitude`
-* `/usr/sleeptalk/records-decrease-volume`
-* `/usr/sleeptalk/records-import`
-* `/usr/sleeptalk/records-increase-volume`
-* `/usr/sleeptalk/records-final`
-* `/usr/sleeptalk/records-raw`
-* `/usr/sleeptalk/records-rendered`
-* `/usr/sleeptalk/records-timestamp`
-* `/usr/sleeptalk/records-to-render`
+* `/usr/sleeptalk/records-amplitude` Contains files that have a pending amplitude check
+* `/usr/sleeptalk/records-decrease-volume` Contains files that are too loud
+* `/usr/sleeptalk/records-import` Contains files you want to import in the system
+* `/usr/sleeptalk/records-increase-volume` Contains files that are too quiet
+* `/usr/sleeptalk/records-final` Contains video scenes generated from your texts
+* `/usr/sleeptalk/records-raw` Contains the raw recordings
+* `/usr/sleeptalk/records-rendered` Contains fully rendered movies (multiple scenes)
+* `/usr/sleeptalk/records-timestamp` Contains files that have a pending timestamp addition
+* `/usr/sleeptalk/records-to-render` Contains files that have to be rendered to scenes
 * `/usr/sleeptalk/test-data` Just contains test data I need to implemenet the whole stuff
 
 All folders that contain record data have to start with `record-` since the status page only watches folders starting with this prefix.
