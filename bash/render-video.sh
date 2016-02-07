@@ -22,11 +22,18 @@ for movie_directory_path in $dir_list
 do
 	echo "... processing directory: ${movie_directory_path}"
 
+	# Thanks to
+	# * http://unix.stackexchange.com/questions/144298/delete-the-last-character-of-a-string-using-string-manipulation-in-shell-script
+	full_video_path=$(echo -n ${movie_directory_path} | head -c -2)
+	full_video_path="${full_video_path}.${default_video_format}"
+
 	video_list_path="${movie_directory_path}/videos.txt"
     blank_movie_path="${movie_directory_path}/blank.${default_video_format}"
     title_file_path="${movie_directory_path}/movie.${default_sleeptalk_movie_format}"
     title_movie_path="${movie_directory_path}/00000.${default_video_format}"
 
+    # Thank s to
+    * http://superuser.com/questions/90008/how-to-clear-the-contents-of-a-file-from-the-command-line
     truncate -s0 $video_list_path
 
 	echo "... iterate files to create concat list"
@@ -50,11 +57,11 @@ do
 		echo "file ${blank_movie_path}" >> $video_list_path
 	done
 
+	# Thanks to
+	# * http://stackoverflow.com/questions/4881930/bash-remove-the-last-line-from-a-file
 	tail -n 1 "${video_list_path}" | wc -c | xargs -I {} truncate "${video_list_path}" -s -{}
 
 	echo "... done generating video list"
-
-	exit;
 
 	blank_frame_path="${movie_directory_path}/title.${default_image_format}"
 
@@ -96,18 +103,6 @@ do
 	rm ${movie_directory_path}/blank-*.${default_image_format}
 
 	echo "... deleted blank images"
-
-
-
-
-
-
-
-	# todo rename all files
-
-	# todo add blank parts
-
-
 
 	title_file_path="${movie_directory_path}/movie.${default_sleeptalk_movie_format}"
 
@@ -158,6 +153,8 @@ do
 
         images_file_path="${movie_directory_path}/title-%04d.${default_image_format}"
 
+        echo "... rendering title video"
+
 		# Thanks to
 		# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
 		ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${title_movie_path}" >>"${error_log_path}" 2>&1
@@ -169,6 +166,15 @@ do
 		echo "... deleted title images"
 	fi
 
+	echo "... will render final movie to: ${full_video_path}"
+
+	ffmpeg -f concat -i "${video_list_path}" -c copy "${full_video_path}" >>"${error_log_path}" 2>&1
+
+	echo "... done, deleting resources folder for video"
+
+	rm -rf ${movie_directory_path}
+
+	echo "... done"
 	echo ""
 done
 
