@@ -15,7 +15,7 @@ Beware, this project is **work in progress**, see [our issue tracker](https://gi
 
 ## Installation
 
-TODO
+TODO (See [#24](https://github.com/blaues0cke/PiSleepTalk/issues/24))
 
 ## File system
 
