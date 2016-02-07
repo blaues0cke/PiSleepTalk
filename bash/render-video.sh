@@ -22,6 +22,54 @@ for movie_directory_path in $dir_list
 do
 	echo "... processing directory: ${movie_directory_path}"
 
+	blank_frame_path="${movie_directory_path}/title.${default_image_format}"
+
+	# Thanks to
+	# * http://www.imagemagick.org/discourse-server/viewtopic.php?t=13527
+	# Todo: Make "xc:black" dynamic
+	convert -size 1920x1080 xc:black $blank_frame_path
+
+	gap_frame_count=$(($frames_per_second * $video_gap_length_in_seconds))
+
+	echo "... creating ${gap_frame_count} frame images"
+
+	# Thanks to
+	# * http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html
+    i=0
+    until [ $i -eq $gap_frame_count ]; do
+    	# Thanks to
+    	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
+    	target_frame_position_long=$(printf %04d ${i})
+    	new_image_file_path="${movie_directory_path}/blank-${target_frame_position_long}.${default_image_format}"
+
+    	echo "... copying ${blank_frame_path} to ${new_image_file_path}"
+        
+    	cp $blank_frame_path $new_image_file_path
+
+        i=$((i + 1))
+    done
+
+    rm $blank_frame_path
+
+    images_file_path="${movie_directory_path}/blank-%04d.${default_image_format}"
+
+    blank_movie_path="${movie_directory_path}/blank.${default_video_format}"
+
+	# Thanks to
+	# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
+	ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${blank_movie_path}" >>"${error_log_path}" 2>&1
+
+	echo "... done rendering movie: ${blank_movie_path}"
+
+	rm ${movie_directory_path}/blank-*.${default_image_format}
+
+	echo "... deleted blank images"
+
+
+
+
+
+#
 
 
 	# todo rename all files
@@ -68,7 +116,7 @@ do
         	target_frame_position_long=$(printf %04d ${i})
         	new_image_file_path="${movie_directory_path}/title-${target_frame_position_long}.${default_image_format}"
 
-        	echo "... copying ${last_image_path} to ${new_image_file_path}"
+        	echo "... copying ${title_frame_path} to ${new_image_file_path}"
             
         	cp $title_frame_path $new_image_file_path
 
