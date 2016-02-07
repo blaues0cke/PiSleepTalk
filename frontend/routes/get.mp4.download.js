@@ -13,7 +13,7 @@ var   config    = require('../core/config.js')
 
 module.exports = function(app) {
 	app.get('/download/:name.' + config.default_video_format, function(req, res) {
-		var filepath = framework.checkFile(req, res, config.default_video_format, config.audio_file_path_final);
+		var filepath = framework.checkFile(req, res, config.default_video_format, [config.audio_file_path_final, config.audio_file_path_rendered]);
 
 		if (filepath) {
 			// Thanks to

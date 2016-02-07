@@ -68,7 +68,7 @@ block content
 						tr
 							td
 								input(type="checkbox", value=video.path name="video-path")
-							td.type= __('videos.type_part')
+							td.type= __('videos.type_' + video.type)
 							td.path #{video.path}
 							td.size #{video.size} #{__('table.size_kb')}
 							td.length #{video.length}#{__('table.length_seconds_short')}
