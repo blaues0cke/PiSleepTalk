@@ -15,9 +15,10 @@ echo "Starting button test, press ctl+c to quit"
 
 while true
 do
-	button_state=$(gpio read 0)
+	button_state_1=$(gpio read 0)
+	button_state_2=$(gpio read 1)
 
-	echo "... button state right now: ${button_state}, next check in 1s"
+	echo "... button state right now: button1: ${button_state_1}, button2: ${button_state_2}, next check in 1s"
 
 	sleep 1s
 done

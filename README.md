@@ -87,7 +87,7 @@ PiSleeptalk also supports a hardware switch to enable and disable the recording 
 				| 03 || 04 |
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
-				| 05 || 06 | <= Switch ground
+				| 05 || 06 | <= Switch -
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
 				| 07 || 08 |
@@ -96,10 +96,10 @@ PiSleeptalk also supports a hardware switch to enable and disable the recording 
 				| 09 || 10 |
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
-	 GPIO_17 => | 11 || 12 |
+	Switch + => | 11 || 12 | <= Force switch +
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
-		led+ =>	| 13 || 14 | <= Led ground
+	   led + =>	| 13 || 14 | <= Led -
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
 				| 15 || 16 |
@@ -108,7 +108,7 @@ PiSleeptalk also supports a hardware switch to enable and disable the recording 
 				| 17 || 18 |
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
-				| 19 || 20 |
+				| 19 || 20 | <= Force switch -
 				|▁▁▁▁||▁▁▁▁|
 
 

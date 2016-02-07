@@ -15,6 +15,8 @@ echo "Initializing gpio"
 
 gpio mode 0 in
 gpio mode 0 up
+gpio mode 1 in
+gpio mode 1 up
 gpio mode 2 out
 gpio mode 2 up
 

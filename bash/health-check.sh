@@ -73,6 +73,22 @@ if [ "$start_allowed" = true ]; then
 	fi
 fi
 
+if [ "$force_button_enabled" = true ]; then
+	echo "... gpio force button support enabled, checking button"
+
+	button_state=$(gpio read 1)
+
+	echo "... button state: ${button_state}"
+
+	if [ "${button_state}" -eq "1" ]; then
+		echo "... button on, forcing start"
+
+		start_allowed=true
+	fi
+else
+	echo "... gpio force button support disabled, skipping check"
+fi
+
 if [ "$start_allowed" = true ]; then
 	if [ "$led_enabled" = true ]; then
 		gpio write 2 1
