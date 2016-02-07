@@ -18,9 +18,10 @@ var   bodyParser = require('body-parser')
 var app = express();
 
 i18n.expressBind(app, {
-    // setup some locales - other locales default to en silently
+    // Setup some locales - other locales default to en silently
     locales: ['en', 'de'],
-    // change the cookie name from 'lang' to 'locale'
+    
+    // Change the cookie name from 'lang' to 'locale'
     cookieName: 'locale'
 });
 
@@ -28,6 +29,11 @@ app.use(function(req, res, next) {
     req.i18n.setLocale(config.default_locale);
     next();
 });
+
+// Thanks to
+// * http://stackoverflow.com/questions/4718818/express-js-view-globals
+app.locals.default_audio_format = config.default_audio_format;
+app.locals.default_video_format = config.default_video_format;
 
 app.set('view engine', 'jade');
 // Thanks to

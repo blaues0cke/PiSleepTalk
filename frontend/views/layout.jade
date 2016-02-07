@@ -85,6 +85,9 @@ html
 			div.pull-right
 				div#info-area
 				+button('shortcut-help', 'question', __('menu.help'), 'primary', '', __('menu.help'), 'left')
+		script.
+			default_audio_format='#{default_audio_format}';
+			default_video_format='#{default_video_format}';
 
 		block content
 		script(src='js.min.js')

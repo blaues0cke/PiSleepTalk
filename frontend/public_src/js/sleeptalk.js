@@ -8,7 +8,6 @@
 //
 
 var audioDuration      = null;
-var audioFileExtension = '.wav';
 var audioProcess       = null;
 var concatAllVideos    = false;
 var fileUrl            = null;
@@ -17,7 +16,6 @@ var infoArea           = null;
 var lastInfoText	   = null;
 var loaded             = false;
 var markerRegion       = null;
-var videoFileExtension = '.mp4';
 var videoUrl 	       = null;
 var wavesurfer         = Object.create(WaveSurfer);
 
@@ -190,7 +188,7 @@ var initWavesurfer = function () {
 		});
 
 		var filename = wave.attr('file-to-process');
-		fileUrl      = '/' + filename + audioFileExtension;
+		fileUrl      = '/' + filename + '.' + default_audio_format;
 
 		console.log('wav url: ', fileUrl);
 
@@ -623,7 +621,7 @@ var initVideoList = function () {
 			;
 
 			var source = $('<source></source>')
-						     .attr('type', 'video/' + videoFileExtension.replace('.', ''))
+						     .attr('type', 'video/' + default_video_format)
 						     .attr('src',   path)
 		    ;
 
