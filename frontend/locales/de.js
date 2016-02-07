@@ -5,6 +5,8 @@
 		"clear":                 "Leeren",
 		"clear_all_texts":       "Alle Texte leeren",
 		"clear_logs": 			 "Logs löschen",
+        "concat_all_videos":     "Alle Videos verbinden",
+        "concat_checked_videos": "Ausgewählte Videos verbinden",
 		"decrease_volume":       "Lautstärke verringern",
 		"delete": 				 "Löschen",
 		"delete_file": 		 	 "Datei löschen",
@@ -67,6 +69,11 @@
     		"description":       "Bist du sicher, dass du alle Texte löschen möchtest?",
     		"title":             "Texte löschen"
     	},
+        "concat_videos": {
+            "concat_videos":     "Videos verbinden",
+            "description":       "Bist du sicher, dass du diese Videos verbinden möchtest? Alle ausgewählten Videos werden verschwinden bis der Film gerendert ist.",
+            "title":             "Videos zu vollem Film Verknüpfen"
+        },
     	"close":                 "Schließen",
       	"decrease_volume": {
     		"decrease_volume":   "Lautstärke verringern",
@@ -143,15 +150,22 @@
     },
     "table": {
     	"actions": 			 	 "Aktionen",
+        "concat":                "Verknüpfen",
     	"frame": 				 "Frame",
     	"length": 				 "Länge",
     	"length_seconds_short":  "s",
     	"path": 				 "Pfad",
     	"size": 				 "Größe",
     	"size_kb": 			     "KB",
-    	"text":       			 "Text"
+    	"text":       			 "Text",
+        "type":                  "Typ"
     },
     "videos": {
-    	"empty_text": 			 "Derzeit liegen keine generierten Videos vor."
+        "description":           "Hier siehst du alle gerenderten Videos, die das System aufgenommen und für dich generiert hat.",
+        "empty_text":            "Derzeit liegen keine generierten Videos vor.",
+        "sub_description":       "Du kannst Videos verbinden indem du sie per Checkbox auswählst und auf \"Videos verbinden\" drückst.",
+        "title":                 "Videos",
+        "type_full":             "Video",
+        "type_part":             "Szene"
     }
 }

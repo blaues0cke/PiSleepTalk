@@ -11,6 +11,22 @@ block content
 	)
 
 	+modal(
+		'concat-videos-modal',
+		__('modal.concat_videos.title'),
+		__('modal.concat_videos.description'),
+		__('modal.cancel'),
+		__('modal.concat_videos.concat_videos'),
+		'concat-videos-confirm'
+	)
+
+	+modal(
+		'concat-videos-done-modal',
+		__('modal.concated_videos.title'),
+		__('modal.concated_videos.description'),
+		__('modal.ok')
+	)
+
+	+modal(
 		'play-video',
 		__('modal.preview_video.title'), 
 		'',
@@ -18,10 +34,23 @@ block content
 	)
 		div.embed-responsive.embed-responsive-16by9#video-target
 
+	div.jumbotron.no-margin
+		h1.display-3= __('videos.title')
+		p.lead= __('videos.description')
+		hr.m-y-2
+		p= __('videos.sub_description')
+		p.lead
+			a.btn.btn-primary.btn-lg(role='button')#concat-checked-videos= __('actions.concat_checked_videos')
+			|  
+			a.btn.btn-primary.btn-lg(role='button')#concat-all-videos= __('actions.concat_all_videos')
+
 	div#video-list
 			table.table.table-bordered
 				thead
 					tr
+						th
+							input(type="checkbox").toggle
+						th.type= __('table.type')
 						th.path= __('table.path')
 						th.size= __('table.path')
 						th.length= __('table.length')
@@ -32,6 +61,9 @@ block content
 							td(colspan=4)= __('videos.empty_text')
 					each video in pageData.videos
 						tr
+							td
+								input(type="checkbox", value=video.path name="video-path")
+							td.type= __('videos.type_part')
 							td.path #{video.path}
 							td.size #{video.size} #{__('table.size_kb')}
 							td.length #{video.length}#{__('table.length_seconds_short')}

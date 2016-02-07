@@ -10,6 +10,7 @@
 var audioDuration      = null;
 var audioFileExtension = '.wav';
 var audioProcess       = null;
+var concatAllVideos    = false;
 var fileUrl            = null;
 var frameProcess       = null;
 var infoArea           = null;
@@ -554,6 +555,44 @@ var getVideoPathForClickedButton = function(button)
 };
 
 var initVideoList = function () {
+
+	$('#concat-checked-videos').click(function() {
+		concatAllVideos = false;
+
+		$('#concat-videos-modal').modal('show');
+	});
+
+	$('#concat-all-videos').click(function() {
+		concatAllVideos = true;
+
+		$('#concat-videos-modal').modal('show');
+	});
+
+	$('#concat-videos-confirm').click(function() {
+		var videos = [];
+
+		$('#video-list td input[type=checkbox]').each(function(index, element)
+		{
+			var checkbox = $(this);
+
+			if (concatAllVideos || checkbox.is(':checked'))
+			{
+				var videoFilePath = checkbox.val();
+
+				videos.push(videoFilePath);
+			}
+		});
+
+		$.ajax({
+		    url: '/concat-videos',
+		    type: 'POST',
+		    data: { videos : videos },
+		    success: function(result) {
+		        reloadPage();
+		    }
+		});
+	});
+
 	$('#video-list')
 		.on('click', '.download', function() {
 			console.log('Download button pressed');

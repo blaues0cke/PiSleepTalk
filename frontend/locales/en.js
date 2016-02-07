@@ -5,6 +5,8 @@
 		"clear":                 "Clear",
 		"clear_all_texts":       "Clear all texts",
 		"clear_logs": 			 "Clear logs",
+        "concat_all_videos":     "Concat all videos",
+        "concat_checked_videos": "Concat selected videos",
 		"decrease_volume":       "Decrease volume",
 		"delete": 				 "Delete",
 		"delete_file": 		 	 "Delete file",
@@ -62,11 +64,16 @@
     		"description":       "Are you sure to clear all the log files? This can't be undone.",
     		"title":             "Clear logs"
     	},
-    	"clear_texts": {
-    		"clear":  			 "Clear",
-    		"description":       "Are you sure to delete all the text data?",
-    		"title":             "Clear text data"
-    	},
+        "clear_texts": {
+            "clear":             "Clear",
+            "description":       "Are you sure to delete all the text data?",
+            "title":             "Clear text data"
+        },
+        "concat_videos": {
+            "concat_videos":     "Concat videos",
+            "description":       "Are you sure to concat the videos? The selected will disappear until the final movie is rendered.",
+            "title":             "Concat videos to full movie"
+        },
     	"close":                 "Close",
       	"decrease_volume": {
     		"decrease_volume":   "Decrease volume",
@@ -143,15 +150,22 @@
     },
     "table": {
     	"actions": 			 	 "Actions",
+        "concat":                "Concat",
     	"frame": 				 "Frame",
     	"length": 				 "Length",
     	"length_seconds_short":  "s",
     	"path": 				 "Path",
     	"size": 				 "Size",
     	"size_kb": 			     "KB",
-    	"text":       			 "Text"
+    	"text":       			 "Text",
+        "type":                  "Type"
     },
     "videos": {
-    	"empty_text": 			 "No rendered videos are available at the moment."
+        "description":           "Here you can see all rendered videos the system recorded and generated for you.",
+        "empty_text": 			 "No rendered videos are available at the moment.",
+        "sub_description":       "You can concat videos by selecting the checkbox and press the \"Concat videos\" button.",
+        "title":                 "Videos",
+        "type_full":             "Video",
+        "type_part":             "Scene"
     }
 }
