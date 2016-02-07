@@ -81,34 +81,34 @@ I am using the following hardware, but I think the most Raspberry Pi models, WiF
 PiSleeptalk also supports a hardware switch to enable and disable the recording feature. Make sure you enabled this feature by chaning the `button_enabled` setting in `config.cfg`. Wire the buttons cables to the following wiring (Between pin 6 and pin 11):
 
 				|▔▔▔▔||▔▔▔▔|
-				| 01 || 02 |
+				|   01  ||  02   |
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
-				| 03 || 04 |
+				|   03  ||  04   |
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
-				| 05 || 06 | <= Switch ground
+				|   05  ||  06   | <= Switch ground
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
-				| 07 || 08 |
+				|   07  ||  08   |
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
-				| 09 || 10 |
+				|   09  ||  10   |
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
-	 GPIO_17 => | 11 || 12 |
+	 GPIO_17 => |   11  ||  12   |
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
-		led+ =>	| 13 || 14 | <= Led ground
+		led+ =>	|   13  ||  14   | <= Led ground
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
-				| 15 || 16 |
+				|   15  ||  16   |
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
-				| 17 || 18 |
+				|   17  ||  18   |
 				|▁▁▁▁||▁▁▁▁|
 				|▔▔▔▔||▔▔▔▔|
-				| 19 || 20 |
+				|   19  ||  20   |
 				|▁▁▁▁||▁▁▁▁|
 
 
