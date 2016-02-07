@@ -1,7 +1,7 @@
 # PiSlepTalk
 
 The idea behind this project was to provide a "should work out of the box" solution to make a Raspberry Pi record what you are talking while sleeping.
-Beware, this project is **work in progress**, see [our issue tracker](https://github.com/blaues0cke/PiSleepTalk/issues) to see whats going on.
+Beware, this project is **work in progress**, see [our issue tracker](https://github.com/blaues0cke/PiSleepTalk/issues) to see whats going on. You can find some screeshot at the end of this file.
 
 ## Feature list
 
@@ -162,3 +162,22 @@ This work is licensed under the Creative Commons Attribution-NonCommercial-Share
 ### Wavesurfer
 
 * [http://wavesurfer-js.org/](http://wavesurfer-js.org/)
+
+### Screenshots
+
+* The main interface, here you can subtitle your recordings.
+    ![screen shot 2016-02-07 at 17 33 12](https://cloud.githubusercontent.com/assets/5159398/12873577/32677f48-cdc1-11e5-9085-91e160d72701.png)
+* I added some texts in this screenshot.
+    ![screen shot 2016-02-07 at 17 33 42](https://cloud.githubusercontent.com/assets/5159398/12873576/32659296-cdc1-11e5-874f-2009faecaa25.png)
+* PiSleepTalk also supports common keyboard shortcuts.
+    ![screen shot 2016-02-07 at 17 34 01](https://cloud.githubusercontent.com/assets/5159398/12873573/32523638-cdc1-11e5-86e5-317f04fb732f.png)
+* You can see all the videos that was generated for you in a nice overview.
+    ![screen shot 2016-02-07 at 17 34 09](https://cloud.githubusercontent.com/assets/5159398/12873575/3255f11a-cdc1-11e5-8ab2-f7b27504159b.png)
+* Even with a live-preview feature
+    ![screen shot 2016-02-07 at 17 34 12](https://cloud.githubusercontent.com/assets/5159398/12873571/3250fe94-cdc1-11e5-8241-89b6f0b58bab.png)
+* You can import files recorded by any third party device
+    ![screen shot 2016-02-07 at 17 34 55](https://cloud.githubusercontent.com/assets/5159398/12873574/32548e9c-cdc1-11e5-94f8-537474f29b5e.png)
+* You can concatinate all recordings to a full movie
+    ![screen shot 2016-02-07 at 17 34 32](https://cloud.githubusercontent.com/assets/5159398/12873572/3251219e-cdc1-11e5-9981-f1ef058130de.png)
+* Also there is a status page to get an idea of whats going on behind the scenes.
+    ![screen shot 2016-02-07 at 17 34 44](https://cloud.githubusercontent.com/assets/5159398/12873570/325000fc-cdc1-11e5-83af-86aa93ce0a7a.png)
