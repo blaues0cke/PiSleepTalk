@@ -45,6 +45,28 @@ else
 	echo "... gpio button support disabled, skipping check"
 fi
 
+if [ "$last_fm_enabled" = true ]; then
+	echo "... last.fm support enabled, checking last track date"
+
+	last_last_fm_time=$(curl -s 'http://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user='"${last_fm_username}"'&api_key='"${last_fm_api_key}"'&format=json' | python /usr/sleeptalk/bash/parse-lastfm.py)
+	current_time=$(date +%s)
+	difference=$(($current_time - $last_last_fm_time))
+
+	echo "... last fm time: ${last_last_fm_time}"
+	echo "... current time: ${current_time}"
+	echo "... difference: ${difference}"
+
+	if [ "${difference}" -ge "${last_fm_timeout_in_seconds}" ]; then
+		echo "... last listened song is more that ${difference}s ago, start still allowed"
+	else
+		echo "... last listened song is less that ${difference}s ago, start forbidden"
+
+		start_allowed=false
+	fi
+else
+	echo "... last.fm support disabled, skipping check"
+fi
+
 if [ "$start_allowed" = true ]; then
 	if [ "$led_enabled" = true ]; then
 		gpio write 2 1
