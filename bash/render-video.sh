@@ -22,6 +22,40 @@ for movie_directory_path in $dir_list
 do
 	echo "... processing directory: ${movie_directory_path}"
 
+	video_list_path="${movie_directory_path}/videos.txt"
+    blank_movie_path="${movie_directory_path}/blank.${default_video_format}"
+    title_file_path="${movie_directory_path}/movie.${default_sleeptalk_movie_format}"
+    title_movie_path="${movie_directory_path}/00000.${default_video_format}"
+
+    truncate -s0 $video_list_path
+
+	echo "... iterate files to create concat list"
+
+	if [ -f $title_file_path ]; then
+		echo "file ${title_movie_path}" >> $video_list_path
+		echo "file ${blank_movie_path}" >> $video_list_path
+	fi
+
+	video_dir_list=$(ls ${movie_directory_path}/*.${default_video_format} 2>/dev/null)
+	for video_file_path in $video_dir_list
+	do
+		file_counter=$((file_counter + 1))
+
+		echo "... processing file: ${video_file_path}"
+
+		# Thanks to
+		# * https://trac.ffmpeg.org/wiki/Concatenate#samecodec
+
+		echo "file ${video_file_path}" >> $video_list_path
+		echo "file ${blank_movie_path}" >> $video_list_path
+	done
+
+	tail -n 1 "${video_list_path}" | wc -c | xargs -I {} truncate "${video_list_path}" -s -{}
+
+	echo "... done generating video list"
+
+	exit;
+
 	blank_frame_path="${movie_directory_path}/title.${default_image_format}"
 
 	# Thanks to
@@ -53,8 +87,6 @@ do
 
     images_file_path="${movie_directory_path}/blank-%04d.${default_image_format}"
 
-    blank_movie_path="${movie_directory_path}/blank.${default_video_format}"
-
 	# Thanks to
 	# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
 	ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${blank_movie_path}" >>"${error_log_path}" 2>&1
@@ -69,7 +101,6 @@ do
 
 
 
-#
 
 
 	# todo rename all files
@@ -127,8 +158,6 @@ do
 
         images_file_path="${movie_directory_path}/title-%04d.${default_image_format}"
 
-        title_movie_path="${movie_directory_path}/00000.${default_video_format}"
-
 		# Thanks to
 		# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
 		ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${title_movie_path}" >>"${error_log_path}" 2>&1
@@ -139,15 +168,6 @@ do
 
 		echo "... deleted title images"
 	fi
-
-
-
-
-
-
-
-
-	file_counter=$((file_counter + 1))
 
 	echo ""
 done
