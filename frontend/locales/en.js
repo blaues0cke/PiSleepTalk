@@ -163,6 +163,8 @@
     "videos": {
         "description":           "Here you can see all rendered videos the system recorded and generated for you.",
         "empty_text": 			 "No rendered videos are available at the moment.",
+        "movie_title":           "Video title",
+        "movie_title_tip":       "The movie title will appear for %s seconds on the start.",
         "sub_description":       "You can concat videos by selecting the checkbox and press the \"Concat videos\" button.",
         "title":                 "Videos",
         "type_full":             "Video",

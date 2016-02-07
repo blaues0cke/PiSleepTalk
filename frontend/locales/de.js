@@ -163,6 +163,8 @@
     "videos": {
         "description":           "Hier siehst du alle gerenderten Videos, die das System aufgenommen und für dich generiert hat.",
         "empty_text":            "Derzeit liegen keine generierten Videos vor.",
+        "movie_title":           "Video-Titel",
+        "movie_title_tip":       "Der Titel erscheint %s Sekunden am Start.",
         "sub_description":       "Du kannst Videos verbinden indem du sie per Checkbox auswählst und auf \"Videos verbinden\" drückst.",
         "title":                 "Videos",
         "type_full":             "Video",

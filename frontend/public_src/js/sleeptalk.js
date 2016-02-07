@@ -586,8 +586,13 @@ var initVideoList = function () {
 		$.ajax({
 		    url: '/concat-videos',
 		    type: 'POST',
-		    data: { videos : videos },
+		    data: {
+		    	movieTitle: $('#movie-title').val(),
+		    	videos :    videos
+		    },
 		    success: function(result) {
+		    	$('#movie-title').val('');
+
 		        reloadPage();
 		    }
 		});

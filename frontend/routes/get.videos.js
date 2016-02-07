@@ -16,7 +16,8 @@ var   config = require('../core/config.js')
 module.exports = function(app) {
 	app.get('/videos', function (req, res) {
 		var pageData = {
-			context: 'videos'
+			context:   'videos',
+			titleTime: config.title_time_in_seconds
 		};
 
 		pageData.videos = [];
@@ -41,9 +42,8 @@ module.exports = function(app) {
 			}
 		}
 
-		console.log(pageData);
+		console.log('page data', pageData);
 
 		res.render('videos', { pageData: pageData });
-
 	});
 }

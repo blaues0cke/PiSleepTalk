@@ -13,11 +13,16 @@ block content
 	+modal(
 		'concat-videos-modal',
 		__('modal.concat_videos.title'),
-		__('modal.concat_videos.description'),
+		'',
 		__('modal.cancel'),
 		__('modal.concat_videos.concat_videos'),
 		'concat-videos-confirm'
 	)
+		p= __('modal.concat_videos.description')
+		fieldset.form-group
+			label(for="movie-title")= __('videos.movie_title')
+			input(type="text", name="movie-title", placeholder=__('videos.movie_title')).form-control#movie-title
+			small.text-muted= __('videos.movie_title_tip', pageData.titleTime)
 
 	+modal(
 		'concat-videos-done-modal',
