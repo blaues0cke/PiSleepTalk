@@ -9,8 +9,8 @@
 
 var   config = require('../core/config.js')
 	, glob   = require('glob')
-	, multer     = require('multer')
-    , upload     = multer({ dest: config.audio_file_path_import + '/' })
+	, multer = require('multer')
+    , upload = multer({ dest: config.audio_file_path_import + '/' })
 ;
 
 module.exports = function(app) {
