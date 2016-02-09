@@ -11,11 +11,15 @@
 
 . /usr/sleeptalk/config/config.cfg
 
-rm -rf "${audio_file_path_raw}/*"
-rm -rf "${audio_file_path_timestamp}/*"
-rm -rf "${audio_file_path_amplitude}/*"
-rm -rf "${audio_file_path_rendered}/*"
-rm -rf "${audio_file_path_to_render}/*"
-rm -rf "${audio_file_path_decrease_volume}/*"
-rm -rf "${audio_file_path_increase_volume}/*"
-rm -rf "${audio_file_path_final}/*"
+echo "Starting cleaning up"
+
+rm -rf ${audio_file_path_raw}/*
+rm -rf ${audio_file_path_timestamp}/*
+rm -rf ${audio_file_path_amplitude}/*
+rm -rf ${audio_file_path_rendered}/*
+rm -rf ${audio_file_path_to_render}/*
+rm -rf ${audio_file_path_decrease_volume}/*
+rm -rf ${audio_file_path_increase_volume}/*
+rm -rf ${audio_file_path_final}/*
+
+echo "... done!"
