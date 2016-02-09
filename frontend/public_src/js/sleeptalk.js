@@ -35,7 +35,20 @@ $(document).ready(function() {
 	initShotcuts();
 	initStatusPage();
 	initImportPage();
+	initTableTools();
 });
+
+var initTableTools = function ()
+{
+	$('table th input[type=checkbox]').click(function()
+	{
+		$(this).parents('table').find('td input[type=checkbox]').each(function()
+		{
+			var checkBox = $(this);
+			checkBox.prop('checked', !checkBox.prop('checked'));
+		});
+	});
+};
 
 var initImportPage = function ()
 {
