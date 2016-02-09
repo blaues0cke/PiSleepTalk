@@ -12,14 +12,20 @@
 . /usr/sleeptalk/config/config.cfg
 
 echo "Starting cleaning up"
+echo "... deleting files"
 
 rm -rf ${audio_file_path_raw}/*
 rm -rf ${audio_file_path_timestamp}/*
 rm -rf ${audio_file_path_amplitude}/*
+rm -rf ${audio_file_path_import}/*
 rm -rf ${audio_file_path_rendered}/*
 rm -rf ${audio_file_path_to_render}/*
 rm -rf ${audio_file_path_decrease_volume}/*
 rm -rf ${audio_file_path_increase_volume}/*
 rm -rf ${audio_file_path_final}/*
+
+echo "... clearing logs"
+
+truncate -s 0 "$error_log_path"
 
 echo "... done!"
