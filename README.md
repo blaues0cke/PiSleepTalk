@@ -163,7 +163,7 @@ This work is licensed under the Creative Commons Attribution-NonCommercial-Share
 
 * [http://wavesurfer-js.org/](http://wavesurfer-js.org/)
 
-### Screenshots
+## Screenshots
 
 * The main interface, here you can subtitle your recordings.
     ![screen shot 2016-02-07 at 17 33 12](https://cloud.githubusercontent.com/assets/5159398/12873577/32677f48-cdc1-11e5-9085-91e160d72701.png)
