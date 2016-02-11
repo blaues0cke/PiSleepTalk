@@ -51,59 +51,71 @@ do
 			# * http://spielwiese.la-evento.com/hokuspokus/seite2.html
 			ffmpeg -y -i "$audio_file_path" "$mp3_file_path" >>"${error_log_path}" 2>&1
 
-			# Thanks to
-			# * http://unix.stackexchange.com/questions/12068/how-to-measure-time-of-program-execution-and-store-that-inside-a-variable
-			end_time=$(date +%s.%N)
-			time_difference=$(echo "${end_time} - ${start_time}" | bc)
-			echo "... done transcoding ${default_audio_format} to ${default_video_audio_format} (${time_difference}s)"
-
-			images_file_path="${audio_file_path_to_render}/${filename}-%04d.${default_image_format}"
-
-			echo "... images file path: ${images_file_path}"
-
-			video_file_path="${audio_file_path_to_render}/${filename}-no-sound.${default_video_format}"
-
-			echo "... video file path: ${video_file_path}"
-			echo "... rendering images to video (${images_file_path} to ${video_file_path})"
-			start_time=$(date +%s.%N)
-
-			# Thanks to
-			# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
-			ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${video_file_path}" >>"${error_log_path}" 2>&1
-
-			end_time=$(date +%s.%N)
-			time_difference=$(echo "${end_time} - ${start_time}" | bc)
-			echo "... done rendering images to video (${time_difference}s)"
-
-			final_video_file_path="${audio_file_path_final}/${length_in_seconds_rounded}-${filename}.${default_video_format}"
-
-			echo "... concating audio and video (${mp3_file_path} + ${video_file_path} to ${final_video_file_path})"
-			start_time=$(date +%s.%N)
-
-			# Thanks to
-			# * http://stackoverflow.com/questions/9049970/how-to-combine-a-mp4-video-with-a-wav-audio-with-an-offset-in-ffmpeg-from-comm
-			# * http://stackoverflow.com/questions/11779490/ffmpeg-how-to-add-new-audio-not-mixing-in-video
-			ffmpeg -y -i "${video_file_path}" -i "${mp3_file_path}" -map 0:v -map 1:a -vcodec copy -acodec copy -shortest "${final_video_file_path}" >>"${error_log_path}" 2>&1
-
-			end_time=$(date +%s.%N)
-			time_difference=$(echo "${end_time} - ${start_time}" | bc)
-			echo "... done concating audio and video (${time_difference}s)"
-
-			echo "... deleting ${default_video_audio_format} file and no-sound video (${mp3_file_path} + ${video_file_path})"
-
-			if [ "$debug" = false ]; then
-				if [ -f $video_file_path ]; then
-					rm $video_file_path
-				fi
-
-				if [ -f $mp3_file_path ]; then
-					rm $mp3_file_path
-				fi
-		
+			if [ -f $mp3_file_path ]; then
 				# Thanks to
-				# * http://stackoverflow.com/questions/4325216/rm-all-files-except-some
-				find ${audio_file_path_to_render}/${filename}.* | xargs rm
-				find ${audio_file_path_to_render}/${filename}-*.* | xargs rm
+				# * http://unix.stackexchange.com/questions/12068/how-to-measure-time-of-program-execution-and-store-that-inside-a-variable
+				end_time=$(date +%s.%N)
+				time_difference=$(echo "${end_time} - ${start_time}" | bc)
+				echo "... done transcoding ${default_audio_format} to ${default_video_audio_format} (${time_difference}s)"
+
+				images_file_path="${audio_file_path_to_render}/${filename}-%04d.${default_image_format}"
+
+				echo "... images file path: ${images_file_path}"
+
+				video_file_path="${audio_file_path_to_render}/${filename}-no-sound.${default_video_format}"
+
+				echo "... video file path: ${video_file_path}"
+				echo "... rendering images to video (${images_file_path} to ${video_file_path})"
+				start_time=$(date +%s.%N)
+
+				# Thanks to
+				# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
+				ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${video_file_path}" >>"${error_log_path}" 2>&1
+
+				if [ -f $video_file_path ]; then
+					end_time=$(date +%s.%N)
+					time_difference=$(echo "${end_time} - ${start_time}" | bc)
+					echo "... done rendering images to video (${time_difference}s)"
+
+					final_video_file_path="${audio_file_path_final}/${length_in_seconds_rounded}-${filename}.${default_video_format}"
+
+					echo "... concating audio and video (${mp3_file_path} + ${video_file_path} to ${final_video_file_path})"
+					start_time=$(date +%s.%N)
+
+					# Thanks to
+					# * http://stackoverflow.com/questions/9049970/how-to-combine-a-mp4-video-with-a-wav-audio-with-an-offset-in-ffmpeg-from-comm
+					# * http://stackoverflow.com/questions/11779490/ffmpeg-how-to-add-new-audio-not-mixing-in-video
+					ffmpeg -y -i "${video_file_path}" -i "${mp3_file_path}" -map 0:v -map 1:a -vcodec copy -acodec copy -shortest "${final_video_file_path}" >>"${error_log_path}" 2>&1
+
+					if [ -f $final_video_file_path ]; then
+						end_time=$(date +%s.%N)
+						time_difference=$(echo "${end_time} - ${start_time}" | bc)
+						echo "... done concating audio and video (${time_difference}s)"
+
+						echo "... deleting ${default_video_audio_format} file and no-sound video (${mp3_file_path} + ${video_file_path})"
+
+						if [ "$debug" = false ]; then
+							if [ -f $video_file_path ]; then
+								rm $video_file_path
+							fi
+
+							if [ -f $mp3_file_path ]; then
+								rm $mp3_file_path
+							fi
+					
+							# Thanks to
+							# * http://stackoverflow.com/questions/4325216/rm-all-files-except-some
+							find ${audio_file_path_to_render}/${filename}.* | xargs rm
+							find ${audio_file_path_to_render}/${filename}-*.* | xargs rm
+						fi
+					else
+						echo "... error while merging audio and video, aborting"
+					fi
+				else
+					echo "... error while creating video from image files, aborting"
+				fi
+			else
+				echo "... error while creating mp3 file, aborting"
 			fi
 
 			echo "... done"
