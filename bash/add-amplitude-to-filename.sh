@@ -15,7 +15,7 @@ echo "Adding amplitude to filename"
 echo ""
 
 script_name=`basename "$0"`
-lock_file_name="/var/lock/.${script_name}.${lock_file_type}"
+lock_file_name="/var/lock/.${script_name}.${lock_file_format}"
 
 if [ ! -d "${lock_file_name}" ]; then
 	mkdir "$lock_file_name"
