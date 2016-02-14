@@ -23,7 +23,7 @@ if [ ! -d "${lock_file_name}" ]; then
 
 	# Thanks to
 	# * http://stackoverflow.com/questions/14032188/how-to-find-file-accessed-created-just-few-minutes-ago
-	changed_files=$(find ${audio_file_path_import} -cmin -${import_dealay_seconds} | wc -l)
+	changed_files=$(find ${audio_file_path_import} -cmin -${import_dealay_seconds} | wc -l 2>/dev/null)
 
 	if [ ${changed_files} -gt 0 ]; then
 		echo "... got files that are new than $import_dealay_seconds seconds, disabling importing"
@@ -51,7 +51,7 @@ if [ ! -d "${lock_file_name}" ]; then
 
 	file_counter=0
 
-	dir_list_zip=$(ls ${audio_file_path_import}/*.zip)
+	dir_list_zip=$(ls ${audio_file_path_import}/*.zip 2>/dev/null)
 	for zip_file_path in $dir_list_zip
 	do
 		echo "... found zip file, extracting ${zip_file_path}"
@@ -65,13 +65,13 @@ if [ ! -d "${lock_file_name}" ]; then
 
 	# Thanks to
 	# * http://stackoverflow.com/questions/27621/unix-shell-file-copy-flattening-folder-structure
-	find ${audio_file_path_import}/*/* -exec mv \{\} "${audio_file_path_import}" \;
+	find ${audio_file_path_import}/*/* -exec mv \{\} "${audio_file_path_import}" \; 2>/dev/null
 
 	# Thanks to
 	# * https://unix.stackexchange.com/questions/68846/how-do-i-remove-all-sub-directories-from-within-a-directory/68847#68847
-	rm -R -- ${audio_file_path_import}/*/
+	rm -R -- ${audio_file_path_import}/*/ 2>/dev/null
 
-	dir_list=$(ls ${audio_file_path_import}/*)
+	dir_list=$(ls ${audio_file_path_import}/* 2>/dev/null)
 	for audio_file_path in $dir_list
 	do
 		if [ -f $audio_file_path ]; then
