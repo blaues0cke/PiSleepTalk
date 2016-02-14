@@ -21,30 +21,48 @@ if [ ! -d "${lock_file_name}" ]; then
 
 	import_allowed=true
 
-	# Thanks to
-	# * http://stackoverflow.com/questions/14032188/how-to-find-file-accessed-created-just-few-minutes-ago
-	changed_files=$(find ${audio_file_path_import} -cmin -${import_dealay_seconds} | wc -l 2>/dev/null)
+	if [ "$import_allowed" = false ]; then
+		# Thanks to
+		# 
+		files_in_directory=$(ls -1 ${audio_file_path_import} | wc -l)
 
-	if [ ${changed_files} -gt 0 ]; then
-		echo "... got files that are new than $import_dealay_seconds seconds, disabling importing"
+		if [ ${files_in_directory} -eq 0 ]; then
+			echo "... no files to import, disabling importing"
 
-		import_allowed=false
+			import_allowed=false
+		fi
 	fi
 
-	force_file_path="${audio_file_path_import}/.${default_force_import_format}"
+	if [ "$import_allowed" = false ]; then
+		# Thanks to
+		# * http://stackoverflow.com/questions/14032188/how-to-find-file-accessed-created-just-few-minutes-ago
+		changed_files=$(find ${audio_file_path_import} -cmin -${import_dealay_seconds} | wc -l 2>/dev/null)
 
-	echo "... checking for existing of ${force_file_path}"
+		if [ ${changed_files} -gt 0 ]; then
+			echo "... got files that are new than $import_dealay_seconds seconds, disabling importing"
 
-	if [ -f ${force_file_path} ]; then
-		echo "... force-import file exist, forcing import and removing lockfile"
+			import_allovwed=false
+		fi
+	fi
 
-		import_allowed=true
+	if [ "$import_allowed" = false ]; then
+		force_file_path="${audio_file_path_import}/.${default_force_import_format}"
 
-		rm $force_file_path
+		echo "... checking for existing of ${force_file_path}"
+
+		if [ -f ${force_file_path} ]; then
+			echo "... force-import file exist, forcing import and removing lockfile"
+
+			import_allowed=true
+
+			rm $force_file_path
+		fi
 	fi
 
 	if [ "$import_allowed" = false ]; then
 		echo "... disallowed to import, aborting"
+
+		rmdir "$lock_file_name"
 
 		exit;
 	fi
