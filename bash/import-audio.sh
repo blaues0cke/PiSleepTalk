@@ -14,7 +14,7 @@
 echo "Importing audio files"
 
 script_name=`basename "$0"`
-lock_file_name="/var/lock/.${script_name}.exclusivelock"
+lock_file_name="/var/lock/.${script_name}.${lock_file_format}"
 
 if [ ! -d "${lock_file_name}" ]; then
 	mkdir "$lock_file_name"
