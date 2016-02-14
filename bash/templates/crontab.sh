@@ -61,5 +61,10 @@
 #
 */5 *  * * * root sleep 300; sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/generate-video.sh
 
+#
+# Will clean the lock files every day at 16:02
+#
+2   16 * * * root sleep 300; sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/clean-lock-files.sh
+
 
 
