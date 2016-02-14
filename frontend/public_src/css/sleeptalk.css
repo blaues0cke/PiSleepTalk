@@ -51,7 +51,7 @@
 #shortcut-help-modal kbd
 {
 	display: inline-block;
-	width: 60px;
+	width: 140px;
 	text-align: center;
 	overflow: hidden;
 	height: 26px;
@@ -72,7 +72,7 @@
 #shortcut-help-modal ul li
 {
 	margin-bottom: 6px;
-	padding-left: 70px;
+	padding-left: 150px;
 	position: relative;
 }
 #text-wrapper

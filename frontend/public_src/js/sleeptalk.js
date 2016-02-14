@@ -531,7 +531,7 @@ var initTextManager = function () {
 		})
 	;
 
-	$('#text-add').click(function() {
+	var createNewText = function() {
 
 		var tableBody     = $('#text-manager tbody');
 		var firstTableRow = tableBody.find('tr:first-child');
@@ -546,7 +546,10 @@ var initTextManager = function () {
 				.first()
 					.val(pad(frameProcess, 4))
 		;
-	})
+	};
+
+	$('#text-add').click(createNewText);
+	$('#wave').dblclick(createNewText);
 
 	$('#text-clear').click(function() {
 		$('#clear-texts').modal('show');

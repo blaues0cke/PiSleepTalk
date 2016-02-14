@@ -133,7 +133,9 @@
     	"keys": {
     		"1_9":  			 "1-9",
     		"1_9_description": 	 "Springe zu Abschnitt N der Audio-Datei",
-    		"down_description":  "Springe 10 Sekunden vor",
+            "dc":                "Doppeklick",
+            "dc_description":    "Zu Position springen und sofort Text erstellen",
+    		"down_description":  "Springe 10 Sekunden vor",     
     		"left_description":  "Springe 5 Sekunden zurück",
     		"right_description": "Springe 5 Sekunden vor",
     		"space":     	 	 "Leertaste",

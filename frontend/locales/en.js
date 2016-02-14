@@ -133,6 +133,8 @@
     	"keys": {
     		"1_9":  			 "1-9",
     		"1_9_description": 	 "Seek to part N of the audio file",
+            "dc":                "Double click",
+            "dc_description":    "Jump to position and create text",
     		"down_description":  "Skip forward 10 seconds",
     		"left_description":  "Skip back 5 seconds",
     		"right_description": "Skip forward 5 seconds",
