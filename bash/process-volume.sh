@@ -14,53 +14,64 @@
 echo "Processing record volumes"
 echo ""
 
-file_count=0
-file_decrease_count=0
-file_increase_count=0
+script_name=`basename "$0"`
+lock_file_name="/var/lock/.${script_name}.exclusivelock"
 
-dir_list=$(ls ${audio_file_path_decrease_volume}/*.${default_audio_format} 2>/dev/null)
-for audio_file_path in $dir_list
-do
-	if [ -f $audio_file_path ]; then
-	 	echo "... decreasing volume of file: ${audio_file_path}"
+if [ ! -d "${lock_file_name}" ]; then
+	mkdir "$lock_file_name"
 
-	 	audio_file_name=$(basename $audio_file_path)
-	 	final_audio_path="${audio_file_path_to_render}/VD-${audio_file_name}"
+	file_count=0
+	file_decrease_count=0
+	file_increase_count=0
 
-	 	sox -v 0.5 $audio_file_path $final_audio_path
-	 	rm $audio_file_path
+	dir_list=$(ls ${audio_file_path_decrease_volume}/*.${default_audio_format} 2>/dev/null)
+	for audio_file_path in $dir_list
+	do
+		if [ -f $audio_file_path ]; then
+		 	echo "... decreasing volume of file: ${audio_file_path}"
 
-	 	file_count=$((file_count + 1))
-	 	file_decrease_count=$((file_decrease_count + 1))
+		 	audio_file_name=$(basename $audio_file_path)
+		 	final_audio_path="${audio_file_path_to_render}/VD-${audio_file_name}"
 
-	 	echo ""
+		 	sox -v 0.5 $audio_file_path $final_audio_path
+		 	rm $audio_file_path
+
+		 	file_count=$((file_count + 1))
+		 	file_decrease_count=$((file_decrease_count + 1))
+
+		 	echo ""
+		fi
+	done
+
+	dir_list=$(ls ${audio_file_path_increase_volume}/*.${default_audio_format} 2>/dev/null)
+	for audio_file_path in $dir_list
+	do
+		if [ -f $audio_file_path ]; then
+		 	echo "... increasing volume of file: ${audio_file_path}"
+
+		 	audio_file_name=$(basename $audio_file_path)
+		 	final_audio_path="${audio_file_path_to_render}/VI-${audio_file_name}"
+
+		 	sox -v 1.5 $audio_file_path $final_audio_path
+		 	rm $audio_file_path
+
+		 	file_count=$((file_count + 1))
+		 	file_increase_count=$((file_increase_count + 1))
+
+		 	echo ""
+		fi
+	done
+
+	if [ -n "$file_count" ]; then
+	    echo "Done processing volume, processed files:"
+	    echo "... processed files: ${file_count}"
+		echo "... volume decreased: ${file_decrease_count}"
+	   	echo "... volume increased: ${file_increase_count}"
+	else
+		echo "Done processing volume, no files found";
 	fi
-done
-
-dir_list=$(ls ${audio_file_path_increase_volume}/*.${default_audio_format} 2>/dev/null)
-for audio_file_path in $dir_list
-do
-	if [ -f $audio_file_path ]; then
-	 	echo "... increasing volume of file: ${audio_file_path}"
-
-	 	audio_file_name=$(basename $audio_file_path)
-	 	final_audio_path="${audio_file_path_to_render}/VI-${audio_file_name}"
-
-	 	sox -v 1.5 $audio_file_path $final_audio_path
-	 	rm $audio_file_path
-
-	 	file_count=$((file_count + 1))
-	 	file_increase_count=$((file_increase_count + 1))
-
-	 	echo ""
-	fi
-done
-
-if [ -n "$file_count" ]; then
-    echo "Done processing volume, processed files:"
-    echo "... processed files: ${file_count}"
-	echo "... volume decreased: ${file_decrease_count}"
-   	echo "... volume increased: ${file_increase_count}"
+  	
+  	rmdir "$lock_file_name"
 else
-	echo "Done processing volume, no files found";
+	echo "... done - existing lock file found"
 fi

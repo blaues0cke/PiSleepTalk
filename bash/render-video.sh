@@ -14,182 +14,193 @@
 echo "Rendering full videos"
 echo ""
 
-debug=false
-file_counter=0
+script_name=`basename "$0"`
+lock_file_name="/var/lock/.${script_name}.exclusivelock"
 
-dir_list=$(ls -d ${audio_file_path_rendered}/*/ 2>/dev/null)
-for movie_directory_path in $dir_list
-do
-	echo "... processing directory: ${movie_directory_path}"
+if [ ! -d "${lock_file_name}" ]; then
+	mkdir "$lock_file_name"
 
-	# Thanks to
-	# * http://unix.stackexchange.com/questions/144298/delete-the-last-character-of-a-string-using-string-manipulation-in-shell-script
-	full_video_path=$(echo -n ${movie_directory_path} | head -c -2)
-	full_video_path="${full_video_path}.${default_video_format}"
+	debug=false
+	file_counter=0
 
-	video_list_path="${movie_directory_path}/videos.txt"
-    blank_movie_path="${movie_directory_path}/blank.${default_video_format}"
-    title_file_path="${movie_directory_path}/movie.${default_sleeptalk_movie_format}"
-    title_movie_path="${movie_directory_path}/00000.${default_video_format}"
-
-    # Thank s to
-    * http://superuser.com/questions/90008/how-to-clear-the-contents-of-a-file-from-the-command-line
-    truncate -s0 $video_list_path
-
-	echo "... iterate files to create concat list"
-
-	if [ -f $title_file_path ]; then
-		echo "file ${title_movie_path}" >> $video_list_path
-		echo "file ${blank_movie_path}" >> $video_list_path
-	fi
-
-	video_dir_list=$(ls ${movie_directory_path}/*.${default_video_format} 2>/dev/null)
-	for video_file_path in $video_dir_list
+	dir_list=$(ls -d ${audio_file_path_rendered}/*/ 2>/dev/null)
+	for movie_directory_path in $dir_list
 	do
-		file_counter=$((file_counter + 1))
-
-		echo "... processing file: ${video_file_path}"
+		echo "... processing directory: ${movie_directory_path}"
 
 		# Thanks to
-		# * https://trac.ffmpeg.org/wiki/Concatenate#samecodec
+		# * http://unix.stackexchange.com/questions/144298/delete-the-last-character-of-a-string-using-string-manipulation-in-shell-script
+		full_video_path=$(echo -n ${movie_directory_path} | head -c -2)
+		full_video_path="${full_video_path}.${default_video_format}"
 
-		echo "file ${video_file_path}" >> $video_list_path
-		echo "file ${blank_movie_path}" >> $video_list_path
+		video_list_path="${movie_directory_path}/videos.txt"
+	    blank_movie_path="${movie_directory_path}/blank.${default_video_format}"
+	    title_file_path="${movie_directory_path}/movie.${default_sleeptalk_movie_format}"
+	    title_movie_path="${movie_directory_path}/00000.${default_video_format}"
+
+	    # Thank s to
+	    * http://superuser.com/questions/90008/how-to-clear-the-contents-of-a-file-from-the-command-line
+	    truncate -s0 $video_list_path
+
+		echo "... iterate files to create concat list"
+
+		if [ -f $title_file_path ]; then
+			echo "file ${title_movie_path}" >> $video_list_path
+			echo "file ${blank_movie_path}" >> $video_list_path
+		fi
+
+		video_dir_list=$(ls ${movie_directory_path}/*.${default_video_format} 2>/dev/null)
+		for video_file_path in $video_dir_list
+		do
+			file_counter=$((file_counter + 1))
+
+			echo "... processing file: ${video_file_path}"
+
+			# Thanks to
+			# * https://trac.ffmpeg.org/wiki/Concatenate#samecodec
+
+			echo "file ${video_file_path}" >> $video_list_path
+			echo "file ${blank_movie_path}" >> $video_list_path
+		done
+
+		# Thanks to
+		# * http://stackoverflow.com/questions/4881930/bash-remove-the-last-line-from-a-file
+		tail -n 1 "${video_list_path}" | wc -c | xargs -I {} truncate "${video_list_path}" -s -{}
+
+		echo "... done generating video list"
+
+		blank_frame_path="${movie_directory_path}/blank.${default_image_format}"
+
+		gap_frame_count=$(($frames_per_second * $video_gap_length_in_seconds))
+
+		blank_movie_cache_path="${cache_path}/blank_${gap_frame_count}.${default_video_format}"
+
+		if [ -f "${blank_movie_cache_path}" ]; then
+			echo "... copying cached black frame from ${blank_movie_cache_path} to ${blank_movie_path}"
+
+			cp "${blank_movie_cache_path}" "${blank_movie_path}"
+		else
+			# Thanks to
+			# * http://www.imagemagick.org/discourse-server/viewtopic.php?t=13527
+			# Todo: Make "xc:black" dynamic
+			convert -size 1920x1080 xc:black $blank_frame_path
+
+			echo "... creating ${gap_frame_count} frame images"
+
+			# Thanks to
+			# * http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html
+		    i=0
+		    until [ $i -eq $gap_frame_count ]; do
+		    	# Thanks to
+		    	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
+		    	target_frame_position_long=$(printf %04d ${i})
+		    	new_image_file_path="${movie_directory_path}/blank-${target_frame_position_long}.${default_image_format}"
+
+		    	echo "... copying ${blank_frame_path} to ${new_image_file_path}"
+		        
+		    	cp $blank_frame_path $new_image_file_path
+
+		        i=$((i + 1))
+		    done
+
+		    rm $blank_frame_path
+
+		    images_file_path="${movie_directory_path}/blank-%04d.${default_image_format}"
+
+			# Thanks to
+			# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
+			ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${blank_movie_path}" >>"${error_log_path}" 2>&1
+
+			echo "... done rendering movie: ${blank_movie_path}"
+
+			rm ${movie_directory_path}/blank-*.${default_image_format}
+
+			echo "... deleted blank images"
+
+			cp "${blank_movie_path}" "${blank_movie_cache_path}"
+		fi
+
+		title_file_path="${movie_directory_path}/movie.${default_sleeptalk_movie_format}"
+
+		if [ -f $title_file_path ]; then
+			# Thanks to
+			# * http://stackoverflow.com/questions/2439579/how-to-get-the-first-line-of-a-file-in-a-bash-script
+			movie_title=$(head -n 1 ${title_file_path})
+
+			echo "... movie has a title, will be: ${movie_title}"
+
+			title_frame_path="${movie_directory_path}/title.${default_image_format}"
+
+			# Thanks to
+			# * http://www.imagemagick.org/discourse-server/viewtopic.php?t=13527
+			# Todo: Make "xc:black" dynamic
+			convert -size 1920x1080 xc:black $title_frame_path
+
+			# Thanks to
+			# * http://www.imagemagick.org/Usage/fonts/
+			# * http://stackoverflow.com/questions/23236898/add-text-on-image-at-specific-point-using-imagemagick
+			# * http://stackoverflow.com/questions/18062778/how-to-hide-command-output-in-bash
+			# Todo: Make "white" dynamic
+			convert "${title_frame_path}" -gravity North -pointsize 100 -fill white -annotate "+0+460" "${movie_title}" "${title_frame_path}" >>"${error_log_path}" 2>&1
+
+			echo "... creating image: ${title_frame_name}"
+
+			title_frame_count=$(($frames_per_second * $title_time_in_seconds))
+
+			echo "... creating ${title_frame_count} frame images"
+
+			# Thanks to
+			# * http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html
+	        i=0
+	        until [ $i -eq $title_frame_count ]; do
+	        	# Thanks to
+	        	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
+	        	target_frame_position_long=$(printf %04d ${i})
+	        	new_image_file_path="${movie_directory_path}/title-${target_frame_position_long}.${default_image_format}"
+
+	        	echo "... copying ${title_frame_path} to ${new_image_file_path}"
+	            
+	        	cp $title_frame_path $new_image_file_path
+
+	            i=$((i + 1))
+	        done
+
+	        rm $title_frame_path
+
+	        images_file_path="${movie_directory_path}/title-%04d.${default_image_format}"
+
+	        echo "... rendering title video"
+
+			# Thanks to
+			# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
+			ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${title_movie_path}" >>"${error_log_path}" 2>&1
+		
+			echo "... done rendering movie: ${title_movie_path}"
+
+			rm ${movie_directory_path}/title-*.${default_image_format}
+
+			echo "... deleted title images"
+		fi
+
+		echo "... will render final movie to: ${full_video_path}"
+
+		ffmpeg -f concat -i "${video_list_path}" -c copy "${full_video_path}" >>"${error_log_path}" 2>&1
+
+		echo "... done, deleting resources folder for video"
+
+		rm -rf ${movie_directory_path}
+
+		echo "... done"
+		echo ""
 	done
 
-	# Thanks to
-	# * http://stackoverflow.com/questions/4881930/bash-remove-the-last-line-from-a-file
-	tail -n 1 "${video_list_path}" | wc -c | xargs -I {} truncate "${video_list_path}" -s -{}
-
-	echo "... done generating video list"
-
-	blank_frame_path="${movie_directory_path}/blank.${default_image_format}"
-
-	gap_frame_count=$(($frames_per_second * $video_gap_length_in_seconds))
-
-	blank_movie_cache_path="${cache_path}/blank_${gap_frame_count}.${default_video_format}"
-
-	if [ -f "${blank_movie_cache_path}" ]; then
-		echo "... copying cached black frame from ${blank_movie_cache_path} to ${blank_movie_path}"
-
-		cp "${blank_movie_cache_path}" "${blank_movie_path}"
+	if [ -n "$file_counter" ]; then
+	    echo "Done rendering full videos, processed files: ${file_counter}"
 	else
-		# Thanks to
-		# * http://www.imagemagick.org/discourse-server/viewtopic.php?t=13527
-		# Todo: Make "xc:black" dynamic
-		convert -size 1920x1080 xc:black $blank_frame_path
-
-		echo "... creating ${gap_frame_count} frame images"
-
-		# Thanks to
-		# * http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html
-	    i=0
-	    until [ $i -eq $gap_frame_count ]; do
-	    	# Thanks to
-	    	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
-	    	target_frame_position_long=$(printf %04d ${i})
-	    	new_image_file_path="${movie_directory_path}/blank-${target_frame_position_long}.${default_image_format}"
-
-	    	echo "... copying ${blank_frame_path} to ${new_image_file_path}"
-	        
-	    	cp $blank_frame_path $new_image_file_path
-
-	        i=$((i + 1))
-	    done
-
-	    rm $blank_frame_path
-
-	    images_file_path="${movie_directory_path}/blank-%04d.${default_image_format}"
-
-		# Thanks to
-		# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
-		ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${blank_movie_path}" >>"${error_log_path}" 2>&1
-
-		echo "... done rendering movie: ${blank_movie_path}"
-
-		rm ${movie_directory_path}/blank-*.${default_image_format}
-
-		echo "... deleted blank images"
-
-		cp "${blank_movie_path}" "${blank_movie_cache_path}"
+		echo "Done rendering full videos, no files found";
 	fi
-
-	title_file_path="${movie_directory_path}/movie.${default_sleeptalk_movie_format}"
-
-	if [ -f $title_file_path ]; then
-		# Thanks to
-		# * http://stackoverflow.com/questions/2439579/how-to-get-the-first-line-of-a-file-in-a-bash-script
-		movie_title=$(head -n 1 ${title_file_path})
-
-		echo "... movie has a title, will be: ${movie_title}"
-
-		title_frame_path="${movie_directory_path}/title.${default_image_format}"
-
-		# Thanks to
-		# * http://www.imagemagick.org/discourse-server/viewtopic.php?t=13527
-		# Todo: Make "xc:black" dynamic
-		convert -size 1920x1080 xc:black $title_frame_path
-
-		# Thanks to
-		# * http://www.imagemagick.org/Usage/fonts/
-		# * http://stackoverflow.com/questions/23236898/add-text-on-image-at-specific-point-using-imagemagick
-		# * http://stackoverflow.com/questions/18062778/how-to-hide-command-output-in-bash
-		# Todo: Make "white" dynamic
-		convert "${title_frame_path}" -gravity North -pointsize 100 -fill white -annotate "+0+460" "${movie_title}" "${title_frame_path}" >>"${error_log_path}" 2>&1
-
-		echo "... creating image: ${title_frame_name}"
-
-		title_frame_count=$(($frames_per_second * $title_time_in_seconds))
-
-		echo "... creating ${title_frame_count} frame images"
-
-		# Thanks to
-		# * http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html
-        i=0
-        until [ $i -eq $title_frame_count ]; do
-        	# Thanks to
-        	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
-        	target_frame_position_long=$(printf %04d ${i})
-        	new_image_file_path="${movie_directory_path}/title-${target_frame_position_long}.${default_image_format}"
-
-        	echo "... copying ${title_frame_path} to ${new_image_file_path}"
-            
-        	cp $title_frame_path $new_image_file_path
-
-            i=$((i + 1))
-        done
-
-        rm $title_frame_path
-
-        images_file_path="${movie_directory_path}/title-%04d.${default_image_format}"
-
-        echo "... rendering title video"
-
-		# Thanks to
-		# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
-		ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${title_movie_path}" >>"${error_log_path}" 2>&1
-	
-		echo "... done rendering movie: ${title_movie_path}"
-
-		rm ${movie_directory_path}/title-*.${default_image_format}
-
-		echo "... deleted title images"
-	fi
-
-	echo "... will render final movie to: ${full_video_path}"
-
-	ffmpeg -f concat -i "${video_list_path}" -c copy "${full_video_path}" >>"${error_log_path}" 2>&1
-
-	echo "... done, deleting resources folder for video"
-
-	rm -rf ${movie_directory_path}
-
-	echo "... done"
-	echo ""
-done
-
-if [ -n "$file_counter" ]; then
-    echo "Done rendering full videos, processed files: ${file_counter}"
+  	
+  	rmdir "$lock_file_name"
 else
-	echo "Done rendering full videos, no files found";
+	echo "... done - existing lock file found"
 fi
