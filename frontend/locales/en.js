@@ -17,6 +17,7 @@
         "force_import":          "Force import now",
 		"increase_volume":       "Increase volume",
 		"insert_current_frame":  "Insert current frame position",
+        "jump_to_marker":        "Jump to marker",
 		"move_down": 			 "Move down",
 		"move_up": 				 "Move up",
 		"play":                  "Play",
@@ -115,7 +116,8 @@
     	},
     	"set_marker": {
     		"description":       "Please set a marker first before you try to jump to it.",
-    		"whoops":            "Whoops, sorry!"
+            "description_2":     "Please set a marker first before you try to jump to it.",
+            "whoops":            "Whoops, sorry!"
     	},
         "upload_file": {
             "description":       "Upload a audio or zip file, that contains audio files, to the import folder.",

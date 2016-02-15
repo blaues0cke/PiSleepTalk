@@ -311,6 +311,19 @@ var initButtons = function() {
 		}		
 	});
 
+	$('#wave-jump-to-marker').click(function() {
+		if (!loaded) return;
+		
+		if (markerRegion) {
+			var seekPosition = markerRegion.start / audioDuration;
+			wavesurfer.stop();
+			wavesurfer.seekTo(seekPosition);
+		}
+		else {
+			$('#set-marker-first-2-error').modal('show');
+		}
+	});
+
 	$('#wave-play-from-marker').click(function() {
 		if (!loaded) return;
 		

@@ -17,6 +17,7 @@
         "force_import":          "Import sofort erzwingen",
 		"increase_volume":       "Lautstärke erhöhen",
 		"insert_current_frame":  "Aktuelle Frame-Position einfügen",
+        "jump_to_marker":        "Zu Markierung springen",
 		"move_down": 			 "Nach unten schieben",
 		"move_up": 				 "Nach oben schieben",
 		"play":                  "Abspielen",
@@ -115,7 +116,8 @@
     	},
     	"set_marker": {
     		"description":       "Bitte setzte zu erst eine Markierung, bevor du zur selbigen springst.",
-    		"whoops":            "Hoppala, entschuldigung!"
+            "description_2":     "Bitte setzte zu erst eine Markierung, bevor du zur selbigen springst.",
+            "whoops":            "Hoppala, entschuldigung!"
     	},
         "upload_file": {
             "description":       "Lade eine Audio- oder Zip-Datei, die Audio-Dateien enthält, zum Importieren hoch.",
