@@ -135,6 +135,8 @@
     	"keys": {
     		"1_9":  			 "1-9",
     		"1_9_description": 	 "Seek to part N of the audio file",
+            "c":                 "C",
+            "c_description":     "Crop to marker (Throw away the rest)",
             "dc":                "Double click",
             "dc_description":    "Jump to position and create text",
     		"down_description":  "Skip forward 10 seconds",

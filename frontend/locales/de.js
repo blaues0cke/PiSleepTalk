@@ -135,6 +135,8 @@
     	"keys": {
     		"1_9":  			 "1-9",
     		"1_9_description": 	 "Springe zu Abschnitt N der Audio-Datei",
+            "c":                 "C",
+            "c_description":     "Aufnahmen auf Markierung beschneiden (Rest wegwerfen)",
             "dc":                "Doppeklick",
             "dc_description":    "Zu Position springen und sofort Text erstellen",
     		"down_description":  "Springe 10 Sekunden vor",
