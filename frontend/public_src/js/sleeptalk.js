@@ -38,6 +38,17 @@ $(document).ready(function() {
 	initTableTools();
 });
 
+var cropToMarker = function() {
+	if (!loaded) return;
+	
+	if (markerRegion) {
+		$('#crop-to-marker-modal').modal('show');
+	}
+	else {
+		$('#set-marker-first-3-error').modal('show');
+	}
+};
+
 var jumpToMarker = function() {
 	if (!loaded) return;
 	
@@ -229,6 +240,11 @@ var initShotcuts = function () {
 	    			var seekTo  = audioDuration * percent;
 
 	    			wavesurfer.seekTo(seekTo);
+
+	    			break;
+
+	    		case 67:
+	    			cropToMarker();
 
 	    			break;
 
@@ -452,6 +468,21 @@ var initButtons = function() {
 		$.post(
 			'increase-volume' + fileUrl,
 			null,
+			function() {
+		        reloadPage();
+			}
+		);
+	});
+
+	$('#wave-crop-to-marker').click(cropToMarker);
+
+	$('#crop-to-marker-confirm').click(function() {
+		$.post(
+			'crop' + fileUrl,
+			{
+				end:   markerRegion.end,
+				start: markerRegion.start
+			},
 			function() {
 		        reloadPage();
 			}

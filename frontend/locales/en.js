@@ -7,6 +7,7 @@
 		"clear_logs": 			 "Clear logs",
         "concat_all_videos":     "Concat all videos",
         "concat_checked_videos": "Concat selected videos",
+        "crop_to_marker":        "Crop to marker",
 		"decrease_volume":       "Decrease volume",
 		"delete": 				 "Delete",
 		"delete_file": 		 	 "Delete file",
@@ -76,6 +77,11 @@
             "title":             "Concat videos to full movie"
         },
     	"close":                 "Close",
+        "crop_to_marker": {
+            "crop_to_marker":    "Crop",
+            "description":       "Are you sure to crop the audio file to the marked area? This can't be undone.",
+            "title":             "Crop to marker"
+        },
       	"decrease_volume": {
     		"decrease_volume":   "Decrease volume",
     		"description":       "Are you sure to decrease the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is decreased. The audio file will automatically re-appear on the home page.",
@@ -117,6 +123,7 @@
     	"set_marker": {
     		"description":       "Please set a marker first before you try to jump to it.",
             "description_2":     "Please set a marker first before you try to jump to it.",
+            "description_3":     "Please set a marker first before you try to crop the recording to it.",
             "whoops":            "Whoops, sorry!"
     	},
         "upload_file": {

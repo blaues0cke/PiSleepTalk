@@ -7,6 +7,7 @@
 		"clear_logs": 			 "Logs löschen",
         "concat_all_videos":     "Alle Videos verbinden",
         "concat_checked_videos": "Ausgewählte Videos verbinden",
+        "crop_to_marker":        "Auf Markierung beschneiden",
 		"decrease_volume":       "Lautstärke verringern",
 		"delete": 				 "Löschen",
 		"delete_file": 		 	 "Datei löschen",
@@ -76,6 +77,11 @@
             "title":             "Videos zu vollem Film Verknüpfen"
         },
     	"close":                 "Schließen",
+        "crop_to_marker": {
+            "crop_to_marker":    "Beschneiden",
+            "description":       "Bist du sicher, dass du diese Aufnahme auf den markierten Bereich beschneiden möchtest? Diese Aktion kann nicht rückgängig gemacht werden.",
+            "title":             "Auf Markierung beschneiden"
+        },
       	"decrease_volume": {
     		"decrease_volume":   "Lautstärke verringern",
     		"description":       "Bist du sicher, dass du die Lautstärke dieser Datei um 50% verringern möchtest? Die Datei wird verschoben und unsichtbar, bis die Lautstärke verringert wurde. Danach taucht die Datei wieder automatisch auf der Startseite auf.",
@@ -117,6 +123,7 @@
     	"set_marker": {
     		"description":       "Bitte setzte zu erst eine Markierung, bevor du zur selbigen springst.",
             "description_2":     "Bitte setzte zu erst eine Markierung, bevor du zur selbigen springst.",
+            "description_3":     "Bitte setzte zu erst eine Markierung, bevor die Aufnahme auf selbige verkürzt.",
             "whoops":            "Hoppala, entschuldigung!"
     	},
         "upload_file": {

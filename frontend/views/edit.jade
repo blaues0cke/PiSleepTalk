@@ -37,6 +37,13 @@ block content
 	)
 
 	+modal(
+		'set-marker-first-3-error',
+		__('modal.an_error_occurred'),
+		__('modal.set_marker.description_3'),
+		__('modal.set_marker.whoops')
+	)
+
+	+modal(
 		'decrease-volume-modal',
 		__('modal.decrease_volume.title'),
 		__('modal.decrease_volume.description'),
@@ -52,6 +59,15 @@ block content
 		__('modal.cancel'),
 		__('modal.increase_volume.decrease_volume'),
 		'increase-volume-confirm'
+	)
+
+	+modal(
+		'crop-to-marker-modal',
+		__('modal.crop_to_marker.title'),
+		__('modal.crop_to_marker.description'),
+		__('modal.cancel'),
+		__('modal.crop_to_marker.crop_to_marker'),
+		'crop-to-marker-confirm'
 	)
 
 	// Thanks to
@@ -74,6 +90,7 @@ block content
 			+button('wave-set-marker',       'thumb-tack',    __('actions.set_marker'),       'info', 	 '', __('actions.set_marker'))
 			+button('wave-play-from-marker', 'play',    	  __('actions.play_from_marker'), 'info',    '', __('actions.play_from_marker'))
 			+button('wave-jump-to-marker',   'step-backward', __('actions.jump_to_marker'),   'info',    '', __('actions.jump_to_marker'))
+			+button('wave-crop-to-marker',   'crop', 		  __('actions.crop_to_marker'),   'danger',  '', __('actions.crop_to_marker'))
 			+button('wave-decrease-volume',  'volume-down',   __('actions.decrease_volume'),  'warning', '', __('actions.decrease_volume'))
 			+button('wave-increase-volume',  'volume-up',     __('actions.increase_volume'),  'warning', '', __('actions.increase_volume'))
 		div.pull-right
