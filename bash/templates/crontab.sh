@@ -42,6 +42,14 @@
 *   *  * * * root sleep 57;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/process-volumne.sh
 
 #
+# Will crop audio files every 15 seconds
+#
+*   *  * * * root sleep 14;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/crop-audio.sh
+*   *  * * * root sleep 29;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/crop-audio.sh
+*   *  * * * root sleep 44;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/crop-audio.sh
+*   *  * * * root sleep 59;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/crop-audio.sh
+
+#
 # Will process the records every minute
 #
 *   *  * * * root sleep 5;   sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/process-records.sh
