@@ -38,6 +38,34 @@ $(document).ready(function() {
 	initTableTools();
 });
 
+var setMarker = function ()
+{
+	if (!loaded) return;
+		
+	if (markerRegion === null) {
+		var end = audioDuration - 1;
+
+		if (end > audioProcess) {
+			$(this).find('.text').text('Remove marker');
+
+			var regionData = {
+				  start: audioProcess
+				, end:   end
+			};
+
+			markerRegion = wavesurfer.addRegion(regionData);
+			
+			console.log('Marker set to:', markerRegion);
+		}
+	}
+	else {
+		markerRegion.remove();
+		markerRegion = null;
+
+		$(this).find('.text').text('Set marker');
+	}
+};
+
 var initTableTools = function ()
 {
 	$('table th input[type=checkbox]').click(function()
@@ -176,6 +204,11 @@ var initShotcuts = function () {
 	    			wavesurfer.seekTo(seekTo);
 
 	    			break;
+
+	    		case 77:
+	    			setMarker();
+
+	    			break;
 	    	};
 	    }
 	});
@@ -284,32 +317,7 @@ var initButtons = function() {
 		wavesurfer.skipForward();
 	});
 
-	$('#wave-set-marker').click(function() {
-		if (!loaded) return;
-		
-		if (markerRegion === null) {
-			var end = audioDuration - 1;
-
-			if (end > audioProcess) {
-				$(this).find('.text').text('Remove marker');
-
-				var regionData = {
-					  start: audioProcess
-					, end:   end
-				};
-
-				markerRegion = wavesurfer.addRegion(regionData);
-				
-				console.log('Marker set to:', markerRegion);
-			}
-		}
-		else {
-			markerRegion.remove();
-			markerRegion = null;
-
-			$(this).find('.text').text('Set marker');
-		}		
-	});
+	$('#wave-set-marker').click(setMarker);
 
 	$('#wave-jump-to-marker').click(function() {
 		if (!loaded) return;
