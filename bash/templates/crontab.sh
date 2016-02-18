@@ -34,7 +34,7 @@
 *   *  * * * root sleep 55;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/add-amplitude-to-filename.sh
 
 #
-# Will decrease and increase the volumne of audio files every 15 seconds
+# Will decrease and increase the volume of audio files every 15 seconds
 #
 *   *  * * * root sleep 12;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/process-volumne.sh
 *   *  * * * root sleep 27;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/process-volumne.sh
