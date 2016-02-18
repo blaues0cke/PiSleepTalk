@@ -15,6 +15,7 @@ echo "Starting cleaning up"
 echo "... deleting files"
 
 rm -rf ${audio_file_path_raw}/*
+rm -rf ${audio_file_path_crop}/*
 rm -rf ${audio_file_path_timestamp}/*
 rm -rf ${audio_file_path_amplitude}/*
 rm -rf ${audio_file_path_import}/*
