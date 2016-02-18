@@ -51,6 +51,20 @@ var jumpToMarker = function() {
 	}
 };
 
+var playFromMarker = function ()
+{
+	if (!loaded) return;
+	
+	if (markerRegion) {
+		var seekPosition = markerRegion.start / audioDuration;
+		wavesurfer.seekTo(seekPosition);
+		wavesurfer.play();
+	}
+	else {
+		$('#set-marker-first-error').modal('show');
+	}
+};
+
 var setMarker = function ()
 {
 	if (!loaded) return;
@@ -227,6 +241,11 @@ var initShotcuts = function () {
 	    			setMarker();
 
 	    			break;
+
+	    		case 80:
+	    			playFromMarker();
+
+	    			break;
 	    	};
 	    }
 	});
@@ -339,18 +358,7 @@ var initButtons = function() {
 
 	$('#wave-jump-to-marker').click(jumpToMarker);
 
-	$('#wave-play-from-marker').click(function() {
-		if (!loaded) return;
-		
-		if (markerRegion) {
-			var seekPosition = markerRegion.start / audioDuration;
-			wavesurfer.seekTo(seekPosition);
-			wavesurfer.play();
-		}
-		else {
-			$('#set-marker-first-error').modal('show');
-		}
-	});
+	$('#wave-play-from-marker').click(playFromMarker);
 
 	$('#wave-save').click(function() {
 		if (!loaded) return;
