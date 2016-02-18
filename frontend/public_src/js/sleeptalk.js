@@ -38,6 +38,19 @@ $(document).ready(function() {
 	initTableTools();
 });
 
+var jumpToMarker = function() {
+	if (!loaded) return;
+	
+	if (markerRegion) {
+		var seekPosition = markerRegion.start / audioDuration;
+		wavesurfer.stop();
+		wavesurfer.seekTo(seekPosition);
+	}
+	else {
+		$('#set-marker-first-2-error').modal('show');
+	}
+};
+
 var setMarker = function ()
 {
 	if (!loaded) return;
@@ -205,6 +218,11 @@ var initShotcuts = function () {
 
 	    			break;
 
+	    		case 74:
+	    			jumpToMarker();
+
+	    			break;
+
 	    		case 77:
 	    			setMarker();
 
@@ -319,18 +337,7 @@ var initButtons = function() {
 
 	$('#wave-set-marker').click(setMarker);
 
-	$('#wave-jump-to-marker').click(function() {
-		if (!loaded) return;
-		
-		if (markerRegion) {
-			var seekPosition = markerRegion.start / audioDuration;
-			wavesurfer.stop();
-			wavesurfer.seekTo(seekPosition);
-		}
-		else {
-			$('#set-marker-first-2-error').modal('show');
-		}
-	});
+	$('#wave-jump-to-marker').click(jumpToMarker);
 
 	$('#wave-play-from-marker').click(function() {
 		if (!loaded) return;
