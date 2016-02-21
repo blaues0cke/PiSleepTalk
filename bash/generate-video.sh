@@ -144,7 +144,9 @@ if [ ! -d "${lock_file_name}" ]; then
 		echo "Done rendering videos, no files found";
 	fi
   	
-  	rmdir "$lock_file_name"
+  	if [ -d "${lock_file_name}" ]; then
+  		rmdir "${lock_file_name}"
+	fi
 else
 	echo "... done - existing lock file found"
 fi
