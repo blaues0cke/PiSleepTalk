@@ -14,21 +14,25 @@
 . /usr/sleeptalk/config/config.cfg
 
 echo "Installing test data"
-echo "... we will wait 1s for each file to get a realistic file time"
+echo "... test case: 1 (importer-test)"
 
 sh /usr/sleeptalk/bash/clean-up.sh
+sh /usr/sleeptalk/bash/clear-lock-files.sh
 
 set file_counter=0
 
-dir_list=$(ls ${test_file_path}/*.${default_audio_format} 2>/dev/null)
+file_path="${test_file_path}/test-case-1/*.caf"
+
+echo "... copying files from: ${file_path}"
+
+dir_list=$(ls ${file_path} 2>/dev/null)
 for demo_file_path in $dir_list
 do
-	cp "${demo_file_path}" "${audio_file_path_raw}"
+	cp "${demo_file_path}" "${audio_file_path_import}"
 
 	echo "... copied ${demo_file_path}"
-
-	# todo: fake the creation time to save time while creating the test data
-	sleep 1s
 done
 
 echo "... done!"
+
+sh /usr/sleeptalk/bash/demo-run.sh
