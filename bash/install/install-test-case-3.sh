@@ -17,7 +17,7 @@ echo "Installing test data"
 echo "... test case: 3 (image-generation and video-rendering)"
 
 sh /usr/sleeptalk/bash/clean-up.sh
-sh /usr/sleeptalk/bash/clear-lock-files.sh
+sh /usr/sleeptalk/bash/clean-lock-files.sh
 
 set file_counter=0
 

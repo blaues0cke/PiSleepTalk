@@ -18,7 +18,7 @@ echo "... test case: 2 (raw data test)"
 echo "... we will wait 1s for each file to get a realistic file time"
 
 sh /usr/sleeptalk/bash/clean-up.sh
-sh /usr/sleeptalk/bash/clear-lock-files.sh
+sh /usr/sleeptalk/bash/clean-lock-files.sh
 
 set file_counter=0
 
