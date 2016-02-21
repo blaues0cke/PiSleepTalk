@@ -31,3 +31,6 @@ sh /usr/sleeptalk/bash/create-frame-images.sh
 
 echo "... /usr/sleeptalk/bash/generate-video.sh"
 sh /usr/sleeptalk/bash/generate-video.sh
+
+echo "... /usr/sleeptalk/bash/render-video.sh"
+sh /usr/sleeptalk/bash/render-video.sh
