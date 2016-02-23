@@ -48,14 +48,14 @@ if [ ! -d "${lock_file_name}" ]; then
 		echo "... iterate files to create concat list"
 
 		if [ -f $title_file_path ]; then
-			echo "file ${title_movie_path}" >> $video_list_path
+			echo "file '${title_movie_path}'" >> $video_list_path
 			
 			video_string="${video_string}|${title_movie_path}"
 
 			filter_string="${filter_string} [${input_file_counter}:v:0]"
 			input_file_counter=$((input_file_counter + 1))
 
-			echo "file ${blank_movie_path}" >> $video_list_path
+			echo "file '${blank_movie_path}'" >> $video_list_path
 
 			video_string="${video_string}|${blank_movie_path}"
 
@@ -73,14 +73,14 @@ if [ ! -d "${lock_file_name}" ]; then
 			# Thanks to
 			# * https://trac.ffmpeg.org/wiki/Concatenate#samecodec
 
-			echo "file ${video_file_path}" >> $video_list_path
+			echo "file '${video_file_path}'" >> $video_list_path
 
 			video_string="${video_string}|${video_file_path}"
 
 			filter_string="${filter_string} [${input_file_counter}:v:0] [${input_file_counter}:a:0]"
 			input_file_counter=$((input_file_counter + 1))
 
-			echo "file ${blank_movie_path}" >> $video_list_path
+			echo "file '${blank_movie_path}'" >> $video_list_path
 
 			video_string="${video_string}|${blank_movie_path}"
 
@@ -149,7 +149,9 @@ ffmpeg -y -f lavfi -i anullsrc -i "${blank_movie_path}" -t ${video_gap_length_in
 
 			echo "... deleted blank images"
 
-			cp "${blank_movie_path}" "${blank_movie_cache_path}"
+			if [ "$cache_enabled" = true ]; then
+				cp "${blank_movie_path}" "${blank_movie_cache_path}"
+			fi
 		fi
 
 		if [ -f $title_file_path ]; then
@@ -225,15 +227,20 @@ ffmpeg -y -f lavfi -i anullsrc -i "${blank_movie_path}" -t ${video_gap_length_in
 
 				echo "... deleted title images"
 
-				cp "${title_movie_path}" "${title_movie_cache_path}"
+				if [ "$cache_enabled" = true ]; then
+					cp "${title_movie_path}" "${title_movie_cache_path}"
 
-				echo "... cached title movie"
+					echo "... cached title movie"
+				fi
 			fi
 		fi
 
 		echo "... will render final movie to: ${full_video_path}"
 
 		# ORIGINAL: ffmpeg -f concat -i "${video_list_path}" -c copy "${full_video_path}" #>>"${error_log_path}" 2>&1
+
+
+
 
 
 
@@ -248,8 +255,8 @@ ffmpeg -y -f lavfi -i anullsrc -i "${blank_movie_path}" -t ${video_gap_length_in
 		echo "... video string: ${video_string}"
  
 		
-		ffmpeg -i concat:"${video_string}" -filter_complex "${filter_string} concat=n=${input_file_counter}:v=1:a=1 [v] [a]" -map "[v]" -map "[a]" "${full_video_path}"
-		#ffmpeg -f concat -i "${video_list_path}" -filter_complex "${filter_string} concat=n=${input_file_counter}:v=1:a=1 [v] [a]" -map "[v]" -map "[a]" "${full_video_path}"
+		#ffmpeg -i concat:"${video_string}" -filter_complex "${filter_string} concat=n=${input_file_counter}:v=1:a=1 [v] [a]" -map "[v]" -map "[a]" "${full_video_path}"
+		ffmpeg -f concat -i "${video_list_path}" -filter_complex "${filter_string} concat=n=${input_file_counter}:v=1:a=1 [v] [a]" -map "[v]" -map "[a]" "${full_video_path}"
 
 
 
