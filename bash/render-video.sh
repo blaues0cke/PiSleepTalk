@@ -33,13 +33,13 @@ if [ ! -d "${lock_file_name}" ]; then
 		full_video_path=$(echo -n ${movie_directory_path} | head -c -2)
 		full_video_path="${full_video_path}.${default_video_format}"
 
-		video_list_path="${movie_directory_path}/videos.txt"
+		video_list_path="${movie_directory_path}videos.txt"
 		video_string=""
 		filter_string=""
 		input_file_counter=0
-	    blank_movie_path="${movie_directory_path}/blank.${default_video_format}"
-	    title_file_path="${movie_directory_path}/movie.${default_sleeptalk_movie_format}"
-	    title_movie_path="${movie_directory_path}/00000.${default_video_format}"
+	    blank_movie_path="${movie_directory_path}blank.${default_video_format}"
+	    title_file_path="${movie_directory_path}movie.${default_sleeptalk_movie_format}"
+	    title_movie_path="${movie_directory_path}00000.${default_video_format}"
 
 	    # Thank s to
 	    * http://superuser.com/questions/90008/how-to-clear-the-contents-of-a-file-from-the-command-line
@@ -63,7 +63,7 @@ if [ ! -d "${lock_file_name}" ]; then
 			input_file_counter=$((input_file_counter + 1))
 		fi
 
-		video_dir_list=$(ls ${movie_directory_path}/*.${default_video_format} 2>/dev/null)
+		video_dir_list=$(ls ${movie_directory_path}*.${default_video_format} 2>/dev/null)
 		for video_file_path in $video_dir_list
 		do
 			file_counter=$((file_counter + 1))
@@ -94,7 +94,7 @@ if [ ! -d "${lock_file_name}" ]; then
 
 		echo "... done generating video list"
 
-		blank_frame_path="${movie_directory_path}/blank.${default_image_format}"
+		blank_frame_path="${movie_directory_path}blank.${default_image_format}"
 
 		gap_frame_count=$(($frames_per_second * $video_gap_length_in_seconds))
 
@@ -119,7 +119,7 @@ if [ ! -d "${lock_file_name}" ]; then
 		    	# Thanks to
 		    	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
 		    	target_frame_position_long=$(printf %04d ${i})
-		    	new_image_file_path="${movie_directory_path}/blank-${target_frame_position_long}.${default_image_format}"
+		    	new_image_file_path="${movie_directory_path}blank-${target_frame_position_long}.${default_image_format}"
 
 		    	echo "... copying ${blank_frame_path} to ${new_image_file_path}"
 		        
@@ -130,7 +130,7 @@ if [ ! -d "${lock_file_name}" ]; then
 
 		    rm $blank_frame_path
 
-		    images_file_path="${movie_directory_path}/blank-%04d.${default_image_format}"
+		    images_file_path="${movie_directory_path}blank-%04d.${default_image_format}"
 
 			# Thanks to
 			# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
@@ -145,7 +145,7 @@ ffmpeg -y -f lavfi -i anullsrc -i "${blank_movie_path}" -t ${video_gap_length_in
 
 			echo "... done rendering movie: ${blank_movie_path}"
 
-			rm ${movie_directory_path}/blank-*.${default_image_format}
+			rm ${movie_directory_path}blank-*.${default_image_format}
 
 			echo "... deleted blank images"
 
