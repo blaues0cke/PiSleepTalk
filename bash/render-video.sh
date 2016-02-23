@@ -120,7 +120,6 @@ if [ ! -d "${lock_file_name}" ]; then
 			cp "${blank_movie_path}" "${blank_movie_cache_path}"
 		fi
 
-		title_file_path="${movie_directory_path}/movie.${default_sleeptalk_movie_format}"
 
 		if [ -f $title_file_path ]; then
 			# Thanks to
