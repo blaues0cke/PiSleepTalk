@@ -75,7 +75,7 @@ if [ ! -d "${lock_file_name}" ]; then
 
 		blank_movie_cache_path="${cache_path}/blank_${gap_frame_count}.${default_video_format}"
 
-		if [ -f "${blank_movie_cache_path}" ]; then
+		if [ "$cache_enabled" = true ] && [ -f "${blank_movie_cache_path}" ]; then
 			echo "... copying cached black frame from ${blank_movie_cache_path} to ${blank_movie_path}"
 
 			cp "${blank_movie_cache_path}" "${blank_movie_path}"
@@ -135,7 +135,7 @@ if [ ! -d "${lock_file_name}" ]; then
 			# * http://stackoverflow.com/questions/1602378/how-to-calculate-a-hash-for-a-string-url-in-bash-for-wget-caching
 			title_movie_cache_path="${cache_path}/title_${title_time_in_seconds}_${movie_title_hash}.${default_video_format}"
 
-			if [ -f "${title_movie_cache_path}" ]; then
+			if [ "$cache_enabled" = true ] && [ -f "${title_movie_cache_path}" ]; then
 				echo "... copying cached title movie from ${title_movie_cache_path} to ${title_movie_path}"
 
 				cp "${title_movie_cache_path}" "${title_movie_path}"
