@@ -136,9 +136,9 @@ if [ ! -d "${lock_file_name}" ]; then
 			title_movie_cache_path="${cache_path}/title_${title_time_in_seconds}_${movie_title_hash}.${default_video_format}"
 
 			if [ -f "${title_movie_cache_path}" ]; then
-				echo "... copying cached title movie from ${title_movie_cache_path} to ${title_frame_path}"
+				echo "... copying cached title movie from ${title_movie_cache_path} to ${title_movie_path}"
 
-				cp "${title_movie_cache_path}" "${title_frame_path}"
+				cp "${title_movie_cache_path}" "${title_movie_path}"
 			else
 				# Thanks to
 				# * http://www.imagemagick.org/discourse-server/viewtopic.php?t=13527
