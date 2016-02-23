@@ -34,6 +34,9 @@ if [ ! -d "${lock_file_name}" ]; then
 		full_video_path="${full_video_path}.${default_video_format}"
 
 		video_list_path="${movie_directory_path}/videos.txt"
+		video_string=""
+		filter_string=""
+		input_file_counter=0
 	    blank_movie_path="${movie_directory_path}/blank.${default_video_format}"
 	    title_file_path="${movie_directory_path}/movie.${default_sleeptalk_movie_format}"
 	    title_movie_path="${movie_directory_path}/00000.${default_video_format}"
@@ -46,7 +49,18 @@ if [ ! -d "${lock_file_name}" ]; then
 
 		if [ -f $title_file_path ]; then
 			echo "file ${title_movie_path}" >> $video_list_path
+			
+			video_string="${video_string}|${title_movie_path}"
+
+			filter_string="${filter_string} [${input_file_counter}:v:0]"
+			input_file_counter=$((input_file_counter + 1))
+
 			echo "file ${blank_movie_path}" >> $video_list_path
+
+			video_string="${video_string}|${blank_movie_path}"
+
+			filter_string="${filter_string} [${input_file_counter}:v:0]"
+			input_file_counter=$((input_file_counter + 1))
 		fi
 
 		video_dir_list=$(ls ${movie_directory_path}/*.${default_video_format} 2>/dev/null)
@@ -60,7 +74,18 @@ if [ ! -d "${lock_file_name}" ]; then
 			# * https://trac.ffmpeg.org/wiki/Concatenate#samecodec
 
 			echo "file ${video_file_path}" >> $video_list_path
+
+			video_string="${video_string}|${video_file_path}"
+
+			filter_string="${filter_string} [${input_file_counter}:v:0] [${input_file_counter}:a:0]"
+			input_file_counter=$((input_file_counter + 1))
+
 			echo "file ${blank_movie_path}" >> $video_list_path
+
+			video_string="${video_string}|${blank_movie_path}"
+
+			filter_string="${filter_string} [${input_file_counter}:v:0]"
+			input_file_counter=$((input_file_counter + 1))
 		done
 
 		# Thanks to
@@ -110,6 +135,13 @@ if [ ! -d "${lock_file_name}" ]; then
 			# Thanks to
 			# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
 			ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${blank_movie_path}" >>"${error_log_path}" 2>&1
+
+
+ffmpeg -y -f lavfi -i anullsrc -i "${blank_movie_path}" -t ${video_gap_length_in_seconds} -c:v copy -c:a aac -strict experimental "${blank_movie_path}"
+
+
+
+
 
 			echo "... done rendering movie: ${blank_movie_path}"
 
@@ -184,7 +216,7 @@ if [ ! -d "${lock_file_name}" ]; then
 			
 
 
-				ffmpeg -f lavfi -i anullsrc -i "${title_movie_path}" -t ${title_time_in_seconds} -c:v copy -c:a aac -strict experimental "${title_movie_path}"
+				ffmpeg -y -f lavfi -i anullsrc -i "${title_movie_path}" -t ${title_time_in_seconds} -c:v copy -c:a aac -strict experimental "${title_movie_path}"
 
 
 				echo "... done rendering movie: ${title_movie_path}"
@@ -201,14 +233,50 @@ if [ ! -d "${lock_file_name}" ]; then
 
 		echo "... will render final movie to: ${full_video_path}"
 
-		ffmpeg -f concat -i "${video_list_path}" -c copy "${full_video_path}" #>>"${error_log_path}" 2>&1
+		# ORIGINAL: ffmpeg -f concat -i "${video_list_path}" -c copy "${full_video_path}" #>>"${error_log_path}" 2>&1
 
-		echo "... done, deleting resources folder for video"
 
-		rm -rf ${movie_directory_path}
 
-		echo "... done"
-		echo ""
+
+		#ffmpeg -f concat -i "${video_list_path}" -c copy "${full_video_path}" >>"${error_log_path}" 2>&1
+		# Thanks to
+		# * http://stackoverflow.com/questions/11469989/how-can-i-strip-first-x-characters-from-string-in-shellscript-using-sed
+		video_string=$(echo "${video_string}" | cut -c 2-)
+		filter_string=$(echo "${filter_string}" | cut -c 2-)
+
+
+		echo "... video string: ${video_string}"
+ 
+		
+		ffmpeg -i concat:"${video_string}" -filter_complex "${filter_string} concat=n=${input_file_counter}:v=1:a=1 [v] [a]" -map "[v]" -map "[a]" "${full_video_path}"
+		#ffmpeg -f concat -i "${video_list_path}" -filter_complex "${filter_string} concat=n=${input_file_counter}:v=1:a=1 [v] [a]" -map "[v]" -map "[a]" "${full_video_path}"
+
+
+
+
+
+		# Does not work
+		##ffmpeg -i concat:"${video_string}" -acodec copy -vcodec copy "${full_video_path}"
+
+		# Does not work
+		#ffmpeg -f concat -i "${video_list_path}" -acodec copy -vcodec copy "${full_video_path}" >>"${error_log_path}" 2>&1
+
+
+
+
+
+
+
+		if [ -f $full_video_path ]; then
+			echo "... done, deleting resources folder for video"
+
+			rm -rf ${movie_directory_path}
+
+			echo "... done"
+			echo ""
+		else
+			echo "... error while merging video, aborting"
+		fi
 	done
 
 	if [ -n "$file_counter" ]; then
