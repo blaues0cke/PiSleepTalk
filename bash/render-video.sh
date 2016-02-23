@@ -120,7 +120,6 @@ if [ ! -d "${lock_file_name}" ]; then
 			cp "${blank_movie_path}" "${blank_movie_cache_path}"
 		fi
 
-
 		if [ -f $title_file_path ]; then
 			# Thanks to
 			# * http://stackoverflow.com/questions/2439579/how-to-get-the-first-line-of-a-file-in-a-bash-script
@@ -181,8 +180,13 @@ if [ ! -d "${lock_file_name}" ]; then
 
 				# Thanks to
 				# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
-				ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${title_movie_path}" >>"${error_log_path}" 2>&1
+				ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${title_movie_path}" #>>"${error_log_path}" 2>&1
 			
+
+
+				ffmpeg -f lavfi -i anullsrc -i "${title_movie_path}" -t ${title_time_in_seconds} -c:v copy -c:a aac -strict experimental "${title_movie_path}"
+
+
 				echo "... done rendering movie: ${title_movie_path}"
 
 				rm ${movie_directory_path}/title-*.${default_image_format}
