@@ -126,65 +126,79 @@ if [ ! -d "${lock_file_name}" ]; then
 			# Thanks to
 			# * http://stackoverflow.com/questions/2439579/how-to-get-the-first-line-of-a-file-in-a-bash-script
 			movie_title=$(head -n 1 ${title_file_path})
-
-			echo "... movie has a title, will be: ${movie_title}"
-
+			movie_title_hash=$(echo "${movie_title}" | md5sum | cut -f1 -d" ")
 			title_frame_path="${movie_directory_path}/title.${default_image_format}"
 
-			# Thanks to
-			# * http://www.imagemagick.org/discourse-server/viewtopic.php?t=13527
-			# Todo: Make "xc:black" dynamic
-			convert -size 1920x1080 xc:black $title_frame_path
+			echo "... movie has a title, will be: ${movie_title} (${movie_title_hash})"
 
 			# Thanks to
-			# * http://www.imagemagick.org/Usage/fonts/
-			# * http://stackoverflow.com/questions/23236898/add-text-on-image-at-specific-point-using-imagemagick
-			# * http://stackoverflow.com/questions/18062778/how-to-hide-command-output-in-bash
-			# Todo: Make "white" dynamic
-			convert "${title_frame_path}" -gravity North -pointsize 100 -fill white -annotate "+0+460" "${movie_title}" "${title_frame_path}" >>"${error_log_path}" 2>&1
+			# * http://stackoverflow.com/questions/1602378/how-to-calculate-a-hash-for-a-string-url-in-bash-for-wget-caching
+			title_movie_cache_path="${cache_path}/title_${title_time_in_seconds}_${movie_title_hash}.${default_video_format}"
 
-			echo "... creating image: ${title_frame_name}"
+			if [ -f "${title_movie_cache_path}" ]; then
+				echo "... copying cached title movie from ${title_movie_cache_path} to ${title_frame_path}"
 
-			title_frame_count=$(($frames_per_second * $title_time_in_seconds))
+				cp "${title_movie_cache_path}" "${title_frame_path}"
+			else
+				# Thanks to
+				# * http://www.imagemagick.org/discourse-server/viewtopic.php?t=13527
+				# Todo: Make "xc:black" dynamic
+				convert -size 1920x1080 xc:black $title_frame_path
 
-			echo "... creating ${title_frame_count} frame images"
+				# Thanks to
+				# * http://www.imagemagick.org/Usage/fonts/
+				# * http://stackoverflow.com/questions/23236898/add-text-on-image-at-specific-point-using-imagemagick
+				# * http://stackoverflow.com/questions/18062778/how-to-hide-command-output-in-bash
+				# Todo: Make "white" dynamic
+				convert "${title_frame_path}" -gravity North -pointsize 100 -fill white -annotate "+0+460" "${movie_title}" "${title_frame_path}" >>"${error_log_path}" 2>&1
 
-			# Thanks to
-			# * http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html
-	        i=0
-	        until [ $i -eq $title_frame_count ]; do
-	        	# Thanks to
-	        	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
-	        	target_frame_position_long=$(printf %04d ${i})
-	        	new_image_file_path="${movie_directory_path}/title-${target_frame_position_long}.${default_image_format}"
+				echo "... creating image: ${title_frame_name}"
 
-	        	echo "... copying ${title_frame_path} to ${new_image_file_path}"
-	            
-	        	cp $title_frame_path $new_image_file_path
+				title_frame_count=$(($frames_per_second * $title_time_in_seconds))
 
-	            i=$((i + 1))
-	        done
+				echo "... creating ${title_frame_count} frame images"
 
-	        rm $title_frame_path
+				# Thanks to
+				# * http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html
+		        i=0
+		        until [ $i -eq $title_frame_count ]; do
+		        	# Thanks to
+		        	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
+		        	target_frame_position_long=$(printf %04d ${i})
+		        	new_image_file_path="${movie_directory_path}/title-${target_frame_position_long}.${default_image_format}"
 
-	        images_file_path="${movie_directory_path}/title-%04d.${default_image_format}"
+		        	echo "... copying ${title_frame_path} to ${new_image_file_path}"
+		            
+		        	cp $title_frame_path $new_image_file_path
 
-	        echo "... rendering title video"
+		            i=$((i + 1))
+		        done
 
-			# Thanks to
-			# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
-			ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${title_movie_path}" >>"${error_log_path}" 2>&1
-		
-			echo "... done rendering movie: ${title_movie_path}"
+		        rm $title_frame_path
 
-			rm ${movie_directory_path}/title-*.${default_image_format}
+		        images_file_path="${movie_directory_path}/title-%04d.${default_image_format}"
 
-			echo "... deleted title images"
+		        echo "... rendering title video"
+
+				# Thanks to
+				# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
+				ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${title_movie_path}" >>"${error_log_path}" 2>&1
+			
+				echo "... done rendering movie: ${title_movie_path}"
+
+				rm ${movie_directory_path}/title-*.${default_image_format}
+
+				echo "... deleted title images"
+
+				cp "${title_movie_path}" "${title_movie_cache_path}"
+
+				echo "... cached title movie"
+			fi
 		fi
 
 		echo "... will render final movie to: ${full_video_path}"
 
-		ffmpeg -f concat -i "${video_list_path}" -c copy "${full_video_path}" >>"${error_log_path}" 2>&1
+		ffmpeg -f concat -i "${video_list_path}" -c copy "${full_video_path}" #>>"${error_log_path}" 2>&1
 
 		echo "... done, deleting resources folder for video"
 
