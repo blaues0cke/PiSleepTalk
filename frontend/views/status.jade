@@ -27,6 +27,9 @@ block content
 						th.size= __('table.size')
 						th.actions= __('table.actions')
 				tbody
+					if !pageData.files || pageData.files.length == 0
+						tr
+							td(colspan=3)= __('status.empty_text')
 					each file in pageData.files
 						tr
 							td.path #{file.path}
