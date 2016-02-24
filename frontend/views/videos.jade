@@ -63,7 +63,7 @@ block content
 				tbody
 					if !pageData.videos || pageData.videos.length == 0
 						tr
-							td(colspan=4)= __('videos.empty_text')
+							td(colspan=6)= __('videos.empty_text')
 					each video in pageData.videos
 						tr
 							td
