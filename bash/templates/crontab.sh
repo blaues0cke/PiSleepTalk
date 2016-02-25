@@ -74,5 +74,10 @@
 #
 2   16 * * * root sleep 300; sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/clean-lock-files.sh
 
+#
+# Will clean the lock files every day at 10:15
+#
+15   10 * * * root sleep 300; sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/send-pushover-message.sh
+
 
 
