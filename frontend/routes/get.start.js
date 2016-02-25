@@ -58,7 +58,7 @@ module.exports = function(app) {
 				pageData: {
 					context: 	   'home',
 					fileToProcess: fileToProcess,
-					fileCount: files.length
+					fileCount:     files.length
 				}
 			});
 		}
