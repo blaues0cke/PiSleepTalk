@@ -28,15 +28,18 @@ module.exports = function(app) {
 			for (var key in files) {
 
 				var path 		    = files[key];
-				var pathExploded    = path.replace(config.audio_file_path_rendered + '/', '').split('-');
+				var pathExploded    = path.replace(config.audio_file_path_rendered + '/', '').split('_');
 				var stats 		    = fs.statSync(files[key])
 				var fileSizeInBytes = stats['size']
+				var sizeExploded    = pathExploded[1].split('.');
+
+				console.log('Path exploden', pathExploded);
 
 				var fileInfo = {
 					path:   path.replace(config.audio_file_path_rendered + '/', ''),
 					size:   (fileSizeInBytes / 1014).toFixed(2),
 					type:   'full',
-					length: pathExploded[0]
+					length: sizeExploded[0]
 				}
 
 				pageData.videos.push(fileInfo);
