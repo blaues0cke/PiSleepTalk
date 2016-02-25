@@ -61,10 +61,10 @@ if [ ! -d "${lock_file_name}" ]; then
 	done
 
 	if [ -n "$file_count" ]; then
-	    echo "Done processing volume, processed files:"
+	    echo "Done cropping audio, processed files:"
 	    echo "... processed files: ${file_count}"
 	else
-		echo "Done processing volume, no files found";
+		echo "Done cropping audio, no files found";
 	fi
   	
   	if [ -d "${lock_file_name}" ]; then
