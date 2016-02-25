@@ -10,6 +10,7 @@ Beware, this project is **work in progress**, see [our issue tracker](https://gi
 * Web interface to add subtitles to recordings and download the videos
 * Automatic video generation
 * Possibility to import audio recorded from third party devices
+* Noise filtering
 * Multiple recording triggers like a hardware switch, the time, last.fm or Philips Hue
 * Automated YouTube upload
 
@@ -22,6 +23,7 @@ TODO (See [#24](https://github.com/blaues0cke/PiSleepTalk/issues/24))
 * `/usr/sleeptalk/cache` Some generated data is stored in here, clear it if you want, the content will be re-generated
 * `/usr/sleeptalk/debug` A folder that contains debug output, not required for production mode
 * `/usr/sleeptalk/frontend` Contains the whole node.js frontend
+* `/usr/sleeptalk/noise-data` Contains noise that is removed from new recordings
 * `/usr/sleeptalk/scripts` Contains all bash scripts
 * `/usr/sleeptalk/records-amplitude` Contains files that have a pending amplitude check
 * `/usr/sleeptalk/records-decrease-volume` Contains files that are too loud
@@ -47,7 +49,7 @@ Files are processed in the following folders:
 5. `/usr/sleeptalk/records-to-render`. contains all data that is required to render a video.
 6. `/usr/sleeptalk/records-decrease-volume` the volume of all files in this folder is decreased by 50% by `process-volume.sh`. All processed files are moved back to `/usr/sleeptalk/records-to-render`.
 7. `/usr/sleeptalk/records-increase-volume` the volume of all files in this folder is increased by 50% by `process-volume.sh`. All processed files are moved back to `/usr/sleeptalk/records-to-render`.
-8. `/usr/sleeptalk/records-rendered` contains finally rendered videos including their subtitles.
+8. `/usr/sleeptalk/records-rendered` contains finally rendered videos including their subtitles with reduced noise.
 9. `/usr/sleeptalk/records-final` contains upload ready videos build by concating multiple rendered records.
 
 ## Audio detection and rating logic
