@@ -44,6 +44,13 @@ block content
 	)
 
 	+modal(
+		'set-marker-first-4-error',
+		__('modal.an_error_occurred'),
+		__('modal.set_marker.description_4'),
+		__('modal.set_marker.whoops')
+	)
+
+	+modal(
 		'decrease-volume-modal',
 		__('modal.decrease_volume.title'),
 		__('modal.decrease_volume.description'),
@@ -70,6 +77,22 @@ block content
 		'crop-to-marker-confirm'
 	)
 
+	+modal(
+		'ban-noise-modal',
+		__('modal.ban_noise.title'),
+		__('modal.ban_noise.description'),
+		__('modal.cancel'),
+		__('modal.ban_noise.ban_noise'),
+		'ban-noise-confirm'
+	)
+
+	+modal(
+		'ban-noise-done-modal',
+		__('modal.noise_banned.title'),
+		__('modal.noise_banned.description'),
+		__('modal.ok')
+	)
+
 	// Thanks to
 	// * http://stackoverflow.com/questions/5081534/put-jade-local-variable-in-tag-attribute
 	// * http://jade-lang.com/reference/comments/
@@ -91,6 +114,7 @@ block content
 			+button('wave-play-from-marker', 'play',    	  __('actions.play_from_marker'), 'info',    '', __('actions.play_from_marker'))
 			+button('wave-jump-to-marker',   'step-backward', __('actions.jump_to_marker'),   'info',    '', __('actions.jump_to_marker'))
 			+button('wave-crop-to-marker',   'crop', 		  __('actions.crop_to_marker'),   'danger',  '', __('actions.crop_to_marker'))
+			+button('wave-ban-noise',   	 'ban', 		  __('actions.ban-noise'),   	  'danger',  '', __('actions.ban_noise'))
 			+button('wave-decrease-volume',  'volume-down',   __('actions.decrease_volume'),  'warning', '', __('actions.decrease_volume'))
 			+button('wave-increase-volume',  'volume-up',     __('actions.increase_volume'),  'warning', '', __('actions.increase_volume'))
 		div.pull-right

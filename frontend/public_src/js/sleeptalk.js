@@ -38,6 +38,18 @@ $(document).ready(function() {
 	initTableTools();
 });
 
+var banNoise = function() {
+	if (!loaded) return;
+	
+	if (markerRegion) {
+		$('#ban-noise-modal').modal('show');
+	}
+	else {
+		$('#set-marker-first-3-error').modal('show');
+	}
+};
+
+
 var cropToMarker = function() {
 	if (!loaded) return;
 	
@@ -240,6 +252,10 @@ var initShotcuts = function () {
 	    			var seekTo  = audioDuration * percent;
 
 	    			wavesurfer.seekTo(seekTo);
+
+	    			break;
+	    		case 66:
+	    			banNoise();
 
 	    			break;
 
@@ -485,6 +501,21 @@ var initButtons = function() {
 			},
 			function() {
 		        reloadPage();
+			}
+		);
+	});
+
+	$('#wave-ban-noise').click(banNoise);
+
+	$('#ban-noise-confirm').click(function() {
+		$.post(
+			'ban-noise' + fileUrl,
+			{
+				end:   markerRegion.end,
+				start: markerRegion.start
+			},
+			function() {
+		        $('#ban-noise-done-modal').show();
 			}
 		);
 	});

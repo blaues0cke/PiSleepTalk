@@ -2,6 +2,7 @@
 	"actions": {
 		"add_text": 			 "Text hinzufügen",
 		"back":  				 "Zurück",
+        "ban_noise":             "Abschnitt als Störgeräusch definieren",
 		"clear":                 "Leeren",
 		"clear_all_texts":       "Alle Texte leeren",
 		"clear_logs": 			 "Logs löschen",
@@ -60,6 +61,11 @@
     },
     "modal": {
     	"an_error_occurred":     "Es ist ein Fehler aufgetreten",
+        "ban_noise": {
+            "ban_noise":         "Abschnitt als Störgeräusch markieren",
+            "description":       "Bist du sicher, dass du diesen Abschnitt als Störgeräusch markieren möchtest?",
+            "title":             "Als Störgeräusch markieren"
+        },
     	"cancel":                "Abbrechen",
     	"clear_logs": {
     		"clear_logs":  		 "Log-Dateien löschen",
@@ -101,11 +107,15 @@
             "description":       "Der Datei-Import wurde erfolgreich erzwungen, bitte warten Sie, bis der Import-Ordner leer ist.",
             "title":             "Import erzwungen"
         },
-       	"increase_volume": {
-    		"description":       "Bist du sicher, dass du die Lautstärke dieser Datei um 50% erhöhen möchtest? Die Datei wird verschoben und unsichtbar, bis die Lautstärke erhöht wurde. Danach taucht die Datei wieder automatisch auf der Startseite auf.",
-    		"increase_volume":   "Lautstärke erhöhen",
-    		"title":             "Lautstärke erhöhen"
-    	},
+        "increase_volume": {
+            "description":       "Bist du sicher, dass du die Lautstärke dieser Datei um 50% erhöhen möchtest? Die Datei wird verschoben und unsichtbar, bis die Lautstärke erhöht wurde. Danach taucht die Datei wieder automatisch auf der Startseite auf.",
+            "increase_volume":   "Lautstärke erhöhen",
+            "title":             "Lautstärke erhöhen"
+        },
+        "noise_banned": {
+            "description":       "Der markierte Bereich wird in Zukunft als Störgeräusch geführt und aus zukünftigen Aufnahmen entfernt.",
+            "title":             "Störgeräusch erfasst"
+        },
     	"ok": 			  	     "OK",
        	"preview_video": {
     		"title":             "Video-Vorschau"
@@ -124,6 +134,7 @@
     		"description":       "Bitte setzte zu erst eine Markierung, bevor du zur selbigen springst.",
             "description_2":     "Bitte setzte zu erst eine Markierung, bevor du zur selbigen springst.",
             "description_3":     "Bitte setzte zu erst eine Markierung, bevor die Aufnahme auf selbige verkürzt.",
+            "description_4":     "Bitte setzte zu erst eine Markierung, bevor du sie als Störgeräusch definierst.",
             "whoops":            "Hoppala, entschuldigung!"
     	},
         "upload_file": {
@@ -142,6 +153,8 @@
     	"keys": {
     		"1_9":  			 "1-9",
     		"1_9_description": 	 "Springe zu Abschnitt N der Audio-Datei",
+            "b":                 "B",
+            "b_description":     "Markierung als Störgeräusch erfasssen",
             "c":                 "C",
             "c_description":     "Aufnahmen auf Markierung beschneiden (Rest wegwerfen)",
             "dc":                "Doppeklick",

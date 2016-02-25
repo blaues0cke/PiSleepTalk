@@ -2,6 +2,7 @@
 	"actions": {
 		"add_text": 			 "Add text",
 		"back":  				 "Back",
+        "ban_noise":             "Mark selection as noise",
 		"clear":                 "Clear",
 		"clear_all_texts":       "Clear all texts",
 		"clear_logs": 			 "Clear logs",
@@ -60,6 +61,11 @@
     },
     "modal": {
     	"an_error_occurred":     "An error occurred",
+        "ban_noise": {
+            "ban_noise":         "Mark selection as noise",
+            "description":       "Are you sure you want to mark the selection as noise?",
+            "title":             "Mark as noise"
+        },
     	"cancel":                "Cancel",
     	"clear_logs": {
     		"clear_logs":  		 "Clear logs",
@@ -106,6 +112,10 @@
     		"increase_volume":   "Increase volume",
     		"title":             "Increase volume"
     	},
+        "noise_banned": {
+            "description":       "The selected part is now recongized as noise and removed in further recordings.",
+            "title":             "Noise saved"
+        },
     	"ok": 			  	     "OK",
        	"preview_video": {
     		"title":             "Video preview"
@@ -124,6 +134,7 @@
     		"description":       "Please set a marker first before you try to jump to it.",
             "description_2":     "Please set a marker first before you try to jump to it.",
             "description_3":     "Please set a marker first before you try to crop the recording to it.",
+            "description_4":     "Please set a marker first before you mark it as noise.",
             "whoops":            "Whoops, sorry!"
     	},
         "upload_file": {
@@ -142,6 +153,8 @@
     	"keys": {
     		"1_9":  			 "1-9",
     		"1_9_description": 	 "Seek to part N of the audio file",
+            "b":                 "B",
+            "b_description":     "Flag selection as noise",
             "c":                 "C",
             "c_description":     "Crop to marker (Throw away the rest)",
             "dc":                "Double click",
