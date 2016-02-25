@@ -515,7 +515,7 @@ var initButtons = function() {
 				start: markerRegion.start
 			},
 			function() {
-		        $('#ban-noise-done-modal').show();
+		        $('#ban-noise-done-modal').modal('show');
 			}
 		);
 	});
