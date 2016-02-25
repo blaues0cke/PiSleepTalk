@@ -136,12 +136,9 @@ if [ ! -d "${lock_file_name}" ]; then
 			# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
 			ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${blank_movie_path}" >>"${error_log_path}" 2>&1
 
-
-ffmpeg -y -f lavfi -i anullsrc -i "${blank_movie_path}" -t ${video_gap_length_in_seconds} -c:v copy -c:a aac -strict experimental "${blank_movie_path}"
-
-
-
-
+			# Thanks to
+			# * http://stackoverflow.com/questions/11779490/ffmpeg-how-to-add-new-audio-not-mixing-in-video
+			ffmpeg -y -i "${blank_movie_path}" -i "/usr/sleeptalk/audio/blank.mp3" -map 0:v -map 1:a -codec copy -shortest "${blank_movie_path}"
 
 			echo "... done rendering movie: ${blank_movie_path}"
 
@@ -216,10 +213,9 @@ ffmpeg -y -f lavfi -i anullsrc -i "${blank_movie_path}" -t ${video_gap_length_in
 				# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
 				ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${title_movie_path}" #>>"${error_log_path}" 2>&1
 			
-
-
-				ffmpeg -y -f lavfi -i anullsrc -i "${title_movie_path}" -t ${title_time_in_seconds} -c:v copy -c:a aac -strict experimental "${title_movie_path}"
-
+				# Thanks to
+				# * http://stackoverflow.com/questions/11779490/ffmpeg-how-to-add-new-audio-not-mixing-in-video
+				ffmpeg -y -i "${title_movie_path}" -i "/usr/sleeptalk/audio/blank.mp3" -map 0:v -map 1:a -codec copy -shortest "${title_movie_path}"
 
 				echo "... done rendering movie: ${title_movie_path}"
 
@@ -237,42 +233,17 @@ ffmpeg -y -f lavfi -i anullsrc -i "${blank_movie_path}" -t ${video_gap_length_in
 
 		echo "... will render final movie to: ${full_video_path}"
 
-		# ORIGINAL: ffmpeg -f concat -i "${video_list_path}" -c copy "${full_video_path}" #>>"${error_log_path}" 2>&1
-
-
-
-
-
-
-
-		#ffmpeg -f concat -i "${video_list_path}" -c copy "${full_video_path}" >>"${error_log_path}" 2>&1
 		# Thanks to
 		# * http://stackoverflow.com/questions/11469989/how-can-i-strip-first-x-characters-from-string-in-shellscript-using-sed
 		video_string=$(echo "${video_string}" | cut -c 2-)
 		filter_string=$(echo "${filter_string}" | cut -c 2-)
 
-
+		echo "... filter string: ${filter_string}"
 		echo "... video string: ${video_string}"
  
-		
-		#ffmpeg -i concat:"${video_string}" -filter_complex "${filter_string} concat=n=${input_file_counter}:v=1:a=1 [v] [a]" -map "[v]" -map "[a]" "${full_video_path}"
-		ffmpeg -f concat -i "${video_list_path}" -filter_complex "${filter_string} concat=n=${input_file_counter}:v=1:a=1 [v] [a]" -map "[v]" -map "[a]" "${full_video_path}"
-
-
-
-
-
-		# Does not work
-		##ffmpeg -i concat:"${video_string}" -acodec copy -vcodec copy "${full_video_path}"
-
-		# Does not work
-		#ffmpeg -f concat -i "${video_list_path}" -acodec copy -vcodec copy "${full_video_path}" >>"${error_log_path}" 2>&1
-
-
-
-
-
-
+		# Thanks to
+		# * http://stackoverflow.com/questions/35612600/concat-multiple-self-generated-videos-using-ffmpeg-on-raspbian-linux/35619414#35619414
+		ffmpeg -f concat -i "${video_list_path}" -c copy "${full_video_path}"
 
 		if [ -f $full_video_path ]; then
 			echo "... done, deleting resources folder for video"
