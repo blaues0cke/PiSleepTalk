@@ -30,8 +30,8 @@ if [ ! -d "${lock_file_name}" ]; then
 
 		# Thanks to
 		# * http://unix.stackexchange.com/questions/144298/delete-the-last-character-of-a-string-using-string-manipulation-in-shell-script
-		full_video_path=$(echo -n ${movie_directory_path} | head -c -2)
-		full_video_path="${full_video_path}.${default_video_format}"
+		full_video_path_without_format=$(echo -n ${movie_directory_path} | head -c -2)
+		full_video_path="${full_video_path_without_format}.${default_video_format}"
 
 		video_list_path="${movie_directory_path}videos.txt"
 		video_string=""
@@ -246,6 +246,14 @@ if [ ! -d "${lock_file_name}" ]; then
 		ffmpeg -f concat -i "${video_list_path}" -c copy "${full_video_path}"
 
 		if [ -f $full_video_path ]; then
+			video_gap_length_in_seconds=$(ffmpeg -i "${full_video_path}" 2>&1 | grep "Duration" | cut -d ' ' -f 4 | sed s/,// | sed 's@\..*@@g' | awk '{ split($1, A, ":"); split(A[3], B, "."); print 3600*A[1] + 60*A[2] + B[1] }')
+
+			echo "... video length: ${video_gap_length_in_seconds}"
+
+			final_video_path="${full_video_path_without_format}_${video_gap_length_in_seconds}.${default_video_format}"
+
+			mv ${full_video_path} ${final_video_path}
+
 			echo "... done, deleting resources folder for video"
 
 			rm -rf ${movie_directory_path}
