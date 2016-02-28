@@ -12,6 +12,7 @@
 		"decrease_volume":       "Lautstärke verringern",
 		"delete": 				 "Löschen",
 		"delete_file": 		 	 "Datei löschen",
+        "delete_noise_filter":   "Störgeräusch löschen",
 		"delete_recording": 	 "Aufnahme löschen",
 		"delete_text": 		     "Text löschen",
 		"delete_video": 	     "Video löschen",
@@ -35,7 +36,8 @@
 		"step_forward":          "Schritt vorwärts",
 		"stop":                  "Stop",
         "upload_file":           "Datei hochladen",
-		"view_logs": 			 "Logs betrachten"
+		"view_logs": 			 "Logs betrachten",
+        "view_noise_filters":    "Störgeräusche anzeigen"
 	},
     "app": {
     	"name": 			     "PiSleepTalk"
@@ -120,6 +122,11 @@
        	"preview_video": {
     		"title":             "Video-Vorschau"
     	},
+        "remove_noise_filter": {
+            "description":       "Bist du sicher, dass du dieses Störgeräusch löschen möchtest? Diese Aktion kann nicht rückgängig gemacht werden. Dateien, aus denen dieses Störgeräusch bereits entfernt wurde, verändern sich dadurch nicht.",
+            "remove_filter":     "Störgeräusch löschen",
+            "title":             "Störgeräusch löschen"
+        },
     	"remove_recording": {
     		"delete_recording":  "Aufnahme löschen",
     		"description":       "Bist du sicher, dass du diese Aufnahme löschen möchtest? Diese Aktion kann nicht rückgängig gemacht werden.",
@@ -147,6 +154,11 @@
     	"description": 			 "Entschuldigung, es liegen keine unbearbeiteten Aufnahmen vor. Bitte schlafe eine Nacht darüber und kehre dann zur dieser Seite zurück.",
     	"sub_description":       "Eventuell wirfst du einen Blick auf die Status-Seite um sicherzustellen, dass alles in Ordnung ist.",
     	"title": 				 "Keine neuen Aufnahmen"
+    },
+    "noise_filter": {
+        "description":           "Hier siehst du alle Störgeräusche, die du definiert hast. Jedes Störgeräusch wird aus neuen Aufnahmen automatisch herausgeschnitten.",
+        "empty_text":            "Es wurden noch keine Störgeräusche erfasst. Um das zu tun, kannst du auf der Startseite einfach einen Marker setzen und dann auf den \"Störgeräusch\"-Erstellen-Button klicken.",
+        "title":                 "Störgeräusche"
     },
     "shortcuts": {
     	"description":   	 	 "You can use some shortcuts to save time. The following keys are supported right now:",
@@ -187,6 +199,7 @@
     	"frame": 				 "Frame",
     	"length": 				 "Länge",
     	"length_seconds_short":  "s",
+        "listen":                "Anhören",
     	"path": 				 "Pfad",
     	"size": 				 "Größe",
     	"size_kb": 			     "KB",

@@ -9,16 +9,17 @@
 
 var   config    = require('../core/config.js')
 	, framework = require('../core/framework.js')
+	, fs        = require('fs')
 ;
 
 module.exports = function(app) {
-	app.get('/:name.' + config.default_audio_format, function(req, res) {
-		var filepath = framework.checkFile(req, res, config.default_audio_format, [config.audio_file_path_to_render, config.audio_file_path_noise]);
+	app.delete('/:name.' + config.default_noise_format, function(req, res) {
+		var filepath = framework.checkFile(req, res, config.default_noise_format, config.audio_file_path_noise);
 
 		if (filepath) {
-			// Thanks to
-			// * http://stackoverflow.com/questions/9321027/how-to-send-files-with-node-js
-			res.sendFile(filepath);
+			fs.unlinkSync(filepath);
+
+			res.status(200).send('OK');
 		}
 	});
 }

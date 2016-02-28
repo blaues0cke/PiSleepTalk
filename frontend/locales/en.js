@@ -12,6 +12,7 @@
 		"decrease_volume":       "Decrease volume",
 		"delete": 				 "Delete",
 		"delete_file": 		 	 "Delete file",
+        "delete_noise_filter":   "Delete noise filter",
 		"delete_recording": 	 "Delete recording",
 		"delete_text": 		     "Delete text",
 		"delete_video": 	     "Delete video",
@@ -35,7 +36,8 @@
 		"step_forward":          "Step forward",
 		"stop":                  "Stop",
         "upload_file":           "Upload file",
-		"view_logs": 			 "View logs"
+		"view_logs": 			 "View logs",
+        "view_noise_filters":    "View noise filters"
 	},
     "app": {
     	"name": 			     "PiSleepTalk"
@@ -120,6 +122,11 @@
        	"preview_video": {
     		"title":             "Video preview"
     	},
+        "remove_noise_filter": {
+            "description":       "Are you sure to remove this noise filter? This can't be undone. Files, that were alredy modified using this noise filter will stay unchanged.",
+            "remove_filter":     "Remove noise filter",
+            "title":             "Remove noise filter"
+        },
     	"remove_recording": {
     		"delete_recording":  "Delete recording",
     		"description":       "Are you sure to delete the whole recording? You can't undo this.",
@@ -147,6 +154,11 @@
     	"description": 			 "Sorry, we got no unprocessed recordings for you right now. Please sleep on it on come back to this page later.",
     	"sub_description":       "You may check the status page to make sure everything is working correctly.",
     	"title": 				 "No new recordings"
+    },
+    "noise_filter": {
+        "description":           "Here you see all noise filters you have created. Every single noise filter is appended to every new recording.",
+        "empty_text":            "No noise filters are were yet. To add a filter, just set a marker on the start page and hit the \"create noise filter\" button.",
+        "title":                 "Noise filters"
     },
     "shortcuts": {
     	"description":   	 	 "You can use some shortcuts to save time. The following keys are supported right now:",
@@ -187,6 +199,7 @@
     	"frame": 				 "Frame",
     	"length": 				 "Length",
     	"length_seconds_short":  "s",
+        "listen":                "Listen",
     	"path": 				 "Path",
     	"size": 				 "Size",
     	"size_kb": 			     "KB",

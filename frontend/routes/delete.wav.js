@@ -14,7 +14,7 @@ var   config    = require('../core/config.js')
 
 module.exports = function(app) {
 	app.delete('/:name.' + config.default_audio_format, function(req, res) {
-		var filepath = framework.checkFile(req, res, config.default_audio_format, config.audio_file_path_to_render);
+		var filepath = framework.checkFile(req, res, config.default_audio_format, [config.audio_file_path_to_render, config.audio_file_path_noise]);
 
 		if (filepath) {
 			fs.unlinkSync(filepath);

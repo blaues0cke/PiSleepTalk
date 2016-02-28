@@ -15,6 +15,7 @@ var frameProcess       = null;
 var infoArea           = null;
 var lastInfoText	   = null;
 var loaded             = false;
+var noiseFilterUrl     = null;
 var markerRegion       = null;
 var videoUrl 	       = null;
 var wavesurfer         = Object.create(WaveSurfer);
@@ -36,6 +37,7 @@ $(document).ready(function() {
 	initStatusPage();
 	initImportPage();
 	initTableTools();
+	initNoiseFilterList();
 });
 
 var banNoise = function() {
@@ -685,6 +687,41 @@ var getVideoPathForClickedButton = function(button)
 	var path   = pathTd.text();
 
 	return path;
+};
+
+var initNoiseFilterList = function () {
+	$('#noise-filter-list')
+		.on('click', '.delete', function() {
+			
+			var button     = $(this);
+			var path       = getVideoPathForClickedButton(button);
+			noiseFilterUrl = path;
+
+			console.log('Wav path', noiseFilterUrl);
+
+			$('#delete-noise-filter').modal('show');
+		})
+	;
+
+	$('#delete-noise-filter-confirm').click(function() {
+		console.log('Delete button pressed: ', noiseFilterUrl);
+
+		// Thanks to
+		// * http://stackoverflow.com/questions/2153917/how-to-send-a-put-delete-request-in-jquery
+		$.ajax({
+		    url: noiseFilterUrl,
+		    type: 'DELETE',
+		    success: function(result) {
+				$.ajax({
+				    url: noiseFilterUrl.replace('.prof', ''),
+				    type: 'DELETE',
+				    success: function(result) {
+				        reloadPage();
+				    }
+				});
+		    }
+		});
+	});
 };
 
 var initVideoList = function () {

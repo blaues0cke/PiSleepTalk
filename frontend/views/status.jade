@@ -18,7 +18,9 @@ block content
 		p.lead
 			a.btn.btn-primary.btn-lg.btn-reload(role='button')= __('actions.reload_page')
 			|  
-			a.btn.btn-primary.btn-lg.btn-reload(role='button', href='/logs')= __('actions.view_logs')
+			a.btn.btn-primary.btn-lg(role='button', href='/logs')= __('actions.view_logs')
+			|  
+			a.btn.btn-primary.btn-lg(role='button', href='/noise-filters')= __('actions.view_noise_filters')
 	div#file-system
 			table.table.table-bordered
 				thead
