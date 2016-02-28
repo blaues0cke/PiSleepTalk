@@ -50,6 +50,14 @@
 *   *  * * * root sleep 59;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/crop-audio.sh
 
 #
+# Will porcess noise parts every 15 seconds
+#
+*   *  * * * root sleep 01;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/process-noise.sh
+*   *  * * * root sleep 16;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/process-noise.sh
+*   *  * * * root sleep 31;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/process-noise.sh
+*   *  * * * root sleep 46;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/process-noise.sh
+
+#
 # Will process the records every minute
 #
 *   *  * * * root sleep 5;   sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/process-records.sh
