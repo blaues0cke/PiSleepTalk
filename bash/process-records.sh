@@ -104,6 +104,24 @@ if [ ! -d "${lock_file_name}" ]; then
 						$(rm $concat_file_queue)
 					fi
 
+					if [ "${noise_filter_enabled}" = true ]; then
+						echo "... appending noise filter"
+
+			 			final_filepath_sox="${audio_file_path_to_render}/sox_${final_filename}"
+
+						dir_list_2=$(ls ${audio_file_path_noise}/*.${default_noise_format} 2>/dev/null)
+						for sox_profile_path in $dir_list_2
+						do
+							echo "... appending ${sox_profile_path} to ${final_filepath_sox}"
+
+							sox "${final_filepath}" "${final_filepath_sox}" noisered "${sox_profile_path}" "${noise_filter_sensitivity}"
+
+							echo "... done, replacing old file"
+
+							mv "${final_filepath_sox}" "${final_filepath}"
+						done		
+					fi
+
 					concat_file_queue=""
 					concat_file_queue_count=0
 					concat_end_timestamp=""
