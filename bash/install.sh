@@ -9,6 +9,8 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
+. /usr/sleeptalk/config/config.cfg
+
 echo ""
 echo ""
 echo "  _____  _   _____  _                  _______      _  _    "
@@ -28,6 +30,28 @@ echo "... press RETURN to start"
 # Thanks to
 # * http://stackoverflow.com/questions/226703/how-do-i-prompt-for-input-in-a-linux-shell-script
 read input
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Thanks to
+# * http://unix.stackexchange.com/questions/8518/how-to-get-my-own-ip-address-and-save-it-to-a-variable-in-a-shell-script
+ipAddress=$(ifconfig | grep -A 1 'wlan0' | tail -1 | cut -d ':' -f 2 | cut -d ' ' -f 1)
+
+echo "... thanks, everything is done"
+echo "... visit http://${ipAddress}:${web_port} to access the web interface"
+echo ""
 
 
 
