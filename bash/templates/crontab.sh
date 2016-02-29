@@ -14,8 +14,22 @@
 
 #
 # Will check the free disk space and the service persistance every 60s
+# 
+# No "run-singleton.sh" is used here since this would disable the "stop" feature since a instance
+# of "health-check.sh" is running until the recording stops.
 #
-*   *  * * * root            sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/health-check.sh
+*   *  * * * root            sh /usr/sleeptalk/bash/health-check.sh
+*   *  * * * root sleep  5;  sh /usr/sleeptalk/bash/health-check.sh
+*   *  * * * root sleep 10;  sh /usr/sleeptalk/bash/health-check.sh
+*   *  * * * root sleep 15;  sh /usr/sleeptalk/bash/health-check.sh
+*   *  * * * root sleep 20;  sh /usr/sleeptalk/bash/health-check.sh
+*   *  * * * root sleep 25;  sh /usr/sleeptalk/bash/health-check.sh
+*   *  * * * root sleep 30;  sh /usr/sleeptalk/bash/health-check.sh
+*   *  * * * root sleep 35;  sh /usr/sleeptalk/bash/health-check.sh
+*   *  * * * root sleep 40;  sh /usr/sleeptalk/bash/health-check.sh
+*   *  * * * root sleep 45;  sh /usr/sleeptalk/bash/health-check.sh
+*   *  * * * root sleep 50;  sh /usr/sleeptalk/bash/health-check.sh
+*   *  * * * root sleep 55;  sh /usr/sleeptalk/bash/health-check.sh
 
 #
 # Will add the timestamp to the filename every 15 seconds

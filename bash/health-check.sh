@@ -148,10 +148,10 @@ if [ "$start_allowed" = true ]; then
 	if [ ${runningProcesses} -lt 2 ]; then
 		echo "... starting new recording service"
 
-	    sh /usr/sleeptalk/bash/start.sh
+	    sh /usr/sleeptalk/bash/start-recording-chunks.sh
 	fi
 else
-	sh /usr/sleeptalk/bash/stop.sh
+	sh /usr/sleeptalk/bash/stop-recording-chunks.sh
 
 	gpio write 2 0
 fi
