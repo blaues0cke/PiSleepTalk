@@ -64,12 +64,20 @@
 *   *  * * * root sleep 59;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/crop-audio.sh
 
 #
-# Will porcess noise parts every 15 seconds
+# Will process noise parts every 15 seconds
 #
 *   *  * * * root sleep 01;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/process-noise.sh
 *   *  * * * root sleep 16;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/process-noise.sh
 *   *  * * * root sleep 31;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/process-noise.sh
 *   *  * * * root sleep 46;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/process-noise.sh
+
+#
+# Will process files to import every 15 seconds
+#
+*   *  * * * root sleep 03;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/import-audio.sh
+*   *  * * * root sleep 18;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/import-audio.sh
+*   *  * * * root sleep 33;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/import-audio.sh
+*   *  * * * root sleep 48;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/import-audio.sh
 
 #
 # Will process the records every minute
