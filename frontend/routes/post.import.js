@@ -18,10 +18,15 @@ module.exports = function(app) {
 		
 		var newFilepath = config.audio_file_path_import + '/' + req.file.originalname;
 
-		// Thanks to
-		// * http://stackoverflow.com/questions/8579055/how-i-move-files-on-node-js
-		fs.rename(req.file.path, newFilepath);
+		try {
+			// Thanks to
+			// * http://stackoverflow.com/questions/8579055/how-i-move-files-on-node-js
+			fs.rename(req.file.path, newFilepath);
 
-		res.redirect('/import');
+			res.redirect('/import');
+		}
+		catch(err) {
+		    res.redirect('/import?error');
+		}
 	});
 }
