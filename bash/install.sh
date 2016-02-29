@@ -9,6 +9,30 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
+echo ""
+echo ""
+echo "  _____  _   _____  _                  _______      _  _    "
+echo " |  __ \(_) / ____|| |                |__   __|    | || |   "
+echo " | |__) |_ | (___  | |  ___   ___  _ __  | |  __ _ | || | __"
+echo " |  ___/| | \___ \ | | / _ \ / _ \| '_ \ | | / _\` || || |/ /"
+echo " | |    | | ____) || ||  __/|  __/| |_) || || (_| || ||   < "
+echo " |_|    |_||_____/ |_| \___| \___|| .__/ |_| \__,_||_||_|\_\\"
+echo "                                  | |                       "
+echo " by Thomas Kekeisen               |_|                       "
+echo ""
+echo ""
+echo "... welcome to the PiSleepTalk installation script"
+echo "... if everything works fine you have nothing to do"
+echo "... press RETURN to start"
+
+# Thanks to
+# * http://stackoverflow.com/questions/226703/how-do-i-prompt-for-input-in-a-linux-shell-script
+read input
+
+
+
+
+
 # copy daemon.sh to /etc/init.d/sleeptalk
 # start the service
 # copy the crontabs
