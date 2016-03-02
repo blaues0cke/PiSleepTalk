@@ -15,18 +15,23 @@ var   config = require('../core/config.js')
 
 module.exports = function(app) {
 	app.post('/import', upload.single('file'), function (req, res) {
-		
-		var newFilepath = config.audio_file_path_import + '/' + req.file.originalname;
+		if (req.file && req.file.originalname && req.file.originalname.length > 0) {
+			var newFilepath = config.audio_file_path_import + '/' + req.file.originalname;
 
-		try {
-			// Thanks to
-			// * http://stackoverflow.com/questions/8579055/how-i-move-files-on-node-js
-			fs.rename(req.file.path, newFilepath);
+			try {
+				// Thanks to
+				// * http://stackoverflow.com/questions/8579055/how-i-move-files-on-node-js
+				fs.rename(req.file.path, newFilepath);
 
-			res.redirect('/import');
+				res.redirect('/import');
+			}
+			catch(err) {
+			    res.redirect('/import?error');
+			}
 		}
-		catch(err) {
-		    res.redirect('/import?error');
+		else
+		{
+			res.redirect('/import?error');
 		}
 	});
 }
