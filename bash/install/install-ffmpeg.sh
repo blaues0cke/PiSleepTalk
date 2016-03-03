@@ -14,13 +14,13 @@
 
 function install_build_tools {
 
-	sudo apt-get install git
-	sudo apt-get install libasound2-dev
-	sudo apt-get install build-essential
-	sudo apt-get install make
-	sudo apt-get install autoconf
-	sudo apt-get install libtool
-	sudo apt-get install nginx
+	apt-get install -y git
+	apt-get install -y libasound2-dev
+	apt-get install -y build-essential
+	apt-get install -y make
+	apt-get install -y autoconf
+	apt-get install -y libtool
+	apt-get install -y nginx
 }
 
 function build_yasm {

@@ -12,10 +12,10 @@
 
 echo "Installing dependencies"
 
-apt-get install bc
-apt-get install imagemagick
-apt-get install samba samba-common-bin
-apt-get install npm --fix-missing
+apt-get install -y bc
+apt-get install -y imagemagick
+apt-get install -y samba samba-common-bin
+apt-get install -y npm --fix-missing
 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
 nvm install 5.2.0

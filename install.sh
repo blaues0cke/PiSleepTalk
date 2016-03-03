@@ -23,10 +23,6 @@ echo "... welcome to the PiSleepTalk source downloader"
 echo "... if everything works fine you have nothing to do"
 echo "... press RETURN to start, or STRG+C to cancel"
 
-# Thanks to
-# * http://stackoverflow.com/questions/226703/how-do-i-prompt-for-input-in-a-linux-shell-script
-read input
-
 echo "... creating root folder"
 mkdir /usr/sleeptalk
 
@@ -43,12 +39,6 @@ rm -rf /usr/sleeptalk/PiSleepTalk-master
 echo "... removing downloaded zip file"
 rm /usr/sleeptalk/sleeptalk.zip
 
-echo "Done!"
-echo ".. do you want to start the installtion script? This will configure your RaspberryPi to match the requirements of PiSleepTalk."
-echo "... press RETURN to start, or STRG+C to cancel"
-
-# Thanks to
-# * http://stackoverflow.com/questions/226703/how-do-i-prompt-for-input-in-a-linux-shell-script
-read input
+echo "Done! Installing PiSleepTalk now."
 
 sh /usr/sleeptalk/bash/install.sh
