@@ -45,6 +45,8 @@
     "import": {
         "description":           "Using the import feature allows you to import any audio file you want. You can use any audio format you want. Unsupported files are skipped and deleted automatically. Zip files are extracted automatically, too. If files in the zip file have the same name like existing files in the import folder, the existing file will be overwritten without asking.",
         "empty":                 "Your import folder is empty at the moment.",
+        "error_1":               "No file was uploaded.",
+        "error_2":               "An error occurred while saving your file, please try again later.",
         "force_text":            "The import will start automatically after %s seconds the last file was uploaded to the import folder.",
         "title":                 "Import"
     },

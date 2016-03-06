@@ -15,6 +15,7 @@ module.exports = function(app) {
 	app.get('/import', function (req, res) {
 		var pageData = {
 			context: 'import',
+			error: (req.query.error ? req.query.error : 0),
 			import_timeout: config.import_dealay_seconds
 		};
 
@@ -38,6 +39,7 @@ module.exports = function(app) {
 		}
 
 		console.log('page data', pageData);
+		console.log('params', req);
 
 		res.render('import', { pageData: pageData });
 	});

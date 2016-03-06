@@ -39,6 +39,11 @@ block content
 			input(type='file', name='file')
 
 	div.jumbotron.no-margin
+		if pageData.error > 0
+			div.alert.alert-danger.alert-dismissible.fade.in(role="alert") #{__('import.error_' + pageData.error)}
+				button.close(type="button", data-dismiss="alert")
+					span(aria-hidden="true") &times;
+
 		h1.display-3= __('import.title')
 		p.lead= __('import.description')
 		hr.m-y-2

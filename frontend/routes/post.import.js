@@ -26,12 +26,12 @@ module.exports = function(app) {
 				res.redirect('/import');
 			}
 			catch(err) {
-			    res.redirect('/import?error');
+			    res.redirect('/import?error=2');
 			}
 		}
 		else
 		{
-			res.redirect('/import?error');
+			res.redirect('/import?error=1');
 		}
 	});
 }
