@@ -1,4 +1,4 @@
-# PiSlepTalk
+# PiSleepTalk
 
 The idea behind this project was to provide a "should work out of the box" solution to make a Raspberry Pi record what you are talking while sleeping.
 Beware, this project is **work in progress**, see [our issue tracker](https://github.com/blaues0cke/PiSleepTalk/issues) to see whats going on. You can find some screeshots at the end of this file.
