@@ -12,16 +12,33 @@
 
 echo "Installing dependencies"
 
-apt-get install -y bc
-apt-get install -y imagemagick
-apt-get install -y samba samba-common-bin
-apt-get install -y npm --fix-missing
+# Thanks to
+# * http://unix.stackexchange.com/questions/9940/convince-apt-get-not-to-use-ipv6-method
 
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
-nvm install 5.2.0
+apt-get update -o Acquire::ForceIPv4=true
+apt-get upgrade -o Acquire::ForceIPv4=true
+
+apt-get install -y -o Acquire::ForceIPv4=true bc
+apt-get install -y -o Acquire::ForceIPv4=true imagemagick
+apt-get install -y -o Acquire::ForceIPv4=true samba samba-common-bin
+apt-get install -y -o Acquire::ForceIPv4=true npm --fix-missing
+
+wget https://nodejs.org/dist/v4.0.0/node-v4.0.0-linux-armv6l.tar.gz 
+tar -xvf node-v4.0.0-linux-armv6l.tar.gz 
+cd node-v4.0.0-linux-armv6l
+cp -R * /usr/local/
 
 cd /usr/sleeptalk/frontend
 
-npm install diskusage
+npm install node-gyp --prefix /usr/sleeptalk/frontend
+npm install iniparser --prefix /usr/sleeptalk/frontend
+npm install body-parser --prefix /usr/sleeptalk/frontend
+npm install express --prefix /usr/sleeptalk/frontend
+npm install i18n-2 --prefix /usr/sleeptalk/frontend
+npm install basic-auth --prefix /usr/sleeptalk/frontend
+npm install glob --prefix /usr/sleeptalk/frontend
+npm install diskusage --prefix /usr/sleeptalk/frontend
+npm install multer --prefix /usr/sleeptalk/frontend
+npm install jade --prefix /usr/sleeptalk/frontend
 
 echo "Done installing dependencies"

@@ -31,14 +31,30 @@ echo "... press RETURN to start, or STRG+C to cancel"
 # * http://stackoverflow.com/questions/226703/how-do-i-prompt-for-input-in-a-linux-shell-script
 read input
 
-sh /usr/sleeptalk/bash/install/install-folders.sh
-sh /usr/sleeptalk/bash/install/install-dependencies.sh
-sh /usr/sleeptalk/bash/install/install-crontabs.sh
-sh /usr/sleeptalk/bash/install/install-services.sh
-sh /usr/sleeptalk/bash/install/install-samba-config.sh
-sh /usr/sleeptalk/bash/install/install-hostname.sh
-bash /usr/sleeptalk/bash/install/install-ffmpeg.sh
-sh /usr/sleeptalk/bash/install/install-wiring-pi.sh
+sh /usr/sleeptalk/bash/install/install-folders.sh       # Sucessfully tested
+sh /usr/sleeptalk/bash/install/install-step.sh
+
+sh /usr/sleeptalk/bash/install/install-dependencies.sh  # Fixed, not finally tested
+sh /usr/sleeptalk/bash/install/install-step.sh
+
+sh /usr/sleeptalk/bash/install/install-crontabs.sh      # Sucessfully tested 
+sh /usr/sleeptalk/bash/install/install-step.sh
+ 
+sh /usr/sleeptalk/bash/install/install-services.sh 	    # Sucessfully tested
+sh /usr/sleeptalk/bash/install/install-step.sh
+ 
+sh /usr/sleeptalk/bash/install/install-samba-config.sh  # Sucessfully tested
+sh /usr/sleeptalk/bash/install/install-step.sh
+ 
+sh /usr/sleeptalk/bash/install/install-hostname.sh      # Sucessfully tested
+sh /usr/sleeptalk/bash/install/install-step.sh
+ 
+bash /usr/sleeptalk/bash/install/install-ffmpeg.sh      # 
+sh /usr/sleeptalk/bash/install/install-step.sh
+ 
+sh /usr/sleeptalk/bash/install/install-wiring-pi.sh     # Sucessfully tested
+sh /usr/sleeptalk/bash/install/install-step.sh
+ 
 
 # Thanks to
 # * http://unix.stackexchange.com/questions/8518/how-to-get-my-own-ip-address-and-save-it-to-a-variable-in-a-shell-script
@@ -47,3 +63,11 @@ ipAddress=$(ifconfig | grep -A 1 'wlan0' | tail -1 | cut -d ':' -f 2 | cut -d ' 
 echo "... thanks, everything is done"
 echo "... visit http://${ipAddress}:${web_port} to access the web interface"
 echo ""
+
+echo "... press RETURN to reboot your Raspberry Pi, or STRG+C to cancel"
+
+# Thanks to
+# * http://stackoverflow.com/questions/226703/how-do-i-prompt-for-input-in-a-linux-shell-script
+read input
+
+reboot

@@ -12,10 +12,10 @@
 
 echo "Installing folders"
 
-mkdir /usr/sleeptalk
+#mkdir /usr/sleeptalk (this folder is already generated when this script runs)
 mkdir /usr/sleeptalk/cache
 mkdir /usr/sleeptalk/debug
-mkdir /usr/sleeptalk/frontend
+#mkdir /usr/sleeptalk/frontend (this folder is already in the zip file)
 mkdir /usr/sleeptalk/noise-data
 mkdir /usr/sleeptalk/scripts
 mkdir /usr/sleeptalk/records-amplitude
