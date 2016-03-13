@@ -97,6 +97,7 @@ block content
 	// * http://stackoverflow.com/questions/5081534/put-jade-local-variable-in-tag-attribute
 	// * http://jade-lang.com/reference/comments/
 	div#wave(file-to-process=pageData.fileToProcess)
+		div#file-info #{pageData.fileToProcess}.#{pageData.audioFormat} (#{pageData.fileSize} #{__('table.size_kb')})
 		div#wave-content
 		div#wave-loading
 			i.fa.fa-spinner.fa-spin
