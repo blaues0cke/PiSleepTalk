@@ -31,13 +31,13 @@ echo "... press RETURN to start, or STRG+C to cancel"
 # * http://stackoverflow.com/questions/226703/how-do-i-prompt-for-input-in-a-linux-shell-script
 read input
 
-sh /usr/sleeptalk/bash/install/install-folders.sh       # Sucessfully tested
+sh /usr/sleeptalk/bash/install/install-folders.sh
 sh /usr/sleeptalk/bash/install/install-step.sh
 
-sh /usr/sleeptalk/bash/install/install-dependencies.sh  # Fixed, not finally tested
-sh /usr/sleeptalk/bash/install/install-step.sh 			# 
+sh /usr/sleeptalk/bash/install/install-dependencies.sh
+sh /usr/sleeptalk/bash/install/install-step.sh
 
-sh /usr/sleeptalk/bash/install/install-crontabs.sh      # Sucessfully tested 
+sh /usr/sleeptalk/bash/install/install-crontabs.sh
 sh /usr/sleeptalk/bash/install/install-step.sh
  
 sh /usr/sleeptalk/bash/install/install-services.sh 	    # Sucessfully tested
@@ -64,10 +64,5 @@ echo "... thanks, everything is done"
 echo "... visit http://${ipAddress}:${web_port} to access the web interface"
 echo ""
 
-echo "... press RETURN to reboot your Raspberry Pi, or STRG+C to cancel"
+echo "... you may reboot your Raspberry Pi"
 
-# Thanks to
-# * http://stackoverflow.com/questions/226703/how-do-i-prompt-for-input-in-a-linux-shell-script
-read input
-
-reboot
