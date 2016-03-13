@@ -40,19 +40,19 @@ sh /usr/sleeptalk/bash/install/install-step.sh
 sh /usr/sleeptalk/bash/install/install-crontabs.sh
 sh /usr/sleeptalk/bash/install/install-step.sh
  
-sh /usr/sleeptalk/bash/install/install-services.sh 	    # Sucessfully tested
+sh /usr/sleeptalk/bash/install/install-services.sh
 sh /usr/sleeptalk/bash/install/install-step.sh
  
-sh /usr/sleeptalk/bash/install/install-samba-config.sh  # Sucessfully tested
+sh /usr/sleeptalk/bash/install/install-samba-config.sh
 sh /usr/sleeptalk/bash/install/install-step.sh
  
-sh /usr/sleeptalk/bash/install/install-hostname.sh      # Sucessfully tested
+sh /usr/sleeptalk/bash/install/install-hostname.sh
 sh /usr/sleeptalk/bash/install/install-step.sh
  
-bash /usr/sleeptalk/bash/install/install-ffmpeg.sh      # Sucessfully tested
+bash /usr/sleeptalk/bash/install/install-ffmpeg.sh
 sh /usr/sleeptalk/bash/install/install-step.sh
  
-sh /usr/sleeptalk/bash/install/install-wiring-pi.sh     # Sucessfully tested
+sh /usr/sleeptalk/bash/install/install-wiring-pi.sh
 sh /usr/sleeptalk/bash/install/install-step.sh
  
 
