@@ -10,6 +10,7 @@
 var audioDuration      = null;
 var audioProcess       = null;
 var concatAllVideos    = false;
+var deletionTr         = null;
 var fileUrl            = null;
 var frameProcess       = null;
 var infoArea           = null;
@@ -166,6 +167,7 @@ var initStatusPage = function ()
 			var button = $(this);
 			var path   = getVideoPathForClickedButton(button);
 			fileUrl    = path;
+			deletionTr = button.parents('tr');
 
 			$('#delete-file').modal('show');
 		})
@@ -187,7 +189,22 @@ var initStatusPage = function ()
 			    url: '/file/' + splittedFileUrl[0] + '/' + splittedFileUrl[1],
 			    type: 'DELETE',
 			    success: function(result) {
-			        reloadPage();
+			    	if (deletionTr)
+			    	{
+			    		var trCount = deletionTr.parent().find('tr').length;
+
+			    		deletionTr.remove();
+			    		deletionTr = null;
+
+			    		if (trCount <= 1)
+			    		{
+			    			reloadPage();
+			    		}
+			    	}
+			    	else
+			    	{
+			    		reloadPage();
+			    	}
 			    }
 			});
 		}
@@ -459,7 +476,22 @@ var initButtons = function() {
 		    url: fileUrl,
 		    type: 'DELETE',
 		    success: function(result) {
-		        reloadPage();
+		    	if (deletionTr)
+		    	{
+		    		var trCount = deletionTr.parent().find('tr').length;
+
+		    		deletionTr.remove();
+		    		deletionTr = null;
+
+		    		if (trCount <= 1)
+		    		{
+		    			reloadPage();
+		    		}
+		    	}
+		    	else
+		    	{
+		    		reloadPage();
+		    	}
 		    }
 		});
 	});
