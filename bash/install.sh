@@ -35,7 +35,7 @@ sh /usr/sleeptalk/bash/install/install-folders.sh       # Sucessfully tested
 sh /usr/sleeptalk/bash/install/install-step.sh
 
 sh /usr/sleeptalk/bash/install/install-dependencies.sh  # Fixed, not finally tested
-sh /usr/sleeptalk/bash/install/install-step.sh
+sh /usr/sleeptalk/bash/install/install-step.sh 			# 
 
 sh /usr/sleeptalk/bash/install/install-crontabs.sh      # Sucessfully tested 
 sh /usr/sleeptalk/bash/install/install-step.sh
@@ -49,7 +49,7 @@ sh /usr/sleeptalk/bash/install/install-step.sh
 sh /usr/sleeptalk/bash/install/install-hostname.sh      # Sucessfully tested
 sh /usr/sleeptalk/bash/install/install-step.sh
  
-bash /usr/sleeptalk/bash/install/install-ffmpeg.sh      # 
+bash /usr/sleeptalk/bash/install/install-ffmpeg.sh      # Sucessfully tested
 sh /usr/sleeptalk/bash/install/install-step.sh
  
 sh /usr/sleeptalk/bash/install/install-wiring-pi.sh     # Sucessfully tested
