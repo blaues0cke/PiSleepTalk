@@ -59,6 +59,7 @@
     	"help":                  "Hilfe",
     	"home": 				 "Start",
         "import":                "Importieren",
+        "overview":              "Übersicht",
         "status":                "Status",
     	"videos": 				 "Videos"
 
@@ -161,6 +162,11 @@
         "description":           "Hier siehst du alle Störgeräusche, die du definiert hast. Jedes Störgeräusch wird aus neuen Aufnahmen automatisch herausgeschnitten.",
         "empty_text":            "Es wurden noch keine Störgeräusche erfasst. Um das zu tun, kannst du auf der Startseite einfach einen Marker setzen und dann auf den \"Störgeräusch\"-Erstellen-Button klicken.",
         "title":                 "Störgeräusche"
+    },
+    "overview": {
+        "description":           "Hier siehst du alle von dir unbearbeiteten Aufnahmen in einer Liste. Du kannst diese Übersicht nutzen, um Dateien, die du nicht weiterverarbeiten möchtest, direkt zu löschen.",
+        "empty_text":            "Es sind derzeit keine unbearbeiteten Aufnahmen vorhanden.",
+        "title":                 "Übersicht"
     },
     "shortcuts": {
     	"description":   	 	 "You can use some shortcuts to save time. The following keys are supported right now:",

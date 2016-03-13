@@ -160,7 +160,7 @@ var initImportPage = function ()
 
 var initStatusPage = function ()
 {
-	$('#file-system')
+	$('#file-system,#overview-list')
 		.on('click', '.delete', function() {
 			
 			var button = $(this);

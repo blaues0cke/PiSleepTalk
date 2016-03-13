@@ -59,6 +59,7 @@
     	"help":                  "Help",
     	"home": 				 "Home",
         "import":                "Import",
+        "overview":              "Overview",
     	"status": 				 "Status",
     	"videos": 				 "Videos"
 
@@ -161,6 +162,11 @@
         "description":           "Here you see all noise filters you have created. Every single noise filter is appended to every new recording.",
         "empty_text":            "No noise filters are were yet. To add a filter, just set a marker on the start page and hit the \"create noise filter\" button.",
         "title":                 "Noise filters"
+    },
+    "overview": {
+        "description":           "Here you see a list of all unprocessed recordings. You can use this list to delete files you don't want to process in future.",
+        "empty_text":            "No unprocessed recordings are available at the moment.",
+        "title":                 "Overview"
     },
     "shortcuts": {
     	"description":   	 	 "You can use some shortcuts to save time. The following keys are supported right now:",

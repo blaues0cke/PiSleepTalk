@@ -1,0 +1,37 @@
+extends layout
+
+block content
+	+modal(
+		'delete-file',
+		__('modal.remove_recording.title'),
+		__('modal.remove_recording.description'),
+		__('modal.cancel'),
+		__('modal.remove_recording.delete_recording'),
+		'delete-file-confirm'
+	)
+
+	div.jumbotron.no-margin
+		h1.display-3= __('overview.title')
+		p.lead= __('overview.description')
+
+	div#overview-list
+			table.table.table-bordered
+				thead
+					tr
+						th.path= __('table.path')
+						th.size= __('table.size')
+						th.listen= __('table.listen')
+						th.actions= __('table.actions')
+				tbody
+					if !pageData.filters || pageData.filters.length == 0
+						tr
+							td(colspan=4)= __('overview.empty_text')
+					each filters in pageData.filters
+						tr
+							td.path #{filters.audioPath}
+							td.size #{filters.size} #{__('table.size_kb')}
+							td.length
+								audio(controls="", preload="none")
+									source(src="/#{filters.audioPath}", type="audio/wav")
+							td.actions
+								+button('', 'trash',    '',  'danger',  'delete',   __('actions.delete_file'))
