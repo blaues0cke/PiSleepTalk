@@ -12,7 +12,7 @@ block content
 
 	div.jumbotron.no-margin
 		h1.display-3= __('overview.title')
-		p.lead= __('overview.description')
+		p.lead= __('overview.description', pageData.limit)
 
 	div#overview-list
 			table.table.table-bordered

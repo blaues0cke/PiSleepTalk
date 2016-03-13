@@ -16,7 +16,8 @@ var   config = require('../core/config.js')
 module.exports = function(app) {
 	app.get('/overview', function (req, res) {
 		var pageData = {
-			context: 'overview'
+			context: 'overview',
+			limit: config.overview_file_limit
 		};
 
 		pageData.filters = [];
