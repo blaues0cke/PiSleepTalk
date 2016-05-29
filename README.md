@@ -1,7 +1,7 @@
 # PiSleepTalk
 
 The idea behind this project was to provide a "should work out of the box" solution to make a Raspberry Pi record what you are talking while sleeping.
-Beware, this project is **work in progress**, see [our issue tracker](https://github.com/blaues0cke/PiSleepTalk/issues) to see whats going on. You can find some screeshots at the end of this file.
+See [our issue tracker](https://github.com/blaues0cke/PiSleepTalk/issues) to see whats going on. You can find some screeshots at the end of this file.
 
 ## Feature list
 
@@ -16,7 +16,13 @@ Beware, this project is **work in progress**, see [our issue tracker](https://gi
 
 ## Installation
 
-TODO (See [#24](https://github.com/blaues0cke/PiSleepTalk/issues/24))
+To install PiSleepTalk and all its dependencies, just copy and run this shell command. Beware, the installation may (it depends on the version of your Raspberry Pi) up to one day! On the latest Raspberry Pi the installation will take about 2-4 hours.
+
+    curl -s -L https://goo.gl/AksVZR | bash
+
+Or if you dont trust google:
+
+    curl -s -L https://raw.githubusercontent.com/blaues0cke/PiSleepTalk/master/install.sh | bash
 
 ## File system
 
@@ -65,9 +71,9 @@ There are some rules that control the way a recording is generated, basically:
 I needed to implement a simple format to transmit the text data from node.js to the bash part of PiSleepTalk.
 For this reason the following format exists. It just contains the frame count and the corresponding text, like this:
 
-	0000|First text at second 0
-	0015|Follows after 1 second
-	0060|Appears after 4 seconds from start
+    0000|First text at second 0
+    0015|Follows after 1 second
+    0060|Appears after 4 seconds from start
 
 ## Hardware
 
@@ -86,54 +92,54 @@ PiSleeptalk also supports a hardware switch to enable and disable the recording 
     ────────────────────────────┐  <= Top right corner of your Raspberry Pi
                                 |
                                 |
-				|────||────|    |
-				| 01 || 02 |    |
-				|────||────|    |
-				|────||────|    |
-				| 03 || 04 |    |
-				|────||────|    |
-				|────||────|    |
-				| 05 || 06 | <= Switch -
-				|────||────|    |
-				|────||────|    |
-				| 07 || 08 |    |
-				|────||────|    |
-				|────||────|    |
-				| 09 || 10 |    |
-				|────||────|    |
-				|────||────|    |
-	Switch + => | 11 || 12 | <= Force switch +
-				|────||────|    |
-				|────||────|    |
+                |────||────|    |
+                | 01 || 02 |    |
+                |────||────|    |
+                |────||────|    |
+                | 03 || 04 |    |
+                |────||────|    |
+                |────||────|    |
+                | 05 || 06 | <= Switch -
+                |────||────|    |
+                |────||────|    |
+                | 07 || 08 |    |
+                |────||────|    |
+                |────||────|    |
+                | 09 || 10 |    |
+                |────||────|    |
+                |────||────|    |
+    Switch + => | 11 || 12 | <= Force switch +
+                |────||────|    |
+                |────||────|    |
    Rec led + => | 13 || 14 | <= Rec led -
-				|────||────|    |
-				|────||────|    |
+                |────||────|    |
+                |────||────|    |
     On led + => | 15 || 16 | <= Led switch +
-				|────||────|    |
-				|────||────|    |
-				| 17 || 18 |    |
-				|────||────|    |
-				|────||────|    |
-				| 19 || 20 | <= Force switch -
-				|────||────|    |
-				|────||────|    |
-				| 21 || 22 |    |
-				|────||────|    |
-				|────||────|    |
-				| 23 || 24 |    |
-				|────||────|    |
-				|────||────|    |
+                |────||────|    |
+                |────||────|    |
+                | 17 || 18 |    |
+                |────||────|    |
+                |────||────|    |
+                | 19 || 20 | <= Force switch -
+                |────||────|    |
+                |────||────|    |
+                | 21 || 22 |    |
+                |────||────|    |
+                |────||────|    |
+                | 23 || 24 |    |
+                |────||────|    |
+                |────||────|    |
     On led - => | 25 || 26 |    |
-				|────||────|    |
-				|────||────|    |
-				| 27 || 28 |    |
-				|────||────|    |
-				|────||────|    |
-				| 29 || 30 | <= Led switch -
-				|────||────|    |
-				   	            |
-				   	            |
-				   	            |
+                |────||────|    |
+                |────||────|    |
+                | 27 || 28 |    |
+                |────||────|    |
+                |────||────|    |
+                | 29 || 30 | <= Led switch -
+                |────||────|    |
+                                |
+                                |
+                                |
 
 
 So at the end, your switch should sit between pin `6` and pin `11`. To enable the led, just place it between pin `13` and `14`. Don't forget to enable the `led_enabled` settings.
