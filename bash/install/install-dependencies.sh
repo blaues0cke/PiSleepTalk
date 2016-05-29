@@ -25,6 +25,7 @@ apt-get install -y -o Acquire::ForceIPv4=true make
 apt-get install -y -o Acquire::ForceIPv4=true autoconf
 apt-get install -y -o Acquire::ForceIPv4=true libtool
 apt-get install -y -o Acquire::ForceIPv4=true nginx
+apt-get install -y -o Acquire::ForceIPv4=true sox
 apt-get install -y -o Acquire::ForceIPv4=true bc
 apt-get install -y -o Acquire::ForceIPv4=true imagemagick
 apt-get install -y -o Acquire::ForceIPv4=true samba samba-common-bin
