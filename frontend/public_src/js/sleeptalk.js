@@ -52,7 +52,6 @@ var banNoise = function() {
 	}
 };
 
-
 var cropToMarker = function() {
 	if (!loaded) return;
 	
@@ -378,6 +377,22 @@ var initWavesurfer = function () {
 			wavesurfer.load(fileUrl);
 		}
 	}
+
+	$('#clear-pending').click(function() {
+		$('#clear-pending-modal').modal('show');
+
+		return false;
+	});
+
+	$('#clear-pending-confirm').click(function() {
+		$.ajax({
+		    url: '/',
+		    type: 'DELETE',
+		    success: function(result) {
+		        reloadPage();
+		    }
+		});
+	});
 };
 
 var initButtons = function() {

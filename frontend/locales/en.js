@@ -6,6 +6,7 @@
 		"clear":                 "Clear",
 		"clear_all_texts":       "Clear all texts",
 		"clear_logs": 			 "Clear logs",
+        "clear_pending":         "Delete pending files",
         "concat_all_videos":     "Concat all videos",
         "concat_checked_videos": "Concat selected videos",
         "crop_to_marker":        "Crop to marker",
@@ -56,13 +57,13 @@
     	"title": 				 "Logs"
     },
     "menu": {
+        "clear_pending":         "Delete pending files",
     	"help":                  "Help",
     	"home": 				 "Home",
         "import":                "Import",
         "overview":              "Overview",
     	"status": 				 "Status",
     	"videos": 				 "Videos"
-
     },
     "modal": {
     	"an_error_occurred":     "An error occurred",
@@ -77,6 +78,11 @@
     		"description":       "Are you sure to clear all the log files? This can't be undone.",
     		"title":             "Clear logs"
     	},
+        "clear_pending": {
+            "clear":             "Clear unprocessed files",
+            "description":       "Are you sure to clear all unprocessed files? This can't be undone.",
+            "title":             "Clear unprocessed files"
+        },
         "clear_texts": {
             "clear":             "Clear",
             "description":       "Are you sure to delete all the text data?",

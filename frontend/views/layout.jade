@@ -89,6 +89,15 @@ html
 					|  
 					span= __('shortcuts.keys.j_description')
 
+		+modal(
+			'clear-pending-modal',
+			__('modal.clear_pending.title'),
+			__('modal.clear_pending.description'),
+			__('modal.cancel'),
+			__('modal.clear_pending.clear'),
+			'clear-pending-confirm'
+		)
+
 		div.container
 		nav.navbar.navbar-light.bg-faded#main-navbar
 			div
@@ -110,7 +119,10 @@ html
 
 			div.pull-right
 				div#info-area
-				+button('shortcut-help', 'question', __('menu.help'), 'primary', '', __('menu.help'), 'left')
+				+button('shortcut-help', 'question', __('menu.help'),          'primary', '', __('menu.help'),          'left')
+
+				if !pageData || !pageData.context || pageData.context == 'home'
+					+button('clear-pending', 'trash',    __('menu.clear_pending'), 'danger',  '', __('menu.clear_pending'), 'left')
 		script.
 			default_audio_format='#{default_audio_format}';
 			default_video_format='#{default_video_format}';

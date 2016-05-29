@@ -6,6 +6,7 @@
 		"clear":                 "Leeren",
 		"clear_all_texts":       "Alle Texte leeren",
 		"clear_logs": 			 "Logs löschen",
+        "clear_pending":         "Delete pending files",
         "concat_all_videos":     "Alle Videos verbinden",
         "concat_checked_videos": "Ausgewählte Videos verbinden",
         "crop_to_marker":        "Auf Markierung beschneiden",
@@ -56,6 +57,7 @@
     	"title": 				 "Logs"
     },
     "menu": {
+        "clear_pending":         "Unbearbeitete Aufnahmen löschen",
     	"help":                  "Hilfe",
     	"home": 				 "Start",
         "import":                "Importieren",
@@ -77,6 +79,11 @@
     		"description":       "Bist du sicher, dass du alle Log-Dateien löschen möchtest? Diese Aktion kann nicht rückgängig gemacht werden.",
     		"title":             "Log-Dateien löschen"
     	},
+        "clear_pending": {
+            "clear":             "Unbearbeitete Aufnahmen löschen",
+            "description":       "Bist du sicher, dass du alle unbearbeiteten Aufnahmen löschen möchtest?",
+            "title":             "Unbearbeitete Aufnahmen löschen"
+        },
     	"clear_texts": {
     		"clear":  			 "Leeren",
     		"description":       "Bist du sicher, dass du alle Texte löschen möchtest?",
