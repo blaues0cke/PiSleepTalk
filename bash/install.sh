@@ -55,6 +55,7 @@ sh /usr/sleeptalk/bash/install/install-step.sh
 sh /usr/sleeptalk/bash/install/install-wiring-pi.sh
 sh /usr/sleeptalk/bash/install/install-step.sh
  
+chmod -R 0777 /usr/sleeptalk/*
 
 # Thanks to
 # * http://unix.stackexchange.com/questions/8518/how-to-get-my-own-ip-address-and-save-it-to-a-variable-in-a-shell-script
