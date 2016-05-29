@@ -21,5 +21,7 @@ gpio mode 2 out
 gpio mode 2 up
 gpio mode 3 out
 gpio mode 3 up
+gpio mode 4 in
+gpio mode 4 up
 
 echo "... done!"

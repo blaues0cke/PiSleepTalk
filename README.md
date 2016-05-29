@@ -108,7 +108,7 @@ PiSleeptalk also supports a hardware switch to enable and disable the recording 
    Rec led + => | 13 || 14 | <= Rec led -
 				|────||────|    |
 				|────||────|    |
-    On led + => | 15 || 16 |    |
+    On led + => | 15 || 16 | <= Led switch +
 				|────||────|    |
 				|────||────|    |
 				| 17 || 18 |    |
@@ -124,6 +124,12 @@ PiSleeptalk also supports a hardware switch to enable and disable the recording 
 				|────||────|    |
 				|────||────|    |
     On led - => | 25 || 26 |    |
+				|────||────|    |
+				|────||────|    |
+				| 27 || 28 |    |
+				|────||────|    |
+				|────||────|    |
+				| 29 || 30 | <= Led switch -
 				|────||────|    |
 				   	            |
 				   	            |

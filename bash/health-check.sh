@@ -15,7 +15,30 @@ start_allowed=true
 
 echo "Running health check"
 
-gpio write 3 1
+if [ "$led_enabled" = true ]; then
+	if [ "$led_switch_enabled" = true ]; then
+		echo "... gpio button support enabled, checking button"
+
+		button_state=$(gpio read 4)
+
+		echo "... button state: ${button_state}"
+
+		if [ "${button_state}" -eq "1" ]; then
+			echo "... button on, leds on"
+
+			gpio write 3 1
+		else
+			echo "... button off, leds off"
+
+			led_enabled=false
+			gpio write 3 0
+		fi
+	else
+		gpio write 3 1
+	fi
+else
+	gpio write 3 0
+fi
 
 if [ "$start_allowed" = true ]; then
 	usedSpaceInPercent=$(df -k | head -2 | tail -1 | awk '{print $5}' | sed "s/\(\%\)//")
@@ -136,11 +159,15 @@ else
 	echo "... gpio force button support disabled, skipping check"
 fi
 
+recording_led_on=true
+
 if [ "$start_allowed" = true ]; then
 	if [ "$led_enabled" = true ]; then
-		gpio write 2 1
+		if [ "$led_switch_enabled" = true ]; then
+			recording_led_on=true
+		fi
 	else
-		gpio write 2 0
+		recording_led_on=false
 	fi
 
 	runningProcesses=`ps aux | grep "arecord -D" | wc -l`
@@ -155,6 +182,12 @@ if [ "$start_allowed" = true ]; then
 else
 	sh /usr/sleeptalk/bash/stop-recording-chunks.sh
 
+	recording_led_on=false
+fi
+
+if [ "$recording_led_on" = true ]; then
+	gpio write 2 1
+else
 	gpio write 2 0
 fi
 
