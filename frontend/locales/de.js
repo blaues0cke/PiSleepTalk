@@ -206,6 +206,7 @@
     	"description": 		     "Prüfe den Status deiner PiSleepTalk-Instanz. Seite generiert: %s",
     	"disk_space": 			 "%s Speicherplatz von %s GB sind aktuell frei",
         "empty_text":            "Es sind derzeit keine Video- oder Audiodateien im Dateisystem vorhanden.",
+        "pending_files":         "Unbearbeitete Dateien",
     	"title":  				 "Status"
     },
     "table": {

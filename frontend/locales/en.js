@@ -205,6 +205,7 @@
     	"description": 		     "Review the status of your PiSleepTalk instance. Page generated: %s",
     	"disk_space": 			 "Disk space free %s of %s GB",
         "empty_text":            "There are no audio or video files available right now.",
+        "pending_files":         "Pending files",
     	"title":  				 "Status"
     },
     "table": {

@@ -321,7 +321,7 @@ var initWavesurfer = function () {
 		});
 
 		var filename = wave.attr('file-to-process');
-		fileUrl      = '/' + filename + '.' + default_audio_format;
+		fileUrl      = '/' + filename + '.' + defaultAudioFormat;
 
 		console.log('wav url: ', fileUrl);
 
@@ -583,7 +583,7 @@ var updateInfoArea = function () {
 		}
 
 		infoText.push(audioDuration.toFixed(2));
-		infoText.push('- Pending files: ' + fileCount);
+		infoText.push('- ' + pendingFilesText + ': ' + fileCount);
 
 		var newInfoText = infoText.join(' ');
 
@@ -840,7 +840,7 @@ var initVideoList = function () {
 			;
 
 			var source = $('<source></source>')
-						     .attr('type', 'video/' + default_video_format)
+						     .attr('type', 'video/' + defaultVideoFormat)
 						     .attr('src',   path)
 		    ;
 

@@ -124,8 +124,9 @@ html
 				if !pageData || !pageData.context || pageData.context == 'home'
 					+button('clear-pending', 'trash',    __('menu.clear_pending'), 'danger',  '', __('menu.clear_pending'), 'left')
 		script.
-			default_audio_format='#{default_audio_format}';
-			default_video_format='#{default_video_format}';
+			defaultAudioFormat='#{default_audio_format}';
+			defaultVideoFormat='#{default_video_format}';
+			pendingFilesText='#{__('status.pending_files')}';
 
 		block content
 		script(src='js.min.js')
