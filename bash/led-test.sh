@@ -15,19 +15,21 @@ echo "Starting led test, press ctl+c to quit"
 
 while true
 do
-	echo "... turning led on"
+	echo "... turning leds on"
 
 	gpio write 2 1
+	gpio write 3 1
 
-	echo "... led should be on now, turning led off in 2 seconds"
+	echo "... leds should be on now, turning led off in 2 seconds"
 
 	sleep 2s
 
-	echo "... turning led off"
+	echo "... turning leds off"
 
 	gpio write 2 0
+	gpio write 3 0
 
-	echo "... led should be off now, turning led on in 2 seconds"
+	echo "... leds should be off now, turning led on in 2 seconds"
 
 	sleep 2s
 done

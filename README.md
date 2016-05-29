@@ -83,36 +83,51 @@ I am using the following hardware, but I think the most Raspberry Pi models, WiF
 
 PiSleeptalk also supports a hardware switch to enable and disable the recording feature. Make sure you enabled this feature by chaning the `button_enabled` setting in `config.cfg`. Wire the buttons cables to the following wiring (Between pin 6 and pin 11):
 
-				|▔▔▔▔||▔▔▔▔|
-				| 01 || 02 |
-				|▁▁▁▁||▁▁▁▁|
-				|▔▔▔▔||▔▔▔▔|
-				| 03 || 04 |
-				|▁▁▁▁||▁▁▁▁|
-				|▔▔▔▔||▔▔▔▔|
+    ────────────────────────────┐  <= Top right corner of your Raspberry Pi
+                                |
+                                |
+				|────||────|    |
+				| 01 || 02 |    |
+				|────||────|    |
+				|────||────|    |
+				| 03 || 04 |    |
+				|────||────|    |
+				|────||────|    |
 				| 05 || 06 | <= Switch -
-				|▁▁▁▁||▁▁▁▁|
-				|▔▔▔▔||▔▔▔▔|
-				| 07 || 08 |
-				|▁▁▁▁||▁▁▁▁|
-				|▔▔▔▔||▔▔▔▔|
-				| 09 || 10 |
-				|▁▁▁▁||▁▁▁▁|
-				|▔▔▔▔||▔▔▔▔|
+				|────||────|    |
+				|────||────|    |
+				| 07 || 08 |    |
+				|────||────|    |
+				|────||────|    |
+				| 09 || 10 |    |
+				|────||────|    |
+				|────||────|    |
 	Switch + => | 11 || 12 | <= Force switch +
-				|▁▁▁▁||▁▁▁▁|
-				|▔▔▔▔||▔▔▔▔|
-	   led + =>	| 13 || 14 | <= Led -
-				|▁▁▁▁||▁▁▁▁|
-				|▔▔▔▔||▔▔▔▔|
-				| 15 || 16 |
-				|▁▁▁▁||▁▁▁▁|
-				|▔▔▔▔||▔▔▔▔|
-				| 17 || 18 |
-				|▁▁▁▁||▁▁▁▁|
-				|▔▔▔▔||▔▔▔▔|
+				|────||────|    |
+				|────||────|    |
+   Rec led + => | 13 || 14 | <= Rec led -
+				|────||────|    |
+				|────||────|    |
+    On led + => | 15 || 16 |    |
+				|────||────|    |
+				|────||────|    |
+				| 17 || 18 |    |
+				|────||────|    |
+				|────||────|    |
 				| 19 || 20 | <= Force switch -
-				|▁▁▁▁||▁▁▁▁|
+				|────||────|    |
+				|────||────|    |
+				| 21 || 22 |    |
+				|────||────|    |
+				|────||────|    |
+				| 23 || 24 |    |
+				|────||────|    |
+				|────||────|    |
+    On led - => | 25 || 26 |    |
+				|────||────|    |
+				   	            |
+				   	            |
+				   	            |
 
 
 So at the end, your switch should sit between pin `6` and pin `11`. To enable the led, just place it between pin `13` and `14`. Don't forget to enable the `led_enabled` settings.

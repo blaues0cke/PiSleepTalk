@@ -19,5 +19,7 @@ gpio mode 1 in
 gpio mode 1 up
 gpio mode 2 out
 gpio mode 2 up
+gpio mode 3 out
+gpio mode 3 up
 
 echo "... done!"

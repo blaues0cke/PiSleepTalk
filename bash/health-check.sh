@@ -15,6 +15,8 @@ start_allowed=true
 
 echo "Running health check"
 
+gpio write 3 1
+
 if [ "$start_allowed" = true ]; then
 	usedSpaceInPercent=$(df -k | head -2 | tail -1 | awk '{print $5}' | sed "s/\(\%\)//")
 
