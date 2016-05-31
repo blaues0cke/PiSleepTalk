@@ -222,3 +222,13 @@ This work is licensed under the Creative Commons Attribution-NonCommercial-Share
     ![screen shot 2016-02-07 at 17 34 32](https://cloud.githubusercontent.com/assets/5159398/12873572/3251219e-cdc1-11e5-9981-f1ef058130de.png)
 * Also there is a status page to get an idea of whats going on behind the scenes.
     ![screen shot 2016-02-07 at 17 34 44](https://cloud.githubusercontent.com/assets/5159398/12873570/325000fc-cdc1-11e5-83af-86aa93ce0a7a.png)
+
+## Pictures
+
+Here you can see my own installation:
+
+* The controlling case (I just recycled a old case I found)
+    ![img_2242](https://cloud.githubusercontent.com/assets/5159398/15686541/246fe682-2771-11e6-8065-0386e9322523.JPG)
+* The [USB microphone](http://www.amazon.de/gp/product/B00N1YMO9W) mounted over my bed.
+    ![img_2240](https://cloud.githubusercontent.com/assets/5159398/15686542/24703326-2771-11e6-87ab-35368f7dd68b.JPG)
+
