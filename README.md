@@ -23,6 +23,18 @@ To install PiSleepTalk and all its dependencies, just copy and run this shell co
 Or if you dont trust google:
 
     curl -s -L https://raw.githubusercontent.com/blaues0cke/PiSleepTalk/master/install.sh | bash
+    
+## Microphone configuration
+
+You may configure the gain of your microphone to match your requirements. To do so, just type
+
+	sudo alsamixer
+
+and select your soundcard. The you can configure the whole stuff. Once you are done, just hit the `ESC` key and type
+
+	sudo alsactl store
+	
+to save the new configuration. Make sure you reboot your Raspberry Pi or at least restart the recording to apply your changes.
 
 ## File system
 
