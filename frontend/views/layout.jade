@@ -108,7 +108,7 @@ html
 					// * http://stackoverflow.com/questions/14144274/jade-conditional-if-else-to-add-class-to-div-inline
 					li.nav-item(class=!pageData || !pageData.context || pageData.context == 'home' ? 'active' : '')
 						a(href='/').nav-link= __('menu.home')
-					li.nav-item(class=!pageData || !pageData.context || pageData.context == 'overview' ? 'active' : '')
+					li.nav-item(class=pageData && pageData.context && pageData.context == 'overview' ? 'active' : '')
 						a(href='/overview').nav-link= __('menu.overview')
 					li.nav-item(class=pageData && pageData.context && pageData.context == 'videos'  ? 'active' : '')
 						a(href='/videos').nav-link= __('menu.videos')
