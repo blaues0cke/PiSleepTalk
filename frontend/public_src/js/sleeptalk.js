@@ -192,13 +192,13 @@ var initStatusPage = function ()
 			    	{
 			    		var trCount = deletionTr.parent().find('tr').length;
 
+			    		if (trCount <= 2)
+			    		{
+			    			deletionTr.parent().find('tr.hidden').show();
+			    		}
+			    		
 			    		deletionTr.remove();
 			    		deletionTr = null;
-
-			    		if (trCount <= 1)
-			    		{
-			    			reloadPage();
-			    		}
 			    	}
 			    	else
 			    	{

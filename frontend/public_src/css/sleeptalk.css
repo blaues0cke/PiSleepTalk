@@ -83,6 +83,10 @@
 {
 	margin: 0;
 }
+.table tr.hidden
+{
+	display: none;
+}
 .table th.frame
 {
 	width: 16%;
