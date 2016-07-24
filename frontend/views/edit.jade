@@ -102,8 +102,9 @@ block content
 		div#wave-loading
 			i.fa.fa-spinner.fa-spin
 
-	div#spectrum
-		img(src="/#{pageData.imagePath}")
+	if spectrum_enabled
+		div#spectrum
+			img(src="/#{pageData.imagePath}")
 
 	nav.navbar.navbar-light.bg-faded
 		div.pull-left
