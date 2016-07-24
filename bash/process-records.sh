@@ -96,6 +96,12 @@ if [ ! -d "${lock_file_name}" ]; then
 					    # Thanks to
 					    # * http://superuser.com/questions/571463/how-do-i-append-a-bunch-of-wav-files-while-retaining-not-zero-padded-numeric
 			 			sox $concat_file_queue $final_filepath
+
+						spectrogram_filename="${audio_file_path_to_render}/${concat_start_timestamp}-${concat_end_timestamp}.${default_image_format}"
+
+				 		# Thanks to
+				 		# * http://stackoverflow.com/questions/9956815/generate-visual-waveform-from-mp3-wav-file-in-windows-2008-server
+				 		sox $final_filepath -n spectrogram -Y 150 -l -r -h -p 1 -x 1000 -a -o "${spectrogram_filename}"
 			 		fi
 
 					if [ "${debug}" = false ]; then
