@@ -35,3 +35,6 @@ block content
 									source(src="/#{filters.audioPath}", type="audio/wav")
 							td.actions
 								+button('', 'trash',    '',  'danger',  'delete',   __('actions.delete_file'))
+						tr
+							td(colspan=4).img
+								img(src="/#{filters.imagePath}")

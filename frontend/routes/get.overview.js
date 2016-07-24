@@ -32,9 +32,12 @@ module.exports = function(app) {
 				try {
 					var stats 		    = fs.statSync(path);
 					var fileSizeInBytes = stats['size'];
+					var audioPath       = path.replace(config.audio_file_path_to_render + '/', '');
+					var imagePath       = audioPath.replace(config.default_audio_format, config.default_image_format);
 
 					var fileInfo = {
-						audioPath:   path.replace(config.audio_file_path_to_render + '/', ''),
+						audioPath:   audioPath,
+						imagePath:   imagePath,
 						size:        (fileSizeInBytes / 1014).toFixed(2)
 					}
 				

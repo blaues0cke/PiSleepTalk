@@ -99,6 +99,22 @@
 {
 	width: 15%;
 }
+.table tr.no-border-bottom td
+{
+	border-bottom: 0 !important;
+}
+.table tr.no-border-top td
+{
+	border-top: 0 !important;
+}
+.table td.img
+{
+	background: #eceeef;
+}
+.table td.img img
+{
+	width: 100%;
+}
 .table td div
 {
 	width: 100%;
