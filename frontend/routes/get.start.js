@@ -18,6 +18,7 @@ module.exports = function(app) {
 
 		var fileToProcess     = null;
 		var fileToProcessFull = null;
+		var imagePath 		  = null;
 
 		// Thanks to
 		// * http://stackoverflow.com/questions/11282880/nodejs-module-to-find-files
@@ -30,8 +31,9 @@ module.exports = function(app) {
 
 				// Thanks to
 				// * http://stackoverflow.com/questions/4250364/how-to-trim-a-file-extension-from-a-string-in-javascript
-				var filename = path.basename(filepath, path.extname(filepath));
+				var filename     = path.basename(filepath, path.extname(filepath));
 				var textFilePath = config.audio_file_path_to_render + '/' + filename + '.' + config.default_sleeptalk_format;
+				var imagePath    = filename + '.' + config.default_image_format;
 
 				// Thanks to
 				// * http://stackoverflow.com/questions/4482686/check-synchronously-if-file-directory-exists-in-node-js
@@ -65,7 +67,8 @@ module.exports = function(app) {
 					context: 	   'home',
 					fileSize:      (fileSizeInBytes / 1014).toFixed(2),
 					fileToProcess: fileToProcess,
-					fileCount:     files.length
+					fileCount:     files.length,
+					imagePath:     imagePath
 				}
 			});
 		}

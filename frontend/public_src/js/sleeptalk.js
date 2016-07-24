@@ -623,7 +623,9 @@ var initLogsPage = function ()
 var initTextManager = function () {
 	var windowHeight = $(window).height();
 
-	$('#text-wrapper').css('maxHeight', windowHeight - 572);
+	var spectrumHeight = $('#spectrum').outerHeight();
+
+	$('#text-wrapper').css('maxHeight', windowHeight - 572 - spectrumHeight);
 
 	$('#text-manager')
 		.on('click', '.arrow-up', function() {
