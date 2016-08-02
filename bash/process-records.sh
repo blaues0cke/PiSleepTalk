@@ -97,6 +97,19 @@ if [ ! -d "${lock_file_name}" ]; then
 					    # * http://superuser.com/questions/571463/how-do-i-append-a-bunch-of-wav-files-while-retaining-not-zero-padded-numeric
 			 			sox $concat_file_queue $final_filepath
 
+					 	if [ "$auto_normalize" = true ]; then
+							final_filepath_tmp="${audio_file_path_to_render}/tmp_${final_filename}"
+
+					 		echo "... normalizing audio"
+
+					 		sox --norm $final_filepath $final_filepath_tmp
+
+					 		echo "... done normalizing audio"
+
+					 		rm $final_filepath
+					 		mv $final_filepath_tmp $final_filepath
+					 	fi	 	
+
 						spectrogram_filename="${audio_file_path_to_render}/${concat_start_timestamp}-${concat_end_timestamp}.${default_image_format}"
 
 				 		# Thanks to
