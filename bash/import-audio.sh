@@ -31,6 +31,8 @@ if [ ! -d "${lock_file_name}" ]; then
 
 			import_allowed=false
 		fi
+	else
+		echo "... import already disabled, nothing to check here"
 	fi
 
 	if [ "$import_allowed" = false ]; then
@@ -43,6 +45,9 @@ if [ ! -d "${lock_file_name}" ]; then
 
 			import_allovwed=false
 		fi
+	
+	else
+		echo "... import already disabled, nothing to check here"
 	fi
 
 	if [ "$import_allowed" = false ]; then
@@ -57,6 +62,9 @@ if [ ! -d "${lock_file_name}" ]; then
 
 			rm $force_file_path
 		fi
+	
+	else
+		echo "... import already disabled, nothing to check here"
 	fi
 
 	if [ "$import_allowed" = false ]; then
@@ -67,7 +75,11 @@ if [ ! -d "${lock_file_name}" ]; then
 		exit;
 	fi
 
+	echo "... import allowed, starting"
+
 	file_counter=0
+
+	echo "... searching for zip files"
 
 	dir_list_zip=$(ls ${audio_file_path_import}/*.zip 2>/dev/null)
 	for zip_file_path in $dir_list_zip
@@ -81,6 +93,16 @@ if [ ! -d "${lock_file_name}" ]; then
 		rm ${zip_file_path}
 	done
 
+	echo "... done searching for zip files"
+	echo "... removing whitespaces from filenames"
+
+ 	# Thanks to
+ 	# * http://stackoverflow.com/questions/2709458/bash-script-to-replace-spaces-in-file-names
+	find $audio_file_path_import -name "* *" -type d | rename 's/ /_/g'
+	find $audio_file_path_import -name "* *" -type f | rename 's/ /_/g'
+
+	echo "... flattening all folders"
+
 	# Thanks to
 	# * http://stackoverflow.com/questions/27621/unix-shell-file-copy-flattening-folder-structure
 	find ${audio_file_path_import}/*/* -exec mv \{\} "${audio_file_path_import}" \; 2>/dev/null
@@ -89,9 +111,13 @@ if [ ! -d "${lock_file_name}" ]; then
 	# * https://unix.stackexchange.com/questions/68846/how-do-i-remove-all-sub-directories-from-within-a-directory/68847#68847
 	rm -R -- ${audio_file_path_import}/*/ 2>/dev/null
 
+	echo "... looking for audio files"
+
 	dir_list=$(ls ${audio_file_path_import}/* 2>/dev/null)
 	for audio_file_path in $dir_list
 	do
+		echo "... processing: ${audio_file_path}"
+
 		if [ -f $audio_file_path ]; then
 
 			# Thanks to
