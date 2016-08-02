@@ -121,7 +121,27 @@ if [ ! -d "${lock_file_name}" ]; then
 						 		else
 						 			echo "..! normalizing audio failed, falling back to original"
 						 		fi
-						 	fi	 	
+						 	fi	 
+
+						 	if [ "$highpass_filter_enabled" = true ]; then
+
+								final_filepath_tmp="${audio_file_path_to_render}/tmp_${final_filename}"
+
+						 		echo "... applying highpass filter"
+
+						 		# Thanks to
+						 		# * http://superuser.com/questions/588793/need-to-clean-up-audio-noise-using-sox
+						 		sudo sox $final_filepath $final_filepath_tmp highpass "${highpass_filter_threshold}.0" >>"${error_log_path}" 2>&1
+
+						 		echo "... done applying highpass filter"
+
+						 		if [ -f $final_filepath_tmp ]; then
+							 		rm $final_filepath
+							 		mv $final_filepath_tmp $final_filepath
+						 		else
+						 			echo "..! applying highpass filter failed, falling back to original"
+						 		fi
+						 	fi
 
 							spectrogram_filename="${audio_file_path_to_render}/${concat_start_timestamp}-${concat_end_timestamp}.${default_image_format}"
 
