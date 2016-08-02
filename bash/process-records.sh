@@ -128,6 +128,16 @@ if [ ! -d "${lock_file_name}" ]; then
 					 		# Thanks to
 					 		# * http://stackoverflow.com/questions/9956815/generate-visual-waveform-from-mp3-wav-file-in-windows-2008-server
 					 		sox $final_filepath -n spectrogram -Y 150 -l -r -h -p 1 -x 1000 -a -o "${spectrogram_filename}" >>"${error_log_path}" 2>&1
+
+							file_size_kb=`du -k "${final_filepath}" | cut -f1`
+
+							if [ "${min_file_size_in_kb}" -gt "${file_size_kb}" ]; then
+							    echo "..! file is too small, deleting it"
+
+						 		rm $final_filepath
+
+						 		file_counter_deleted=$((file_counter_deleted + 1))
+							fi
 				 		fi
 
 						if [ "${debug}" = false ]; then
