@@ -19,6 +19,12 @@ module.exports = function(app) {
 		if (filepath) {
 			fs.unlinkSync(filepath);
 
+			var filepathImage = framework.checkFile(req, res, config.default_image_format, [config.audio_file_path_to_render]);
+
+			if (filepathImage) {
+				fs.unlinkSync(filepathImage);
+			}
+
 			res.status(200).send('OK');
 		}
 	});
