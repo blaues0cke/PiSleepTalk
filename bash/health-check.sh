@@ -16,12 +16,25 @@ start_allowed=true
 echo "Running health check"
 
 . "/usr/sleeptalk/bash/health-check/led.sh"
+echo "..."
+
 . "/usr/sleeptalk/bash/health-check/disk-space.sh"
+echo "..."
+
 . "/usr/sleeptalk/bash/health-check/recording-hours.sh"
+echo "..."
+
 . "/usr/sleeptalk/bash/health-check/button.sh"
+echo "..."
+
 . "/usr/sleeptalk/bash/health-check/last-fm.sh"
+echo "..."
+
 . "/usr/sleeptalk/bash/health-check/swarm.sh"
+echo "..."
+
 . "/usr/sleeptalk/bash/health-check/force-button.sh"
+echo "..."
 
 recording_led_on=true
 
@@ -42,6 +55,8 @@ if [ "$start_allowed" = true ]; then
 		echo "... starting new recording service"
 
 	    sh /usr/sleeptalk/bash/start-recording-chunks.sh
+	else
+		echo "... we are already recording, don't start again"
 	fi
 else
 	sh /usr/sleeptalk/bash/stop-recording-chunks.sh
@@ -51,8 +66,12 @@ fi
 
 if [ "$recording_led_on" = true ]; then
 	gpio write 2 1
+
+	echo "... turned recording led on"
 else
 	gpio write 2 0
+
+	echo "... turned recording led off"
 fi
 
 echo "Done"

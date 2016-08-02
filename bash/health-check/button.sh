@@ -11,6 +11,8 @@
 
 . /usr/sleeptalk/config/config.cfg
 
+echo "..> button.sh"
+
 if [ "$start_allowed" = true ]; then
 	if [ "$button_enabled" = true ]; then
 		echo "... gpio button support enabled, checking button"
@@ -29,4 +31,6 @@ if [ "$start_allowed" = true ]; then
 	else
 		echo "... gpio button support disabled, skipping check"
 	fi
+else
+	echo "... skipping, start already forbidden"
 fi

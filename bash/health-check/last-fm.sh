@@ -11,6 +11,8 @@
 
 . /usr/sleeptalk/config/config.cfg
 
+echo "..> last-fm.sh"
+
 if [ "$start_allowed" = true ]; then
 	if [ "$last_fm_enabled" = true ]; then
 		echo "... last.fm support enabled, checking last track date"
@@ -33,4 +35,6 @@ if [ "$start_allowed" = true ]; then
 	else
 		echo "... last.fm support disabled, skipping check"
 	fi
+else
+	echo "... skipping, start already forbidden"
 fi

@@ -11,6 +11,8 @@
 
 . /usr/sleeptalk/config/config.cfg
 
+echo "..> disk-space.sh"
+
 if [ "$start_allowed" = true ]; then
 	usedSpaceInPercent=$(df -k | head -2 | tail -1 | awk '{print $5}' | sed "s/\(\%\)//")
 
@@ -23,4 +25,6 @@ if [ "$start_allowed" = true ]; then
 	else
 		echo "... enough free disk space available, validating recording service"
 	fi
+else
+	echo "... skipping, start already forbidden"
 fi

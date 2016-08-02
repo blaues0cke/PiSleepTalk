@@ -11,6 +11,8 @@
 
 . /usr/sleeptalk/config/config.cfg
 
+echo "..> swarm.sh"
+
 if [ "$start_allowed" = true ]; then
 	if [ "$swarm_enabled" = true ]; then
 		echo "... swarm support enabled, checking last check in"
@@ -31,4 +33,6 @@ if [ "$start_allowed" = true ]; then
 	else
 		echo "... swarm support disabled, skipping check"
 	fi
+else
+	echo "... skipping, start already forbidden"
 fi

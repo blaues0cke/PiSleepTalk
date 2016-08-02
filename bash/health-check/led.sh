@@ -11,9 +11,11 @@
 
 . /usr/sleeptalk/config/config.cfg
 
+echo "..> led.sh"
+
 if [ "$led_enabled" = true ]; then
 	if [ "$led_switch_enabled" = true ]; then
-		echo "... gpio button support enabled, checking button"
+		echo "... led gpio button support enabled, checking button"
 
 		button_state=$(gpio read 4)
 
@@ -30,8 +32,12 @@ if [ "$led_enabled" = true ]; then
 			gpio write 3 0
 		fi
 	else
+		echo "... leds are disabled via switch"
+
 		gpio write 3 1
 	fi
 else
+	echo "... leds are disabled at all via config"
+
 	gpio write 3 0
 fi

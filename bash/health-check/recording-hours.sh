@@ -11,6 +11,8 @@
 
 . /usr/sleeptalk/config/config.cfg
 
+echo "..> recording-hours.sh"
+
 if [ "$start_allowed" = true ]; then
 	if [ "$recording_hours_check_enabled" = true ]; then
 		# Thanks to
@@ -32,4 +34,6 @@ if [ "$start_allowed" = true ]; then
 	else
 		echo "... recording hours check disabled, skipping check"
 	fi
+else
+	echo "... skipping, start already forbidden"
 fi

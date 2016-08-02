@@ -11,6 +11,8 @@
 
 . /usr/sleeptalk/config/config.cfg
 
+echo "..> force-button.sh"
+
 if [ "$force_button_enabled" = true ]; then
 	echo "... gpio force button support enabled, checking button"
 
