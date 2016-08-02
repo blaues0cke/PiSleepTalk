@@ -225,78 +225,80 @@ var initShotcuts = function () {
 
 	    	console.log('Keydown', e, e.which);
 
-	    	switch (e.which) {
-	    		// Keyboard
-	    		case 32:
-	    			wavesurfer.playPause();
+	    	if (!e.metaKey && !e.altKey && !e.ctrlKey && !e.shiftKey) {
+		    	switch (e.which) {
+		    		// Keyboard
+		    		case 32:
+		    			wavesurfer.playPause();
 
-	    			break;
+		    			break;
 
-	    		// Left
-	    		case 37:
-	    			wavesurfer.skip(-5);
+		    		// Left
+		    		case 37:
+		    			wavesurfer.skip(-5);
 
-	    			break;
+		    			break;
 
-	    		// Up
-	    		case 38:
-	    			wavesurfer.skip(-10);
+		    		// Up
+		    		case 38:
+		    			wavesurfer.skip(-10);
 
-	    			break;
+		    			break;
 
-	    		// Right
-	    		case 39:
-	    			wavesurfer.skip(5);
+		    		// Right
+		    		case 39:
+		    			wavesurfer.skip(5);
 
-	    			break;
+		    			break;
 
-	    		// Down
-	    		case 40:
-	    			wavesurfer.skip(10);
+		    		// Down
+		    		case 40:
+		    			wavesurfer.skip(10);
 
-	    			break;
+		    			break;
 
-	    		// 1-9
-	    		case 49:
-	    		case 50:
-	    		case 51:
-	    		case 52:
-	    		case 53:
-	    		case 54:
-	    		case 55:
-	    		case 56:
-	    		case 57:
-	    			var percent = (e.which - 48) / 100;
-	    			var seekTo  = audioDuration * percent;
+		    		// 1-9
+		    		case 49:
+		    		case 50:
+		    		case 51:
+		    		case 52:
+		    		case 53:
+		    		case 54:
+		    		case 55:
+		    		case 56:
+		    		case 57:
+		    			var percent = (e.which - 48) / 100;
+		    			var seekTo  = audioDuration * percent;
 
-	    			wavesurfer.seekTo(seekTo);
+		    			wavesurfer.seekTo(seekTo);
 
-	    			break;
-	    		case 66:
-	    			banNoise();
+		    			break;
+		    		case 66:
+		    			banNoise();
 
-	    			break;
+		    			break;
 
-	    		case 67:
-	    			cropToMarker();
+		    		case 67:
+		    			cropToMarker();
 
-	    			break;
+		    			break;
 
-	    		case 74:
-	    			jumpToMarker();
+		    		case 74:
+		    			jumpToMarker();
 
-	    			break;
+		    			break;
 
-	    		case 77:
-	    			setMarker();
+		    		case 77:
+		    			setMarker();
 
-	    			break;
+		    			break;
 
-	    		case 80:
-	    			playFromMarker();
+		    		case 80:
+		    			playFromMarker();
 
-	    			break;
-	    	};
+		    			break;
+		    	};
+		    }
 	    }
 	});
 };
