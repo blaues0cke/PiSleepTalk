@@ -109,7 +109,9 @@ if [ ! -d "${lock_file_name}" ]; then
 
 						 		echo "... normalizing audio"
 
-						 		sox --norm $final_filepath $final_filepath_tmp >>"${error_log_path}" 2>&1
+						 		# Thanks to
+						 		# * http://superuser.com/questions/588793/need-to-clean-up-audio-noise-using-sox
+						 		sudo sox $final_filepath $final_filepath_tmp remix - highpass 100 norm compand 0.05,0.2 6:-54,-90,-36,-36,-24,-24,0,-12 0 -90 0.1 vad -T 0.6 -p 0.2 -t 5 fade 0.1 reverse vad -T 0.6 -p 0.2 -t 5 fade 0.1 reverse norm -0.5  >>"${error_log_path}" 2>&1
 
 						 		echo "... done normalizing audio"
 
