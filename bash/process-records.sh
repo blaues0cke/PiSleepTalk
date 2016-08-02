@@ -109,19 +109,23 @@ if [ ! -d "${lock_file_name}" ]; then
 
 						 		echo "... normalizing audio"
 
-						 		sox --norm $final_filepath $final_filepath_tmp
+						 		sox --norm $final_filepath $final_filepath_tmp >>"${error_log_path}" 2>&1
 
 						 		echo "... done normalizing audio"
 
-						 		rm $final_filepath
-						 		mv $final_filepath_tmp $final_filepath
+						 		if [ -f $final_filepath_tmp ]; then
+							 		rm $final_filepath
+							 		mv $final_filepath_tmp $final_filepath
+						 		else
+						 			echo "..! normalizing audio failed, falling back to original"
+						 		fi
 						 	fi	 	
 
 							spectrogram_filename="${audio_file_path_to_render}/${concat_start_timestamp}-${concat_end_timestamp}.${default_image_format}"
 
 					 		# Thanks to
 					 		# * http://stackoverflow.com/questions/9956815/generate-visual-waveform-from-mp3-wav-file-in-windows-2008-server
-					 		sox $final_filepath -n spectrogram -Y 150 -l -r -h -p 1 -x 1000 -a -o "${spectrogram_filename}"
+					 		sox $final_filepath -n spectrogram -Y 150 -l -r -h -p 1 -x 1000 -a -o "${spectrogram_filename}" >>"${error_log_path}" 2>&1
 				 		fi
 
 						if [ "${debug}" = false ]; then
@@ -140,7 +144,7 @@ if [ ! -d "${lock_file_name}" ]; then
 							do
 								echo "... appending ${sox_profile_path} to ${final_filepath_sox}"
 
-								sox "${final_filepath}" "${final_filepath_sox}" noisered "${sox_profile_path}" "${noise_filter_sensitivity}"
+								sox "${final_filepath}" "${final_filepath_sox}" noisered "${sox_profile_path}" "${noise_filter_sensitivity}" >>"${error_log_path}" 2>&1
 
 								echo "... done, replacing old file"
 
