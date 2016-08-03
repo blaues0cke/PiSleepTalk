@@ -136,6 +136,8 @@ if [ ! -d "${lock_file_name}" ]; then
 		 		mv $audio_file_path $final_file_path
 		 	fi  
 
+		 	# Thanks to
+		 	# * http://stackoverflow.com/questions/6121091/get-file-directory-path-from-filepath
 			file_dir_base="$(dirname $final_file_path | cut -d. -f1)"
 	 		file_name_base="$(basename $final_file_path | cut -d. -f1)"
 			spectrogram_filename="${file_dir_base}/${file_name_base}.${default_image_format}"
