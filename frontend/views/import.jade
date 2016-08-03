@@ -37,7 +37,7 @@ block content
 		p= __('modal.upload_file.description')
 		form#upload-form(action='/import', method='post', enctype='multipart/form-data')
 			label
-				input(type='checkbox', id='instant-approve' name='instant-approve')
+				input(type='checkbox', id='instantApprove' value="true" name='instantApprove')
 				span= __('import.instant_approve')
 			input(type='file', name='file')
 
