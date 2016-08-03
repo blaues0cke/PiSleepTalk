@@ -184,6 +184,18 @@ if [ ! -d "${lock_file_name}" ]; then
 							done		
 						fi
 
+						audio_length_in_ms=$(sh /usr/sleeptalk/bash/tool/length-of-audio-file-in-ms.sh $final_filepath)
+
+						echo "... final audio length in ms is ${audio_length_in_ms}"
+
+						if [ "${min_audio_length_in_ms}" -gt "${audio_length_in_ms}" ]; then
+						    echo "..! file is too short (shorter than ${min_audio_length_in_ms}ms), deleting it"
+
+					 		rm $final_filepath
+
+					 		file_counter_deleted=$((file_counter_deleted + 1))
+						fi
+
 						concat_file_queue=""
 						concat_file_queue_count=0
 						concat_end_timestamp=""
