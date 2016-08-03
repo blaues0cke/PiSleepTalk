@@ -19,6 +19,7 @@
 		"delete_video": 	     "Delete video",
 		"download_video": 		 "Download video",
         "force_import":          "Force import now",
+        "import_audio":          "Import recordings",
 		"increase_volume":       "Increase volume",
 		"insert_current_frame":  "Insert current frame position",
         "jump_to_marker":        "Jump to marker",

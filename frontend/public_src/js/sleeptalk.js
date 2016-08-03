@@ -26,6 +26,11 @@ $(document).ready(function() {
 	{
 		location.reload();
 	});
+
+	$('.btn-import').click(function()
+	{
+		location.href = '/import';
+	});
 	
 	initWavesurfer();
 	initButtons();

@@ -19,6 +19,7 @@
 		"delete_video": 	     "Video löschen",
 		"download_video": 		 "Video herunterladen",
         "force_import":          "Import sofort erzwingen",
+        "import_audio":          "Aufnahmen importieren",
 		"increase_volume":       "Lautstärke erhöhen",
 		"insert_current_frame":  "Aktuelle Frame-Position einfügen",
         "jump_to_marker":        "Zu Markierung springen",
