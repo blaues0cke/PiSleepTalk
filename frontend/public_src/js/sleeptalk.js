@@ -497,8 +497,19 @@ var initButtons = function() {
 		    	{
 		    		var trCount = deletionTr.parent().find('tr').length;
 
+		    		var nextTr = deletionTr.next();
+
 		    		deletionTr.remove();
-		    		deletionTr = null;
+
+		    	
+		    		console.log('Dgsg', nextTr);
+		    		if (nextTr.find('td').eq(0).hasClass('img'))
+		    		{
+		    			nextTr.remove();
+		    			--trCount;
+		    		}
+
+					deletionTr = null;
 
 		    		if (trCount <= 1)
 		    		{
