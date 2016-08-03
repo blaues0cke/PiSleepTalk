@@ -48,6 +48,9 @@ block content
 		p.lead= __('import.description')
 		hr.m-y-2
 		p= __('import.force_text', pageData.import_timeout)
+		label
+			input(type='checkbox', id='instant-approve')
+			span= __('import.instant_approve')
 		p.lead
 			a.btn.btn-primary.btn-lg#upload-file(role='button')= __('actions.upload_file')
 			|  

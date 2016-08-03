@@ -49,6 +49,7 @@
         "error_1":               "Du hast keine Datei hochgeladen.",
         "error_2":               "Beim Speichern der Datei ist ein Fehler aufgetreten, bitte versuche es später noch ein Mal.",
         "force_text":            "Der Import startet automatisch %s Sekunden nachdem die letzte Datei in den Import-Ordner geladen wurde.",
+        "instant_approve":       "Importierte Daten als komplette Aufnahmen übernehmen und nicht mehr schneiden",
         "title":                 "Importieren"
     },
     "logs": {

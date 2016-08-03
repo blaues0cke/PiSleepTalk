@@ -49,6 +49,7 @@
         "error_1":               "No file was uploaded.",
         "error_2":               "An error occurred while saving your file, please try again later.",
         "force_text":            "The import will start automatically after %s seconds the last file was uploaded to the import folder.",
+        "instant_approve":       "Use imported files as full recordings without postprocessing",
         "title":                 "Import"
     },
     "logs": {

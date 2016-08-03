@@ -141,6 +141,10 @@
 {
 	margin: 0;
 }
+.jumbotron label span
+{
+	margin-left: 5px;
+}
 #file-info
 {
 	position: absolute;
