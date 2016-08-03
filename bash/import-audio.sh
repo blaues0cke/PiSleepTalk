@@ -82,15 +82,18 @@ if [ ! -d "${lock_file_name}" ]; then
 	echo "... searching for zip files"
 
 	$(sh /usr/sleeptalk/bash/tool/unzip-zip-files-in-directory.sh $audio_file_path_import)
+	$(sh /usr/sleeptalk/bash/tool/unzip-zip-files-in-directory.sh $audio_file_path_import-instant)
 
 	echo "... done searching for zip files"
 	echo "... removing whitespaces from filenames"
 
 	$(sh /usr/sleeptalk/bash/tool/remove-whitespaces-from-path.sh $audio_file_path_import)
+	$(sh /usr/sleeptalk/bash/tool/remove-whitespaces-from-path.sh $audio_file_path_import-instant)
 
 	echo "... flattening all folders"
 
 	$(sh /usr/sleeptalk/bash/tool/flatten-path.sh $audio_file_path_import)
+	$(sh /usr/sleeptalk/bash/tool/flatten-path.sh $audio_file_path_import-instant)
 
 	echo "... looking for audio files"
 
