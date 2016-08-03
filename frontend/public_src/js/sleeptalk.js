@@ -501,8 +501,6 @@ var initButtons = function() {
 
 		    		deletionTr.remove();
 
-		    	
-		    		console.log('Dgsg', nextTr);
 		    		if (nextTr.find('td').eq(0).hasClass('img'))
 		    		{
 		    			nextTr.remove();
