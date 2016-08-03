@@ -86,10 +86,7 @@ if [ ! -d "${lock_file_name}" ]; then
 	echo "... done searching for zip files"
 	echo "... removing whitespaces from filenames"
 
- 	# Thanks to
- 	# * http://stackoverflow.com/questions/2709458/bash-script-to-replace-spaces-in-file-names
-	find $audio_file_path_import -name "* *" -type d | rename 's/ /_/g'
-	find $audio_file_path_import -name "* *" -type f | rename 's/ /_/g'
+	$(sh /usr/sleeptalk/bash/tool/remove-whitespaces-from-path.sh $audio_file_path_import)
 
 	echo "... flattening all folders"
 
