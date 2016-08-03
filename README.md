@@ -182,6 +182,12 @@ To restart the samba server, type: `sudo /etc/init.d/samba restart`
 * Jonas Otto ([https://github.com/ottojo](https://github.com/ottojo)) for the hardware support
 * Michael Malura ([https://github.com/maluramichael](https://github.com/maluramichael)) for the node.js support
 
+## Experience
+
+I used this for my own a few days now in kinda production environment. Things I learned:
+
+* Do not set the gain of the microphone to 100%, it will record disorders that will annoy you
+
 ## License
 
 This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit [http://creativecommons.org/licenses/by-nc-sa/4.0/](http://creativecommons.org/licenses/by-nc-sa/4.0/).
