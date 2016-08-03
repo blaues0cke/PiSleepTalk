@@ -90,13 +90,7 @@ if [ ! -d "${lock_file_name}" ]; then
 
 	echo "... flattening all folders"
 
-	# Thanks to
-	# * http://stackoverflow.com/questions/27621/unix-shell-file-copy-flattening-folder-structure
-	find ${audio_file_path_import}/*/* -exec mv \{\} "${audio_file_path_import}" \; 2>/dev/null
-
-	# Thanks to
-	# * https://unix.stackexchange.com/questions/68846/how-do-i-remove-all-sub-directories-from-within-a-directory/68847#68847
-	rm -R -- ${audio_file_path_import}/*/ 2>/dev/null
+	$(sh /usr/sleeptalk/bash/tool/flatten-path.sh $audio_file_path_import)
 
 	echo "... looking for audio files"
 
