@@ -16,7 +16,12 @@ var   config = require('../core/config.js')
 module.exports = function(app) {
 	app.post('/import', upload.single('file'), function (req, res) {
 		if (req.file && req.file.originalname && req.file.originalname.length > 0) {
-			var newFilepath = config.audio_file_path_import + '/' + req.file.originalname;
+
+			var instantApprove = req.body && req.body.instantApprove && req.body.instantApprove == "true" || false;
+			var folderPath     = instantApprove ? config.audio_file_path_import_instant : config.audio_file_path_import;
+			var newFilepath    = folderPath + '/' + req.file.originalname;
+
+			console.log('Import path: ', newFilepath);
 
 			try {
 				// Thanks to
