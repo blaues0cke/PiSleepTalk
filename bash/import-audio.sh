@@ -78,6 +78,7 @@ if [ ! -d "${lock_file_name}" ]; then
 	echo "... import allowed, starting"
 
 	file_counter=0
+	file_counter_instant=0
 
 	echo "... searching for zip files"
 
@@ -94,6 +95,64 @@ if [ ! -d "${lock_file_name}" ]; then
 
 	$(sh /usr/sleeptalk/bash/tool/flatten-path.sh $audio_file_path_import)
 	$(sh /usr/sleeptalk/bash/tool/flatten-path.sh $audio_file_path_import-instant)
+
+	echo "... looking for instant audio files"
+
+	dir_list=$(ls ${audio_file_path_import_instant}/* 2>/dev/null)
+	for audio_file_path in $dir_list
+	do
+		echo "... processing: ${audio_file_path}"
+
+		if [ -f $audio_file_path ]; then
+
+			# Thanks to
+			# * http://stackoverflow.com/questions/965053/extract-filename-and-extension-in-bash
+		 	extension="${audio_file_path##*.}"
+		 	file_name="$(basename $audio_file_path | cut -d. -f1)"
+
+			# Thanks to
+			# * http://stackoverflow.com/questions/2264428/converting-string-to-lower-case-in-bash-shell-scripting
+			extension=$(echo "$extension" | tr '[:upper:]' '[:lower:]')
+
+		 	echo "... processing file: ${audio_file_path}, extension: ${extension}, filename: ${file_name}"
+
+		 	random_string=$(cat /dev/urandom | tr -cd 'a-f0-9' | head -c 32)
+		 	final_file_name="${file_name}_${random_string}.${default_audio_format}"
+		 	final_file_path="${audio_file_path_to_render}/${final_file_name}"
+
+		 	echo "... final file name will be: ${final_file_name}"
+
+		 	if [ "$extension" != "${default_audio_format}" ]; then
+		 		echo "... transcoding file (${extension}) to ${default_audio_format}"
+
+				# Thanks to
+				# * http://spielwiese.la-evento.com/hokuspokus/seite2.html
+				ffmpeg -y -i "${audio_file_path}" "${final_file_path}" >>"${error_log_path}" 2>&1
+
+				rm $audio_file_path
+		 	else
+		 		echo "... file is already in ${default_audio_format} format, we don't have to transcode"
+
+		 		mv $audio_file_path $final_file_path
+		 	fi  
+
+			file_dir_base="$(dirname $final_file_path | cut -d. -f1)"
+	 		file_name_base="$(basename $final_file_path | cut -d. -f1)"
+			spectrogram_filename="${file_dir_base}/${file_name_base}.${default_image_format}"
+
+	 		# Thanks to
+	 		# * http://stackoverflow.com/questions/9956815/generate-visual-waveform-from-mp3-wav-file-in-windows-2008-server
+	 		sox $final_file_path -n spectrogram -Y 150 -l -r -h -p 1 -x 1000 -a -o "${spectrogram_filename}" >>"${error_log_path}" 2>&1
+		 	
+	 		echo "... created spectrogram: ${spectrogram_filename}"
+
+			echo "... done"
+			echo ""
+
+			file_counter_instant=$((file_counter_instant + 1))
+			file_counter=$((file_counter + 1))
+		fi
+	done
 
 	echo "... looking for audio files"
 
@@ -143,7 +202,7 @@ if [ ! -d "${lock_file_name}" ]; then
 	done
 
 	if [ -n "$file_counter" ]; then
-	    echo "Done importing audio, added files: ${file_counter}"
+	    echo "Done importing audio, added files: ${file_counter} (Instant files: ${file_counter_instant})"
 	else
 		echo "Done importing audio, no files found";
 	fi
