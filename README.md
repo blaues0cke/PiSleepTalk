@@ -44,6 +44,7 @@ to save the new configuration. Make sure you reboot your Raspberry Pi or at leas
 * `/usr/sleeptalk/noise-data` Contains noise that is removed from new recordings
 * `/usr/sleeptalk/scripts` Contains all bash scripts
 * `/usr/sleeptalk/records-amplitude` Contains files that have a pending amplitude check
+* `/usr/sleeptalk/records-crop` Contains files that have to be cropped
 * `/usr/sleeptalk/records-decrease-volume` Contains files that are too loud
 * `/usr/sleeptalk/records-import` Contains files you want to import in the system
 * `/usr/sleeptalk/records-import-instant` Contains files you want to import in the system as full recordings (no postprocessing)

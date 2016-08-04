@@ -19,6 +19,7 @@ mkdir /usr/sleeptalk/debug
 mkdir /usr/sleeptalk/noise-data
 mkdir /usr/sleeptalk/scripts
 mkdir /usr/sleeptalk/records-amplitude
+mkdir /usr/sleeptalk/records-crop
 mkdir /usr/sleeptalk/records-decrease-volume
 mkdir /usr/sleeptalk/records-import
 chmod 0777 /usr/sleeptalk/records-import-instant
@@ -37,6 +38,7 @@ chmod 0777 /usr/sleeptalk/frontend
 chmod 0777 /usr/sleeptalk/noise-data
 chmod 0777 /usr/sleeptalk/scripts
 chmod 0777 /usr/sleeptalk/records-amplitude
+chmod 0777 /usr/sleeptalk/records-crop
 chmod 0777 /usr/sleeptalk/records-decrease-volume
 chmod 0777 /usr/sleeptalk/records-import
 chmod 0777 /usr/sleeptalk/records-import-instant
