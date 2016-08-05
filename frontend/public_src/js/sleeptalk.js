@@ -195,7 +195,8 @@ var initStatusPage = function ()
 			    success: function(result) {
 			    	if (deletionTr)
 			    	{
-			    		var trCount = deletionTr.parent().find('tr').length;
+			    		var parent  = deletionTr.parent();
+			    		var trCount = parent.find('tr').length;
 
 			    		if (trCount <= 2)
 			    		{

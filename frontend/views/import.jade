@@ -63,6 +63,8 @@ block content
 						th.size= __('table.size')
 						th.actions= __('table.actions')
 				tbody
+					tr.empty-text.hidden
+						td(colspan=6)= __('import.empty')
 					if !pageData.files || pageData.files.length == 0
 						tr
 							td(colspan=3)= __('import.empty')
