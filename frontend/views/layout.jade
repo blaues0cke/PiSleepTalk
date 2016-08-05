@@ -12,7 +12,7 @@ mixin button(id, icon, text, color, baseClass, tooltip, tooltipPlacement, dontHi
 			span.text= text
 	|  
 
-mixin modal(id, title, text, cancelButton, deleteButton, deleteButtonId)
+mixin modal(id, title, text, cancelButton, deleteButton, deleteButtonId, deleteButtonClass)
 	div.modal.fade(id=id)
 		div.modal-dialog
 			div.modal-content
@@ -27,7 +27,7 @@ mixin modal(id, title, text, cancelButton, deleteButton, deleteButtonId)
 				div.modal-footer
 					button.btn.btn-primary(type='button', data-dismiss='modal')= cancelButton
 					if deleteButton
-						button.btn.btn-danger(type='button', data-dismiss='modal', id=deleteButtonId)= deleteButton
+						button.btn(type='button', data-dismiss='modal', id=deleteButtonId class=(deleteButtonClass ? 'btn-' + deleteButtonClass : 'btn-danger'))= deleteButton
 
 html
 	head
