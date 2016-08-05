@@ -89,23 +89,23 @@ if [ ! -d "${lock_file_name}" ]; then
 	echo "... searching for zip files"
 
 	unzip_zip_files_in_directory $audio_file_path_import
-	unzip_zip_files_in_directory $audio_file_path_import-instant
+	unzip_zip_files_in_directory $audio_file_path_import_instant
 
 	echo "... done searching for zip files"
 	echo "... removing whitespaces from filenames"
 
 	remove_whitespaces_from_path $audio_file_path_import
-	remove_whitespaces_from_path $audio_file_path_import-instant
+	remove_whitespaces_from_path $audio_file_path_import_instant
 
 	echo "... flattening all folders"
 
 	flatten_path $audio_file_path_import
-	flatten_path $audio_file_path_import-instant
+	flatten_path $audio_file_path_import_instant
 
 	echo "... lowercasing all files" 
 
 	lowercase_all_files_in_directory $audio_file_path_import
-	lowercase_all_files_in_directory $audio_file_path_import-instant
+	lowercase_all_files_in_directory $audio_file_path_import_instant
 
 	echo "... looking for instant audio files"
 
