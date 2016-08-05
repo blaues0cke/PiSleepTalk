@@ -12,6 +12,7 @@
 . /usr/sleeptalk/config/config.cfg
 
 . /usr/sleeptalk/bash/tool/create-record-to-render.sh
+. /usr/sleeptalk/bash/tool/lowercase-all-files-in-directory.sh
 
 echo "Importing audio files"
 
@@ -97,6 +98,11 @@ if [ ! -d "${lock_file_name}" ]; then
 
 	$(sh /usr/sleeptalk/bash/tool/flatten-path.sh $audio_file_path_import)
 	$(sh /usr/sleeptalk/bash/tool/flatten-path.sh $audio_file_path_import-instant)
+
+	echo "... lowercasing all files" 
+
+	lowercase_all_files_in_directory $audio_file_path_import
+	lowercase_all_files_in_directory $audio_file_path_import-instant
 
 	echo "... looking for instant audio files"
 
