@@ -20,8 +20,9 @@ change_file_extension () {
 
 	# Thanks to
 	# * http://stackoverflow.com/questions/6121091/get-file-directory-path-from-filepath
+	# * http://stackoverflow.com/questions/965053/extract-filename-and-extension-in-bash
 	file_dir_base="$(dirname $file)"
-	file_name_base="$(basename $file | cut -d. -f1)"
+	file_name_base="$(basename $file | sed 's/\.[^.]*$//')"
 	new_filename="${file_dir_base}/${file_name_base}.${format}"
 
 	echo "... change_file_extension: done, new file name: ${new_filename}"
