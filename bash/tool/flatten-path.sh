@@ -7,12 +7,21 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
-dir_path="$1"
+flatten_path () {
 
-# Thanks to
-# * http://stackoverflow.com/questions/27621/unix-shell-file-copy-flattening-folder-structure
-find ${dir_path}/*/* -exec mv \{\} "${dir_path}" \; 2>/dev/null
+	. /usr/sleeptalk/config/config.cfg
 
-# Thanks to
-# * https://unix.stackexchange.com/questions/68846/how-do-i-remove-all-sub-directories-from-within-a-directory/68847#68847
-rm -R -- ${dir_path}/*/ 2>/dev/null
+	dir_path="$1"
+
+	echo "... flattening path: ${dir_path}"
+
+	# Thanks to
+	# * http://stackoverflow.com/questions/27621/unix-shell-file-copy-flattening-folder-structure
+	find ${dir_path}/*/* -exec mv \{\} "${dir_path}" \; 2>/dev/null
+
+	# Thanks to
+	# * https://unix.stackexchange.com/questions/68846/how-do-i-remove-all-sub-directories-from-within-a-directory/68847#68847
+	rm -R -- ${dir_path}/*/ 2>/dev/null
+
+	echo "... done flattening path: ${dir_path}"
+}

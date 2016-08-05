@@ -12,6 +12,7 @@
 . /usr/sleeptalk/config/config.cfg
 
 . /usr/sleeptalk/bash/tool/create-record-to-render.sh
+. /usr/sleeptalk/bash/tool/flatten-path.sh
 . /usr/sleeptalk/bash/tool/lowercase-all-files-in-directory.sh
 . /usr/sleeptalk/bash/tool/remove-whitespaces-from-path.sh
 . /usr/sleeptalk/bash/tool/unzip-zip-files-in-directory.sh
@@ -98,8 +99,8 @@ if [ ! -d "${lock_file_name}" ]; then
 
 	echo "... flattening all folders"
 
-	$(sh /usr/sleeptalk/bash/tool/flatten-path.sh $audio_file_path_import)
-	$(sh /usr/sleeptalk/bash/tool/flatten-path.sh $audio_file_path_import-instant)
+	flatten_path $audio_file_path_import
+	flatten_path $audio_file_path_import-instant
 
 	echo "... lowercasing all files" 
 
