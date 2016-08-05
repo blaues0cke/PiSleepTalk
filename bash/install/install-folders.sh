@@ -29,6 +29,7 @@ mkdir /usr/sleeptalk/records-raw
 mkdir /usr/sleeptalk/records-rendered
 mkdir /usr/sleeptalk/records-timestamp
 mkdir /usr/sleeptalk/records-to-render
+mkdir /usr/sleeptalk/temp
 mkdir /usr/sleeptalk/test-data
 
 chmod 0777 /usr/sleeptalk
@@ -48,6 +49,7 @@ chmod 0777 /usr/sleeptalk/records-raw
 chmod 0777 /usr/sleeptalk/records-rendered
 chmod 0777 /usr/sleeptalk/records-timestamp
 chmod 0777 /usr/sleeptalk/records-to-render
+chmod 0777 /usr/sleeptalk/temp
 chmod 0777 /usr/sleeptalk/test-data
 
 echo "Done installing folders"

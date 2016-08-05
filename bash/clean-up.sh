@@ -25,6 +25,7 @@ rm -rf ${audio_file_path_decrease_volume}/*
 rm -rf ${audio_file_path_increase_volume}/*
 rm -rf ${audio_file_path_final}/*
 rm -rf ${audio_file_path_noise}/*
+rm -rf ${temp_file_path}/*
 
 echo "... clearing logs"
 
