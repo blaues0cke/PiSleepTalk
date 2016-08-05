@@ -11,6 +11,8 @@
 
 . /usr/sleeptalk/config/config.cfg
 
+. /usr/sleeptalk/bash/tool/create-record-to-render.sh
+
 echo "Processing records to crop"
 echo ""
 
@@ -41,7 +43,7 @@ if [ ! -d "${lock_file_name}" ]; then
 			echo "... duration: ${duration}"
 
 		 	audio_file_name=$(basename $audio_file_path)
-		 	final_audio_path="${audio_file_path_to_render}/CR-${audio_file_name}"
+		 	final_audio_path="${temp_file_path}/CR-${audio_file_name}"
 
 		 	# Thanks to
 		 	# * http://stackoverflow.com/questions/12562023/trim-audio-files-with-sox-in-milliseconds
@@ -50,6 +52,8 @@ if [ ! -d "${lock_file_name}" ]; then
 
 			if [ -f $final_audio_path ]; then
 		 		rm $audio_file_path
+
+		 		create_record_to_render $final_audio_path
 			else
 				echo "... error while trimming audio, aborting"
 			fi

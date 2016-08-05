@@ -11,6 +11,8 @@
 
 . /usr/sleeptalk/config/config.cfg
 
+. /usr/sleeptalk/bash/tool/create-record-to-render.sh
+
 echo "Processing record volumes"
 echo ""
 
@@ -31,11 +33,13 @@ if [ ! -d "${lock_file_name}" ]; then
 		 	echo "... decreasing volume of file: ${audio_file_path}"
 
 		 	audio_file_name=$(basename $audio_file_path)
-		 	final_audio_path="${audio_file_path_to_render}/VD-${audio_file_name}"
+		 	final_audio_path="${temp_file_path}/VD-${audio_file_name}"
 
 		 	sox -v 0.5 $audio_file_path $final_audio_path
 		 	rm $audio_file_path
 
+		 	create_record_to_render $final_audio_path
+		 	
 		 	file_count=$((file_count + 1))
 		 	file_decrease_count=$((file_decrease_count + 1))
 
@@ -50,10 +54,12 @@ if [ ! -d "${lock_file_name}" ]; then
 		 	echo "... increasing volume of file: ${audio_file_path}"
 
 		 	audio_file_name=$(basename $audio_file_path)
-		 	final_audio_path="${audio_file_path_to_render}/VI-${audio_file_name}"
+		 	final_audio_path="${temp_file_path}/VI-${audio_file_name}"
 
 		 	sox -v 1.5 $audio_file_path $final_audio_path
 		 	rm $audio_file_path
+
+		 	create_record_to_render $final_audio_path
 
 		 	file_count=$((file_count + 1))
 		 	file_increase_count=$((file_increase_count + 1))

@@ -11,6 +11,8 @@
 
 . /usr/sleeptalk/config/config.cfg
 
+. /usr/sleeptalk/bash/tool/create-record-to-render.sh
+
 echo "Importing audio files"
 
 script_name=`basename "$0"`
@@ -118,7 +120,7 @@ if [ ! -d "${lock_file_name}" ]; then
 
 		 	random_string=$(cat /dev/urandom | tr -cd 'a-f0-9' | head -c 32)
 		 	final_file_name="${file_name}_${random_string}.${default_audio_format}"
-		 	final_file_path="${audio_file_path_to_render}/${final_file_name}"
+		 	final_file_path="${temp_file_path}/${final_file_name}"
 
 		 	echo "... final file name will be: ${final_file_name}"
 
@@ -134,19 +136,11 @@ if [ ! -d "${lock_file_name}" ]; then
 		 		echo "... file is already in ${default_audio_format} format, we don't have to transcode"
 
 		 		mv $audio_file_path $final_file_path
-		 	fi  
+		 	fi
 
-		 	# Thanks to
-		 	# * http://stackoverflow.com/questions/6121091/get-file-directory-path-from-filepath
-			file_dir_base="$(dirname $final_file_path | cut -d. -f1)"
-	 		file_name_base="$(basename $final_file_path | cut -d. -f1)"
-			spectrogram_filename="${file_dir_base}/${file_name_base}.${default_image_format}"
+		 	echo "... creating record to render: $final_file_path"  
 
-	 		# Thanks to
-	 		# * http://stackoverflow.com/questions/9956815/generate-visual-waveform-from-mp3-wav-file-in-windows-2008-server
-	 		sox $final_file_path -n spectrogram -Y 150 -l -r -h -p 1 -x 1000 -a -o "${spectrogram_filename}" >>"${error_log_path}" 2>&1
-		 	
-	 		echo "... created spectrogram: ${spectrogram_filename}"
+		 	create_record_to_render $final_file_path
 
 			echo "... done"
 			echo ""

@@ -11,9 +11,10 @@
 
 . /usr/sleeptalk/config/config.cfg
 
+. /usr/sleeptalk/bash/tool/create-record-to-render.sh
+
 echo "Processing records"
 echo ""
-
 
 script_name=`basename "$0"`
 lock_file_name="/var/lock/.${script_name}.${lock_file_format}"
@@ -95,7 +96,7 @@ if [ ! -d "${lock_file_name}" ]; then
 				 			echo "... saved end timestamp, it is: ${concat_end_timestamp}"
 
 				 			final_filename="${concat_start_timestamp}-${concat_end_timestamp}.${default_audio_format}"
-				 			final_filepath="${audio_file_path_to_render}/${final_filename}"
+				 			final_filepath="${temp_file_path}/${final_filename}"
 
 				 			echo "... final filename will be: ${final_filename}, saving file to: ${final_filepath}"
 						    echo "... files to concat: ${concat_file_queue}"
@@ -105,7 +106,7 @@ if [ ! -d "${lock_file_name}" ]; then
 				 			sox $concat_file_queue $final_filepath
 
 						 	if [ "$auto_normalize" = true ]; then
-								final_filepath_tmp="${audio_file_path_to_render}/tmp_${final_filename}"
+								final_filepath_tmp="${temp_file_path}/tmp_${final_filename}"
 
 						 		echo "... normalizing audio"
 
@@ -125,7 +126,7 @@ if [ ! -d "${lock_file_name}" ]; then
 
 						 	if [ "$highpass_filter_enabled" = true ]; then
 
-								final_filepath_tmp="${audio_file_path_to_render}/tmp_${final_filename}"
+								final_filepath_tmp="${temp_file_path}/tmp_${final_filename}"
 
 						 		echo "... applying highpass filter"
 
@@ -142,12 +143,6 @@ if [ ! -d "${lock_file_name}" ]; then
 						 			echo "..! applying highpass filter failed, falling back to original"
 						 		fi
 						 	fi
-
-							spectrogram_filename="${audio_file_path_to_render}/${concat_start_timestamp}-${concat_end_timestamp}.${default_image_format}"
-
-					 		# Thanks to
-					 		# * http://stackoverflow.com/questions/9956815/generate-visual-waveform-from-mp3-wav-file-in-windows-2008-server
-					 		sox $final_filepath -n spectrogram -Y 150 -l -r -h -p 1 -x 1000 -a -o "${spectrogram_filename}" >>"${error_log_path}" 2>&1
 
 							file_size_kb=`du -k "${final_filepath}" | cut -f1`
 
@@ -169,7 +164,7 @@ if [ ! -d "${lock_file_name}" ]; then
 						if [ "${noise_filter_enabled}" = true ]; then
 							echo "... appending noise filter"
 
-				 			final_filepath_sox="${audio_file_path_to_render}/sox_${final_filename}"
+				 			final_filepath_sox="${temp_file_path}/sox_${final_filename}"
 
 							dir_list_2=$(ls ${audio_file_path_noise}/*.${default_noise_format} 2>/dev/null)
 							for sox_profile_path in $dir_list_2
@@ -195,6 +190,10 @@ if [ ! -d "${lock_file_name}" ]; then
 
 					 		file_counter_deleted=$((file_counter_deleted + 1))
 						fi
+
+						# todo: delete check fix
+
+						create_record_to_render $final_filepath
 
 						concat_file_queue=""
 						concat_file_queue_count=0
