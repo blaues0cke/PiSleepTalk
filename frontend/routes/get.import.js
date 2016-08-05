@@ -21,7 +21,9 @@ module.exports = function(app) {
 
 		pageData.files = [];
 
-		var files = glob.sync(config.audio_file_path_import + '/*');
+		var files_import 		 = glob.sync(config.audio_file_path_import + '/*');
+		var files_import_instant = glob.sync(config.audio_file_path_import_instant + '/*');
+		var files 				 = [].concat(files_import).concat(files_import_instant);
 			
 		if (files && files.length > 0) {
 			for (var key in files) {
