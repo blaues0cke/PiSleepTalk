@@ -13,6 +13,7 @@
 
 . /usr/sleeptalk/bash/tool/create-record-to-render.sh
 . /usr/sleeptalk/bash/tool/lowercase-all-files-in-directory.sh
+. /usr/sleeptalk/bash/tool/unzip-zip-files-in-directory.sh
 
 echo "Importing audio files"
 
@@ -85,8 +86,8 @@ if [ ! -d "${lock_file_name}" ]; then
 
 	echo "... searching for zip files"
 
-	$(sh /usr/sleeptalk/bash/tool/unzip-zip-files-in-directory.sh $audio_file_path_import)
-	$(sh /usr/sleeptalk/bash/tool/unzip-zip-files-in-directory.sh $audio_file_path_import-instant)
+	unzip_zip_files_in_directory $audio_file_path_import
+	unzip_zip_files_in_directory $audio_file_path_import-instant
 
 	echo "... done searching for zip files"
 	echo "... removing whitespaces from filenames"
