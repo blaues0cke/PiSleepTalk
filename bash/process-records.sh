@@ -91,6 +91,8 @@ if [ ! -d "${lock_file_name}" ]; then
 							echo "... queue too long, deleting all files"
 
 						else
+							invalid_recording=false
+
 							# todo move to function
 				 			concat_end_timestamp=$(echo $audio_file_name | sed "s/\(\.${default_audio_format}\)//")
 
@@ -150,9 +152,7 @@ if [ ! -d "${lock_file_name}" ]; then
 							if [ "${min_file_size_in_kb}" -gt "${file_size_kb}" ]; then
 							    echo "..! file is too small, deleting it"
 
-						 		rm $final_filepath
-
-						 		file_counter_deleted=$((file_counter_deleted + 1))
+							    invalid_recording=true
 							fi
 				 		fi
 
@@ -186,14 +186,17 @@ if [ ! -d "${lock_file_name}" ]; then
 						if [ "${min_audio_length_in_ms}" -gt "${audio_length_in_ms}" ]; then
 						    echo "..! file is too short (shorter than ${min_audio_length_in_ms}ms), deleting it"
 
-					 		rm $final_filepath
-
-					 		file_counter_deleted=$((file_counter_deleted + 1))
+					 		invalid_recording=true
 						fi
 
-						# todo: delete check fix
+						if [ "${invalid_recording}" = false ]; then
+							create_record_to_render $final_filepath
 
-						create_record_to_render $final_filepath
+						else
+						 	rm $final_filepath
+
+						 	file_counter_deleted=$((file_counter_deleted + 1))
+						fi
 
 						concat_file_queue=""
 						concat_file_queue_count=0
