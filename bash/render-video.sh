@@ -243,7 +243,8 @@ if [ ! -d "${lock_file_name}" ]; then
  
 		# Thanks to
 		# * http://stackoverflow.com/questions/35612600/concat-multiple-self-generated-videos-using-ffmpeg-on-raspbian-linux/35619414#35619414
-		ffmpeg -f concat -i "${video_list_path}" -c copy "${full_video_path}"
+		# * https://www.ffmpeg.org/ffmpeg-formats.html#Options
+		ffmpeg -f concat  -safe 0 -i "${video_list_path}" -c copy "${full_video_path}"
 
 		if [ -f $full_video_path ]; then
 			video_gap_length_in_seconds=$(ffmpeg -i "${full_video_path}" 2>&1 | grep "Duration" | cut -d ' ' -f 4 | sed s/,// | sed 's@\..*@@g' | awk '{ split($1, A, ":"); split(A[3], B, "."); print 3600*A[1] + 60*A[2] + B[1] }')
