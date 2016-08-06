@@ -25,6 +25,7 @@
         "jump_to_marker":        "Zu Markierung springen",
 		"move_down": 			 "Nach unten schieben",
 		"move_up": 				 "Nach oben schieben",
+        "pause":                 "Pause",
 		"play":                  "Abspielen",
 		"play_from_marker":      "Von Markierung spielen",
 		"play_video": 			 "Video im Browser abspielen",

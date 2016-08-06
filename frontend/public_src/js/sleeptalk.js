@@ -364,10 +364,10 @@ var initWavesurfer = function () {
 
 			wavesurfer.on('play', function () {
 				$('#wave-play')
-					.attr('title', 'Pause')
-					.attr('data-original-title', 'Pause')
+					.attr('title', pauseButtonText)
+					.attr('data-original-title', pauseButtonText)
 					.find('.text')
-						.text('Pause')
+						.text(pauseButtonText)
 					.end()
 					.find('.fa')
 						.removeClass('fa-play')
@@ -377,10 +377,10 @@ var initWavesurfer = function () {
 
 			wavesurfer.on('pause', function () {
 				$('#wave-play')
-					.attr('title', 'Play')
-					.attr('data-original-title', 'Play')
+					.attr('title', playButtonText)
+					.attr('data-original-title', playButtonText)
 					.find('.text')
-						.text('Play')
+						.text(playButtonText)
 					.end()
 					.find('.fa')
 						.removeClass('fa-pause')
