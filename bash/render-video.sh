@@ -231,6 +231,16 @@ if [ ! -d "${lock_file_name}" ]; then
 			fi
 		fi
 
+		if [ -f $render_credits ]; then
+
+		
+
+
+
+
+		fi
+
+
 		echo "... will render final movie to: ${full_video_path}"
 
 		# Thanks to
