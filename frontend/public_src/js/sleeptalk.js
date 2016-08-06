@@ -233,6 +233,12 @@ var initShotcuts = function () {
 
 	    	if (!e.metaKey && !e.altKey && !e.ctrlKey && !e.shiftKey) {
 		    	switch (e.which) {
+		    		// ESC
+		    		case 27:
+		    			wavesurfer.stop();
+
+		    			break;
+
 		    		// Keyboard
 		    		case 32:
 		    			wavesurfer.playPause();

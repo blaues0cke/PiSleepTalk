@@ -188,6 +188,8 @@
             "dc":                "Double click",
             "dc_description":    "Jump to position and create text",
     		"down_description":  "Skip forward 10 seconds",
+            "esc":               "ESC",
+            "esc_description":   "Stop",
             "j":                 "J",
             "j_description":     "Jump to marker (and stop playing)",
     		"left_description":  "Skip back 5 seconds",

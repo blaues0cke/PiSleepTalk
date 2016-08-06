@@ -189,6 +189,8 @@
             "dc":                "Doppeklick",
             "dc_description":    "Zu Position springen und sofort Text erstellen",
     		"down_description":  "Springe 10 Sekunden vor",
+            "esc":               "ESC",
+            "esc_description":   "Stop",
             "j":                 "J",
             "j_description":     "Zu Markierung springen (Und Wiedergabe stoppen)",   
     		"left_description":  "Springe 5 Sekunden zurück",
