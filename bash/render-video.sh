@@ -39,6 +39,7 @@ if [ ! -d "${lock_file_name}" ]; then
 	    blank_movie_path="${movie_directory_path}blank.${default_video_format}"
 	    title_file_path="${movie_directory_path}movie.${default_sleeptalk_movie_format}"
 	    title_movie_path="${movie_directory_path}00000.${default_video_format}"
+	    credits_movie_path="${movie_directory_path}9999.${default_video_format}"
 
 	    # Thank s to
 	    * http://superuser.com/questions/90008/how-to-clear-the-contents-of-a-file-from-the-command-line
@@ -230,15 +231,84 @@ if [ ! -d "${lock_file_name}" ]; then
 			fi
 		fi
 
-		if [ -f $render_credits ]; then
+		if [ "${render_credits}" = true ]; then
+			echo "... rendering credits is enabled"
 
-		
+			credits_frame_path="${movie_directory_path}/credits.${default_image_format}"
 
+			# Thanks to
+			# * http://stackoverflow.com/questions/1602378/how-to-calculate-a-hash-for-a-string-url-in-bash-for-wget-caching
+			credits_movie_cache_path="${cache_path}/credits.${default_video_format}"
 
+			if [ "$cache_enabled" = true ] && [ -f "${credits_movie_cache_path}" ]; then
+				echo "... copying cached credits movie from ${credits_movie_cache_path} to ${credits_movie_path}"
 
+				cp "${credits_movie_cache_path}" "${credits_movie_path}"
+			else
+				# Thanks to
+				# * http://www.imagemagick.org/discourse-server/viewtopic.php?t=13527
+				# Todo: Make "xc:black" dynamic
+				convert -size 1920x1080 xc:black $credits_frame_path
 
+				# Thanks to
+				# * http://www.imagemagick.org/Usage/fonts/
+				# * http://stackoverflow.com/questions/23236898/add-text-on-image-at-specific-point-using-imagemagick
+				# * http://stackoverflow.com/questions/18062778/how-to-hide-command-output-in-bash
+				# Todo: Make "white" dynamic
+				convert "${credits_frame_path}" -gravity North -pointsize 80 -fill white -annotate "+0+300" "Made with" -annotate "+0+520" "PiSleepTalk" -annotate "+0+600" "https://github.com/blaues0cke/PiSleepTalk" "${credits_frame_path}" 
+				#>>"${error_log_path}" 2>&1
+
+				echo "... creating image: ${credits_frame_path}"
+
+				credits_frame_count=$(($frames_per_second * $credits_time_in_seconds))
+
+				echo "... creating ${credits_frame_count} frame images"
+
+				# Thanks to
+				# * http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO-7.html
+		        i=0
+		        until [ $i -eq $credits_frame_count ]; do
+		        	# Thanks to
+		        	# * http://stackoverflow.com/questions/3672301/linux-shell-script-to-add-leading-zeros-to-file-names
+		        	target_frame_position_long=$(printf %04d ${i})
+		        	new_image_file_path="${movie_directory_path}/credits-${target_frame_position_long}.${default_image_format}"
+
+		        	echo "... copying ${credits_frame_path} to ${new_image_file_path}"
+		            
+		        	cp $credits_frame_path $new_image_file_path
+
+		            i=$((i + 1))
+		        done
+
+		        rm $credits_frame_path
+
+		        images_file_path="${movie_directory_path}/credits-%04d.${default_image_format}"
+
+		        echo "... rendering credits video"
+
+				# Thanks to
+				# * https://trac.ffmpeg.org/wiki/Create%20a%20video%20slideshow%20from%20images
+				ffmpeg -y -framerate $frames_per_second -i "${images_file_path}" -c:v libx264 -r 30 -pix_fmt yuv420p "${credits_movie_path}" >>"${error_log_path}" 2>&1
+			
+				# Thanks to
+				# * http://stackoverflow.com/questions/11779490/ffmpeg-how-to-add-new-audio-not-mixing-in-video
+				ffmpeg -y -i "${credits_movie_path}" -i "/usr/sleeptalk/audio/blank.mp3" -map 0:v -map 1:a -codec copy -shortest "${credits_movie_path}" >>"${error_log_path}" 2>&1
+
+				echo "... done rendering movie: ${credits_movie_path}"
+
+				rm ${movie_directory_path}/credits-*.${default_image_format}
+
+				echo "... deleted credits images"
+
+				if [ "$cache_enabled" = true ]; then
+					cp "${credits_movie_path}" "${credits_movie_cache_path}"
+
+					echo "... cached credits movie"
+				fi
+			fi
+		else
+			echo "... rendering credits is disabled"
 		fi
-
 
 		echo "... will render final movie to: ${full_video_path}"
 
