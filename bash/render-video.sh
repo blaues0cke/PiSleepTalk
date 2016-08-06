@@ -20,7 +20,6 @@ lock_file_name="/var/lock/.${script_name}.${lock_file_format}"
 if [ ! -d "${lock_file_name}" ]; then
 	mkdir "$lock_file_name"
 
-	debug=false
 	file_counter=0
 
 	dir_list=$(ls -d ${audio_file_path_rendered}/*/ 2>/dev/null)
