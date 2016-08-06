@@ -19,7 +19,7 @@ module.exports = function(app) {
 
 			var instantApprove = req.body && req.body.instantApprove && req.body.instantApprove == "true" || false;
 			var folderPath     = instantApprove ? config.audio_file_path_import_instant : config.audio_file_path_import;
-			var newFilepath    = folderPath + '/' + req.file.originalname;
+			var newFilepath    = folderPath + '/' + req.file.originalname.replace(/[\s]/g, '_');
 
 			console.log('Import path: ', newFilepath);
 
