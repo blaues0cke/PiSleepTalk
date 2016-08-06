@@ -180,7 +180,7 @@ if [ ! -d "${lock_file_name}" ]; then
 				# Todo: Make "white" dynamic
 				convert "${title_frame_path}" -gravity North -pointsize 100 -fill white -annotate "+0+460" "${movie_title}" "${title_frame_path}" >>"${error_log_path}" 2>&1
 
-				echo "... creating image: ${title_frame_name}"
+				echo "... creating image: ${title_frame_path}"
 
 				title_frame_count=$(($frames_per_second * $title_time_in_seconds))
 
