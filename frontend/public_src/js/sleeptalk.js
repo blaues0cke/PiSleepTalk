@@ -285,26 +285,32 @@ var initShotcuts = function () {
 		    			wavesurfer.seekTo(seekTo);
 
 		    			break;
+		    			
+		    		// b
 		    		case 66:
 		    			banNoise();
 
 		    			break;
 
+		    		// c
 		    		case 67:
 		    			cropToMarker();
 
 		    			break;
 
+		    		// j
 		    		case 74:
 		    			jumpToMarker();
 
 		    			break;
 
+		    		// m
 		    		case 77:
 		    			setMarker();
 
 		    			break;
 
+		    		// p
 		    		case 80:
 		    			playFromMarker();
 

@@ -111,15 +111,15 @@ block content
 			// Thanks to
 			// * http://stackoverflow.com/questions/10953326/what-is-a-concise-way-to-create-inline-elements-in-jade
 			// * http://stackoverflow.com/questions/20727360/do-i-have-to-use-nbsp-for-space-in-jade
-			+button('wave-step-backward',    'step-backward', __('actions.step_backward'),    'primary', '', __('actions.step_backward'), 'right')
+			+button('wave-step-backward',    'step-backward', __('actions.step_backward'),    'primary', '', __('actions.step_backward') + ' (' + __('shortcuts.keys.left') + ')', 'right')
 			+button('wave-play', 		     'play', 		  __('actions.play'),             'primary', '', __('actions.play') + ' (' + __('shortcuts.keys.space') + ')')
 			+button('wave-stop', 		     'stop', 		  __('actions.stop'),             'primary', '', __('actions.stop') + ' (' + __('shortcuts.keys.esc') + ')')
-			+button('wave-step-forward',     'step-forward',  __('actions.step_forward'),     'primary', '', __('actions.step_forward'))
+			+button('wave-step-forward',     'step-forward',  __('actions.step_forward'),     'primary', '', __('actions.step_forward') + ' (' + __('shortcuts.keys.right') + ')')
 			+button('wave-set-marker',       'thumb-tack',    __('actions.set_marker'),       'info', 	 '', __('actions.set_marker') + ' (' + __('shortcuts.keys.m') + ')')
 			+button('wave-play-from-marker', 'play',    	  __('actions.play_from_marker'), 'info',    '', __('actions.play_from_marker')+ ' (' + __('shortcuts.keys.p') + ')')
-			+button('wave-jump-to-marker',   'step-backward', __('actions.jump_to_marker'),   'info',    '', __('actions.jump_to_marker'))
+			+button('wave-jump-to-marker',   'step-backward', __('actions.jump_to_marker'),   'info',    '', __('actions.jump_to_marker') + ' (' + __('shortcuts.keys.j') + ')')
 			+button('wave-crop-to-marker',   'crop', 		  __('actions.crop_to_marker'),   'danger',  '', __('actions.crop_to_marker')+ ' (' + __('shortcuts.keys.c') + ')')
-			+button('wave-ban-noise',   	 'ban', 		  __('actions.ban-noise'),   	  'danger',  '', __('actions.ban_noise')+ ' (' + __('shortcuts.keys.b') + ')')
+			+button('wave-ban-noise',   	 'ban', 		  __('actions.ban-noise'),   	  'danger',  '', __('actions.ban_noise') + ' (' + __('shortcuts.keys.b') + ')')
 			+button('wave-decrease-volume',  'volume-down',   __('actions.decrease_volume'),  'warning', '', __('actions.decrease_volume'))
 			+button('wave-increase-volume',  'volume-up',     __('actions.increase_volume'),  'warning', '', __('actions.increase_volume'))
 		div.pull-right
