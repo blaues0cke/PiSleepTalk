@@ -15,14 +15,14 @@ unzip_zip_files_in_directory () {
 
 	echo "... unzipping all zip archives in ${dir_path}"
 
-	dir_list_zip=$(ls ${audio_file_path_import}/*.zip 2>/dev/null)
+	dir_list_zip=$(ls ${dir_path}/*.zip 2>/dev/null)
 	for zip_file_path in $dir_list_zip
 	do
 		echo "... found zip file, extracting ${zip_file_path}"
 
 		# Thanks to
 		# * http://stackoverflow.com/questions/4301786/unzip-zip-file-and-extract-unknown-folder-names-content
-		unzip -o -d "${audio_file_path_import}" "${zip_file_path}"
+		unzip -o -d "${dir_path}" "${zip_file_path}"
 
 		rm ${zip_file_path}
 	done
