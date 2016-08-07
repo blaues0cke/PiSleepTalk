@@ -87,8 +87,10 @@
 #
 # Will concat full movies
 #
-*   14 * * * root            sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/render-video.sh 
-
+*   *  * * * root sleep 05;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/render-video.sh
+*   *  * * * root sleep 20;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/render-video.sh
+*   *  * * * root sleep 35;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/render-video.sh
+*   *  * * * root sleep 50;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/render-video.sh
 #
 # Will create images for every frame every 5 minutes
 #
