@@ -19,7 +19,7 @@ module.exports = function(app) {
 		if (filepath) {
 			// Thanks to
 			// * http://stackoverflow.com/questions/8579055/how-i-move-files-on-node-js
-			fs.rename(filepath, audio_file_path_decrease_volume + '/' + req.params.name + '.' + config.default_audio_format);
+			fs.rename(filepath, config.audio_file_path_decrease_volume + '/' + req.params.name + '.' + config.default_audio_format);
 
 			res.status(200).send('OK');
 		}
