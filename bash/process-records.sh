@@ -34,7 +34,7 @@ if [ ! -d "${lock_file_name}" ]; then
 	file_counter_base=0
 	file_counter_concated=0
 	file_counter_deleted=0
-	file_counter_final=0 # todo
+	file_counter_final=0
 
 	last_audio_file_path="" # add "should be deleted flag"
 
@@ -92,8 +92,6 @@ if [ ! -d "${lock_file_name}" ]; then
 
 						else
 							invalid_recording=false
-
-							# todo move to function
 				 			concat_end_timestamp=$(echo $audio_file_name | sed "s/\(\.${default_audio_format}\)//")
 
 				 			echo "... saved end timestamp, it is: ${concat_end_timestamp}"
@@ -223,15 +221,11 @@ if [ ! -d "${lock_file_name}" ]; then
 					echo "... file too quiet, storing file name: ${audio_file_path}"
 
 				else
-
-					# todo add last (silent) file to queue 
-
 					if [ -n "${concat_file_queue}" ]; then
 						concat_file_queue="${concat_file_queue} "
 					fi
 
 					if [ -z "${concat_start_timestamp}" ]; then
-						# todo move to function
 			 			concat_start_timestamp=$(echo $audio_file_name | sed "s/\(\.${default_audio_format}\)//")
 
 			 			echo "... saved start timestamp, it is: ${audio_timestamp}"
@@ -242,8 +236,6 @@ if [ ! -d "${lock_file_name}" ]; then
 					file_counter_concated=$((file_counter_concated + 1))
 
 					echo "... adding file to queue: ${audio_file_path}"
-					# todo: output when flag is set
-					# echo "... queue now: $concat_file_queue"
 					echo "... queue size now: ${concat_file_queue_count}"
 				fi
 		 	fi

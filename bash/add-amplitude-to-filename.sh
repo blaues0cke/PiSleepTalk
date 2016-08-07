@@ -29,9 +29,7 @@ if [ ! -d "${lock_file_name}" ]; then
 		 	echo "... processing file: $audio_file_path"
 
 		 	audio_file_name=$(basename $audio_file_path)
-
-		 	# todo move to function
-		 	audio_timestamp=$(echo $audio_file_name | sed "s/\(\.${default_audio_format}\)//")
+			audio_timestamp=$(echo $audio_file_name | sed "s/\(\.${default_audio_format}\)//")
 
 		 	sox_stat=$(sox $audio_file_path -n stat 2>&1)
 		 	maximum_amplitude=$(echo "${sox_stat}" | sed -n 's#^Maximum amplitude:[^0-9]*\([0-9.]*\)$#\1#p')

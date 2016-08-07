@@ -37,8 +37,6 @@ if [ ! -d "${lock_file_name}" ]; then
 			echo "... audio length: ${length_in_seconds} (${length_in_seconds_rounded}, frames: ${total_frames})"
 
 			audio_file_name=$(basename $audio_file_path)
-
-		 	# todo move to function
 			filename=$(echo $audio_file_name | sed "s/\(\.${default_audio_format}\)//")
 			sleeptalk_file_path="${audio_file_path_to_render}/${filename}.${default_sleeptalk_format}"
 			lock_image_file_path="${audio_file_path_to_render}/${filename}.${default_image_lock_file_format}"
@@ -57,7 +55,6 @@ if [ ! -d "${lock_file_name}" ]; then
 
 					# Thanks to
 					# * http://www.imagemagick.org/discourse-server/viewtopic.php?t=13527
-					# Todo: Make "xc:black" dynamic
 					convert -size 1920x1080 xc:black $last_image_path
 
 					echo "... creating image: ${last_image_path}"
@@ -162,7 +159,6 @@ if [ ! -d "${lock_file_name}" ]; then
 							# * http://www.imagemagick.org/Usage/fonts/
 							# * http://stackoverflow.com/questions/23236898/add-text-on-image-at-specific-point-using-imagemagick
 							# * http://stackoverflow.com/questions/18062778/how-to-hide-command-output-in-bash
-							# Todo: Make "white" dynamic
 							convert "${last_image_path}" -gravity North -pointsize 100 -fill white -annotate "+0+${top_position}" "${spoken_text}" "${current_image_path}" >>"${error_log_path}" 2>&1
 
 							echo "... created image: ${current_image_path}"

@@ -40,7 +40,6 @@ if [ ! -d "${lock_file_name}" ]; then
 			echo "... length in seconds rounded: ${length_in_seconds_rounded}"
 			echo "... total frames: ${total_frames}"
 
-		 	# todo move to function
 			filename=$(echo $audio_file_name | sed "s/\(\.${default_audio_format}\)//")
 			sleeptalk_file_path="${audio_file_path_to_render}/${filename}.${default_image_lock_file_format}"
 
