@@ -5,7 +5,7 @@ See [our issue tracker](https://github.com/blaues0cke/PiSleepTalk/issues) to see
 
 Feel free to support me if you like this project.
 
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9KGY3FUTYZM6Qhttp://google.com.au/)
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=9KGY3FUTYZM6Q)
 
 ## Feature list
 
