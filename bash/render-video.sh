@@ -107,7 +107,6 @@ if [ ! -d "${lock_file_name}" ]; then
 		else
 			# Thanks to
 			# * http://www.imagemagick.org/discourse-server/viewtopic.php?t=13527
-			# Todo: Make "xc:black" dynamic
 			convert -size 1920x1080 xc:black $blank_frame_path
 
 			echo "... creating ${gap_frame_count} frame images"
@@ -171,14 +170,12 @@ if [ ! -d "${lock_file_name}" ]; then
 			else
 				# Thanks to
 				# * http://www.imagemagick.org/discourse-server/viewtopic.php?t=13527
-				# Todo: Make "xc:black" dynamic
 				convert -size 1920x1080 xc:black $title_frame_path
 
 				# Thanks to
 				# * http://www.imagemagick.org/Usage/fonts/
 				# * http://stackoverflow.com/questions/23236898/add-text-on-image-at-specific-point-using-imagemagick
 				# * http://stackoverflow.com/questions/18062778/how-to-hide-command-output-in-bash
-				# Todo: Make "white" dynamic
 				convert "${title_frame_path}" -gravity North -pointsize 100 -fill white -annotate "+0+460" "${movie_title}" "${title_frame_path}" >>"${error_log_path}" 2>&1
 
 				echo "... creating image: ${title_frame_path}"
@@ -247,16 +244,13 @@ if [ ! -d "${lock_file_name}" ]; then
 			else
 				# Thanks to
 				# * http://www.imagemagick.org/discourse-server/viewtopic.php?t=13527
-				# Todo: Make "xc:black" dynamic
 				convert -size 1920x1080 xc:black $credits_frame_path
 
 				# Thanks to
 				# * http://www.imagemagick.org/Usage/fonts/
 				# * http://stackoverflow.com/questions/23236898/add-text-on-image-at-specific-point-using-imagemagick
 				# * http://stackoverflow.com/questions/18062778/how-to-hide-command-output-in-bash
-				# Todo: Make "white" dynamic
-				convert "${credits_frame_path}" -gravity North -pointsize 80 -fill white -annotate "+0+300" "Made with" -annotate "+0+520" "PiSleepTalk" -annotate "+0+600" "https://github.com/blaues0cke/PiSleepTalk" "${credits_frame_path}" 
-				#>>"${error_log_path}" 2>&1
+				convert "${credits_frame_path}" -gravity North -pointsize 80 -fill white -annotate "+0+300" "Made with" -annotate "+0+520" "PiSleepTalk" -annotate "+0+600" "https://github.com/blaues0cke/PiSleepTalk" "${credits_frame_path}" >>"${error_log_path}" 2>&1
 
 				echo "... creating image: ${credits_frame_path}"
 
