@@ -12,6 +12,7 @@
 . /usr/sleeptalk/config/config.cfg
 
 . /usr/sleeptalk/bash/tool/create-record-to-render.sh
+. /usr/sleeptalk/bash/tool/is-first-floating-number-bigger.sh
 . /usr/sleeptalk/bash/tool/length-of-audio-file-in-ms.sh
 
 echo "Processing records"
@@ -63,21 +64,11 @@ if [ ! -d "${lock_file_name}" ]; then
 				echo "... maximum amplitude: ${max_amplitude}"
 				echo "... mid amplitude: ${mid_amplitude}"
 
-				max_amplitude_compare=$(awk 'BEGIN { print ($max_amplitude >= $max_amplitude_threshold) ? "YES" : "NO" }')
-				mid_amplitude_compare=$(awk 'BEGIN { print ($mid_amplitude >= $mid_amplitude_threshold) ? "YES" : "NO" }')
+				is_first_floating_number_bigger $max_amplitude $max_amplitude_threshold
+				max_amplitude_compare="${__FUNCTION_RETURN}"
 
-				# Thanks to
-				# * http://stackoverflow.com/questions/8654051/how-to-compare-two-floating-point-numbers-in-a-bash-script
-				# * http://stackoverflow.com/questions/24896433/assigning-the-result-of-test-to-a-variable
-				# 
-				# Todo: Function?
-				[ ${max_amplitude%.*} -eq ${max_amplitude_threshold%.*} ] && [ ${max_amplitude#*.} \> ${max_amplitude_threshold#*.} ] || [ ${max_amplitude%.*} -gt ${max_amplitude_threshold%.*} ];
-				max_amplitude_compare=$?
-				if [ "$max_amplitude_compare" -eq 0 ]; then max_amplitude_compare=1; else max_amplitude_compare=0; fi
-
-				[ ${mid_amplitude%.*} -eq ${mid_amplitude_threshold%.*} ] && [ ${mid_amplitude#*.} \> ${mid_amplitude_threshold#*.} ] || [ ${mid_amplitude%.*} -gt ${mid_amplitude_threshold%.*} ];
-				mid_amplitude_compare=$?
-				if [ "${mid_amplitude_compare}" -eq 0 ]; then mid_amplitude_compare=1; else mid_amplitude_compare=0; fi
+				is_first_floating_number_bigger $mid_amplitude $mid_amplitude_threshold
+				mid_amplitude_compare="${__FUNCTION_RETURN}"
 
 				echo "... maximum amplitude compare: ${max_amplitude_compare} (${max_amplitude} >= ${max_amplitude_threshold})"
 				echo "... mid amplitude compare: ${mid_amplitude_compare} (${mid_amplitude} >= ${mid_amplitude_threshold})"
