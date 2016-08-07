@@ -33,10 +33,9 @@ if [ ! -d "${lock_file_name}" ]; then
 		 	# todo move to function
 		 	audio_timestamp=$(echo $audio_file_name | sed "s/\(\.${default_audio_format}\)//")
 
-		 	# todo: combine those two sox calls to one since both required amplitudes are retured with each call
-
-		 	maximum_amplitude=$(sox $audio_file_path -n stat 2>&1 | sed -n 's#^Maximum amplitude:[^0-9]*\([0-9.]*\)$#\1#p')
-		    midline_amplitude=$(sox $audio_file_path -n stat 2>&1 | sed -n 's#^Midline amplitude:[^0-9]*\([0-9.]*\)$#\1#p')
+		 	sox_stat=$(sox $audio_file_path -n stat 2>&1)
+		 	maximum_amplitude=$(echo "${sox_stat}" | sed -n 's#^Maximum amplitude:[^0-9]*\([0-9.]*\)$#\1#p')
+		    midline_amplitude=$(echo "${sox_stat}" | sed -n 's#^Midline amplitude:[^0-9]*\([0-9.]*\)$#\1#p')
 
 		 	echo "... maximum amplitude: $maximum_amplitude"
 		 	echo "... midline amplitude: $midline_amplitude"
