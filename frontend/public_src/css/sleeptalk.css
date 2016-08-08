@@ -132,6 +132,10 @@
 {
 	width: 100%;
 }
+.table td.frame
+{
+	white-space: nowrap;
+}
 .table td.frame div input
 {
 	width: 68%;
