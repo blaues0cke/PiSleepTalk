@@ -16,8 +16,9 @@ var   config = require('../core/config.js')
 module.exports = function(app) {
 	app.get('/videos', function (req, res) {
 		var pageData = {
-			context:   'videos',
-			titleTime: config.title_time_in_seconds
+			context:   	   'videos',
+			sceneDuration: 0,
+			titleTime:     config.title_time_in_seconds
 		};
 
 		pageData.videos = [];
@@ -55,13 +56,16 @@ module.exports = function(app) {
 				var pathExploded    = path.replace(config.audio_file_path_final + '/', '').split('-');
 				var stats 		    = fs.statSync(files[key])
 				var fileSizeInBytes = stats['size']
+				var length  		= parseInt(pathExploded[0], 10)
 
 				var fileInfo = {
 					path:   path.replace(config.audio_file_path_final + '/', ''),
 					size:   (fileSizeInBytes / 1014).toFixed(2),
 					type:   'part',
-					length: pathExploded[0]
+					length: length
 				}
+
+				pageData.sceneDuration += length;
 
 				pageData.videos.push(fileInfo);
 			}

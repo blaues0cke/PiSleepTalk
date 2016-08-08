@@ -237,7 +237,7 @@
         "type":                  "Typ"
     },
     "videos": {
-        "description":           "Hier siehst du alle gerenderten Videos, die das System aufgenommen und für dich generiert hat.",
+        "description":           "Hier siehst du alle gerenderten Videos, die das System aufgenommen und für dich generiert hat. Die Länge aller verfügbaren Szenen in Sekunden ist aktuell: %s.",
         "empty_text":            "Derzeit liegen keine generierten Videos vor.",
         "movie_title":           "Video-Titel",
         "movie_title_tip":       "Der Titel erscheint %s Sekunden am Start.",

@@ -236,7 +236,7 @@
         "type":                  "Type"
     },
     "videos": {
-        "description":           "Here you can see all rendered videos the system recorded and generated for you.",
+        "description":           "Here you can see all rendered videos the system recorded and generated for you. The length of all scenes available in seconds is: %s.",
         "empty_text": 			 "No rendered videos are available at the moment.",
         "movie_title":           "Video title",
         "movie_title_tip":       "The movie title will appear for %s seconds on the start.",
