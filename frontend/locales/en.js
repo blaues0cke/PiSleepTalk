@@ -27,6 +27,7 @@
 		"move_up": 				 "Move up",
 		"pause":                 "Pause",
         "play":                  "Play",
+        "play_from_here":        "Play from here",
         "play_from_marker":      "Play from marker",
 		"play_video": 			 "Play video in browser",
 		"reload_page": 			 "Reload page",
@@ -149,6 +150,10 @@
     		"description":       "Are you sure to delete the whole video? You can't undo this.",
     		"title":             "Remove video"
     	},
+        "set_frame": {
+            "description":       "Please set a frame first before you try to play from it.",
+            "whoops":            "Whoops, sorry!"
+        },
     	"set_marker": {
     		"description":       "Please set a marker first before you try to jump to it.",
             "description_2":     "Please set a marker first before you try to jump to it.",

@@ -657,6 +657,26 @@ var initTextManager = function () {
 	$('#text-wrapper').css('maxHeight', windowHeight - 572 - spectrumHeight);
 
 	$('#text-manager')
+		.on('click', '.play', function() {
+			var button     = $(this);
+			var tr         = button.parents('tr');
+			var input      = tr.find('.frame input');
+			var frames     = input.val();
+
+			console.log('Frames: ', frames);
+
+			if (frames.length > 0) {
+				var percent = frames / (audioDuration* 15);
+
+				console.log('Percent: ', percent);
+
+				wavesurfer.seekTo(percent);
+				wavesurfer.play();
+			}
+			else {
+				$('#set-frame-first-error').modal('show');
+			}
+		})
 		.on('click', '.arrow-up', function() {
 			var button     = $(this);
 			var tr         = button.parents('tr');

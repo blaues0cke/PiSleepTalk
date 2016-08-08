@@ -27,6 +27,7 @@
 		"move_up": 				 "Nach oben schieben",
         "pause":                 "Pause",
 		"play":                  "Abspielen",
+        "play_from_here":        "Von hier abspielen",
 		"play_from_marker":      "Von Markierung spielen",
 		"play_video": 			 "Video im Browser abspielen",
 		"reload_page": 			 "Seite neuladen",
@@ -150,6 +151,10 @@
     		"description":       "Bist du sicher, dass du dieses Video löschen möchtest? Diese Aktion kann nicht rückgängig gemacht werden.",
     		"title":             "Video löschen"
     	},
+        "set_frame": {
+            "description":       "Bitte setzte zuerst einen Frame bevor zu die Aufnahme von selbigem startend abspielen möchtest.",
+            "whoops":            "Ach herrje, das tut mir leid!"
+        },
     	"set_marker": {
     		"description":       "Bitte setzte zu erst eine Markierung, bevor du zur selbigen springst.",
             "description_2":     "Bitte setzte zu erst eine Markierung, bevor du zur selbigen springst.",

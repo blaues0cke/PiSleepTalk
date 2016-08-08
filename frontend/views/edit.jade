@@ -51,6 +51,13 @@ block content
 	)
 
 	+modal(
+		'set-frame-first-error',
+		__('modal.an_error_occurred'),
+		__('modal.set_frame.description'),
+		__('modal.set_frame.whoops')
+	)
+
+	+modal(
 		'decrease-volume-modal',
 		__('modal.decrease_volume.title'),
 		__('modal.decrease_volume.description'),
@@ -144,9 +151,10 @@ block content
 								input(type='text').form-control.text
 
 						td
-							+button('', 'arrow-up',   '',  'info',   'arrow-up',   __('actions.move_up'))
-							+button('', 'arrow-down', '',  'info',   'arrow-down', __('actions.move_down')) 
-							+button('', 'trash',      '',  'danger', 'delete',     __('actions.delete_text')) 
+							+button('', 'play',       '',  'success', 'play',       __('actions.play_from_here'))
+							+button('', 'arrow-up',   '',  'info',    'arrow-up',   __('actions.move_up'))
+							+button('', 'arrow-down', '',  'info',    'arrow-down', __('actions.move_down')) 
+							+button('', 'trash',      '',  'danger',  'delete',     __('actions.delete_text')) 
 
 		nav.navbar.navbar-light.bg-faded
 			div.pull-left
