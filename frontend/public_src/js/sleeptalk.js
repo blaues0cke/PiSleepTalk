@@ -366,6 +366,8 @@ var initWavesurfer = function () {
 			wavesurfer.on('seek', function (position) {
 				audioProcess = audioDuration * position;
 				frameProcess = Math.round(audioProcess * 15);
+
+				$(':focus').blur();
 			});
 
 			wavesurfer.on('play', function () {
