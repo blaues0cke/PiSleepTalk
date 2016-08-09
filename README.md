@@ -16,7 +16,13 @@ Feel free to support me if you like this project.
 * Possibility to import audio recorded from third party devices
 * Noise filtering
 * Multiple recording triggers like a hardware switch, the time, last.fm or Philips Hue
-* Automated YouTube upload
+* Audio manipulation (cropping, volume)
+
+## Videos
+
+Here is a list of videos people generated using PiSleepTalk. Feel free to [create an issue](https://github.com/blaues0cke/PiSleepTalk/issues/new) if you want me to list your video, too.
+
+* [https://www.youtube.com/watch?v=Wb7DuYjSnuY](https://www.youtube.com/watch?v=Wb7DuYjSnuY)
 
 ## Installation
 
