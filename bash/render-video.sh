@@ -231,6 +231,8 @@ if [ ! -d "${lock_file_name}" ]; then
 		if [ "${render_credits}" = true ]; then
 			echo "... rendering credits is enabled"
 
+			echo "file '${credits_movie_path}'" >> $video_list_path
+
 			credits_frame_path="${movie_directory_path}/credits.${default_image_format}"
 
 			# Thanks to
@@ -313,7 +315,7 @@ if [ ! -d "${lock_file_name}" ]; then
 
 		echo "... filter string: ${filter_string}"
 		echo "... video string: ${video_string}"
- 
+
 		# Thanks to
 		# * http://stackoverflow.com/questions/35612600/concat-multiple-self-generated-videos-using-ffmpeg-on-raspbian-linux/35619414#35619414
 		# * https://www.ffmpeg.org/ffmpeg-formats.html#Options
