@@ -54,8 +54,7 @@ module.exports = function(app) {
 
 		console.log('File to process is: ', fileToProcess);
 
-		if (fileToProcess !== null)
-		{
+		if (fileToProcess !== null) {
 			var stats 		    = fs.statSync(fileToProcessFull);
 			var fileSizeInBytes = stats['size'];
 
@@ -73,8 +72,7 @@ module.exports = function(app) {
 				}
 			});
 		}
-		else
-		{
+		else {
 			res.render('nothing-to-do');
 		}
 	});

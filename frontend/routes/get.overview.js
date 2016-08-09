@@ -51,8 +51,7 @@ module.exports = function(app) {
 					
 						pageData.filters.push(fileInfo);
 
-						if (pageData.filters.length > config.overview_file_limit)
-						{
+						if (pageData.filters.length > config.overview_file_limit) {
 							break;
 						}
 					}
