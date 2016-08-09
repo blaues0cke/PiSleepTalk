@@ -23,7 +23,8 @@ module.exports = function(app) {
 		// Thanks to
 		// * http://stackoverflow.com/questions/11282880/nodejs-module-to-find-files
 		// * https://github.com/isaacs/node-glob
-		var files = glob.sync(config.audio_file_path_to_render + '/*.' + config.default_audio_format);
+		var files 	    = glob.sync(config.audio_file_path_to_render + '/*.' + config.default_audio_format);
+		var fileCounter = 0;
 			
 		if (files && files.length > 0) {
 			for (var key in files) {
@@ -38,14 +39,14 @@ module.exports = function(app) {
 				// Thanks to
 				// * http://stackoverflow.com/questions/4482686/check-synchronously-if-file-directory-exists-in-node-js
 				if (!fs.existsSync(textFilePath)) {
-					fileToProcess     = filename;
-					fileToProcessFull = filepath;
+					++fileCounter;
 
-					console.log('Found file to process:', filename);
-				}
+					if (!fileToProcess) {
+						fileToProcess     = filename;
+						fileToProcessFull = filepath;
 
-				if (fileToProcess) {
-					break;
+						console.log('Found file to process:', filename);
+					}
 				}
 
 			}
