@@ -34,7 +34,7 @@ app.use(function(req, res, next) {
 // * http://stackoverflow.com/questions/4718818/express-js-view-globals
 app.locals.default_audio_format = config.default_audio_format;
 app.locals.default_video_format = config.default_video_format;
-app.locals.spectrum_enabled     = config.spectrum_enabled;
+app.locals.spectrum_enabled     = config.spectrum_enabled == 'true';
 
 app.set('view engine', 'jade');
 // Thanks to
