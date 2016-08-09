@@ -18,7 +18,8 @@ var lastInfoText	   = null;
 var loaded             = false;
 var noiseFilterUrl     = null;
 var markerRegion       = null;
-var videoUrl 	       = null;
+var skipFocusRemove    = false;
+var videoUrl           = null;
 var wavesurfer         = Object.create(WaveSurfer);
 
 $(document).ready(function() {
@@ -367,7 +368,12 @@ var initWavesurfer = function () {
 				audioProcess = audioDuration * position;
 				frameProcess = Math.round(audioProcess * 15);
 
-				$(':focus').blur();
+				if (!skipFocusRemove) {
+					$(':focus').blur();
+				}
+				else {
+					skipFocusRemove = false;
+				}
 			});
 
 			wavesurfer.on('play', function () {
@@ -749,7 +755,10 @@ var initTextManager = function () {
 	};
 
 	$('#text-add').click(createNewText);
-	$('#wave').dblclick(createNewText);
+	$('#wave').dblclick(function() {
+		skipFocusRemove = true;
+		createNewText();
+	});
 
 	$('#text-clear').click(function() {
 		$('#clear-texts').modal('show');
