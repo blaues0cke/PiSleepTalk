@@ -219,22 +219,35 @@ This work is licensed under the Creative Commons Attribution-NonCommercial-Share
 
 ## Screenshots
 
-* The main interface, here you can subtitle your recordings.
-    ![screen shot 2016-02-07 at 17 33 12](https://cloud.githubusercontent.com/assets/5159398/12873577/32677f48-cdc1-11e5-9085-91e160d72701.png)
-* I added some texts in this screenshot.
-    ![screen shot 2016-02-07 at 17 33 42](https://cloud.githubusercontent.com/assets/5159398/12873576/32659296-cdc1-11e5-874f-2009faecaa25.png)
-* PiSleepTalk also supports common keyboard shortcuts.
-    ![screen shot 2016-02-07 at 17 34 01](https://cloud.githubusercontent.com/assets/5159398/12873573/32523638-cdc1-11e5-86e5-317f04fb732f.png)
-* You can see all the videos that was generated for you in a nice overview.
-    ![screen shot 2016-02-07 at 17 34 09](https://cloud.githubusercontent.com/assets/5159398/12873575/3255f11a-cdc1-11e5-8ab2-f7b27504159b.png)
-* Even with a live-preview feature
-    ![screen shot 2016-02-07 at 17 34 12](https://cloud.githubusercontent.com/assets/5159398/12873571/3250fe94-cdc1-11e5-8241-89b6f0b58bab.png)
-* You can import files recorded by any third party device
-    ![screen shot 2016-02-07 at 17 34 55](https://cloud.githubusercontent.com/assets/5159398/12873574/32548e9c-cdc1-11e5-94f8-537474f29b5e.png)
-* You can concatinate all recordings to a full movie
-    ![screen shot 2016-02-07 at 17 34 32](https://cloud.githubusercontent.com/assets/5159398/12873572/3251219e-cdc1-11e5-9981-f1ef058130de.png)
-* Also there is a status page to get an idea of whats going on behind the scenes.
-    ![screen shot 2016-02-07 at 17 34 44](https://cloud.githubusercontent.com/assets/5159398/12873570/325000fc-cdc1-11e5-83af-86aa93ce0a7a.png)
+* On the main page, you can add texts to the recording.
+	![Screenshot](https://cloud.githubusercontent.com/assets/5159398/17532879/d03b934c-5e82-11e6-9d8a-06b10c59ca9a.png)
+	![Screenshot](https://cloud.githubusercontent.com/assets/5159398/17532880/d03d777a-5e82-11e6-8940-14f9cff74439.png)
+
+* Or crop unwanted parts of the recording.
+	![Screenshot](https://cloud.githubusercontent.com/assets/5159398/17532881/d03dcfc2-5e82-11e6-8c08-93f0be70ea60.png)
+	![Screenshot](https://cloud.githubusercontent.com/assets/5159398/17532878/d03b4aea-5e82-11e6-8444-68f79ecb8ac4.png)
+
+* You can use a lot of shortcuts to process your data as fast as possible.
+	![Screenshot](https://cloud.githubusercontent.com/assets/5159398/17532875/d0155a56-5e82-11e6-98d5-626ff7cffa81.png)
+
+* The overview page gives you an overview about all audio files that require interaction by the user.
+	![Screenshot](https://cloud.githubusercontent.com/assets/5159398/17532876/d0330394-5e82-11e6-939f-9535a314e9be.png)
+
+* The video overview shows you all generated scenes and movies.
+	![Screenshot](https://cloud.githubusercontent.com/assets/5159398/17532882/d04ff832-5e82-11e6-8f25-4d70dfe2c8bc.png)
+
+* You can watch generated videos directly in your browser.
+	![Screenshot](https://cloud.githubusercontent.com/assets/5159398/17532887/d0617e86-5e82-11e6-81e8-89d973cadbe5.png)
+
+* You can concat scenes to a full movie with intro and outro.
+	![Screenshot](https://cloud.githubusercontent.com/assets/5159398/17532877/d038eaf2-5e82-11e6-8c3b-8dc3b3bdb10b.png)
+
+* The status page, here you can get an overview what is going on behind the scenes.
+	![Screenshot](https://cloud.githubusercontent.com/assets/5159398/17532883/d05550f2-5e82-11e6-810b-c59947ded3bb.png)
+
+* The input screen, here you can add audio files you recorded with external devices.
+    ![Screenshot](https://cloud.githubusercontent.com/assets/5159398/17532886/d05ceefc-5e82-11e6-80e8-a2fd5b3757e1.png)
+    ![Screenshot](https://cloud.githubusercontent.com/assets/5159398/17532885/d05a31ee-5e82-11e6-94ef-76ed1fe7b69c.png)
 
 ## Pictures
 
@@ -243,5 +256,5 @@ Here you can see my own installation:
 * The controlling case (I just recycled a old case I found)
     ![img_2242](https://cloud.githubusercontent.com/assets/5159398/15686541/246fe682-2771-11e6-8065-0386e9322523.JPG)
 * The [USB microphone](http://www.amazon.de/gp/product/B00N1YMO9W) mounted over my bed.
-    ![img_2240](https://cloud.githubusercontent.com/assets/5159398/15686542/24703326-2771-11e6-87ab-35368f7dd68b.JPG)
+    ![img_2240](https://cloud.githubusercontent.com/assets/5159398/17533399/c64b259e-5e84-11e6-960e-b33ca73324c7.JPG)
 
