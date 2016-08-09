@@ -27,33 +27,41 @@ module.exports = function(app) {
 		if (files && files.length > 0) {
 			for (var key in files) {
 
-				var path = files[key];
-				
-				try {
-					var stats 		    = fs.statSync(path);
-					var fileSizeInBytes = stats['size'];
-					var audioPath       = path.replace(config.audio_file_path_to_render + '/', '');
-					var imagePath       = audioPath.replace(config.default_audio_format, config.default_image_format);
+				var filepath = files[key];
 
-					var fileInfo = {
-						audioPath:   audioPath,
-						imagePath:   imagePath,
-						size:        (fileSizeInBytes / 1014).toFixed(2)
-					}
-				
-					pageData.filters.push(fileInfo);
+				// Thanks to
+				// * http://stackoverflow.com/questions/4250364/how-to-trim-a-file-extension-from-a-string-in-javascript
+				var filename     = path.basename(filepath, path.extname(filepath));
+				var textFilePath = config.audio_file_path_to_render + '/' + filename + '.' + config.default_sleeptalk_format;
 
-					if (pageData.filters.length > config.overview_file_limit)
-					{
-						break;
+				// Thanks to
+				// * http://stackoverflow.com/questions/4482686/check-synchronously-if-file-directory-exists-in-node-js
+				if (!fs.existsSync(textFilePath)) {
+					try {
+						var stats 		    = fs.statSync(filepath);
+						var fileSizeInBytes = stats['size'];
+						var audioPath       = filepath.replace(config.audio_file_path_to_render + '/', '');
+						var imagePath       = audioPath.replace(config.default_audio_format, config.default_image_format);
+
+						var fileInfo = {
+							audioPath:   audioPath,
+							imagePath:   imagePath,
+							size:        (fileSizeInBytes / 1014).toFixed(2)
+						}
+					
+						pageData.filters.push(fileInfo);
+
+						if (pageData.filters.length > config.overview_file_limit)
+						{
+							break;
+						}
 					}
-				}
-				catch (e) {
-					console.error('error', e);
+					catch (e) {
+						console.error('error', e);
+					}
 				}
 			}
 		}
-
 
 		console.log('page data', pageData);
 
