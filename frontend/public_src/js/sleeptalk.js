@@ -457,8 +457,7 @@ var initWavesurfer = function () {
 		var textInput = $(this);
 		var tr        = textInput.parents('tr');
 		var frame     = tr.find('input.frame');
-		console.log('gdsg', frame, tr, textInput, frameProcess);
-
+		
 		if (frame.val().length == 0) {
 			frame.val(pad(frameProcess, 4));
 		}
@@ -806,7 +805,7 @@ var initTextManager = function () {
 			var input = $(this);
 			input.val(pad(Math.abs(parseInt(input.val())), 4));
 		})
-		.on('blur keydown keyup keypress', 'input.text', function() {
+		.on('blur change', 'input.text', function() {
 			var input = $(this);
 			input.val(input.val().replace(/\|/g, ''));
 		})
