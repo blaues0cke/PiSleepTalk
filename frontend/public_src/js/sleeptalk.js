@@ -369,11 +369,28 @@ var initWavesurfer = function () {
 			wavesurfer.on('audioprocess', function (process) {
 				audioProcess = process;
 				frameProcess = Math.round(audioProcess * 15);
+
+				if (previewModeEnabled)
+				{
+					$('#text-manager tbody tr').each(function () {
+						var tr    = $(this);
+						var frame = parseInt(tr.find('input.frame').val(), 10);
+						var text  = tr.find('input.text').val();
+
+						if (frame && frame > 0 && text && text.length > 0 && frameProcess >= frame)
+						{
+							console.log('sgsdg',text);
+							$('#wave-preview-overlay').text(text);
+						}
+					});
+				}
 			});
 
 			wavesurfer.on('seek', function (position) {
 				audioProcess = audioDuration * position;
 				frameProcess = Math.round(audioProcess * 15);
+
+				$('#wave-preview-overlay').text('');
 
 				if (!skipFocusRemove) {
 					$(':focus').blur();
@@ -381,6 +398,10 @@ var initWavesurfer = function () {
 				else {
 					skipFocusRemove = false;
 				}
+			});
+
+			wavesurfer.on('stop', function () {
+				$('#wave-preview-overlay').text('');
 			});
 
 			wavesurfer.on('play', function () {
