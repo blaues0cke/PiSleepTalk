@@ -77,6 +77,10 @@ html
 					|  
 					span= __('shortcuts.keys.c_description')
 				li
+					kbd= __('shortcuts.keys.f')
+					|  
+					span= __('shortcuts.keys.f_description')
+				li
 					kbd= __('shortcuts.keys.p')
 					|  
 					span= __('shortcuts.keys.p_description')
@@ -126,6 +130,8 @@ html
 		script.
 			defaultAudioFormat='#{default_audio_format}';
 			defaultVideoFormat='#{default_video_format}';
+			disablePreviewButtonText='#{__('actions.disable_preview') + ' (' + __('shortcuts.keys.f') + ')'}';
+			enablePreviewButtonText='#{__('actions.enable_preview') + ' (' + __('shortcuts.keys.f') + ')'}';
 			pauseButtonText='#{__('actions.pause') + ' (' + __('shortcuts.keys.b') + ')'}';
 			pendingFilesText='#{__('status.pending_files')}';
 			playButtonText='#{__('actions.play') + ' (' + __('shortcuts.keys.b') + ')'}';

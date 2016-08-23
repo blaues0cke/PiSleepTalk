@@ -108,6 +108,7 @@ block content
 		div#wave-content
 		div#wave-loading
 			i.fa.fa-spinner.fa-spin
+		div#wave-preview-overlay
 
 	if spectrum_enabled
 		div#spectrum
@@ -118,6 +119,7 @@ block content
 			// Thanks to
 			// * http://stackoverflow.com/questions/10953326/what-is-a-concise-way-to-create-inline-elements-in-jade
 			// * http://stackoverflow.com/questions/20727360/do-i-have-to-use-nbsp-for-space-in-jade
+			+button('wave-preview',    'eye', __('actions.enable_preview'),    'success', '', __('actions.enable_preview') + ' (' + __('shortcuts.keys.f') + ')', 'right')
 			+button('wave-step-backward',    'step-backward', __('actions.step_backward'),    'primary', '', __('actions.step_backward') + ' (' + __('shortcuts.keys.left') + ')', 'right')
 			+button('wave-play', 		     'play', 		  __('actions.play'),             'primary', '', __('actions.play') + ' (' + __('shortcuts.keys.space') + ')')
 			+button('wave-stop', 		     'stop', 		  __('actions.stop'),             'primary', '', __('actions.stop') + ' (' + __('shortcuts.keys.esc') + ')')

@@ -18,6 +18,7 @@ var lastInfoText	   = null;
 var loaded             = false;
 var noiseFilterUrl     = null;
 var markerRegion       = null;
+var previewModeEnabled = false;
 var skipFocusRemove    = false;
 var videoUrl           = null;
 var wavesurfer         = Object.create(WaveSurfer);
@@ -299,6 +300,12 @@ var initShotcuts = function () {
 
 		    			break;
 
+		    		// f
+		    		case 70:
+		    			togglePreview();
+
+		    			break;
+
 		    		// j
 		    		case 74:
 		    			jumpToMarker();
@@ -423,7 +430,40 @@ var initWavesurfer = function () {
 	});
 };
 
+var togglePreview = function ()
+{
+	previewModeEnabled = !previewModeEnabled;
+
+	var buttonText = (previewModeEnabled ? disablePreviewButtonText : enablePreviewButtonText);
+	var buttonIcon = (previewModeEnabled ? 'eye-slash' : 'eye');
+
+	$('#wave-preview')
+		.attr('title', buttonText)
+		.attr('data-original-title', buttonText)
+		.find('.text')
+			.text(buttonText)
+		.end()
+		.find('.fa')
+			.removeClass('fa-eye fa-eye-slash')
+			.addClass('fa-' + buttonIcon)
+	;
+
+	if (previewModeEnabled)
+	{
+		$('#wave-preview-overlay').show();
+	} else {
+		$('#wave-preview-overlay').hide();
+	}
+}
+
 var initButtons = function() {
+	$('#wave-preview').click(function()
+	{
+		if (!loaded) return;
+
+		togglePreview();
+	});
+
 	$('#wave-step-backward').click(function() {
 		if (!loaded) return;
 
