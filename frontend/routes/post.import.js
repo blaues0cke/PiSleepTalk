@@ -19,7 +19,14 @@ module.exports = function(app) {
 
 			var instantApprove = req.body && req.body.instantApprove && req.body.instantApprove == "true" || false;
 			var folderPath     = instantApprove ? config.audio_file_path_import_instant : config.audio_file_path_import;
-			var newFilepath    = folderPath + '/' + req.file.originalname.replace(/[\s]/g, '_');
+			var filename       = req.file.originalname.toLowerCase();
+				filename       = filename.replace('ä', 'ae');
+				filename       = filename.replace('ö', 'oe');
+				filename       = filename.replace('ü', 'ue');
+				// Thanks to
+				// * http://stackoverflow.com/questions/20864893/javascript-replace-all-non-alpha-numeric-characters-new-lines-and-multiple-whi
+				filename       = filename.replace(/[\W_]/g, '_');
+			var newFilepath    = folderPath + '/' + filename;
 
 			console.log('Import path: ', newFilepath);
 
