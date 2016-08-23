@@ -449,6 +449,20 @@ var initWavesurfer = function () {
 		    }
 		});
 	});
+
+	$('#text-manager tbody tr').on('keydown change keypress keyup', 'input.text', function()
+	{
+		console.log('gdsg');
+
+		var textInput = $(this);
+		var tr        = textInput.parents('tr');
+		var frame     = tr.find('input.frame');
+		console.log('gdsg', frame, tr, textInput, frameProcess);
+
+		if (frame.val().length == 0) {
+			frame.val(pad(frameProcess, 4));
+		}
+	});
 };
 
 var togglePreview = function ()
