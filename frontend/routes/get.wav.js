@@ -18,7 +18,14 @@ module.exports = function(app) {
 		if (filepath) {
 			// Thanks to
 			// * http://stackoverflow.com/questions/9321027/how-to-send-files-with-node-js
-			res.sendFile(filepath);
+			res.sendFile(filepath, {}, function (error) {
+				if (error) {
+			     	console.log(error);
+			    }
+			    else {
+			    	console.log('Sent:', filepath);
+			    }
+	  		});
 		}
 	});
 }
