@@ -26,9 +26,9 @@ if [ "$start_allowed" = true ]; then
 		echo "... difference: ${difference}"
 
 		if [ "${difference}" -ge "${last_fm_timeout_in_seconds}" ]; then
-			echo "... last listened song is more that ${difference}s ago, start still allowed"
+			echo "... last listened song is more that ${last_fm_timeout_in_seconds}s ago, start still allowed"
 		else
-			echo "... last listened song is less that ${difference}s ago, start forbidden"
+			echo "... last listened song is less than ${last_fm_timeout_in_seconds}s ago, start forbidden"
 
 			start_allowed=false
 		fi
