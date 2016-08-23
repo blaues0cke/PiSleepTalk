@@ -25,7 +25,7 @@ module.exports = function(app) {
 				filename       = filename.replace('ü', 'ue');
 				// Thanks to
 				// * http://stackoverflow.com/questions/20864893/javascript-replace-all-non-alpha-numeric-characters-new-lines-and-multiple-whi
-				filename       = filename.replace(/[\W_]/g, '_');
+				filename       = filename.replace(/[^A-Za-z0-9_.]/g, '_');
 			var newFilepath    = folderPath + '/' + filename;
 
 			console.log('Import path: ', newFilepath);
