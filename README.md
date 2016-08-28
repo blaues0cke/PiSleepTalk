@@ -23,6 +23,7 @@ Feel free to support me if you like this project.
 Here is a list of videos people generated using PiSleepTalk. Feel free to [create an issue](https://github.com/blaues0cke/PiSleepTalk/issues/new) if you want me to list your video, too.
 
 * [https://www.youtube.com/watch?v=Wb7DuYjSnuY](https://www.youtube.com/watch?v=Wb7DuYjSnuY)
+* [https://www.youtube.com/watch?v=upWqKyGSYK8](https://www.youtube.com/watch?v=upWqKyGSYK8)
 
 ## Installation
 
@@ -107,8 +108,12 @@ I am using the following hardware, but I think the most Raspberry Pi models, WiF
 * [Raspberry Pi 2](http://www.amazon.de/gp/product/B00T2U7R7I)
 * [Power supply (2000mA)](http://www.amazon.de/gp/product/B00FA2V318)
 * [WiFi stick](http://www.amazon.de/gp/product/B003MTTJOY)
-* [USB microphone](http://www.amazon.de/gp/product/B00N1YMO9W)
+* USB microphone
+  * Cheap, low quality: [Kinobo - USB 2.0 Mikrofo](http://www.amazon.de/gp/product/B00N1YMO9W)
+  * Expensive, good quality: [Audio Technica AT2020USB+e](http://amzn.to/2brKA7y)
 * [MicroSD card (16GB)](http://www.amazon.de/gp/product/B007XZL7PC)
+
+Actulally, PiSleepTalk generates very nice recording if you use a microphone that is in the professional segment, I switched from a cheap microphone to a more professional one and dont regret it.
 
 ## Hardware switch and led
 
