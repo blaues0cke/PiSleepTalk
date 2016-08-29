@@ -11,6 +11,8 @@
 
 . /usr/sleeptalk/config/config.cfg
 
+. /usr/sleeptalk/bash/tool/send-push-message.sh
+
 echo "Sending pushover message"
 
 if [ "$push_over_enabled" = true ]; then
@@ -35,11 +37,7 @@ if [ "$push_over_enabled" = true ]; then
 
 		echo "... final push text: ${push_over_text}"
 
-		final_push_payload="token=${push_over_token}&user=${push_over_user}&message=${push_over_text}"
-
-		echo "... final push payload: ${final_push_payload}"
-
-		curl -s --data "${final_push_payload}" http://api.pushover.net/1/messages.json > /dev/null
+		send_push_message ${push_over_text}
 	else
 		echo "... no unprocessed files"
 	fi
