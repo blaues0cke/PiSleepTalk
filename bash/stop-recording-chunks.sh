@@ -11,4 +11,12 @@
 # Don't call this script directly, its managed by the "sleeptalkrec" service
 #
 
+. /usr/sleeptalk/config/config.cfg
+
+. /usr/sleeptalk/bash/tool/send-push-message.sh
+
+if [ "$push_over_start_stop_message_enabled" = true ]; then
+	send_push_message "Stopped recording"
+fi
+
 pkill arecord

@@ -13,4 +13,10 @@
 
 . /usr/sleeptalk/config/config.cfg
 
+. /usr/sleeptalk/bash/tool/send-push-message.sh
+
+if [ "$push_over_start_stop_message_enabled" = true ]; then
+	send_push_message "Started recording"
+fi
+
 arecord -D "${device_identifier}" --max-file-time=5 -f cd -vv /usr/sleeptalk/records-raw/record.wav
