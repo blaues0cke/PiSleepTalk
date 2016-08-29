@@ -62,7 +62,7 @@ if [ ! -d "${lock_file_name}" ]; then
 
 			 		# Thanks to
 			 		# * http://www.zoharbabin.com/how-to-do-noise-reduction-using-ffmpeg-and-sox/
-			 		sox $final_audio_path -n noiseprof $noise_file_path
+			 		sox $final_audio_path -n noiseprof $noise_file_path >>"${error_log_path}" 2>&1
 
 			 		if [ -f $noise_file_path ]; then
 			 			echo "... noise profile sucessfully appended"			 			

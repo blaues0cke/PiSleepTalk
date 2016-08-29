@@ -35,7 +35,7 @@ if [ ! -d "${lock_file_name}" ]; then
 		 	audio_file_name=$(basename $audio_file_path)
 		 	final_audio_path="${temp_file_path}/VD-${audio_file_name}"
 
-		 	sox -v 0.5 $audio_file_path $final_audio_path
+		 	sox -v 0.5 $audio_file_path $final_audio_path >>"${error_log_path}" 2>&1
 		 	rm $audio_file_path
 
 		 	create_record_to_render $final_audio_path
@@ -56,7 +56,7 @@ if [ ! -d "${lock_file_name}" ]; then
 		 	audio_file_name=$(basename $audio_file_path)
 		 	final_audio_path="${temp_file_path}/VI-${audio_file_name}"
 
-		 	sox -v 1.5 $audio_file_path $final_audio_path
+		 	sox -v 1.5 $audio_file_path $final_audio_path >>"${error_log_path}" 2>&1
 		 	rm $audio_file_path
 
 		 	create_record_to_render $final_audio_path
