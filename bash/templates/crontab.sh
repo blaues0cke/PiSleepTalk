@@ -91,6 +91,7 @@
 *   *  * * * root sleep 20;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/render-video.sh
 *   *  * * * root sleep 35;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/render-video.sh
 *   *  * * * root sleep 50;  sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/render-video.sh
+
 #
 # Will create images for every frame every 5 minutes
 #
@@ -100,6 +101,11 @@
 # Will render videos every 5 minutes
 #
 */5 *  * * * root sleep 300; sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/generate-video.sh
+
+#
+# Will remove unused images every 2 minutes
+#
+*/2 *  * * * root            sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/clean-images.sh
 
 #
 # Will clean the lock files every day at 16:02
