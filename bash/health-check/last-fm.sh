@@ -13,6 +13,12 @@
 
 echo "..> last-fm.sh"
 
+if [ "$1" = "test" ]; then
+	echo "... test mode enabled"
+
+	start_allowed=true
+fi
+
 if [ "$start_allowed" = true ]; then
 	if [ "$last_fm_enabled" = true ]; then
 		echo "... last.fm support enabled, checking last track date"

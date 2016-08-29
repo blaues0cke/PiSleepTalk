@@ -13,6 +13,12 @@
 
 echo "..> button.sh"
 
+if [ "$1" = "test" ]; then
+	echo "... test mode enabled"
+
+	start_allowed=true
+fi
+
 if [ "$start_allowed" = true ]; then
 	if [ "$button_enabled" = true ]; then
 		echo "... gpio button support enabled, checking button"

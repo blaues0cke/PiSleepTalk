@@ -13,6 +13,12 @@
 
 echo "..> force-button.sh"
 
+if [ "$1" = "test" ]; then
+	echo "... test mode enabled"
+
+	start_allowed=true
+fi
+
 if [ "$force_button_enabled" = true ]; then
 	echo "... gpio force button support enabled, checking button"
 

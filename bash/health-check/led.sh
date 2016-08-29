@@ -13,6 +13,12 @@
 
 echo "..> led.sh"
 
+if [ "$1" = "test" ]; then
+	echo "... test mode enabled"
+
+	start_allowed=true
+fi
+
 if [ "$led_enabled" = true ]; then
 	if [ "$led_switch_enabled" = true ]; then
 		echo "... led gpio button support enabled, checking button"

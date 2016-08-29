@@ -13,6 +13,12 @@
 
 echo "..> disk-space.sh"
 
+if [ "$1" = "test" ]; then
+	echo "... test mode enabled"
+
+	start_allowed=true
+fi
+
 if [ "$start_allowed" = true ]; then
 	usedSpaceInPercent=$(df -k | head -2 | tail -1 | awk '{print $5}' | sed "s/\(\%\)//")
 

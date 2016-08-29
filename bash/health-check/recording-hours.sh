@@ -13,6 +13,12 @@
 
 echo "..> recording-hours.sh"
 
+if [ "$1" = "test" ]; then
+	echo "... test mode enabled"
+
+	start_allowed=true
+fi
+
 if [ "$start_allowed" = true ]; then
 	if [ "$recording_hours_check_enabled" = true ]; then
 		# Thanks to

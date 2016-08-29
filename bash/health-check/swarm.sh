@@ -13,6 +13,12 @@
 
 echo "..> swarm.sh"
 
+if [ "$1" = "test" ]; then
+	echo "... test mode enabled"
+
+	start_allowed=true
+fi
+
 if [ "$start_allowed" = true ]; then
 	if [ "$swarm_enabled" = true ]; then
 		echo "... swarm support enabled, checking last check in"
