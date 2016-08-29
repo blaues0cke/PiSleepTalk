@@ -15,8 +15,13 @@
 
 . /usr/sleeptalk/bash/tool/send-push-message.sh
 
-if [ "$push_over_start_stop_message_enabled" = true ]; then
-	send_push_message "Stopped recording"
+running_processes=`ps aux | grep -v grep  | grep "arecord" | wc -l`
+echo "... running processes matching the request: ${running_processes}"
+
+if [ ${running_processes} -gt 0 ]; then
+	if [ "$push_over_start_stop_message_enabled" = true ]; then
+		send_push_message "Stopped recording"
+	fi
 fi
 
 pkill arecord
