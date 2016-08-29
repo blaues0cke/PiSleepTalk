@@ -11,4 +11,6 @@
 # Don't call this script directly, its managed by the "sleeptalkrec" service
 #
 
-arecord -D plughw:1 --max-file-time=5 -f cd -vv /usr/sleeptalk/records-raw/record.wav
+. /usr/sleeptalk/config/config.cfg
+
+arecord -D "${device_identifier}" --max-file-time=5 -f cd -vv /usr/sleeptalk/records-raw/record.wav
