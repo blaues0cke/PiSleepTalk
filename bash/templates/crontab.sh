@@ -18,18 +18,22 @@
 # No "run-singleton.sh" is used here since this would disable the "stop" feature since a instance
 # of "health-check.sh" is running until the recording stops.
 #
+# Uncomment more lines to get a faster response to buttons and the rules you set to
+# start a automated recording. Beware: You may run against some rate limits when you use the
+# swarm or last.fm api.
+#
 *   *  * * * root            sh /usr/sleeptalk/bash/health-check.sh
-*   *  * * * root sleep  5;  sh /usr/sleeptalk/bash/health-check.sh
-*   *  * * * root sleep 10;  sh /usr/sleeptalk/bash/health-check.sh
-*   *  * * * root sleep 15;  sh /usr/sleeptalk/bash/health-check.sh
-*   *  * * * root sleep 20;  sh /usr/sleeptalk/bash/health-check.sh
-*   *  * * * root sleep 25;  sh /usr/sleeptalk/bash/health-check.sh
+# *   *  * * * root sleep  5;  sh /usr/sleeptalk/bash/health-check.sh
+# *   *  * * * root sleep 10;  sh /usr/sleeptalk/bash/health-check.sh
+# *   *  * * * root sleep 15;  sh /usr/sleeptalk/bash/health-check.sh
+# *   *  * * * root sleep 20;  sh /usr/sleeptalk/bash/health-check.sh
+# *   *  * * * root sleep 25;  sh /usr/sleeptalk/bash/health-check.sh
 *   *  * * * root sleep 30;  sh /usr/sleeptalk/bash/health-check.sh
-*   *  * * * root sleep 35;  sh /usr/sleeptalk/bash/health-check.sh
-*   *  * * * root sleep 40;  sh /usr/sleeptalk/bash/health-check.sh
-*   *  * * * root sleep 45;  sh /usr/sleeptalk/bash/health-check.sh
-*   *  * * * root sleep 50;  sh /usr/sleeptalk/bash/health-check.sh
-*   *  * * * root sleep 55;  sh /usr/sleeptalk/bash/health-check.sh
+# *   *  * * * root sleep 35;  sh /usr/sleeptalk/bash/health-check.sh
+# *   *  * * * root sleep 40;  sh /usr/sleeptalk/bash/health-check.sh
+# *   *  * * * root sleep 45;  sh /usr/sleeptalk/bash/health-check.sh
+# *   *  * * * root sleep 50;  sh /usr/sleeptalk/bash/health-check.sh
+# *   *  * * * root sleep 55;  sh /usr/sleeptalk/bash/health-check.sh
 
 #
 # Will add the timestamp to the filename every 15 seconds
