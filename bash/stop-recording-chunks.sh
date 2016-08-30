@@ -22,6 +22,8 @@ if [ ${running_processes} -gt 0 ]; then
 	if [ "$push_over_start_stop_message_enabled" = true ]; then
 		send_push_message "Stopped recording"
 	fi
+
+	rm /usr/sleeptalk/temp/recording
 fi
 
 pkill arecord
