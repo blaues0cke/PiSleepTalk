@@ -105,7 +105,12 @@ html
 		div.container
 		nav.navbar.navbar-light.bg-faded#main-navbar
 			div
-				a.navbar-brand(href='https://github.com/blaues0cke/PiSleepTalk', target='_blank')= __('app.name') 
+				a.navbar-brand(href='https://github.com/blaues0cke/PiSleepTalk', target='_blank')= __('app.name')
+
+				if is_recording
+					i.microphone.fa.fa-microphone.text-success(aria-hidden='true', title=__('state.recording'))
+				else
+					i.microphone.fa.fa-microphone-slash.text-danger(aria-hidden='true', title=__('state.not_recording'))
 
 				ul.nav.navbar-nav
 					// Thanks to

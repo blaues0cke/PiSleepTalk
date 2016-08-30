@@ -219,6 +219,10 @@
     	"ok":            	 	 "OK",
     	"shortcuts":     	 	 "Shortcuts"
     },
+    "state": {
+        "not_recording":         "Not recording",
+        "recording":             "Recording"
+    },
     "status": {
     	"description": 		     "Review the status of your PiSleepTalk instance. Page generated: %s",
     	"disk_space": 			 "Disk space free %s of %s GB",

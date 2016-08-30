@@ -30,6 +30,25 @@ app.use(function(req, res, next) {
     next();
 });
 
+app.use(function(req, res, next) {
+
+    var is_recording = false;
+
+    try {
+        fs.accessSync('/usr/sleeptalk/temp/recording', fs.F_OK);
+        
+        is_recording = true;
+    } catch (e) {
+
+    }
+
+    app.locals.is_recording = is_recording;
+
+    console.log('Recording state', is_recording);
+
+    next();
+});
+
 // Thanks to
 // * http://stackoverflow.com/questions/4718818/express-js-view-globals
 app.locals.default_audio_format = config.default_audio_format;

@@ -220,6 +220,10 @@
     	"ok":            	 	 "OK",
     	"shortcuts":     	 	 "Tastenkürzel"
     },
+    "state": {
+        "not_recording":         "Nimmt nicht auf",
+        "recording":             "Nimmt auf"
+    },
     "status": {
     	"description": 		     "Prüfe den Status deiner PiSleepTalk-Instanz. Seite generiert: %s",
     	"disk_space": 			 "%s Speicherplatz von %s GB sind aktuell frei",
