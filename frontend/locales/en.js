@@ -36,6 +36,7 @@
 		"save":                  "Save",
 		"save_text": 			 "Save text",
 		"set_marker":            "Set marker",
+        "set_playback_rate":     "Set playback rate",
 		"sort":                  "Sort",
 		"sort_ascending":        "Sort ascending",
 		"step_backward":         "Step backward",
@@ -163,6 +164,12 @@
             "description_4":     "Please set a marker first before you mark it as noise.",
             "whoops":            "Whoops, sorry!"
     	},
+        "set_playback_rate": {
+            "description":       "Enter a new playback rate here. The number \"1.0\" is default, a smaller number is slower, a bigger number is faster.",
+            "set_playback_rate": "Set playback rate",
+            "tip":               "Standard: 1.0, slower: < 1.0, faster: > 1.0",
+            "title":             "Playback rate" 
+        },
         "upload_file": {
             "description":       "Upload a audio or zip file, that contains audio files, to the import folder.",
             "title":             "Upload file",

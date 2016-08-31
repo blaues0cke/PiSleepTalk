@@ -36,6 +36,7 @@
 		"save":                  "Speichern",
 		"save_text": 			 "Text speichern",
 		"set_marker":            "Markierung setzen",
+        "set_playback_rate":     "Abspielgeschwindigkeit ändern",
 		"sort":                  "Sortieren",
 		"sort_ascending":        "Aufsteigend sortieren",
 		"step_backward":         "Schritt zurück",
@@ -164,6 +165,12 @@
             "description_4":     "Bitte setzte zu erst eine Markierung, bevor du sie als Störgeräusch definierst.",
             "whoops":            "Hoppala, entschuldigung!"
     	},
+        "set_playback_rate": {
+            "description":       "Gib hier eine neue Abspielgeschwindigkeit ein. Die Zahl \"1.0\" entspricht der normalen Geschwindigkeit, eine kleinere Zahl ist langsamer, eine größere Zahl ist schneller.",
+            "set_playback_rate": "Abspielgeschwindigkeit setzen",
+            "tip":               "Standard: 1.0, langsamer: < 1.0, schneller: > 1.0",
+            "title":             "Abspielgeschwindigkeit" 
+        },
         "upload_file": {
             "description":       "Lade eine Audio- oder Zip-Datei, die Audio-Dateien enthält, zum Importieren hoch.",
             "title":             "Datei hochladen",

@@ -100,6 +100,20 @@ block content
 		__('modal.ok')
 	)
 
+	+modal(
+		'set-playback-rate-modal',
+		__('modal.set_playback_rate.title'),
+		'',
+		__('modal.cancel'),
+		__('modal.set_playback_rate.set_playback_rate'),
+		'set-playback-rate-confirm',
+		'success'
+	)
+		p= __('modal.set_playback_rate.description')
+		fieldset.form-group
+			input(type="text", name="playback-rate", placeholder="1.0").form-control#playback-rate
+			small.text-muted= __('modal.set_playback_rate.tip')
+
 	// Thanks to
 	// * http://stackoverflow.com/questions/5081534/put-jade-local-variable-in-tag-attribute
 	// * http://jade-lang.com/reference/comments/
@@ -131,6 +145,7 @@ block content
 			+button('wave-ban-noise',   	 'ban', 		  __('actions.ban-noise'),   	  'danger',  '', __('actions.ban_noise') + ' (' + __('shortcuts.keys.b') + ')')
 			+button('wave-decrease-volume',  'volume-down',   __('actions.decrease_volume'),  'warning', '', __('actions.decrease_volume'))
 			+button('wave-increase-volume',  'volume-up',     __('actions.increase_volume'),  'warning', '', __('actions.increase_volume'))
+			+button('wave-playback-rate',    'clock-o', __('actions.set_playback_rate'),    'success', '', __('actions.set_playback_rate'), 'right')
 		div.pull-right
 			+button('wave-save',  		 	 'floppy-o',      __('actions.save'),  			  'success', '', __('actions.save_text'))
 			+button('wave-delete',  		 'trash',         __('actions.delete'),  		  'danger',  '', __('actions.delete_recording'), 'left')

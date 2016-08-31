@@ -498,6 +498,23 @@ var initButtons = function() {
 		togglePreview();
 	});
 
+	$('#wave-playback-rate').click(function()
+	{
+		if (!loaded) return;
+
+		$('#set-playback-rate-modal').modal('show');
+	});
+
+	$('#set-playback-rate-confirm').click(function()
+	{
+		var playbackRate = $('#playback-rate').val();
+
+		if (Number(parseFloat(playbackRate)) == playbackRate)
+		{
+			wavesurfer.setPlaybackRate(playbackRate);
+		}
+	});
+
 	$('#wave-step-backward').click(function() {
 		if (!loaded) return;
 
