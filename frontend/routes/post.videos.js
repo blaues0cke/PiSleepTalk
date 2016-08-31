@@ -18,7 +18,14 @@ module.exports = function(app) {
 		console.log('Videos', req.body.videos);
 
 		var randomFolderName = (Math.random() * 1e32).toString(36);
-		var finalFolderPath = config.audio_file_path_rendered + '/' + randomFolderName;
+		var finalFolderName  = req.body.movieTitle.toLowerCase();
+			finalFolderName  = finalFolderName.replace('ä', 'ae');
+			finalFolderName  = finalFolderName.replace('ö', 'oe');
+			finalFolderName  = finalFolderName.replace('ü', 'ue');
+			// Thanks to
+			// * http://stackoverflow.com/questions/20864893/javascript-replace-all-non-alpha-numeric-characters-new-lines-and-multiple-whi
+			finalFolderName  = finalFolderName.replace(/[^A-Za-z0-9_.]/g, '_');
+		var finalFolderPath  = config.audio_file_path_rendered + '/' + finalFolderName + '_' + randomFolderName;
 
 		fs.mkdirSync(finalFolderPath);
 
