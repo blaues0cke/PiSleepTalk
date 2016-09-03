@@ -20,7 +20,21 @@ echo "... running processes matching the request: ${running_processes}"
 
 if [ ${running_processes} -gt 0 ]; then
 	if [ "$push_over_start_stop_message_enabled" = true ]; then
-		send_push_message "Stopped recording"
+
+		stop_reason="Stopped recording"
+		stop_reason_from_file=$(cat /usr/sleeptalk/temp/stop_reason)
+
+		echo "... stop reason from file: ${stop_reason_from_file}"
+
+		if [ ! -z "${stop_reason_from_file}" ]; then
+			echo "... stop reason from file not empty"
+
+			stop_reason="${stop_reason} (${stop_reason_from_file})"
+		fi
+
+		echo "... final stop reason: ${stop_reason}"
+
+		send_push_message "${stop_reason}"
 	fi
 
 	if [ -f "/usr/sleeptalk/temp/recording" ]; then
