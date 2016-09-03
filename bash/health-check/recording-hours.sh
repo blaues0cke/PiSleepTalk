@@ -35,6 +35,8 @@ if [ "$start_allowed" = true ]; then
 		else
 			echo "... time outside the allowed hours, start forbidden"
 
+			echo "Outside recording hours" > /usr/sleeptalk/temp/stop_reason
+
 			start_allowed=false
 		fi
 	else

@@ -27,6 +27,8 @@ if [ "$start_allowed" = true ]; then
 	if [ $usedSpaceInPercent -gt 90 ]; then
 		echo "... too much space is in use, stopping recording audio" 
 
+			echo "Not enough disk space" > /usr/sleeptalk/temp/stop_reason
+
 		start_allowed=false   
 	else
 		echo "... enough free disk space available, validating recording service"

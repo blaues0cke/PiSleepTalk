@@ -34,6 +34,8 @@ if [ "$start_allowed" = true ]; then
 		else
 			echo "... last check in was not at home, start forbidden"
 
+			echo "No check in on swarm found" > /usr/sleeptalk/temp/stop_reason
+
 			start_allowed=false
 		fi
 	else

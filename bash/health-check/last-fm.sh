@@ -36,6 +36,8 @@ if [ "$start_allowed" = true ]; then
 		else
 			echo "... last listened song is less than ${last_fm_timeout_in_seconds}s ago, start forbidden"
 
+			echo "Playback on last.fm found" > /usr/sleeptalk/temp/stop_reason
+
 			start_allowed=false
 		fi
 	else

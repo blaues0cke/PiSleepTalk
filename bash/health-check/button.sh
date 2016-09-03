@@ -32,6 +32,8 @@ if [ "$start_allowed" = true ]; then
 		else
 			echo "... button off, start forbidden"
 
+			echo "Recording switch was off" > /usr/sleeptalk/temp/stop_reason
+
 			start_allowed=false
 		fi
 	else
