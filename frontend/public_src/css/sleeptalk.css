@@ -44,6 +44,10 @@
 {
 	border-bottom: 2px solid #373a3c;
 }
+.playback-finished #main-navbar
+{
+	border-bottom-color: #5cb85c;
+}
 #main-navbar .microphone
 {
     float: left;

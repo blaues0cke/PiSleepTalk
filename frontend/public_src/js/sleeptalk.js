@@ -404,6 +404,10 @@ var initWavesurfer = function () {
 				$('#wave-preview-overlay').text('');
 			});
 
+			wavesurfer.on('finish', function () {
+				$('body').addClass('playback-finished');
+			});
+
 			wavesurfer.on('play', function () {
 				$('#wave-play')
 					.attr('title', pauseButtonText)
