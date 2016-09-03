@@ -59,9 +59,19 @@ if [ "$start_allowed" = true ]; then
 		echo "... we are already recording, don't start again"
 	fi
 else
-	sh /usr/sleeptalk/bash/stop-recording-chunks.sh
+	if [ ! -f "/usr/sleeptalk/temp/stop_queued" ]; then
+    	echo "... no stop queued, queuing"
 
-	recording_led_on=false
+    	touch /usr/sleeptalk/temp/stop_queued
+    else
+    	rm /usr/sleeptalk/temp/stop_queued
+
+    	echo "... stop queued, stopping"
+
+		sh /usr/sleeptalk/bash/stop-recording-chunks.sh
+
+		recording_led_on=false
+	fi
 fi
 
 if [ "$recording_led_on" = true ]; then
