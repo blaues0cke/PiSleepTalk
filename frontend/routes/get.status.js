@@ -37,16 +37,19 @@ module.exports = function(app) {
 				
 			if (files && files.length > 0) {
 				for (var key in files) {
+				   	try {
+						var stats 		    = fs.statSync(files[key])
+						var fileSizeInBytes = stats['size']
 
-					var stats 		    = fs.statSync(files[key])
-					var fileSizeInBytes = stats['size']
+						var fileInfo = {
+							path: files[key],
+							size: (fileSizeInBytes / 1014).toFixed(2)
+						}
 
-					var fileInfo = {
-						path: files[key],
-						size: (fileSizeInBytes / 1014).toFixed(2)
-					}
+						pageData.files.push(fileInfo);
+				    } catch (e) {
 
-					pageData.files.push(fileInfo);
+				    }
 				}
 			}
 
