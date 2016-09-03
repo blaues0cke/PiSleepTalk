@@ -13,6 +13,11 @@
 @reboot     root           sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/init-gpio.sh
 
 #
+# Clear lock files at startup
+#
+@reboot     root           sh /usr/sleeptalk/bash/run-singleton.sh /usr/sleeptalk/bash/clean-lock-files.sh
+
+#
 # Will check the free disk space and the service persistance every 60s
 # 
 # No "run-singleton.sh" is used here since this would disable the "stop" feature since a instance
