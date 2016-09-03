@@ -7,6 +7,8 @@
 #          To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/.
 #
 
+. /usr/sleeptalk/bash/tool/trim-zero.sh
+
 length_of_audio_file_in_ms () {
 
 	. /usr/sleeptalk/config/config.cfg
@@ -18,15 +20,26 @@ length_of_audio_file_in_ms () {
 	echo "... getting length of audio file: ${file}"
 
 	info=$(sox $file -n stat 2>&1)
+
+	echo "... sox result: ${info}"
+
 	full_length=$(echo "$info" | sed -n 's#^Length (seconds):[^0-9]*\([0-9.]*\).*$#\1#p')
 	# Thanks to
 	# * http://stackoverflow.com/questions/10520623/how-to-split-one-string-into-multiple-variables-in-bash-shell
 	seconds=$(echo $full_length | cut -f1 -d.)
 
+	echo "... seconds: ${seconds}"
+
 	if [ -n "$seconds" ]; then
 		# Thanks to
 		# * http://stackoverflow.com/questions/971879/what-is-a-unix-command-for-deleting-the-first-n-characters-of-a-line
 		milliseconds=$(echo $full_length | cut -f2 -d. | cut -c -3)
+
+		trim_zero "${milliseconds}"
+		milliseconds="${__FUNCTION_RETURN}"
+
+		echo "... milliseconds: ${milliseconds}"
+
 		# Thanks to
 		# * http://stackoverflow.com/questions/11039876/multiplication-on-command-line-terminal-unix
 		result=$(($seconds * 1000))
