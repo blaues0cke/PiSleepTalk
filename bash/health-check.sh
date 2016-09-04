@@ -69,9 +69,9 @@ else
     	echo "... stop queued, stopping"
 
 		sh /usr/sleeptalk/bash/stop-recording-chunks.sh
-
-		recording_led_on=false
 	fi
+
+	recording_led_on=false
 fi
 
 if [ "$recording_led_on" = true ]; then
