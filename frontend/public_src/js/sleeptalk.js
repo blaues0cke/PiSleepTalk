@@ -52,6 +52,43 @@ $(document).ready(function() {
 	startUpdateRecordingState();
 });
 
+var deleteCurrentFile = function ()
+{
+	// Thanks to
+	// * http://stackoverflow.com/questions/2153917/how-to-send-a-put-delete-request-in-jquery
+	$.ajax({
+	    url: fileUrl,
+	    type: 'DELETE',
+	    success: function(result) {
+	    	if (deletionTr)
+	    	{
+	    		var trCount = deletionTr.parent().find('tr').length;
+
+	    		var nextTr = deletionTr.next();
+
+	    		deletionTr.remove();
+
+	    		if (nextTr.find('td').eq(0).hasClass('img'))
+	    		{
+	    			nextTr.remove();
+	    			--trCount;
+	    		}
+
+				deletionTr = null;
+
+	    		if (trCount <= 1)
+	    		{
+	    			reloadPage();
+	    		}
+	    	}
+	    	else
+	    	{
+	    		reloadPage();
+	    	}
+	    }
+	});
+}
+
 var startUpdateRecordingState = function ()
 {
 	window.setInterval(function()
@@ -344,6 +381,12 @@ var initShotcuts = function () {
 
 		    			break;
 
+		    		// d
+		    		case 68:
+		    			$('#delete-file').modal('show');		    		 
+
+		    			break;
+
 		    		// f
 		    		case 70:
 		    			togglePreview();
@@ -367,8 +410,18 @@ var initShotcuts = function () {
 		    			playFromMarker();
 
 		    			break;
-		    	};
-		    }
+    			}
+	    	} else if (e.shiftKey) {
+				switch (e.which) {
+		    		// d
+		    		case 68:
+	    		 		console.log('D key down');
+
+		    			deleteCurrentFile();		    		 
+
+		    			break;
+	    		}	
+			}
 	    }
 	});
 };
@@ -659,39 +712,7 @@ var initButtons = function() {
 	});
 
 	$('#delete-file-confirm').click(function() {
-		// Thanks to
-		// * http://stackoverflow.com/questions/2153917/how-to-send-a-put-delete-request-in-jquery
-		$.ajax({
-		    url: fileUrl,
-		    type: 'DELETE',
-		    success: function(result) {
-		    	if (deletionTr)
-		    	{
-		    		var trCount = deletionTr.parent().find('tr').length;
-
-		    		var nextTr = deletionTr.next();
-
-		    		deletionTr.remove();
-
-		    		if (nextTr.find('td').eq(0).hasClass('img'))
-		    		{
-		    			nextTr.remove();
-		    			--trCount;
-		    		}
-
-					deletionTr = null;
-
-		    		if (trCount <= 1)
-		    		{
-		    			reloadPage();
-		    		}
-		    	}
-		    	else
-		    	{
-		    		reloadPage();
-		    	}
-		    }
-		});
+		deleteCurrentFile();
 	});
 
 	$('#wave-decrease-volume').click(function() {

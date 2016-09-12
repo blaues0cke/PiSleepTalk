@@ -200,6 +200,8 @@
             "b_description":     "Flag selection as noise",
             "c":                 "C",
             "c_description":     "Crop to marker (Throw away the rest)",
+            "d":                 "D",
+            "d_description":     "Delete the current recording (Hold shift to disable the security question)",
             "dc":                "Double click",
             "dc_description":    "Jump to position and create text",
             "down":              "Arrow down",

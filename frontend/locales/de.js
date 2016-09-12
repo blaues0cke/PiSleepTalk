@@ -201,6 +201,8 @@
             "b_description":     "Markierung als Störgeräusch erfasssen",
             "c":                 "C",
             "c_description":     "Aufnahmen auf Markierung beschneiden (Rest wegwerfen)",
+            "d":                 "D",
+            "d_description":     "Die aktuelle Aufnahme löschen (Shift-Taste drücken um Sicherheitsfrage zu deaktivieren)",
             "dc":                "Doppeklick",
             "dc_description":    "Zu Position springen und sofort Text erstellen",
             "left":              "Pfeil nach unten",
