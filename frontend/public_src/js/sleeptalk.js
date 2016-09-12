@@ -35,6 +35,7 @@ $(document).ready(function() {
 	});
 	
 	initWavesurfer();
+	initAudio();
 	initButtons();
 	initInfoArea();
 	initTextManager();
@@ -123,6 +124,17 @@ var setMarker = function ()
 
 		$(this).find('.text').text('Set marker');
 	}
+};
+
+var initAudio = function ()
+{
+	var audio = $('audio');
+
+	audio.on('play', function() {
+        audio.not(this).each(function(index, audio) {
+            audio.pause();
+        });
+    });
 };
 
 var initTableTools = function ()
