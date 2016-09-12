@@ -178,6 +178,20 @@ if [ ! -d "${lock_file_name}" ]; then
 					 		invalid_recording=true
 						fi
 
+						if [ "${recording_file_per_minute_limit_enabled}" = true ]; then
+							# Thanks to
+							# * http://stackoverflow.com/questions/5242501/how-to-find-the-files-that-are-created-in-the-last-hour-in-unix
+							created_files=$(find $audio_file_path_to_render/*.wav -cmin "-$recording_file_per_minute_timespan_in_minutes" | wc -l)
+					
+							echo "... created recordings in the last ${recording_file_per_minute_timespan_in_minutes} minutes: ${created_files}"
+
+							if [ "${created_files}" -gt "${recording_file_per_minute_limit}" ]; then
+							    echo "..! to much files generated in the last ${recording_file_per_minute_timespan_in_minutes} minutes, deleting it"
+
+							    invalid_recording=true
+							fi
+						fi
+
 						if [ "${invalid_recording}" = false ]; then
 							create_record_to_render $final_filepath
 
