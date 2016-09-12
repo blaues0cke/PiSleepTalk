@@ -133,6 +133,7 @@ html
 				if !pageData || !pageData.context || pageData.context == 'home'
 					+button('clear-pending', 'trash',    __('menu.clear_pending'), 'danger',  '', __('menu.clear_pending'), 'left')
 		script.
+			autoShowDeleteDialog='#{auto_show_delete_dialog}';
 			defaultAudioFormat='#{default_audio_format}';
 			defaultVideoFormat='#{default_video_format}';
 			disablePreviewButtonText='#{__('actions.disable_preview') + ' (' + __('shortcuts.keys.f') + ')'}';

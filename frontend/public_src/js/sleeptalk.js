@@ -10,6 +10,7 @@
 var audioDuration      = null;
 var audioProcess       = null;
 var concatAllVideos    = false;
+var deleteDialogShown  = false;
 var deletionTr         = null;
 var fileUrl            = null;
 var frameProcess       = null;
@@ -420,6 +421,13 @@ var initWavesurfer = function () {
 
 			wavesurfer.on('finish', function () {
 				$('body').addClass('playback-finished');
+
+				if (!deleteDialogShown && autoShowDeleteDialog)
+				{
+					deleteDialogShown = true;
+
+					$('#delete-file').modal('show');
+				}
 			});
 
 			wavesurfer.on('play', function () {

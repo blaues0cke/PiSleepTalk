@@ -51,9 +51,10 @@ app.use(function(req, res, next) {
 
 // Thanks to
 // * http://stackoverflow.com/questions/4718818/express-js-view-globals
-app.locals.default_audio_format = config.default_audio_format;
-app.locals.default_video_format = config.default_video_format;
-app.locals.spectrum_enabled     = config.spectrum_enabled == 'true';
+app.locals.auto_show_delete_dialog = config.auto_show_delete_dialog;
+app.locals.default_audio_format    = config.default_audio_format;
+app.locals.default_video_format    = config.default_video_format;
+app.locals.spectrum_enabled        = config.spectrum_enabled == 'true';
 
 app.set('view engine', 'jade');
 // Thanks to
