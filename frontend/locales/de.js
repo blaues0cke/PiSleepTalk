@@ -188,7 +188,7 @@
         "title":                 "Störgeräusche"
     },
     "overview": {
-        "description":           "Hier siehst du alle von dir unbearbeiteten Aufnahmen in einer Liste. Du kannst diese Übersicht nutzen, um Dateien, die du nicht weiterverarbeiten möchtest, direkt zu löschen. Diese Liste ist aus Performance-Gründen auf %s Einträge limitiert.",
+        "description":           "Hier siehst du alle von dir unbearbeiteten Aufnahmen in einer Liste. Du kannst diese Übersicht nutzen, um Dateien, die du nicht weiterverarbeiten möchtest, direkt zu löschen. Diese Liste ist aus Performance-Gründen auf %s Einträge limitiert. Halte die \"Shift-Taste\" gedrückt wenn du den Löschen-Button klickst um die Sicherheitsfrage zu deaktivieren.",
         "empty_text":            "Es sind derzeit keine unbearbeiteten Aufnahmen vorhanden.",
         "title":                 "Übersicht"
     },

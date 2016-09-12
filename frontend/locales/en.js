@@ -187,7 +187,7 @@
         "title":                 "Noise filters"
     },
     "overview": {
-        "description":           "Here you see a list of all unprocessed recordings. You can use this list to delete files you don't want to process in future. This page is limited to %s entries due some performance issues.",
+        "description":           "Here you see a list of all unprocessed recordings. You can use this list to delete files you don't want to process in future. This page is limited to %s entries due some performance issues. Hold the shift key while clicking the delete button to skip the security question.",
         "empty_text":            "No unprocessed recordings are available at the moment.",
         "title":                 "Overview"
     },

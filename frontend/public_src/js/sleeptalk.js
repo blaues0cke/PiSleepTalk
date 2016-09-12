@@ -20,6 +20,7 @@ var loaded             = false;
 var noiseFilterUrl     = null;
 var markerRegion       = null;
 var previewModeEnabled = false;
+var shiftKeyPressed    = false;
 var skipFocusRemove    = false;
 var videoUrl           = null;
 var wavesurfer         = Object.create(WaveSurfer);
@@ -249,14 +250,20 @@ var initImportPage = function ()
 var initStatusPage = function ()
 {
 	$('#file-system,#overview-list')
-		.on('click', '.delete', function() {
-			
+		.on('click', '.delete', function(e) {
+
+			console.log('Shift key down', shiftKeyPressed);
+
 			var button = $(this);
 			var path   = getVideoPathForClickedButton(button);
 			fileUrl    = path;
 			deletionTr = button.parents('tr');
 
-			$('#delete-file').modal('show');
+			if (shiftKeyPressed) {
+				deleteCurrentFile();
+			} else {
+				$('#delete-file').modal('show');
+			}
 		})
 	;
 
@@ -310,11 +317,11 @@ var initShotcuts = function () {
 	// * http://stackoverflow.com/questions/11807944/jquery-trigger-keypress-function-on-entire-document-but-not-inside-inputs-and-t
 	$(document).keydown(function(e) {
 	    var tag = e.target.tagName.toLowerCase();
-	    if (loaded && tag != 'input' && tag != 'textarea') {
+	    if (tag != 'input' && tag != 'textarea') {
 
 	    	console.log('Keydown', e, e.which);
 
-	    	if (!e.metaKey && !e.altKey && !e.ctrlKey && !e.shiftKey) {
+	    	if (loaded && !e.metaKey && !e.altKey && !e.ctrlKey && !e.shiftKey) {
 		    	switch (e.which) {
 		    		// ESC
 		    		case 27:
@@ -412,6 +419,8 @@ var initShotcuts = function () {
 		    			break;
     			}
 	    	} else if (e.shiftKey) {
+	    		shiftKeyPressed = true;
+
 				switch (e.which) {
 		    		// d
 		    		case 68:
@@ -421,7 +430,17 @@ var initShotcuts = function () {
 
 		    			break;
 	    		}	
-			}
+			} 
+	    }
+	}).keyup(function(e) {
+	    var tag = e.target.tagName.toLowerCase();
+	    if (tag != 'input' && tag != 'textarea') {
+
+	    	console.log('Keyup', e, e.which);
+
+	    	if (e.which == 16) {
+	    		shiftKeyPressed = false;
+			} 
 	    }
 	});
 };
