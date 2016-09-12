@@ -48,7 +48,36 @@ $(document).ready(function() {
 	initImportPage();
 	initTableTools();
 	initNoiseFilterList();
+
+	startUpdateRecordingState();
 });
+
+var startUpdateRecordingState = function ()
+{
+	window.setInterval(function()
+	{
+		$.get('/api/is-recording.json', function(response)
+		{
+			var jsonResponse = JSON.parse(response);
+			var microphone   = $('#main-navbar .microphone');
+			var isRecording  = jsonResponse.isRecording || false;
+
+			if (isRecording) {
+				microphone
+					.attr('title', stateRecording)
+					.removeClass('text-danger fa-microphone-slash')
+					.addClass('text-success fa-microphone')
+				;
+			} else {
+				microphone
+					.attr('title', stateNotRecording)
+					.removeClass('text-success fa-microphone')
+					.addClass('text-danger fa-microphone-slash')
+				;
+			}
+		});
+	}, 5000);
+};
 
 var banNoise = function() {
 	if (!loaded) return;
