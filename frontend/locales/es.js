@@ -9,7 +9,7 @@
         "clear_pending":         "Borrar ficheros pendientes",
         "concat_all_videos":     "Concatenar todos los videos",
         "concat_checked_videos": "Concatenar los videos seleccionados",
-        "crop_to_marker":        "Recoratar hasta el marcador",
+        "crop_to_marker":        "Recoratar en la marca",
 		"decrease_volume":       "Bajar volumen",
 		"delete": 				 "Eliminar",
 		"delete_file": 		 	 "Eliminar fichero",
@@ -50,85 +50,85 @@
     	"name": 			     "PiSleepTalk"
     },
     "import": {
-        "description":           "Using the import feature allows you to import any audio file you want. You can use any audio format you want. Unsupported files are skipped and deleted automatically. Zip files are extracted automatically, too. If files in the zip file have the same name like existing files in the import folder, the existing file will be overwritten without asking.",
-        "empty":                 "Your import folder is empty at the moment.",
-        "error_1":               "No file was uploaded.",
-        "error_2":               "An error occurred while saving your file, please try again later.",
-        "force_text":            "The import will start automatically after %s seconds the last file was uploaded to the import folder.",
-        "instant_approve":       "Use imported files as full recordings without postprocessing",
-        "title":                 "Import"
+        "description":           "La función de importación le permite importar cualquier archivo de audio que desee. Puede utilizar cualquier formato de audio. Los archivos no compatibles se omiten y se borran automáticamente. Los archivos Zip se extraen automáticamente. Si los archivos en el archivo zip tienen el mismo nombre que archivos existentes en la carpeta de importación, el archivo existente se sobrescribe sin pedir permiso.",
+        "empty":                 "Su carpeta de importación está vacía.",
+        "error_1":               "No se han subido ficheros.",
+        "error_2":               "Se ha producido un error mientras se guardaba el ficher, por favor vuelva a intentarlo.",
+        "force_text":            "La importación empezará automáticamente trasncurridos %s segundos tras subir el último fichero a la carpeta de importación.",
+        "instant_approve":       "Usar los ficheros importados como grabaciones sin post-procesamiento.",
+        "title":                 "Importar"
     },
     "logs": {
-    	"description": 			 "Raw log files of node.js and some used programs like ffmpeg or sox.",
-    	"empty_text": 			 "No log data is available right now.",
-    	"title": 				 "Logs"
+    	"description": 			 "Registros en bruto de node.js y otroso programas como ffmpeg o sox.",
+    	"empty_text": 			 "No hay registros actualmente.",
+    	"title": 				 "Registros"
     },
     "menu": {
-        "clear_pending":         "Delete pending files",
-    	"help":                  "Help",
-    	"home": 				 "Home",
-        "import":                "Import",
-        "overview":              "Overview",
-    	"status": 				 "Status",
+        "clear_pending":         "Eliminar ficheros pendientes",
+    	"help":                  "Ayuda",
+    	"home": 				 "Inicio",
+        "import":                "Importar",
+        "overview":              "Información",
+    	"status": 				 "Stado",
     	"videos": 				 "Videos"
     },
     "modal": {
-    	"an_error_occurred":     "An error occurred",
+    	"an_error_occurred":     "Se ha producido un error",
         "ban_noise": {
-            "ban_noise":         "Mark selection as noise",
-            "description":       "Are you sure you want to mark the selection as noise?",
-            "title":             "Mark as noise"
+            "ban_noise":         "Marcar selección como ruido",
+            "description":       "¿Está seguro que quiere marcar la selección como ruido?",
+            "title":             "Marcar como ruido"
         },
-    	"cancel":                "Cancel",
+    	"cancel":                "Cancelar",
     	"clear_logs": {
-    		"clear_logs":  		 "Clear logs",
-    		"description":       "Are you sure to clear all the log files? This can't be undone.",
-    		"title":             "Clear logs"
+    		"clear_logs":  		 "Borrar registros",
+    		"description":       "¿Está seguro que quiere borrar todos los ficheros de registro? Esta acción no se puede deshacer.",
+    		"title":             "Borrar registros"
     	},
         "clear_pending": {
-            "clear":             "Clear unprocessed files",
-            "description":       "Are you sure to clear all unprocessed files? This can't be undone.",
-            "title":             "Clear unprocessed files"
+            "clear":             "Borrar ficheros no procesados",
+            "description":       "¿Está seguro que quiere Borrar los ficheros no procesados? Esta acción no se puede deshacer.",
+            "title":             "Borrar ficheros no procesados"
         },
         "clear_texts": {
-            "clear":             "Clear",
-            "description":       "Are you sure to delete all the text data?",
-            "title":             "Clear text data"
+            "clear":             "Borrar",
+            "description":       "¿Estás seguro que quiere borrar todos los textos?",
+            "title":             "Borrar textos"
         },
         "concat_videos": {
-            "concat_videos":     "Concat videos",
-            "description":       "Are you sure to concat the videos? The selected will disappear until the final movie is rendered.",
-            "title":             "Concat videos to full movie"
+            "concat_videos":     "Concatenar videos",
+            "description":       "¿Está seguro de concatenar los videos? La selección desaparecerá hasta que se renderize la pelicula final.",
+            "title":             "Concatenar videos en una pelicula"
         },
-    	"close":                 "Close",
+    	"close":                 "Cerrar",
         "crop_to_marker": {
-            "crop_to_marker":    "Crop",
-            "description":       "Are you sure to crop the audio file to the marked area? This can't be undone.",
-            "title":             "Crop to marker"
+            "crop_to_marker":    "Recortar",
+            "description":       "¿Está seguro de querer recoratar el fichero de audio en la zona marcada? Esta acción no se puede deshacer.",
+            "title":             "Recortar en la marca"
         },
       	"decrease_volume": {
-    		"decrease_volume":   "Decrease volume",
-    		"description":       "Are you sure to decrease the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is decreased. The audio file will automatically re-appear on the home page.",
-    		"title":             "Decrease volume"
+    		"decrease_volume":   "Bajar volumen",
+    		"description":       "¿Está seguro de bajar el volumen de este archivo de audio en un 50%? Esto moverá el archivo fuera del alcance el hasta que el volumen se haya. El fichero de audio automáticamente volverá a aparecer en la página principal.",
+    		"title":             "Bajar volumen"
     	},
     	"delete_file": {
-    		"delete_file":   	 "Delete file",
-    		"description":       "Are you sure to delete this file? You can't undo this.",
-    		"title":             "Delete file"
+    		"delete_file":   	 "Eliminar fichero",
+    		"description":       "¿Está seguro de querer eliminar este fichero? Esta acción no se puede deshacer",
+    		"title":             "Eliminar fichero"
     	},
         "force_import": {
-            "description":       "Are you sure, to force the import right now?",
-            "force_import":      "Force import",
-            "title":             "Force import"
+            "description":       "¿Está seguro de querer forzar la importación ahora?",
+            "force_import":      "Forzar importación",
+            "title":             "Forzar importación"
         },
         "forced_import": {
-            "description":       "The importer was started successfully, please wait until the import folder is empty.",
-            "title":             "Import forced"
+            "description":       "El proceso de importación ha empezado correctamente. Por favor espere hasta que la carpeta de importación esté vacía.",
+            "title":             "Importación forzada"
         },
        	"increase_volume": {
     		"description":       "Are you sure to increase the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is increased. The audio file will automatically re-appear on the home page.",
-    		"increase_volume":   "Increase volume",
-    		"title":             "Increase volume"
+    		"increase_volume":   "Subir volumen",
+    		"title":             "Subir volumen"
     	},
         "noise_banned": {
             "description":       "The selected part is now recongized as noise and removed in further recordings.",
