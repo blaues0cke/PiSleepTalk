@@ -68,7 +68,7 @@
     	"help":                  "Ayuda",
     	"home": 				 "Inicio",
         "import":                "Importar",
-        "overview":              "Información",
+        "overview":              "Visión general",
     	"status": 				 "Stado",
     	"videos": 				 "Videos"
     },
@@ -126,140 +126,140 @@
             "title":             "Importación forzada"
         },
        	"increase_volume": {
-    		"description":       "Are you sure to increase the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is increased. The audio file will automatically re-appear on the home page.",
+    		"description":       "¿Está seguro de subir el volumen del fichero de audio un 50%? Esto moverá el archivo de audio fuera del alcance hasta que el volumen se haya bajado. El fichero de audio automáticamente volverá a aparecer en la página principal.",
     		"increase_volume":   "Subir volumen",
     		"title":             "Subir volumen"
     	},
         "noise_banned": {
-            "description":       "The selected part is now recongized as noise and removed in further recordings.",
-            "title":             "Noise saved"
+            "description":       "La parte seleccionada es ahora reconocido como el ruido y se elimina en futuras grabaciones.",
+            "title":             "Ruido guardado"
         },
     	"ok": 			  	     "OK",
        	"preview_video": {
-    		"title":             "Video preview"
+    		"title":             "Previsualización de video"
     	},
         "remove_noise_filter": {
-            "description":       "Are you sure to remove this noise filter? This can't be undone. Files, that were alredy modified using this noise filter will stay unchanged.",
-            "remove_filter":     "Remove noise filter",
-            "title":             "Remove noise filter"
+            "description":       "¿Está seguro de eliminar este filtro de ruido? Esta acción no se puede deshacer. Los fihceros que hayan sido modificados con este filtro no se veran alterados.",
+            "remove_filter":     "Eliminar filtro de ruido",
+            "title":             "Eliminar filtro de ruido"
         },
     	"remove_recording": {
-    		"delete_recording":  "Delete recording",
-    		"description":       "Are you sure to delete the whole recording? You can't undo this.",
-    		"title":             "Remove recording"
+    		"delete_recording":  "Borrar grabación",
+    		"description":       "¿Está seguro de querer borrar toda la grabación? Esta acción no se puede deshacer.",
+    		"title":             "Borrar grabación"
     	},
     	"remove_video": {
-    		"delete_video":  	 "Delete video",
-    		"description":       "Are you sure to delete the whole video? You can't undo this.",
-    		"title":             "Remove video"
+    		"delete_video":  	 "Borrar video",
+    		"description":       "¿Está seguro de quere borrar todo el video? Esta acción no se puede deshacer.",
+    		"title":             "Borrar video"
     	},
         "set_frame": {
-            "description":       "Please set a frame first before you try to play from it.",
-            "whoops":            "Whoops, sorry!"
+            "description":       "Por favor establezca el primer fotograma antes de empezar a reproducir.",
+            "whoops":            "Whoops, perdon!"
         },
     	"set_marker": {
-    		"description":       "Please set a marker first before you try to jump to it.",
-            "description_2":     "Please set a marker first before you try to jump to it.",
-            "description_3":     "Please set a marker first before you try to crop the recording to it.",
-            "description_4":     "Please set a marker first before you mark it as noise.",
-            "whoops":            "Whoops, sorry!"
+    		"description":       "Por favor establezca primero una marca para saltar a ella.",
+            "description_2":     "Por favor establezca primero una marca para saltar a ella.",
+            "description_3":     "Por favor establezca primero una marca para intentar recortar una grabación.",
+            "description_4":     "Por favor establezca primero una marca para macarla como ruido.",
+            "whoops":            "Whoops, Perdon!"
     	},
         "set_playback_rate": {
-            "description":       "Enter a new playback rate here. The number \"1.0\" is default, a smaller number is slower, a bigger number is faster.",
+            "description":       "Establezca la velocidad de reproducción. El valor por defecto es \"1.0\", un valor inferior es más lento y uno mayor es más rápido.",
             "set_playback_rate": "Set playback rate",
-            "tip":               "Standard: 1.0, slower: < 1.0, faster: > 1.0",
-            "title":             "Playback rate" 
+            "tip":               "Estandar: 1.0, lento: < 1.0, rápido: > 1.0",
+            "title":             "Velocidad de reproducción" 
         },
         "upload_file": {
-            "description":       "Upload a audio or zip file, that contains audio files, to the import folder.",
-            "title":             "Upload file",
-            "upload_file":       "Upload file"
+            "description":       "Subir un fichero de audio o un zip, que contenga ficheros de audio, a la carpeta importar.",
+            "title":             "Subir fichero",
+            "upload_file":       "Subir fichero"
         }
     },
     "no_recordings": {
-    	"description": 			 "Sorry, we got no unprocessed recordings for you right now. Please sleep on it on come back to this page later.",
-    	"sub_description":       "You may check the status page to make sure everything is working correctly.",
-    	"title": 				 "No new recordings"
+    	"description": 			 "Perdon pero no hay grabaciones pendientes para usted. Por favor duerma y vuelva a esta página mas tarder.",
+    	"sub_description":       "Puede ver en la página de estado que todo funciona correctamente",
+    	"title": 				 "No hay nuevas grabaciones"
     },
     "noise_filter": {
-        "description":           "Here you see all noise filters you have created. Every single noise filter is appended to every new recording.",
-        "empty_text":            "No noise filters are were yet. To add a filter, just set a marker on the start page and hit the \"create noise filter\" button.",
-        "title":                 "Noise filters"
+        "description":           "Todos los filtros de ruido que ha creado. Cada filtro de ruido está adjunto a una nueva grabación.",
+        "empty_text":            "No hay filtros de ruido de momento. Para añdir un filtro simplemente establezca una marca en la página de inicio y presione el botón \"Crear fitro de ruido\".",
+        "title":                 "Filtros de ruido"
     },
     "overview": {
-        "description":           "Here you see a list of all unprocessed recordings. You can use this list to delete files you don't want to process in future. This page is limited to %s entries due some performance issues. Hold the shift key while clicking the delete button to skip the security question.",
-        "empty_text":            "No unprocessed recordings are available at the moment.",
-        "title":                 "Overview"
+        "description":           "Lista de todas las grabaciones in procesar. Puede usar esta lista para borrar los ficheros que no quiera procesar en el futuro. Esta página está limitada a %s entradas por motivos de rendimiento. Mantenga presionada la tecla \"shift\" para saltar la confirmación.",
+        "empty_text":            "No hay grabaciones sin procesar por el momento.",
+        "title":                 "Visión general"
     },
     "shortcuts": {
-    	"description":   	 	 "You can use some shortcuts to save time. The following keys are supported right now:",
+    	"description":   	 	 "Puede utilizar atajos para ahorrar tiempo. Las siguiente combinaciones están soportadas actualmenteo:",
     	"keys": {
     		"1_9":  			 "1-9",
-    		"1_9_description": 	 "Seek to part N of the audio file",
+    		"1_9_description": 	 "Buscar parte N del fichero de audio",
             "b":                 "B",
-            "b_description":     "Flag selection as noise",
+            "b_description":     "Marcar selección como ruido",
             "c":                 "C",
-            "c_description":     "Crop to marker (Throw away the rest)",
+            "c_description":     "Recortar en la marcar (Descartar el resto)",
             "d":                 "D",
-            "d_description":     "Delete the current recording (Hold shift to disable the security question)",
-            "dc":                "Double click",
-            "dc_description":    "Jump to position and create text",
-            "down":              "Arrow down",
-    		"down_description":  "Skip forward 10 seconds",
+            "d_description":     "Borrar grabación actual (mantener pulsada la tecla \"shift\" para saltar confirmación)",
+            "dc":                "Doble click",
+            "dc_description":    "Saltar a la posción he insertar texto",
+            "down":              "Flecha abajo",
+    		"down_description":  "Avanzar 10 segundos",
             "esc":               "ESC",
             "esc_description":   "Stop",
             "f":                 "F",
-            "f_description":     "Toggle preview mode",
+            "f_description":     "Cambiar de modo previsualización",
             "j":                 "J",
-            "j_description":     "Jump to marker (and stop playing)",
+            "j_description":     "Saltar a la marca (y parar reproducción)",
             "left":              "Arrow left",
-            "left_description":  "Skip back 5 seconds",
+            "left_description":  "Retroceder 5 segundos",
             "p":                 "P",
-            "p_description":     "Play from marker",
+            "p_description":     "Reproducir desde la marca",
             "m":                 "M",
-            "m_description":     "Set marker",
-            "right":             "Arrow right",
-    		"right_description": "Skip forward 5 seconds",
-    		"space":     	 	 "Space",
+            "m_description":     "Establecer marca",
+            "right":             "Flecha derevha",
+    		"right_description": "Avanzar 5 segundos",
+    		"space":     	 	 "Espacio",
     		"space_description": "Play/Pause",
-            "up":                "Arrow up",
-    		"up_description":    "Skip back 10 seconds"
+            "up":                "Flecha arriba",
+    		"up_description":    "Retroceder 10 segundos"
     	},
     	"ok":            	 	 "OK",
-    	"shortcuts":     	 	 "Shortcuts"
+    	"shortcuts":     	 	 "Atajos"
     },
     "state": {
-        "not_recording":         "Not recording",
-        "recording":             "Recording"
+        "not_recording":         "No grabando",
+        "recording":             "Grabando"
     },
     "status": {
-    	"description": 		     "Review the status of your PiSleepTalk instance. Page generated: %s",
-    	"disk_space": 			 "Disk space free %s of %s GB",
-        "empty_text":            "There are no audio or video files available right now.",
-        "pending_files":         "Pending files",
-    	"title":  				 "Status"
+    	"description": 		     "Revise el estado de su instacia de PiSleepTalk. Pagina generada: %s",
+    	"disk_space": 			 "Espacio disponible en dico %s de %s GB",
+        "empty_text":            "No hay ficheros de audo o video disponibles actualmente.",
+        "pending_files":         "Ficheros pendientes",
+    	"title":  				 "Estado"
     },
     "table": {
-    	"actions": 			 	 "Actions",
-        "concat":                "Concat",
-    	"frame": 				 "Frame",
-    	"length": 				 "Length",
+    	"actions": 			 	 "Acciones",
+        "concat":                "Concatenar",
+    	"frame": 				 "Fotograma",
+    	"length": 				 "Longitud",
     	"length_seconds_short":  "s",
-        "listen":                "Listen",
-    	"path": 				 "Path",
-    	"size": 				 "Size",
+        "listen":                "Escuchar",
+    	"path": 				 "Ruta",
+    	"size": 				 "Tamaño",
     	"size_kb": 			     "KB",
-    	"text":       			 "Text",
-        "type":                  "Type"
+    	"text":       			 "Texto",
+        "type":                  "Tipo"
     },
     "videos": {
-        "description":           "Here you can see all rendered videos the system recorded and generated for you. The length of all scenes available in seconds is: %s.",
-        "empty_text": 			 "No rendered videos are available at the moment.",
-        "movie_title":           "Video title",
-        "movie_title_tip":       "The movie title will appear for %s seconds on the start.",
-        "sub_description":       "You can concat videos by selecting the checkbox and press the \"Concat videos\" button.",
+        "description":           "Aquí puede ver todos los videos renderizados que a grabado y generado el sistema para usted. La longitud de todas las escenas disponibles en seguindos es: %s.",
+        "empty_text": 			 "No hay videos renderizados disponibles en este momento.",
+        "movie_title":           "Título del video",
+        "movie_title_tip":       "El título de la pelicula empezará %s segundos tras haber empezado.",
+        "sub_description":       "Puede concatenar video seleccionando el checkbox y presionando el botón \"Concatenar videos\".",
         "title":                 "Videos",
         "type_full":             "Video",
-        "type_part":             "Scene"
+        "type_part":             "Escena"
     }
 }
