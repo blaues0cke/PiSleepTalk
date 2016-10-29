@@ -139,7 +139,7 @@
     		"title":             "Video preview"
     	},
         "remove_noise_filter": {
-            "description":       "Are you sure to remove this noise filter? This can't be undone. Files, that were alredy modified using this noise filter will stay unchanged.",
+            "description":       "Are you sure to remove this noise filter? This can't be undone. Files, that were already modified using this noise filter will stay unchanged.",
             "remove_filter":     "Remove noise filter",
             "title":             "Remove noise filter"
         },
@@ -168,7 +168,7 @@
             "description":       "Enter a new playback rate here. The number \"1.0\" is default, a smaller number is slower, a bigger number is faster.",
             "set_playback_rate": "Set playback rate",
             "tip":               "Standard: 1.0, slower: < 1.0, faster: > 1.0",
-            "title":             "Playback rate" 
+            "title":             "Playback rate"
         },
         "upload_file": {
             "description":       "Upload a audio or zip file, that contains audio files, to the import folder.",
