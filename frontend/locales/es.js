@@ -69,7 +69,7 @@
     	"home": 				 "Inicio",
         "import":                "Importar",
         "overview":              "Visión general",
-    	"status": 				 "Stado",
+    	"status": 				 "Estado",
     	"videos": 				 "Videos"
     },
     "modal": {
