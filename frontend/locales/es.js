@@ -2,14 +2,14 @@
 	"actions": {
 		"add_text": 			 "Añadir texto",
 		"back":  				 "Atrás",
-        "ban_noise":             "Marcar selección como ruido",
+        "ban_noise":             "Marcar la selección como ruido",
 		"clear":                 "Limpiar",
 		"clear_all_texts":       "Limpiar todos los textos",
 		"clear_logs": 			 "Limpiar log",
         "clear_pending":         "Borrar ficheros pendientes",
         "concat_all_videos":     "Concatenar todos los videos",
         "concat_checked_videos": "Concatenar los videos seleccionados",
-        "crop_to_marker":        "Recoratar en la marca",
+        "crop_to_marker":        "Recoraar en la marca",
 		"decrease_volume":       "Bajar volumen",
 		"delete": 				 "Eliminar",
 		"delete_file": 		 	 "Eliminar fichero",
@@ -20,7 +20,7 @@
         "disable_preview":       "Deshabilitar previsualización",
 		"download_video": 		 "Descargar video",
         "enable_preview":        "Habilitar previsualización",
-        "force_import":          "Forzar importar ahora",
+        "force_import":          "Forzar a importar ahora",
         "import_audio":          "Importar grabaciones",
 		"increase_volume":       "Subir volumen",
 		"insert_current_frame":  "Insertar posición del marco actual",
@@ -53,14 +53,14 @@
         "description":           "La función de importación le permite importar cualquier archivo de audio que desee. Puede utilizar cualquier formato de audio. Los archivos no compatibles se omiten y se borran automáticamente. Los archivos Zip se extraen automáticamente. Si los archivos en el archivo zip tienen el mismo nombre que archivos existentes en la carpeta de importación, el archivo existente se sobrescribe sin pedir permiso.",
         "empty":                 "Su carpeta de importación está vacía.",
         "error_1":               "No se han subido ficheros.",
-        "error_2":               "Se ha producido un error mientras se guardaba el ficher, por favor vuelva a intentarlo.",
+        "error_2":               "Se ha producido un error mientras se guardaba el fichero, por favor, vuelva a intentarlo.",
         "force_text":            "La importación empezará automáticamente trasncurridos %s segundos tras subir el último fichero a la carpeta de importación.",
         "instant_approve":       "Usar los ficheros importados como grabaciones sin post-procesamiento.",
         "title":                 "Importar"
     },
     "logs": {
-    	"description": 			 "Registros en bruto de node.js y otroso programas como ffmpeg o sox.",
-    	"empty_text": 			 "No hay registros actualmente.",
+    	"description": 			 "Registros en bruto de node.js y otros programas como ffmpeg o sox.",
+    	"empty_text": 			 "No hay registros.",
     	"title": 				 "Registros"
     },
     "menu": {
@@ -69,30 +69,30 @@
     	"home": 				 "Inicio",
         "import":                "Importar",
         "overview":              "Visión general",
-    	"status": 				 "Stado",
+    	"status": 				 "Estado",
     	"videos": 				 "Videos"
     },
     "modal": {
     	"an_error_occurred":     "Se ha producido un error",
         "ban_noise": {
             "ban_noise":         "Marcar selección como ruido",
-            "description":       "¿Está seguro que quiere marcar la selección como ruido?",
+            "description":       "¿Está seguro de que quiere marcar la selección como ruido?",
             "title":             "Marcar como ruido"
         },
     	"cancel":                "Cancelar",
     	"clear_logs": {
     		"clear_logs":  		 "Borrar registros",
-    		"description":       "¿Está seguro que quiere borrar todos los ficheros de registro? Esta acción no se puede deshacer.",
+    		"description":       "¿Está seguro de que quiere borrar todos los ficheros de registro? Esta acción no se puede deshacer.",
     		"title":             "Borrar registros"
     	},
         "clear_pending": {
             "clear":             "Borrar ficheros no procesados",
-            "description":       "¿Está seguro que quiere Borrar los ficheros no procesados? Esta acción no se puede deshacer.",
+            "description":       "¿Está seguro de que quiere borrar los ficheros no procesados? Esta acción no se puede deshacer.",
             "title":             "Borrar ficheros no procesados"
         },
         "clear_texts": {
             "clear":             "Borrar",
-            "description":       "¿Estás seguro que quiere borrar todos los textos?",
+            "description":       "¿Estás seguro de que quiere borrar todos los textos?",
             "title":             "Borrar textos"
         },
         "concat_videos": {
@@ -103,12 +103,12 @@
     	"close":                 "Cerrar",
         "crop_to_marker": {
             "crop_to_marker":    "Recortar",
-            "description":       "¿Está seguro de querer recoratar el fichero de audio en la zona marcada? Esta acción no se puede deshacer.",
+            "description":       "¿Está seguro de querer recortar el fichero de audio en la zona marcada? Esta acción no se puede deshacer.",
             "title":             "Recortar en la marca"
         },
       	"decrease_volume": {
     		"decrease_volume":   "Bajar volumen",
-    		"description":       "¿Está seguro de bajar el volumen de este archivo de audio en un 50%? Esto moverá el archivo fuera del alcance el hasta que el volumen se haya. El fichero de audio automáticamente volverá a aparecer en la página principal.",
+    		"description":       "¿Está seguro de bajar el volumen de este archivo de audio en un 50%? Esto hará que el archivo de audio quede fuera del rango de procesamiento hasta que se suba el volumen. El fichero de audio volverá a aparecer en la página principal automáticamente.",
     		"title":             "Bajar volumen"
     	},
     	"delete_file": {
@@ -126,12 +126,12 @@
             "title":             "Importación forzada"
         },
        	"increase_volume": {
-    		"description":       "¿Está seguro de subir el volumen del fichero de audio un 50%? Esto moverá el archivo de audio fuera del alcance hasta que el volumen se haya bajado. El fichero de audio automáticamente volverá a aparecer en la página principal.",
+    		"description":       "¿Está seguro de subir el volumen del fichero de audio un 50%? Esto hara que el archivo de audio quede fuera del rango de procesamiento hasta que se baje el volumen. El fichero de audio volverá a aparecer en la página principal automáticamente.",
     		"increase_volume":   "Subir volumen",
     		"title":             "Subir volumen"
     	},
         "noise_banned": {
-            "description":       "La parte seleccionada es ahora reconocido como el ruido y se elimina en futuras grabaciones.",
+            "description":       "La parte seleccionada se reconoce como ruido y se elimina en futuras grabaciones.",
             "title":             "Ruido guardado"
         },
     	"ok": 			  	     "OK",
@@ -139,7 +139,7 @@
     		"title":             "Previsualización de video"
     	},
         "remove_noise_filter": {
-            "description":       "¿Está seguro de eliminar este filtro de ruido? Esta acción no se puede deshacer. Los fihceros que hayan sido modificados con este filtro no se veran alterados.",
+            "description":       "¿Está seguro de eliminar este filtro de ruido? Esta acción no se puede deshacer. Los ficheros que hayan sido modificados con este filtro no se verán alterados.",
             "remove_filter":     "Eliminar filtro de ruido",
             "title":             "Eliminar filtro de ruido"
         },
@@ -150,18 +150,18 @@
     	},
     	"remove_video": {
     		"delete_video":  	 "Borrar video",
-    		"description":       "¿Está seguro de quere borrar todo el video? Esta acción no se puede deshacer.",
+    		"description":       "¿Está seguro de querer borrar todo el video? Esta acción no se puede deshacer.",
     		"title":             "Borrar video"
     	},
         "set_frame": {
             "description":       "Por favor establezca el primer fotograma antes de empezar a reproducir.",
-            "whoops":            "Whoops, perdon!"
+            "whoops":            "Whoops, perdón!"
         },
     	"set_marker": {
     		"description":       "Por favor establezca primero una marca para saltar a ella.",
             "description_2":     "Por favor establezca primero una marca para saltar a ella.",
             "description_3":     "Por favor establezca primero una marca para intentar recortar una grabación.",
-            "description_4":     "Por favor establezca primero una marca para macarla como ruido.",
+            "description_4":     "Por favor establezca primero una marca para marcarla como ruido.",
             "whoops":            "Whoops, Perdon!"
     	},
         "set_playback_rate": {
@@ -171,28 +171,28 @@
             "title":             "Velocidad de reproducción" 
         },
         "upload_file": {
-            "description":       "Subir un fichero de audio o un zip, que contenga ficheros de audio, a la carpeta importar.",
+            "description":       "Subir un fichero de audio o un zip, que contenga ficheros de audio, a la carpeta de importación.",
             "title":             "Subir fichero",
             "upload_file":       "Subir fichero"
         }
     },
     "no_recordings": {
-    	"description": 			 "Perdon pero no hay grabaciones pendientes para usted. Por favor duerma y vuelva a esta página mas tarder.",
+    	"description": 			 "Perdón, pero no hay grabaciones pendientes para usted. Por favor duerma y vuelva a esta página más tarde.",
     	"sub_description":       "Puede ver en la página de estado que todo funciona correctamente",
     	"title": 				 "No hay nuevas grabaciones"
     },
     "noise_filter": {
         "description":           "Todos los filtros de ruido que ha creado. Cada filtro de ruido está adjunto a una nueva grabación.",
-        "empty_text":            "No hay filtros de ruido de momento. Para añdir un filtro simplemente establezca una marca en la página de inicio y presione el botón \"Crear fitro de ruido\".",
+        "empty_text":            "No hay filtros de ruido de momento. Para añadir un filtro simplemente establezca una marca en la página de inicio y presione el botón \"Crear fitro de ruido\".",
         "title":                 "Filtros de ruido"
     },
     "overview": {
-        "description":           "Lista de todas las grabaciones in procesar. Puede usar esta lista para borrar los ficheros que no quiera procesar en el futuro. Esta página está limitada a %s entradas por motivos de rendimiento. Mantenga presionada la tecla \"shift\" para saltar la confirmación.",
+        "description":           "Lista de todas las grabaciones sin procesar. Puede usar esta lista para borrar los ficheros que no quiera procesar en el futuro. Esta página está limitada a %s entradas por motivos de rendimiento. Mantenga presionada la tecla \"shift\" para saltar la confirmación.",
         "empty_text":            "No hay grabaciones sin procesar por el momento.",
         "title":                 "Visión general"
     },
     "shortcuts": {
-    	"description":   	 	 "Puede utilizar atajos para ahorrar tiempo. Las siguiente combinaciones están soportadas actualmenteo:",
+    	"description":   	 	 "Puede utilizar atajos para ahorrar tiempo. Actualmente, están habilitadas las siguientes combinaciones:",
     	"keys": {
     		"1_9":  			 "1-9",
     		"1_9_description": 	 "Buscar parte N del fichero de audio",
@@ -233,8 +233,8 @@
         "recording":             "Grabando"
     },
     "status": {
-    	"description": 		     "Revise el estado de su instacia de PiSleepTalk. Pagina generada: %s",
-    	"disk_space": 			 "Espacio disponible en dico %s de %s GB",
+    	"description": 		     "Revise el estado de su instancia de PiSleepTalk. Pagina generada: %s",
+    	"disk_space": 			 "Espacio disponible en disco %s de %s GB",
         "empty_text":            "No hay ficheros de audo o video disponibles actualmente.",
         "pending_files":         "Ficheros pendientes",
     	"title":  				 "Estado"
@@ -253,11 +253,11 @@
         "type":                  "Tipo"
     },
     "videos": {
-        "description":           "Aquí puede ver todos los videos renderizados que a grabado y generado el sistema para usted. La longitud de todas las escenas disponibles en seguindos es: %s.",
+        "description":           "Aquí puede ver todos los videos renderizados que ha grabado y generado el sistema para usted. La longitud de todas las escenas disponibles en segundos es: %s.",
         "empty_text": 			 "No hay videos renderizados disponibles en este momento.",
         "movie_title":           "Título del video",
-        "movie_title_tip":       "El título de la pelicula empezará %s segundos tras haber empezado.",
-        "sub_description":       "Puede concatenar video seleccionando el checkbox y presionando el botón \"Concatenar videos\".",
+        "movie_title_tip":       "El título de la pelicula empezará en %s segundos después de haber empezado.",
+        "sub_description":       "Puede concatenar videos seleccionando el checkbox y presionando el botón \"Concatenar videos\".",
         "title":                 "Videos",
         "type_full":             "Video",
         "type_part":             "Escena"
