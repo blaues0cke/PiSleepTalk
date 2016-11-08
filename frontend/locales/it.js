@@ -59,12 +59,12 @@
     "title": "Importazione"
   },
   "logs": {
-    "description": "RAW file di node. js e alcuni utilizzati programmi come ffmpeg o sox.",
+    "description": "RAW file di node.js e alcuni utilizzati programmi come ffmpeg o sox.",
     "empty_text": "Nessun dato di registro è disponibile al momento.",
     "title": "Registri"
   },
   "menu": {
-    "clear_pending": "Eliminare file in attesa",
+    "clear_pending": "Elimina file in attesa",
     "help": "Guida",
     "home": "Casa",
     "import": "Importazione",
@@ -75,15 +75,15 @@
   "modal": {
     "an_error_occurred": "Si è verificato un errore",
     "ban_noise": {
-      "ban_noise": "Selezione di Mark come rumore",
+      "ban_noise": "Contrassegna la selezione come rumore",
       "description": "Sei sicuro che si desidera contrassegnare la selezione come rumore?",
       "title": "Contrassegnare come rumore"
     },
     "cancel": "Annulla",
     "clear_logs": {
-      "clear_logs": "Cancellare i registri",
+      "clear_logs": "Cancella i registri",
       "description": "Sei sicuro di cancellare tutti i file di registro? Questo non può essere annullato.",
-      "title": "Cancellare i registri"
+      "title": "Cancella i registri"
     },
     "clear_pending": {
       "clear": "Cancella file non trasformati",
@@ -91,18 +91,18 @@
       "title": "Cancella file non trasformati"
     },
     "clear_texts": {
-      "clear": "Chiaro",
+      "clear": "Cancella",
       "description": "Sei sicuro di voler eliminare tutti i dati di testo?",
-      "title": "Testo in chiaro"
+      "title": "Cancella i dati di testo"
     },
     "close": "Chiudere",
     "concat_videos": {
-      "concat_videos": "Video di Concat",
+      "concat_videos": "Concat i video",
       "description": "Sei sicuro di concat i video? Il selezionato scomparirà fino a quando non viene eseguito il rendering del filmato finale.",
       "title": "Video di Concat per film pieno"
     },
     "crop_to_marker": {
-      "crop_to_marker": "Delle colture",
+      "crop_to_marker": "Raccolto",
       "description": "Sei sicuro ritagliare il file audio per l'area contrassegnata? Questo non può essere annullato.",
       "title": "Raccolto al marcatore"
     },
@@ -131,27 +131,27 @@
       "title": "Aumentare il volume"
     },
     "noise_banned": {
-      "description": "La parte selezionata è ora recongized come rumore e rimosso in ulteriori registrazioni.",
+      "description": "La parte selezionata è ormai riconosciuta come rumore e verrà rimossi in ulteriori registrazioni.",
       "title": "Rumore salvato"
     },
-    "ok": "Ok",
+    "ok": "OK",
     "preview_video": {
       "title": "Anteprima video"
     },
     "remove_noise_filter": {
       "description": "Sei sicuro di rimuovere questo filtro di rumore? Questo non può essere annullato. File, che sono stati già modificati utilizzando questo filtro rumore rimarrà invariati.",
-      "remove_filter": "Rimuovere il filtro di rumore",
-      "title": "Rimuovere il filtro di rumore"
+      "remove_filter": "Elimina filtro rumore",
+      "title": "Elimina filtro rumore"
     },
     "remove_recording": {
-      "delete_recording": "Cancellare registrazione",
+      "delete_recording": "Cancella registrazione",
       "description": "Sei sicuro di voler cancellare l'intera registrazione? Non è possibile annullare questo.",
-      "title": "Rimuovere la registrazione"
+      "title": "Cancella registrazione"
     },
     "remove_video": {
-      "delete_video": "Eliminare video",
+      "delete_video": "Elimina video",
       "description": "Sei sicuro di voler eliminare l'intero video? Non è possibile annullare questo.",
-      "title": "Rimuovere video"
+      "title": "Elimina video"
     },
     "set_frame": {
       "description": "Prima di provare a giocare da esso, si prega di impostare un frame prima.",
@@ -225,7 +225,7 @@
       "up": "Freccia in su",
       "up_description": "Saltare indietro di 10 secondi"
     },
-    "ok": "Ok",
+    "ok": "OK",
     "shortcuts": "Tasti di scelta rapida"
   },
   "state": {
