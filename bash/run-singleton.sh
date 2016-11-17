@@ -11,6 +11,8 @@ echo "Running singleton check for $1"
 
 # Thanks to
 # * http://stackoverflow.com/questions/2903354/bash-script-to-check-running-process
+
+# sets try_count 0 if there is no 2nd argument
 try_count=$(($2))
 running_processes=`ps aux | grep -v grep | grep -v run-singleton.sh | grep "$1" | wc -l`
 
