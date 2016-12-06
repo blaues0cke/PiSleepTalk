@@ -50,12 +50,12 @@
     	"name": 			     "PiSleepTalk"
     },
     "import": {
-        "description":           "Using the import feature allows you to import any audio file you want. You can use any audio format you want. Unsupported files are skipped and deleted automatically. Zip files are extracted automatically, too. If files in the zip file have the same name like existing files in the import folder, the existing file will be overwritten without asking.",
+        "description":           "Using the import feature allows you to import any audio file in any format you want. Unsupported files are skipped and deleted automatically. Zip files are extracted automatically and if extracted files have the same name as existing files in the import folder, these will be overwritten without asking.",
         "empty":                 "Your import folder is empty at the moment.",
         "error_1":               "No file was uploaded.",
         "error_2":               "An error occurred while saving your file, please try again later.",
-        "force_text":            "The import will start automatically after %s seconds the last file was uploaded to the import folder.",
-        "instant_approve":       "Use imported files as full recordings without postprocessing",
+        "force_text":            "The import will start automatically %s seconds after the last file was uploaded to the import folder.",
+        "instant_approve":       "Use imported files as full recordings without postprocessing.",
         "title":                 "Import"
     },
     "logs": {
@@ -82,56 +82,56 @@
     	"cancel":                "Cancel",
     	"clear_logs": {
     		"clear_logs":  		 "Clear logs",
-    		"description":       "Are you sure to clear all the log files? This can't be undone.",
+    		"description":       "Are you sure you want to clear all the log files? This can't be undone.",
     		"title":             "Clear logs"
     	},
         "clear_pending": {
             "clear":             "Clear unprocessed files",
-            "description":       "Are you sure to clear all unprocessed files? This can't be undone.",
+            "description":       "Are you sure you want to clear all unprocessed files? This can't be undone.",
             "title":             "Clear unprocessed files"
         },
         "clear_texts": {
             "clear":             "Clear",
-            "description":       "Are you sure to delete all the text data?",
+            "description":       "Are you sure you want to delete all the text data?",
             "title":             "Clear text data"
         },
         "concat_videos": {
             "concat_videos":     "Concat videos",
-            "description":       "Are you sure to concat the videos? The selected will disappear until the final movie is rendered.",
+            "description":       "Are you sure you want to concat the videos? The selected ones will disappear until the final movie is rendered.",
             "title":             "Concat videos to full movie"
         },
     	"close":                 "Close",
         "crop_to_marker": {
             "crop_to_marker":    "Crop",
-            "description":       "Are you sure to crop the audio file to the marked area? This can't be undone.",
+            "description":       "Are you sure you want to crop the audio file to the marked area? This can't be undone.",
             "title":             "Crop to marker"
         },
       	"decrease_volume": {
     		"decrease_volume":   "Decrease volume",
-    		"description":       "Are you sure to decrease the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is decreased. The audio file will automatically re-appear on the home page.",
+    		"description":       "Are you sure you want to decrease the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is decreased and it will automatically re-appear on the home page once it's completed.",
     		"title":             "Decrease volume"
     	},
     	"delete_file": {
     		"delete_file":   	 "Delete file",
-    		"description":       "Are you sure to delete this file? You can't undo this.",
+    		"description":       "Are you sure you want to delete this file? This can't be undone.",
     		"title":             "Delete file"
     	},
         "force_import": {
-            "description":       "Are you sure, to force the import right now?",
+            "description":       "Are you sure you want to force the import right now?",
             "force_import":      "Force import",
             "title":             "Force import"
         },
         "forced_import": {
-            "description":       "The importer was started successfully, please wait until the import folder is empty.",
+            "description":       "The importer was started successfully! Please wait until the import folder is empty.",
             "title":             "Import forced"
         },
        	"increase_volume": {
-    		"description":       "Are you sure to increase the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is increased. The audio file will automatically re-appear on the home page.",
+    		"description":       "Are you sure you want to increase the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is increased and it will automatically re-appear on the home page once it's completed.",
     		"increase_volume":   "Increase volume",
     		"title":             "Increase volume"
     	},
         "noise_banned": {
-            "description":       "The selected part is now recongized as noise and removed in further recordings.",
+            "description":       "The selected part is now recognized as noise and will be removed in further recordings.",
             "title":             "Noise saved"
         },
     	"ok": 			  	     "OK",
@@ -139,18 +139,18 @@
     		"title":             "Video preview"
     	},
         "remove_noise_filter": {
-            "description":       "Are you sure to remove this noise filter? This can't be undone. Files, that were alredy modified using this noise filter will stay unchanged.",
+            "description":       "Are you sure you want to remove this noise filter? This can't be undone. Files that were already modified using this noise filter will remain unchanged.",
             "remove_filter":     "Remove noise filter",
             "title":             "Remove noise filter"
         },
     	"remove_recording": {
     		"delete_recording":  "Delete recording",
-    		"description":       "Are you sure to delete the whole recording? You can't undo this.",
+    		"description":       "Are you sure you want to delete the whole recording? This can't be undone.",
     		"title":             "Remove recording"
     	},
     	"remove_video": {
     		"delete_video":  	 "Delete video",
-    		"description":       "Are you sure to delete the whole video? You can't undo this.",
+    		"description":       "Are you sure you want to delete the whole video? This can't be undone.",
     		"title":             "Remove video"
     	},
         "set_frame": {
@@ -168,22 +168,22 @@
             "description":       "Enter a new playback rate here. The number \"1.0\" is default, a smaller number is slower, a bigger number is faster.",
             "set_playback_rate": "Set playback rate",
             "tip":               "Standard: 1.0, slower: < 1.0, faster: > 1.0",
-            "title":             "Playback rate" 
+            "title":             "Playback rate"
         },
         "upload_file": {
-            "description":       "Upload a audio or zip file, that contains audio files, to the import folder.",
+            "description":       "Upload a audio or zip file containing audio files  to the import folder.",
             "title":             "Upload file",
             "upload_file":       "Upload file"
         }
     },
     "no_recordings": {
-    	"description": 			 "Sorry, we got no unprocessed recordings for you right now. Please sleep on it on come back to this page later.",
+    	"description": 			 "Sorry, we got no unprocessed recordings for you right now. Please sleep on it and come back to this page later.",
     	"sub_description":       "You may check the status page to make sure everything is working correctly.",
     	"title": 				 "No new recordings"
     },
     "noise_filter": {
-        "description":           "Here you see all noise filters you have created. Every single noise filter is appended to every new recording.",
-        "empty_text":            "No noise filters are were yet. To add a filter, just set a marker on the start page and hit the \"create noise filter\" button.",
+        "description":           "Here you see all the noise filters you have created. Every single noise filter is appended to every new recording.",
+        "empty_text":            "No noise filters are here yet. To add a filter, just set a marker on the start page and hit the \"create noise filter\" button.",
         "title":                 "Noise filters"
     },
     "overview": {
@@ -199,9 +199,9 @@
             "b":                 "B",
             "b_description":     "Flag selection as noise",
             "c":                 "C",
-            "c_description":     "Crop to marker (Throw away the rest)",
+            "c_description":     "Crop to marker (throw away the rest)",
             "d":                 "D",
-            "d_description":     "Delete the current recording (Hold shift to disable the security question)",
+            "d_description":     "Delete the current recording (hold shift to disable the security question)",
             "dc":                "Double click",
             "dc_description":    "Jump to position and create text",
             "down":              "Arrow down",
@@ -234,7 +234,7 @@
     },
     "status": {
     	"description": 		     "Review the status of your PiSleepTalk instance. Page generated: %s",
-    	"disk_space": 			 "Disk space free %s of %s GB",
+    	"disk_space": 			 "Disk space free: %s of %s GB",
         "empty_text":            "There are no audio or video files available right now.",
         "pending_files":         "Pending files",
     	"title":  				 "Status"
@@ -257,7 +257,7 @@
         "empty_text": 			 "No rendered videos are available at the moment.",
         "movie_title":           "Video title",
         "movie_title_tip":       "The movie title will appear for %s seconds on the start.",
-        "sub_description":       "You can concat videos by selecting the checkbox and press the \"Concat videos\" button.",
+        "sub_description":       "You can concat videos by selecting the checkbox and pressing the \"Concat videos\" button.",
         "title":                 "Videos",
         "type_full":             "Video",
         "type_part":             "Scene"
