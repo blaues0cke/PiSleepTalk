@@ -80,6 +80,12 @@ var deleteCurrentFile = function ()
 	    		if (trCount <= 1)
 	    		{
 	    			reloadPage();
+	    		} else {
+					var nextAudio = $('audio').eq(0);
+
+					if (nextAudio){
+						nextAudio[0].play();
+					}
 	    		}
 	    	}
 	    	else
