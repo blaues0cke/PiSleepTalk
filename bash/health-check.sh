@@ -36,7 +36,7 @@ echo "..."
 . "/usr/sleeptalk/bash/health-check/force-button.sh"
 echo "..."
 
-recording_led_on=true
+recording_led_on=false
 
 if [ "$start_allowed" = true ]; then
 	if [ "$led_enabled" = true ]; then
