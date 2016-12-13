@@ -45,7 +45,7 @@ length_of_audio_file_in_ms () {
 			trim_zero "${milliseconds}"
 			milliseconds="${__FUNCTION_RETURN}"
 
-			if [ -z "$VAR" ]; then
+			if [ -z "$milliseconds" ]; then
 				milliseconds="0"
 			fi
 
