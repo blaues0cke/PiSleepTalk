@@ -35,6 +35,8 @@ Or if you dont trust google:
 
     curl -s -L https://raw.githubusercontent.com/blaues0cke/PiSleepTalk/master/install.sh | bash
     
+Warning: The install script will overwrite the hostname on your machine and assumes an interface called wlan0 exists. It installs various packages (nginx, samba etc.) but is otherwise limited to /usr/sleeptalk    
+    
 ## Microphone configuration
 
 You may configure the gain of your microphone to match your requirements. To do so, just type
