@@ -9,7 +9,7 @@
         "clear_pending":         "Borrar ficheros pendientes",
         "concat_all_videos":     "Concatenar todos los videos",
         "concat_checked_videos": "Concatenar los videos seleccionados",
-        "crop_to_marker":        "Recoraar en la marca",
+        "crop_to_marker":        "Recortar en la marca",
 		"decrease_volume":       "Bajar volumen",
 		"delete": 				 "Eliminar",
 		"delete_file": 		 	 "Eliminar fichero",
