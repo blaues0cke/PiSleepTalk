@@ -54,212 +54,212 @@
         "empty":                 "Ваша папка импорт пуста на данный момент.",
         "error_1":               "Файл не был загружен.",
         "error_2":               "Произошла ошибка во время сохранения Вашего файла, пожалуйста попробуйте ещё раз позже.",
-        "force_text":            "The import will start automatically %s seconds after the last file was uploaded to the import folder.",
-        "instant_approve":       "Use imported files as full recordings without postprocessing.",
-        "title":                 "Import"
+        "force_text":            "Импортирование начнется автоматически через %s секунд после загрузки последнего файла в папку импорта.",
+        "instant_approve":       "Использовать импортированные файлы как полные записи без постобработки.",
+        "title":                 "Импорт"
     },
     "logs": {
-    	"description": 			 "Raw log files of node.js and some used programs like ffmpeg or sox.",
-    	"empty_text": 			 "No log data is available right now.",
-    	"title": 				 "Logs"
+    	"description": 			 "Простые лог файлы от node.js и других используемых программ как ffmpeg или sox.",
+    	"empty_text": 			 "На данный момент нету логов.",
+    	"title": 				 "Логи"
     },
     "menu": {
-        "clear_pending":         "Delete pending files",
-    	"help":                  "Help",
-    	"home": 				 "Home",
-        "import":                "Import",
-        "overview":              "Overview",
-    	"status": 				 "Status",
-    	"videos": 				 "Videos"
+        "clear_pending":         "Удалить файлы в ожидании",
+    	"help":                  "Помощь",
+    	"home": 				 "Главная",
+        "import":                "Импорт",
+        "overview":              "Обзор",
+    	"status": 				 "Статус",
+    	"videos": 				 "Видео"
     },
     "modal": {
-    	"an_error_occurred":     "An error occurred",
+    	"an_error_occurred":     "Случилась ошибка",
         "ban_noise": {
-            "ban_noise":         "Mark selection as noise",
-            "description":       "Are you sure you want to mark the selection as noise?",
-            "title":             "Mark as noise"
+            "ban_noise":         "Пометить выбранное как шум",
+            "description":       "Вы уверены, что хотите пометить выбранное как шум?",
+            "title":             "Пометить как шум"
         },
-    	"cancel":                "Cancel",
+    	"cancel":                "Отмена",
     	"clear_logs": {
-    		"clear_logs":  		 "Clear logs",
-    		"description":       "Are you sure you want to clear all the log files? This can't be undone.",
-    		"title":             "Clear logs"
+    		"clear_logs":  		 "Очистить логи",
+    		"description":       "Вы уверены, что хотите удалить все логи? Эту операцию нельзя будет отменить.",
+    		"title":             "Очистить логи"
     	},
         "clear_pending": {
-            "clear":             "Clear unprocessed files",
-            "description":       "Are you sure you want to clear all unprocessed files? This can't be undone.",
-            "title":             "Clear unprocessed files"
+            "clear":             "Удалить необработанные файлы",
+            "description":       "Вы уверены, что хотите удалить все необработанные файлы? Эту операцию нельзя будет отменить.",
+            "title":             "Удалить необработанные файлы"
         },
         "clear_texts": {
-            "clear":             "Clear",
-            "description":       "Are you sure you want to delete all the text data?",
-            "title":             "Clear text data"
+            "clear":             "Очистить",
+            "description":       "Вы уверены, что хотите удалить все текстовые данные?",
+            "title":             "Очистить текстовые данные"
         },
         "concat_videos": {
-            "concat_videos":     "Concat videos",
-            "description":       "Are you sure you want to concat the videos? The selected ones will disappear until the final movie is rendered.",
-            "title":             "Concat videos to full movie"
+            "concat_videos":     "Объединить видео",
+            "description":       "Вы уверены, что хотите объединить видео? Выделенные видео пропадут пока финальное видео не будет отрендерено.",
+            "title":             "Объединить видео в одно целое"
         },
-    	"close":                 "Close",
+    	"close":                 "Закрыть",
         "crop_to_marker": {
-            "crop_to_marker":    "Crop",
-            "description":       "Are you sure you want to crop the audio file to the marked area? This can't be undone.",
-            "title":             "Crop to marker"
+            "crop_to_marker":    "Обрезать",
+            "description":       "Вы уверены, что хотите обрезать аудиофайл до помеченой области? Эту операцию нельзя будет отменить.",
+            "title":             "Обрезать до маркера"
         },
       	"decrease_volume": {
-    		"decrease_volume":   "Decrease volume",
-    		"description":       "Are you sure you want to decrease the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is decreased and it will automatically re-appear on the home page once it's completed.",
-    		"title":             "Decrease volume"
+    		"decrease_volume":   "Убавить звук",
+    		"description":       "Вы уверены, что хотите убавить звук этого аудиофайла на 50%? Эта операция уберет файл из поля обработки пока звук не убавится, после чего файл автоматически появиться на главной странице.",
+    		"title":             "Убавить звук"
     	},
     	"delete_file": {
-    		"delete_file":   	 "Delete file",
-    		"description":       "Are you sure you want to delete this file? This can't be undone.",
-    		"title":             "Delete file"
+    		"delete_file":   	 "Удалить файл",
+    		"description":       "Вы уверены, что хотите удалить этот файл? Эту операцию нельзя будет отменить.",
+    		"title":             "Удалить файл"
     	},
         "force_import": {
-            "description":       "Are you sure you want to force the import right now?",
-            "force_import":      "Force import",
-            "title":             "Force import"
+            "description":       "Вы уверены, что хотите ускорить импорт?",
+            "force_import":      "Ускоренный импорт",
+            "title":             "Ускоренный импорт"
         },
         "forced_import": {
-            "description":       "The importer was started successfully! Please wait until the import folder is empty.",
-            "title":             "Import forced"
+            "description":       "Импортер запущен успешно! Пожалуйста, дождидесь пока папка для импорта не очиститься.",
+            "title":             "Импорт ускорен"
         },
        	"increase_volume": {
-    		"description":       "Are you sure you want to increase the volume of this audio file by 50%? This will move the file away from your processing scope until the volume is increased and it will automatically re-appear on the home page once it's completed.",
-    		"increase_volume":   "Increase volume",
-    		"title":             "Increase volume"
+    		"description":       "Вы уверены, что хотите прибавить звук аудиофайла на 50%? Эта операция уберет файл из поля обработки пока звук не убавится, после чего файл автоматически появиться на главной странице.",
+    		"increase_volume":   "Прибавить звук",
+    		"title":             "Прибавить звук"
     	},
         "noise_banned": {
-            "description":       "The selected part is now recognized as noise and will be removed in further recordings.",
-            "title":             "Noise saved"
+            "description":       "Выделенная часть теперь признана как шум и будет удалена в будущих записях.",
+            "title":             "Шум сохранен"
         },
     	"ok": 			  	     "OK",
        	"preview_video": {
-    		"title":             "Video preview"
+    		"title":             "Обзор видео"
     	},
         "remove_noise_filter": {
-            "description":       "Are you sure you want to remove this noise filter? This can't be undone. Files that were already modified using this noise filter will remain unchanged.",
-            "remove_filter":     "Remove noise filter",
-            "title":             "Remove noise filter"
+            "description":       "Вы уверены, что хотите удалить этот фильтр шума? Эту операцию нельзя будет отменить. Файлы которые были изменены используя этот фильтр шума остануться неизменными.",
+            "remove_filter":     "Удалить фильтр шума",
+            "title":             "Удалить фильтр шума"
         },
     	"remove_recording": {
-    		"delete_recording":  "Delete recording",
-    		"description":       "Are you sure you want to delete the whole recording? This can't be undone.",
-    		"title":             "Remove recording"
+    		"delete_recording":  "Удалить запись",
+    		"description":       "Вы уверены, что хотите удалить запись? Эту операцию нельзя будет отменить.",
+    		"title":             "Удалить запись"
     	},
     	"remove_video": {
-    		"delete_video":  	 "Delete video",
-    		"description":       "Are you sure you want to delete the whole video? This can't be undone.",
-    		"title":             "Remove video"
+    		"delete_video":  	 "Удалить видео",
+    		"description":       "Вы уверены, что хотите удалить видео? Эту операцию нельзя будет отменить.",
+    		"title":             "Удалить видео"
     	},
         "set_frame": {
-            "description":       "Please set a frame first before you try to play from it.",
-            "whoops":            "Whoops, sorry!"
+            "description":       "Пожалуйста, задайте сначала область перед тем как попытаетесь проиграть ее.",
+            "whoops":            "Упс, простите!"
         },
     	"set_marker": {
-    		"description":       "Please set a marker first before you try to jump to it.",
-            "description_2":     "Please set a marker first before you try to jump to it.",
-            "description_3":     "Please set a marker first before you try to crop the recording to it.",
-            "description_4":     "Please set a marker first before you mark it as noise.",
-            "whoops":            "Whoops, sorry!"
+    		"description":       "Пожалуйста, задайте сначала маркер перед тем как перейти к нему.",
+            "description_2":     "Пожалуйста, задайте сначала маркер перед тем как перейти к нему.",
+            "description_3":     "Пожалуйста, задайте сначала маркер перед тем как обрезать запись до него.",
+            "description_4":     "Пожалуйста, задайте сначала маркер перед тем как помечать шум.",
+            "whoops":            "Упс, простите!"
     	},
         "set_playback_rate": {
-            "description":       "Enter a new playback rate here. The number \"1.0\" is default, a smaller number is slower, a bigger number is faster.",
-            "set_playback_rate": "Set playback rate",
-            "tip":               "Standard: 1.0, slower: < 1.0, faster: > 1.0",
-            "title":             "Playback rate"
+            "description":       "Введите скоро воспроизведения. Число \"1.0\" используется по умолчанию, числа меньше единицы замедляют, числа больше - ускоряют воспроизведение.",
+            "set_playback_rate": "Задать скорость воспроизведения",
+            "tip":               "Стандарт: 1.0, медленее: < 1.0, быстрее: > 1.0",
+            "title":             "Скорость воспроизведения"
         },
         "upload_file": {
-            "description":       "Upload a audio or zip file containing audio files  to the import folder.",
-            "title":             "Upload file",
-            "upload_file":       "Upload file"
+            "description":       "Загрузить аудио или zip файл, который содержит аудиофайлы, в папку импорта.",
+            "title":             "Загрузить файл",
+            "upload_file":       "Загрузить файл"
         }
     },
     "no_recordings": {
-    	"description": 			 "Sorry, we got no unprocessed recordings for you right now. Please sleep on it and come back to this page later.",
-    	"sub_description":       "You may check the status page to make sure everything is working correctly.",
-    	"title": 				 "No new recordings"
+    	"description": 			 "Простите, на данный момент у нас нет необработанных записей для вас. Пожалуйста, подождите некоторое время и возвращайтесь на эту страницу.",
+    	"sub_description":       "Вы можете проверить статус страницы, чтобы убедиться что все работает корректно.",
+    	"title": 				 "Нет новых записей"
     },
     "noise_filter": {
-        "description":           "Here you see all the noise filters you have created. Every single noise filter is appended to every new recording.",
-        "empty_text":            "No noise filters are here yet. To add a filter, just set a marker on the start page and hit the \"create noise filter\" button.",
-        "title":                 "Noise filters"
+        "description":           "Тут вы можете увидеть все созданные вами шумовые фильтры. Каждый отдельный фильтр добавляется к каждой новой записи.",
+        "empty_text":            "Шумовых фильтров пока нет. Чтоюы добавить фильтр установить маркер в начале страницы и нажмите кнопку \"создать фильтр шума\".",
+        "title":                 "Шумовые фильтры"
     },
     "overview": {
-        "description":           "Here you see a list of all unprocessed recordings. You can use this list to delete files you don't want to process in future. This page is limited to %s entries due some performance issues. Hold the shift key while clicking the delete button to skip the security question.",
-        "empty_text":            "No unprocessed recordings are available at the moment.",
-        "title":                 "Overview"
+        "description":           "Тут вы можете увидеть все необработанные записи. Вы можете использовать этот список чтобы удалить файлы которые вы не хотите обрабатывать в будущем. Эта страница ограничена в %s записей в связи с производительностью. Удерживайте кнопку Shift пока кликаете на кнопку удаления чтобы пропустить вопросы безопасности.",
+        "empty_text":            "На данный момент нет необработанных записей.",
+        "title":                 "Обзор"
     },
     "shortcuts": {
-    	"description":   	 	 "You can use some shortcuts to save time. The following keys are supported right now:",
+    	"description":   	 	 "Мы можете использовать закладки чтобы сохранить время. Поддерживаются следующие кнопки:",
     	"keys": {
     		"1_9":  			 "1-9",
-    		"1_9_description": 	 "Seek to part N of the audio file",
+    		"1_9_description": 	 "Искать часть N аудиофайла",
             "b":                 "B",
-            "b_description":     "Flag selection as noise",
+            "b_description":     "Пометить выделение как шум",
             "c":                 "C",
-            "c_description":     "Crop to marker (throw away the rest)",
+            "c_description":     "Обрезать до маркера(выбросить остальное)",
             "d":                 "D",
-            "d_description":     "Delete the current recording (hold shift to disable the security question)",
-            "dc":                "Double click",
-            "dc_description":    "Jump to position and create text",
-            "down":              "Arrow down",
-    		"down_description":  "Skip forward 10 seconds",
+            "d_description":     "Удалить текущую запись (удерживайте Shift чтобы отключить вопросы безопасности)",
+            "dc":                "Двойной щелчок мышью",
+            "dc_description":    "Перейти к позиции и создать текст",
+            "down":              "Стрелка вниз",
+    		"down_description":  "Промотать вперед на 10 секунд",
             "esc":               "ESC",
-            "esc_description":   "Stop",
+            "esc_description":   "Стоп",
             "f":                 "F",
-            "f_description":     "Toggle preview mode",
+            "f_description":     "Переключить обзор",
             "j":                 "J",
-            "j_description":     "Jump to marker (and stop playing)",
-            "left":              "Arrow left",
-            "left_description":  "Skip back 5 seconds",
+            "j_description":     "Перейти к маркеру (и остановить проигрывание)",
+            "left":              "Стрелка влево",
+            "left_description":  "Промотать назад на 5 секунд",
             "p":                 "P",
-            "p_description":     "Play from marker",
+            "p_description":     "Воспроизвести начиная от маркера",
             "m":                 "M",
-            "m_description":     "Set marker",
-            "right":             "Arrow right",
-    		"right_description": "Skip forward 5 seconds",
-    		"space":     	 	 "Space",
-    		"space_description": "Play/Pause",
-            "up":                "Arrow up",
-    		"up_description":    "Skip back 10 seconds"
+            "m_description":     "Установить маркер",
+            "right":             "Стрелка вправо",
+    		"right_description": "Промотать вперед на 5 секунд",
+    		"space":     	 	 "Пробел",
+    		"space_description": "Запуск/Пауза",
+            "up":                "Стрелка вверх",
+    		"up_description":    "Промотать назад на 10 секунд"
     	},
     	"ok":            	 	 "OK",
-    	"shortcuts":     	 	 "Shortcuts"
+    	"shortcuts":     	 	 "Закладки"
     },
     "state": {
-        "not_recording":         "Not recording",
-        "recording":             "Recording"
+        "not_recording":         "Нету записи",
+        "recording":             "Запись"
     },
     "status": {
-    	"description": 		     "Review the status of your PiSleepTalk instance. Page generated: %s",
-    	"disk_space": 			 "Disk space free: %s of %s GB",
-        "empty_text":            "There are no audio or video files available right now.",
-        "pending_files":         "Pending files",
-    	"title":  				 "Status"
+    	"description": 		     "Просмотр статуса вашего PiSleepTalk. Страница сгенерирована: %s",
+    	"disk_space": 			 "Свободное место на диске: %s из %s Гб",
+        "empty_text":            "На данный момент нету ни аудио, ни видео файлов.",
+        "pending_files":         "Файлы для ожидания",
+    	"title":  				 "Статус"
     },
     "table": {
-    	"actions": 			 	 "Actions",
-        "concat":                "Concat",
-    	"frame": 				 "Frame",
-    	"length": 				 "Length",
-    	"length_seconds_short":  "s",
-        "listen":                "Listen",
-    	"path": 				 "Path",
-    	"size": 				 "Size",
-    	"size_kb": 			     "KB",
-    	"text":       			 "Text",
-        "type":                  "Type"
+    	"actions": 			 	 "Действия",
+        "concat":                "Объединение",
+    	"frame": 				 "Область",
+    	"length": 				 "Длина",
+    	"length_seconds_short":  "с",
+        "listen":                "Прослушать",
+    	"path": 				 "Путь",
+    	"size": 				 "Размер",
+    	"size_kb": 			     "КБ",
+    	"text":       			 "Текст",
+        "type":                  "Тип"
     },
     "videos": {
-        "description":           "Here you can see all rendered videos the system recorded and generated for you. The length of all scenes available in seconds is: %s.",
-        "empty_text": 			 "No rendered videos are available at the moment.",
-        "movie_title":           "Video title",
-        "movie_title_tip":       "The movie title will appear for %s seconds on the start.",
-        "sub_description":       "You can concat videos by selecting the checkbox and pressing the \"Concat videos\" button.",
-        "title":                 "Videos",
-        "type_full":             "Video",
-        "type_part":             "Scene"
+        "description":           "Тут вы можете увидеть все отрендеренные видеофайлы, которые система записала и сгенерировала для вас. Длина всех сцен в секундах: %s.",
+        "empty_text": 			 "На данный момент, нет отрендеренных видео.",
+        "movie_title":           "Название видео",
+        "movie_title_tip":       "Название видео появиться на %s секунд с начала.",
+        "sub_description":       "Вы можете объединить видео выбрав флажок и нажав кнопку \"Concat videos\".",
+        "title":                 "Видео",
+        "type_full":             "Видео",
+        "type_part":             "Сцена"
     }
 }
