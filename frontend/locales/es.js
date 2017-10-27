@@ -9,7 +9,7 @@
         "clear_pending":         "Borrar ficheros pendientes",
         "concat_all_videos":     "Concatenar todos los videos",
         "concat_checked_videos": "Concatenar los videos seleccionados",
-        "crop_to_marker":        "Recoraar en la marca",
+        "crop_to_marker":        "Recortar en la marca",
 		"decrease_volume":       "Bajar volumen",
 		"delete": 				 "Eliminar",
 		"delete_file": 		 	 "Eliminar fichero",
@@ -50,8 +50,8 @@
     	"name": 			     "PiSleepTalk"
     },
     "import": {
-        "description":           "La función de importación le permite importar cualquier archivo de audio que desee. Puede utilizar cualquier formato de audio. Los archivos no compatibles se omiten y se borran automáticamente. Los archivos Zip se extraen automáticamente. Si los archivos en el archivo zip tienen el mismo nombre que archivos existentes en la carpeta de importación, el archivo existente se sobrescribe sin pedir permiso.",
-        "empty":                 "Su carpeta de importación está vacía.",
+        "description":           "La función de importar le permite importar cualquier archivo de audio que desee. Puede utilizar cualquier formato de audio. Los archivos no compatibles se omiten y se borran automáticamente. Los archivos Zip se extraen automáticamente. Si los archivos en el archivo zip tienen el mismo nombre que archivos existentes en la carpeta de importación, el archivo existente se sobrescribe sin pedir permiso.",
+        "empty":                 "Su carpeta de importar está vacía.",
         "error_1":               "No se han subido ficheros.",
         "error_2":               "Se ha producido un error mientras se guardaba el fichero, por favor, vuelva a intentarlo.",
         "force_text":            "La importación empezará automáticamente trasncurridos %s segundos tras subir el último fichero a la carpeta de importación.",
